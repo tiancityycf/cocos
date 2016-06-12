@@ -54,8 +54,10 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         
-        this.flip();
-
+        this.flopstart();
+        this.turnstart();
+        this.riverstart();
+        
         //--->>> 获取组件的几种形式:
         //1. 通过属性检查器被赋值的label组件，直接拿到得到实例
         //2. 通过属性检查器被赋值的label组件所在的node节点，然后通过getComponent获取
@@ -243,23 +245,141 @@ cc.Class({
        
 
     },
-    
+     flopstart:function(){
+        var node1=new cc.Node();
+        var mSf1 = node1.addComponent(cc.Sprite);
+
+        var node2=new cc.Node();
+        var mSf2 = node2.addComponent(cc.Sprite);
+        
+        var node3=new cc.Node();
+        var mSf3 = node3.addComponent(cc.Sprite);
+        
+        cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
+            var frame1 = atlas.getSpriteFrame('card_01');
+            var frame2 = atlas.getSpriteFrame('card_03');
+            var frame3 = atlas.getSpriteFrame('card_05');
+            mSf1.spriteFrame = frame1;
+            mSf2.spriteFrame = frame2;
+            mSf3.spriteFrame = frame3;
+
+        });
+        
+        mSf1.enabled=true;
+        node1.active=true;
+        node1.parent = this.node.parent;
+        node1.setPosition(-200,53);
+
+        mSf2.enabled=true;
+        node2.active=true;
+        node2.parent = this.node.parent;
+        node2.setPosition(-200,53);
+
+        mSf3.enabled=true;
+        node3.active=true;
+        node3.parent = this.node.parent;
+        node3.setPosition(-200,53);
+                
+        var action1=cc.moveTo(1, cc.p(-95, 53));
+        var action2=cc.moveTo(2, cc.p(5, 53));
+
+        node1.runAction(action1);
+        node2.runAction(action2);
+       
+    },
+    turnstart:function(){
+
+        var node=new cc.Node();
+        var mSf = node.addComponent(cc.Sprite);
+        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+            var frame = atlas.getSpriteFrame('game_card_reverse');
+            mSf.spriteFrame = frame;
+        });
+        
+        mSf.enabled=true;
+        node.active=true;
+        node.parent = this.node.parent;
+        node.setPosition(105,53);
+        
+        var turn = cc.callFunc(this.showturn, this, node);
+
+        var action1=cc.rotateTo(0.3, 0, 180);
+      
+        var seq=cc.sequence(action1,turn);
+        
+        node.runAction(seq);
+
+    },
+    showturn:function(node){
+
+        var mSf = new cc.Node().addComponent(cc.Sprite);
+        cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
+            var frame = atlas.getSpriteFrame('card_04');
+            mSf.spriteFrame = frame;
+        });
+        
+        mSf.node.setPosition(node.x,node.y);
+         
+        mSf.enabled=false;
+        
+        mSf.node.parent = this.node.parent;
+     
+        mSf.enabled=true;
+  
+        node.active=false;
+        
+    },
+    riverstart:function(){
+
+        var node=new cc.Node();
+        var mSf = node.addComponent(cc.Sprite);
+        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+            var frame = atlas.getSpriteFrame('game_card_reverse');
+            mSf.spriteFrame = frame;
+        });
+        
+        mSf.enabled=true;
+        node.active=true;
+        node.parent = this.node.parent;
+        node.setPosition(205,53);
+        
+        var turn = cc.callFunc(this.showriver, this, node);
+
+        var action1=cc.rotateTo(0.3, 0, 180);
+      
+        var seq=cc.sequence(action1,turn);
+        
+        node.runAction(seq);
+
+    },
+    showriver:function(node){
+
+        var mSf = new cc.Node().addComponent(cc.Sprite);
+        cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
+            var frame = atlas.getSpriteFrame('card_02');
+            mSf.spriteFrame = frame;
+        });
+        
+        mSf.node.setPosition(node.x,node.y);
+         
+        mSf.enabled=false;
+        
+        mSf.node.parent = this.node.parent;
+     
+        mSf.enabled=true;
+  
+        node.active=false;
+
+    },
     flip:function(){
-        
-        // var node2=this.getComponent("card_01");
-
-        // cc.log(node2);
-
-        // var action3=cc.show();
-        // var action4=cc.hide();
-        // node2.runAction(action4);
-        
-
         
         var node=this.node;
         
         var opt="";
-        var finished = cc.callFunc(this.showAtlas, this, opt);
+        var turn = cc.callFunc(this.showturn, this, opt);
+
+        var river = cc.callFunc(this.showriver, this, opt);
+
 
         var action1=cc.rotateTo(0.3, 0, 180);
         //var action2=cc.removeSelf(true);
@@ -269,7 +389,7 @@ cc.Class({
         
         
         //var seq=cc.sequence(action1,action2,finished);
-        var seq=cc.sequence(action1,finished);
+        var seq=cc.sequence(action1,turn,river);
         
         node.runAction(seq);
         
@@ -316,39 +436,7 @@ cc.Class({
         console.log("回调函数");
         
     },
-    showAtlas:function(){
-
-
-        var mSf = new cc.Node().addComponent(cc.Sprite);
-        cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-            var frame = atlas.getSpriteFrame('card_04');
-            mSf.spriteFrame = frame;
-        });
-        
-        
-
-        //var texture = cc.textureCache.addImage(cc.url.raw("resources/game_cards/card_04"));
-       
-        //var frame  = new cc.SpriteFrame(texture, cc.Rect(0, 0, 87, 123));     
-        
-        //mSf.spriteFrame =   frame;
-        
-        mSf.node.setPosition(-195,53);
-        
-        //mSf.visible=false;
-        mSf.enabled=false;
-        
-        mSf.node.parent = this.node.parent;
-        
-        //mSf.visible=true;
-        mSf.enabled=true;
-
-       
-        this.game_card_reverse.active=false;
-
-        console.log("回调函数");
-        
-    },
+    
     // called every frame
     update: function (dt) {
         //this.flip();
