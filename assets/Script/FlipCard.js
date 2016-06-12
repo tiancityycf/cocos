@@ -53,10 +53,11 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        
         this.flopstart();
         this.turnstart();
         this.riverstart();
+
+        
         
         //--->>> 获取组件的几种形式:
         //1. 通过属性检查器被赋值的label组件，直接拿到得到实例
