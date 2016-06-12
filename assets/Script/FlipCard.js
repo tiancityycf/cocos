@@ -70,12 +70,12 @@ cc.Class({
         //5.也可以如下形式【注意此种方式，目前有BUG，无法正常使用 (0.7.1) 】
         // var _label = cc.find("Canvas/label<cc.Label>");
         
-        var _label = cc.find("Canvas/card_49").getComponent(cc.Sprite);
+        //var _label = cc.find("Canvas/card_49").getComponent(cc.Sprite);
 
-        cc.log(_label instanceof cc.Sprite);       // true
+        //cc.log(_label instanceof cc.Sprite);       // true
         //console.log(_label.Position);
-        console.log(this.t_getSet);
-        cc.log("haha")
+        //console.log(this.t_getSet);
+        //cc.log("haha")
         //--->>>全局变量的访问
         /* 任意脚本中定义如下：【注意不要有var哦】*/
 
@@ -259,7 +259,7 @@ cc.Class({
         var node=this.node;
         
         var opt="";
-        var finished = cc.callFunc(this.showself, this, opt);
+        var finished = cc.callFunc(this.showAtlas, this, opt);
 
         var action1=cc.rotateTo(0.3, 0, 180);
         //var action2=cc.removeSelf(true);
@@ -294,13 +294,46 @@ cc.Class({
         
         var mSf = new cc.Node().addComponent(cc.Sprite);
 
-        var texture = cc.textureCache.addImage(cc.url.raw("resources/card_02.png"));
+        var texture = cc.textureCache.addImage(cc.url.raw("resources/game_cards/card_04"));
        
         var frame  = new cc.SpriteFrame(texture, cc.Rect(0, 0, 87, 123));     
         
         mSf.spriteFrame =   frame;
         
         mSf.node.setPosition(98,0);
+        
+        //mSf.visible=false;
+        mSf.enabled=false;
+        
+        mSf.node.parent = this.node.parent;
+        
+        //mSf.visible=true;
+        mSf.enabled=true;
+
+       
+        this.game_card_reverse.active=false;
+
+        console.log("回调函数");
+        
+    },
+    showAtlas:function(){
+
+
+        var mSf = new cc.Node().addComponent(cc.Sprite);
+        cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
+            var frame = atlas.getSpriteFrame('card_04');
+            mSf.spriteFrame = frame;
+        });
+        
+        
+
+        //var texture = cc.textureCache.addImage(cc.url.raw("resources/game_cards/card_04"));
+       
+        //var frame  = new cc.SpriteFrame(texture, cc.Rect(0, 0, 87, 123));     
+        
+        //mSf.spriteFrame =   frame;
+        
+        mSf.node.setPosition(-195,53);
         
         //mSf.visible=false;
         mSf.enabled=false;
