@@ -6,8 +6,6 @@ cc.Class({
             default: null,
             type: cc.Label
         },
-        text: 'Hello, World!',
-
         t_prefab:{
             default:null,
             type:cc.Prefab
@@ -53,6 +51,8 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        //初始化圆形头像
+        //this.initstart();
         this.flopstart();
         this.turnstart();
         this.riverstart();
@@ -243,9 +243,23 @@ cc.Class({
         //     cc.log("end");
         // });
        
-       
-
     },
+
+    initstart:function(){
+        var node=new cc.Node();
+        node.width=50;
+        node.height=50;
+        node.setPosition(0,0);
+        node.parent = this.node.parent;
+        var mask = node.addComponent(cc.Mask);
+        mask.type = cc.Mask.ELLIPSE;     
+        var node1=new cc.Node();
+        var mSf = node1.addComponent(cc.Sprite);
+        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+            mSf.spriteFrame = atlas.getSpriteFrame('game_card_reverse');
+        });
+        mSf.node.parent=mask.node;
+     },
      flopstart:function(){
         var node1=new cc.Node();
         var mSf1 = node1.addComponent(cc.Sprite);
