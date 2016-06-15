@@ -2,76 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3de875d7-e391-4c5a-a55f-86271173169c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/Texture.meta" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Scene/main.fire" afterPath="$PROJECT_DIR$/assets/Scene/main.fire" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Scene/main.fire.meta" afterPath="$PROJECT_DIR$/assets/Scene/main.fire.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/FilledTimer.js.meta" afterPath="$PROJECT_DIR$/assets/Script/FilledTimer.js.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/FlipCard.js.meta" afterPath="$PROJECT_DIR$/assets/Script/FlipCard.js.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/main.js" afterPath="$PROJECT_DIR$/assets/Script/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/main.js.meta" afterPath="$PROJECT_DIR$/assets/Script/main.js.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/start.js.meta" afterPath="$PROJECT_DIR$/assets/Script/start.js.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_cn.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_cn.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_cn.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_cn.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_cn_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_cn_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_cn_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_cn_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_en.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_en.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_en.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_en.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_en_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_en_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_en_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_en_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_th.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_th.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_th.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_th.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_th_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_th_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_th_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_th_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/circular.png.meta" afterPath="$PROJECT_DIR$/assets/resources/circular.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/circular_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/circular_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/circular_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/circular_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/circular_bg_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/circular_bg_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/emotions.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/emotions.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/emotions.png.meta" afterPath="$PROJECT_DIR$/assets/resources/emotions.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/emotions_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/emotions_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/emotions_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/emotions_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/game.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_cards.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/game_cards.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_cards.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_cards.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_cards_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/game_cards_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_cards_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_cards_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_chips_num.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_chips_num.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_chips_num_darkred.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_chips_num_darkred.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_chips_num_gray.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_chips_num_gray.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_chips_num_orange.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_chips_num_orange.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_desk_bg.jpg.meta" afterPath="$PROJECT_DIR$/assets/resources/game_desk_bg.jpg.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_desk_bg_6p.jpg.meta" afterPath="$PROJECT_DIR$/assets/resources/game_desk_bg_6p.jpg.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_dialog_frame.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_dialog_frame.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_header_mask.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_header_mask.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_liveFrame_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_liveFrame_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_loading_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_loading_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_message_edge.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_message_edge.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_popFrame_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_popFrame_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_preRecordFrame_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_preRecordFrame_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_progress_normal.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_progress_normal.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_progress_range.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_progress_range.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_progress_yellow.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_progress_yellow.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_store_btn_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_store_btn_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_store_goods_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_store_goods_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_tabBarFrame_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_tabBarFrame_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/off_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/off_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/off_bg_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/off_bg_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/on_off.png.meta" afterPath="$PROJECT_DIR$/assets/resources/on_off.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/on_off_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/on_off_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/properties.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/properties.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/properties.png.meta" afterPath="$PROJECT_DIR$/assets/resources/properties.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/properties_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/properties_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/properties_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/properties_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/creator.d.ts" afterPath="$PROJECT_DIR$/creator.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings/project.json" afterPath="$PROJECT_DIR$/settings/project.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/SitDown.js" afterPath="$PROJECT_DIR$/assets/Script/SitDown.js" />
     </list>
     <ignored path="kkpoker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -95,8 +28,18 @@
       <file leaf-file-name="SitDown.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/Script/SitDown.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-621">
-              <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+            <state relative-caret-position="311">
+              <caret line="73" column="49" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FilledTimer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/Script/FilledTimer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -115,7 +58,7 @@
       <file leaf-file-name="FlipCard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/Script/FlipCard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="5072">
               <caret line="251" column="30" selection-start-line="251" selection-start-column="8" selection-end-line="251" selection-end-column="30" />
               <folding />
             </state>
@@ -205,6 +148,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kkpoker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game.kkpoker.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Script" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -284,12 +245,12 @@
       <updated>1464933083815</updated>
       <workItem from="1465870539656" duration="309000" />
       <workItem from="1465871856790" duration="13705000" />
-      <workItem from="1465955551211" duration="11782000" />
+      <workItem from="1465955551211" duration="13705000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25796000" />
+    <option name="totallyTimeSpent" value="27719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="2" width="1378" height="743" extended-state="0" />
@@ -396,14 +357,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/Script/FlipCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="251" column="30" selection-start-line="251" selection-start-column="8" selection-end-line="251" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/creator.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -412,10 +365,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/Script/FilledTimer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/Script/FlipCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5072">
+          <caret line="251" column="30" selection-start-line="251" selection-start-column="8" selection-end-line="251" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/Script/SitDown.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-621">
-          <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+        <state relative-caret-position="311">
+          <caret line="73" column="49" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
           <folding />
         </state>
       </provider>
