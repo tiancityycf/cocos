@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3de875d7-e391-4c5a-a55f-86271173169c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Scene/main.fire" afterPath="$PROJECT_DIR$/assets/Scene/main.fire" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/SitDown.js" afterPath="$PROJECT_DIR$/assets/Script/SitDown.js" />
-    </list>
+    <list default="true" id="3de875d7-e391-4c5a-a55f-86271173169c" name="Default" comment="" />
     <ignored path="kkpoker.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +24,7 @@
       <file leaf-file-name="SitDown.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/Script/SitDown.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
+            <state relative-caret-position="212">
               <caret line="73" column="49" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
               <folding />
             </state>
@@ -245,12 +241,12 @@
       <updated>1464933083815</updated>
       <workItem from="1465870539656" duration="309000" />
       <workItem from="1465871856790" duration="13705000" />
-      <workItem from="1465955551211" duration="13705000" />
+      <workItem from="1465955551211" duration="13789000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27719000" />
+    <option name="totallyTimeSpent" value="27803000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="2" width="1378" height="743" extended-state="0" />
@@ -383,7 +379,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/Script/SitDown.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
+        <state relative-caret-position="212">
           <caret line="73" column="49" selection-start-line="73" selection-start-column="49" selection-end-line="73" selection-end-column="49" />
           <folding />
         </state>
