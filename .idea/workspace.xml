@@ -2,76 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3de875d7-e391-4c5a-a55f-86271173169c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/Texture.meta" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/Script/SitDown.js___jb_tmp___.meta" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/FlipCard.js" afterPath="$PROJECT_DIR$/assets/Script/FlipCard.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Scene/main.fire" afterPath="$PROJECT_DIR$/assets/Scene/main.fire" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Scene/main.fire.meta" afterPath="$PROJECT_DIR$/assets/Scene/main.fire.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/FilledTimer.js.meta" afterPath="$PROJECT_DIR$/assets/Script/FilledTimer.js.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/FlipCard.js.meta" afterPath="$PROJECT_DIR$/assets/Script/FlipCard.js.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/main.js" afterPath="$PROJECT_DIR$/assets/Script/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/main.js.meta" afterPath="$PROJECT_DIR$/assets/Script/main.js.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/start.js.meta" afterPath="$PROJECT_DIR$/assets/Script/start.js.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_cn.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_cn.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_cn.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_cn.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_cn_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_cn_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_cn_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_cn_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_en.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_en.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_en.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_en.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_en_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_en_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_en_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_en_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_th.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_th.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_th.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_th.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_th_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_th_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/GameMain_th_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/GameMain_th_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/circular.png.meta" afterPath="$PROJECT_DIR$/assets/resources/circular.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/circular_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/circular_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/circular_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/circular_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/circular_bg_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/circular_bg_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/emotions.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/emotions.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/emotions.png.meta" afterPath="$PROJECT_DIR$/assets/resources/emotions.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/emotions_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/emotions_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/emotions_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/emotions_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/game.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_cards.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/game_cards.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_cards.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_cards.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_cards_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/game_cards_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_cards_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_cards_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_chips_num.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_chips_num.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_chips_num_darkred.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_chips_num_darkred.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_chips_num_gray.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_chips_num_gray.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_chips_num_orange.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_chips_num_orange.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_desk_bg.jpg.meta" afterPath="$PROJECT_DIR$/assets/resources/game_desk_bg.jpg.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_desk_bg_6p.jpg.meta" afterPath="$PROJECT_DIR$/assets/resources/game_desk_bg_6p.jpg.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_dialog_frame.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_dialog_frame.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_header_mask.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_header_mask.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_liveFrame_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_liveFrame_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_loading_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_loading_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_message_edge.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_message_edge.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_popFrame_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_popFrame_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_preRecordFrame_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_preRecordFrame_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_progress_normal.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_progress_normal.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_progress_range.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_progress_range.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_progress_yellow.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_progress_yellow.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_store_btn_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_store_btn_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_store_goods_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_store_goods_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/game_tabBarFrame_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/game_tabBarFrame_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/off_bg.png.meta" afterPath="$PROJECT_DIR$/assets/resources/off_bg.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/off_bg_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/off_bg_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/on_off.png.meta" afterPath="$PROJECT_DIR$/assets/resources/on_off.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/on_off_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/on_off_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/properties.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/properties.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/properties.png.meta" afterPath="$PROJECT_DIR$/assets/resources/properties.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/properties_6p.plist.meta" afterPath="$PROJECT_DIR$/assets/resources/properties_6p.plist.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/resources/properties_6p.png.meta" afterPath="$PROJECT_DIR$/assets/resources/properties_6p.png.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/creator.d.ts" afterPath="$PROJECT_DIR$/creator.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings/project.json" afterPath="$PROJECT_DIR$/settings/project.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/Script/start.js" afterPath="$PROJECT_DIR$/assets/Script/start.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kkpoker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,32 +27,22 @@
     <favorites_list name="kkpoker" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SitDown.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/Script/SitDown.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-621">
-              <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file leaf-file-name="creator.d.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/creator.d.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10276" column="75" selection-start-line="10276" selection-start-column="71" selection-end-line="10276" selection-end-column="75" />
+            <state vertical-scroll-proportion="-7.9259257">
+              <caret line="10267" column="32" selection-start-line="10267" selection-start-column="32" selection-end-line="10267" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlipCard.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FlipCard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/Script/FlipCard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="251" column="30" selection-start-line="251" selection-start-column="8" selection-end-line="251" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.25541794">
+              <caret line="11" column="12" selection-start-line="4" selection-start-column="10" selection-end-line="11" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -131,18 +57,22 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/assets/Script/SitDown.js" />
+        <option value="$PROJECT_DIR$/creator.d.ts" />
+        <option value="$PROJECT_DIR$/assets/Script/FlipCard.js" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="y" value="2" />
+    <option name="x" value="49" />
+    <option name="y" value="23" />
     <option name="width" value="1378" />
     <option name="height" value="743" />
   </component>
@@ -167,8 +97,6 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
@@ -187,7 +115,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="game.kkpoker.com" />
+              <option name="myItemId" value="kkpoker" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -197,11 +125,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="game.kkpoker.com" />
+              <option name="myItemId" value="kkpoker" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kkpoker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kkpoker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Script" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -218,12 +164,7 @@
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
-    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
-      <config-file value="" />
-      <node-interpreter value="project" />
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
       <envs />
       <method />
     </configuration>
@@ -240,38 +181,27 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
       <arguments />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <node-interpreter value="project" />
+      <pass-parent-envs>true</pass-parent-envs>
       <envs />
       <method />
     </configuration>
     <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
       <node-options />
       <working-directory />
       <pass-parent-env>true</pass-parent-env>
       <envs />
       <ui>bdd</ui>
       <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
       <test-directory />
       <recursive>false</recursive>
       <method />
     </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -280,7 +210,6 @@
       <changelist id="3de875d7-e391-4c5a-a55f-86271173169c" name="Default" comment="" />
       <created>1464933083815</created>
       <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
       <updated>1464933083815</updated>
       <workItem from="1465870539656" duration="309000" />
       <workItem from="1465871856790" duration="13705000" />
@@ -292,26 +221,26 @@
     <option name="totallyTimeSpent" value="25796000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="2" width="1378" height="743" extended-state="0" />
+    <frame x="49" y="23" width="1378" height="743" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19089574" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19085631" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -335,17 +264,25 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/Script/SitDown.js">
+    <entry file="file://$PROJECT_DIR$/creator.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/Script/FlipCard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="251" column="30" selection-start-line="251" selection-start-column="8" selection-end-line="251" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/creator.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241137">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8931" column="21" selection-start-line="8931" selection-start-column="21" selection-end-line="8931" selection-end-column="21" />
           <folding />
         </state>
@@ -353,23 +290,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/Script/FlipCard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6777">
+        <state vertical-scroll-proportion="0.0">
           <caret line="251" column="30" selection-start-line="251" selection-start-column="8" selection-end-line="251" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/Script/SitDown.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/creator.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -377,45 +306,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/settings/project.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/Script/FlipCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="251" column="30" selection-start-line="251" selection-start-column="8" selection-end-line="251" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/creator.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10276" column="75" selection-start-line="10276" selection-start-column="71" selection-end-line="10276" selection-end-column="75" />
+        <state vertical-scroll-proportion="-7.9259257">
+          <caret line="10267" column="32" selection-start-line="10267" selection-start-column="32" selection-end-line="10267" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/Script/SitDown.js">
+    <entry file="file://$PROJECT_DIR$/assets/Script/FlipCard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-621">
-          <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.25541794">
+          <caret line="11" column="12" selection-start-line="4" selection-start-column="10" selection-end-line="11" selection-end-column="12" />
           <folding />
         </state>
       </provider>

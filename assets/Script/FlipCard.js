@@ -1,64 +1,70 @@
-cc.Class({
+var FlipCard=cc.Class({
     extends: cc.Component,
 
     properties: {
-        label: {
-            default: null,
-            type: cc.Label
-        },
-        t_prefab:{
-            default:null,
-            type:cc.Prefab
-        },
-        
-        cardBG:cc.Sprite,
+        //label: {
+        //    default: null,
+        //    type: cc.Label
+        //},
+        //t_prefab:{
+        //    default:null,
+        //    type:cc.Prefab
+        //},
 
-        t_sprite:{//定义一个cc的类型，并定义上常用属性
-            default:null,
-            type:cc.SpriteFrame,//类型的定义
-            url:cc.Texture2D, //Raw Asset(cc.Texture2D, cc.Font, cc.AudioClip)
-            enabled:true,//属性检查器中是否可见
-            displayName:'himi',//属性检查器中属性的名字
-            tooltip:"测试脚本",//属性检查器中停留此属性名称显示的提示文字
-            readonly:false,//属性检查器中显示（readonly）且不可修改[当前有bug，设定只读也能修改]
-            serializable:true,//设置false就是临时变量
-            editorOnly:false//导出项目前剔除此属性
-        },
-
-        t_url:{
-            default:null,
-            url:cc.Texture2D
-        },
-
-        t_count_2:200,//基础类型
-
-        //可以只定义 get 方法，这样相当于一份 readonly 的属性。[当前有bug，只设定get也能修改]
-        t_getSet:{
-            default:12,
-            get:function(){return this.t_getSet},//get
-            set:function(value){this.t_getSet =value;}//set
-        },
-
-        t_array:{//定义一个数组
+        sit:{
             default:[],
-            type:[cc.Sprite]
-        },
-        game_card_reverse:{
-            default:null,
             type:cc.Node
-        }
+        },
+        card:{
+            default:[],
+            type:cc.Node
+        },
+
+        //t_sprite:{//定义一个cc的类型，并定义上常用属性
+        //    default:null,
+        //    type:cc.SpriteFrame,//类型的定义
+        //    url:cc.Texture2D, //Raw Asset(cc.Texture2D, cc.Font, cc.AudioClip)
+        //    enabled:true,//属性检查器中是否可见
+        //    displayName:'himi',//属性检查器中属性的名字
+        //    tooltip:"测试脚本",//属性检查器中停留此属性名称显示的提示文字
+        //    readonly:false,//属性检查器中显示（readonly）且不可修改[当前有bug，设定只读也能修改]
+        //    serializable:true,//设置false就是临时变量
+        //    editorOnly:false//导出项目前剔除此属性
+        //},
+
+        //t_url:{
+        //    default:null,
+        //    url:cc.Texture2D
+        //},
+        //
+        //t_count_2:200,//基础类型
+        //
+        ////可以只定义 get 方法，这样相当于一份 readonly 的属性。[当前有bug，只设定get也能修改]
+        //t_getSet:{
+        //    default:12,
+        //    get:function(){return this.t_getSet},//get
+        //    set:function(value){this.t_getSet =value;}//set
+        //},
+        //
+        //t_array:{//定义一个数组
+        //    default:[],
+        //    type:[cc.Sprite]
+        //},
+        //game_card_reverse:{
+        //    default:null,
+        //    type:cc.Node
+        //}
     },
 
     // use this for initialization
     onLoad: function () {
+        //this.mainstart();
         //初始化圆形头像
         //this.initstart();
-        this.flopstart();
-        this.turnstart();
-        this.riverstart();
+        //this.flopstart();
+        //this.turnstart();
+        //this.riverstart();
 
-        
-        
         //--->>> 获取组件的几种形式:
         //1. 通过属性检查器被赋值的label组件，直接拿到得到实例
         //2. 通过属性检查器被赋值的label组件所在的node节点，然后通过getComponent获取
@@ -187,30 +193,6 @@ cc.Class({
         // mySprite.node.stopAction(mAction);
 
 
-        // //--->>> 计时器 (component)schedule (cc.Node 不包含计时器相关 API)
-        // //参数： call funtion/interval/repeat times/delay time
-        // //不延迟，永久重复
-        // this.schedule(function(){
-        //     console.log("schedule log...");
-        // },1);
-
-        // //不延迟，有重复次数限定
-        // // this.schedule(function(){
-        // //     console.log("schedule log...");
-        // // },1,2);
-
-        // //重复2次，重复间隔为1秒，延迟1秒进行
-        // // this.schedule(function(){
-        // //     console.log("schedule log...");
-        // // },1,2,1);
-
-        // //一次性的计时器
-        // var mySch =function(){ console.log("schedule Once log..."); }
-        // this.scheduleOnce(mySch);
-
-        // //取消定时器
-        // this.unschedule(mySch);
-
 
         //--->>> url raw资源获取
         
@@ -218,8 +200,7 @@ cc.Class({
         
         
         // var mSf = new cc.Node().addComponent(cc.Sprite);
-        // //var mSf = new cc.Node().addComponent(this.cardBG);
-        
+
         // var texture = cc.textureCache.addImage(cc.url.raw("resources/card_02.png"));
         // console.log("raw asset url:"+texture);
         
@@ -245,30 +226,60 @@ cc.Class({
        
     },
 
-    initstart:function(){
-        var node=new cc.Node();
-        node.width=50;
-        node.height=50;
-        node.setPosition(0,0);
-        node.parent = this.node.parent;
-        var mask = node.addComponent(cc.Mask);
-        mask.type = cc.Mask.ELLIPSE;     
-        var node1=new cc.Node();
-        var mSf = node1.addComponent(cc.Sprite);
-        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-            mSf.spriteFrame = atlas.getSpriteFrame('game_card_reverse');
-        });
-        mSf.node.parent=mask.node;
-     },
-     flopstart:function(){
-        var node1=new cc.Node();
-        var mSf1 = node1.addComponent(cc.Sprite);
 
-        var node2=new cc.Node();
-        var mSf2 = node2.addComponent(cc.Sprite);
+    //圆形头像 cc.Mask 例子
+    mainstart:function(){
+
+        this.scheduleOnce(function() {
+            this.flopstart();
+        }, 0);
+
+        this.scheduleOnce(function() {
+            this.turnstart();
+        }, 3);
+
+        this.scheduleOnce(function() {
+            this.riverstart();
+        }, 4);
+
+    },
+    initstart:function(){
+        //var node = new cc.Node();
+        //node.width = 50;
+        //node.height = 50;
+        //node.setPosition(0,0);
+        //node.parent = this.node.parent;
+        //var mask = node.addComponent(cc.Mask);
+        //mask.type = cc.Mask.ELLIPSE;
+        //var node1 = new cc.Node();
+        //var mSf = node1.addComponent(cc.Sprite);
+        //cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+        //    mSf.spriteFrame = atlas.getSpriteFrame('game_card_reverse');
+        //});
+        //mSf.node.parent = node;
+
+     },
+     //flop三张牌移动效果
+     flopstart:function(){
+         this.card[0].removeAllChildren(true);
+         this.card[1].removeAllChildren(true);
+         this.card[2].removeAllChildren(true);
+         this.card[3].removeAllChildren(true);
+         this.card[4].removeAllChildren(true);
+         this.card[0].active=false;
+         this.card[1].active=false;
+         this.card[2].active=false;
+         this.card[3].active=false;
+         this.card[4].active=false;
+
+         var node1=this.card[0];
+         var mSf1 = node1.addComponent(cc.Sprite);
+
+         var node2=this.card[1];
+         var mSf2 = node2.addComponent(cc.Sprite);
         
-        var node3=new cc.Node();
-        var mSf3 = node3.addComponent(cc.Sprite);
+         var node3=this.card[2];
+         var mSf3 = node3.addComponent(cc.Sprite);
         
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
             var frame1 = atlas.getSpriteFrame('card_01');
@@ -277,33 +288,33 @@ cc.Class({
             mSf1.spriteFrame = frame1;
             mSf2.spriteFrame = frame2;
             mSf3.spriteFrame = frame3;
-
         });
         
         mSf1.enabled=true;
         node1.active=true;
         node1.parent = this.node.parent;
-        node1.setPosition(-200,53);
+        node1.setPosition(-200,50);
 
         mSf2.enabled=true;
         node2.active=true;
         node2.parent = this.node.parent;
-        node2.setPosition(-200,53);
+        node2.setPosition(-200,50);
 
         mSf3.enabled=true;
         node3.active=true;
         node3.parent = this.node.parent;
-        node3.setPosition(-200,53);
+        node3.setPosition(-200,50);
                 
-        var action1=cc.moveTo(1, cc.p(-95, 53));
-        var action2=cc.moveTo(2, cc.p(5, 53));
+        var action1=cc.moveTo(1, cc.p(-100, 50));
+        var action2=cc.moveTo(2, cc.p(0, 50));
 
         node1.runAction(action1);
         node2.runAction(action2);
        
     },
+    //翻牌效果 
     turnstart:function(){
-
+        //this.card[3].removeAllChildren();
         var node=new cc.Node();
         var mSf = node.addComponent(cc.Sprite);
         cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
@@ -314,38 +325,42 @@ cc.Class({
         mSf.enabled=true;
         node.active=true;
         node.parent = this.node.parent;
-        node.setPosition(105,53);
+        //node.parent=this.card[3];
+        node.setPosition(100,50);
         
         var turn = cc.callFunc(this.showturn, this, node);
 
         var action1=cc.rotateTo(0.3, 0, 180);
-      
+
         var seq=cc.sequence(action1,turn);
-        
+
         node.runAction(seq);
 
     },
+    //翻牌效果 回调
     showturn:function(node){
-
-        var mSf = new cc.Node().addComponent(cc.Sprite);
+        //this.card[3].removeAllChildren();
+        var mSf = this.card[3].addComponent(cc.Sprite);
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
             var frame = atlas.getSpriteFrame('card_04');
             mSf.spriteFrame = frame;
         });
         
-        mSf.node.setPosition(node.x,node.y);
+        //mSf.node.setPosition(node.x,node.y);
          
-        mSf.enabled=false;
+        //mSf.enabled=false;
         
-        mSf.node.parent = this.node.parent;
+        //mSf.node.parent = this.node.parent;
      
-        mSf.enabled=true;
+        //mSf.enabled=true;
   
         node.active=false;
+        this.card[3].active=true;
         
     },
+    //翻牌效果
     riverstart:function(){
-
+        //this.card[4].removeAllChildren();
         var node=new cc.Node();
         var mSf = node.addComponent(cc.Sprite);
         cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
@@ -355,8 +370,9 @@ cc.Class({
         
         mSf.enabled=true;
         node.active=true;
-        node.parent = this.node.parent;
-        node.setPosition(205,53);
+        //node.parent = this.card[4];
+        node.parent=this.node.parent;
+        node.setPosition(200,50);
         
         var turn = cc.callFunc(this.showriver, this, node);
 
@@ -367,23 +383,25 @@ cc.Class({
         node.runAction(seq);
 
     },
+    //翻牌效果 回调
     showriver:function(node){
-
-        var mSf = new cc.Node().addComponent(cc.Sprite);
+        //this.card[4].removeAllChildren();
+        var mSf = this.card[4].addComponent(cc.Sprite);
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
             var frame = atlas.getSpriteFrame('card_02');
             mSf.spriteFrame = frame;
         });
         
-        mSf.node.setPosition(node.x,node.y);
+        //mSf.node.setPosition(node.x,node.y);
          
-        mSf.enabled=false;
+        //mSf.enabled=false;
         
-        mSf.node.parent = this.node.parent;
+        //mSf.node.parent = this.node.parent;
      
-        mSf.enabled=true;
+        //mSf.enabled=true;
   
         node.active=false;
+        this.card[4].active=true;
 
     },
     flip:function(){
@@ -456,4 +474,11 @@ cc.Class({
     update: function (dt) {
         //this.flip();
     },
+   
 });
+//module.exports.FlipCard = FlipCard;
+module.exports.haha = function () {
+    cc.log("haha");
+    var card=new FlipCard();
+    card.mainstart();
+};
