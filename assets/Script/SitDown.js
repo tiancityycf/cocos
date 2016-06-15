@@ -23,17 +23,20 @@ cc.Class({
                                     "user_id" : "5",
                                     "user_nick" : "小明",
                                     "user_avatar" : "http://img.51yche.com/avatar/2016-06-15/w_120x120_57602aed7d6d8.jpg",
+                                    "user_chips" : "800",
                                     "seat_number" : "0"
                                 }, {
                                     "user_id" : "6",
                                     "user_nick" : "小刚",
                                     "user_avatar" : "http://img.51yche.com/avatar/2016-06-15/w_120x120_57602bd098133.jpg",
+                                    "user_chips" : "1000",
                                     "seat_number" : "1"
                                 },
                                 {
                                     "user_id" : "6",
                                     "user_nick" : "小龙",
                                     "user_avatar" : "http://img.51yche.com/avatar/2016-06-14/w_120x120_575ffcd3375aa.jpg",
+                                    "user_chips" : "10000",
                                     "seat_number" : "7"
                                 }
                             ],
@@ -63,7 +66,14 @@ cc.Class({
             var v = table_data['table_info'][k];
             var node_position = node_table_bg.getChildByName("seat_"+v['seat_number']).getPosition();//获取坐标
             var node_size = node_table_bg.getChildByName("seat_"+v['seat_number']).getContentSize();//获取node的尺寸
+            //名字
+            var label_nick = node_table_bg.getChildByName("seat_"+v['seat_number']).getChildByName("nick").getComponent(cc.Label);
+            label_nick.string = v['user_nick'];
+            //带入的筹码
+            var label_chips = node_table_bg.getChildByName("seat_"+v['seat_number']).getChildByName("chips").getComponent(cc.Label);
+            label_chips.string = v['user_chips'];
 
+            //头像
             var node_mark = new cc.Node();
             var mask_user = node_mark.addComponent(cc.Mask);
             mask_user.type = cc.Mask.ELLIPSE;
