@@ -11,10 +11,6 @@ var FlipCard=cc.Class({
         //    type:cc.Prefab
         //},
 
-        sit:{
-            default:[],
-            type:cc.Node
-        },
         card:{
             default:[],
             type:cc.Node
@@ -31,7 +27,7 @@ var FlipCard=cc.Class({
         //    serializable:true,//设置false就是临时变量
         //    editorOnly:false//导出项目前剔除此属性
         //},
-
+        //
         //t_url:{
         //    default:null,
         //    url:cc.Texture2D
