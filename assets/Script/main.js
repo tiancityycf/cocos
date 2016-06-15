@@ -12,11 +12,11 @@ cc.Class({
 
     onLoad:function(){
         
-        
+         
 
     },
     update: function (dt) {
-        
+         
     },
    
 
