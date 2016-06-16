@@ -42,12 +42,13 @@ cc.Class({
     },
     //原型进度条
     _updateFillRange: function (sprite, range, dt) {
-        //cc.log(dt);
+
         var fillRange = sprite.fillRange;
         //逆时针转
         //fillRange = fillRange < range ? fillRange += (dt * this.speed) : 0;
         //顺时针转
         fillRange = fillRange < range ? fillRange -= (dt * this.speed) : 0;
+        //cc.log(sprite);
         sprite.fillRange = fillRange;
     }
 
