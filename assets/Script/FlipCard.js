@@ -28,6 +28,10 @@ var FlipCard=cc.Class({
             default: null,
             type: cc.Sprite
         },
+        inpot:{
+            default: null,
+            type: cc.Node
+        },
 
         //t_sprite:{//定义一个cc的类型，并定义上常用属性
         //    default:null,
@@ -243,6 +247,8 @@ var FlipCard=cc.Class({
         this.card[3].stopAllActions();
         this.card[4].stopAllActions();
 
+        this.inpotstart(50,100);
+
         var callback=function(){
             this.duration=6;
             this.check(0);
@@ -265,14 +271,87 @@ var FlipCard=cc.Class({
 
 
     },
+    //check
     check:function(sit){
         var table_bg=this.node.parent.getChildByName("table_bg");
         var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
         table_bg.getChildByName("seat_"+sit).opacity=100;
         //cc.log(pos);
         this.timestart(pos);
-
      },
+    //弃牌
+    fold:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+    call:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+    raise:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+    //结束比牌
+    end:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+    //站起
+    quit:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+
+    //inpot
+    inpotstart:function(pot,inpot){
+        if(this.inpot){
+
+        }else{
+            this.inpot=new cc.Node();
+
+            var sp = this.inpot.addComponent(cc.Sprite);
+            cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+                var frame1 = atlas.getSpriteFrame('game_inPot_frame');
+                sp.spriteFrame = frame1;
+            });
+            //var table_bg=this.node.parent.getChildByName("table_bg");
+            this.inpot.parent=this.node.parent;
+            //this.inpot.parent=table_bg;
+            this.inpot.setPosition(0,250);
+            var node=new cc.Node();
+            var lb = node.addComponent(cc.Label);
+            lb.fontSize=25;
+            node.name="inpot";
+            node.parent=this.inpot;
+            node.setPosition(0,-12);
+            lb.string=inpot;
+
+            var potNode=new cc.Node();
+            var plb = potNode.addComponent(cc.Label);
+            plb.fontSize=20;
+            potNode.name="pot";
+            potNode.parent=this.node.parent;
+            potNode.setPosition(0,180);
+            plb.string="pot:"+pot;
+        }
+    },
+
      //flop三张牌移动效果
      flopstart:function(){
 
