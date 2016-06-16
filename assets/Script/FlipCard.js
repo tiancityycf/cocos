@@ -226,17 +226,27 @@ var FlipCard=cc.Class({
     //圆形头像 cc.Mask 例子
     mainstart:function(){
 
-        this.scheduleOnce(function() {
-            this.flopstart();
-        }, 0);
+        this.unschedule(this.flopstart);
+        this.unschedule(this.turnstart);
+        this.unschedule(this.riverstart);
 
-        this.scheduleOnce(function() {
-            this.turnstart();
-        }, 3);
+        this.card[0].removeAllChildren(true);
+        this.card[1].removeAllChildren(true);
+        this.card[2].removeAllChildren(true);
+        this.card[3].removeAllChildren(true);
+        this.card[4].removeAllChildren(true);
 
-        this.scheduleOnce(function() {
-            this.riverstart();
-        }, 4);
+        this.card[0].stopAllActions();
+        this.card[1].stopAllActions();
+        this.card[2].stopAllActions();
+        this.card[3].stopAllActions();
+        this.card[4].stopAllActions();
+
+        this.scheduleOnce(this.flopstart, 0);
+
+        this.scheduleOnce(this.turnstart, 3);
+
+        this.scheduleOnce(this.riverstart, 4);
 
     },
     initstart:function(){
@@ -257,24 +267,15 @@ var FlipCard=cc.Class({
      },
      //flop三张牌移动效果
      flopstart:function(){
-         this.card[0].removeAllChildren(true);
-         this.card[1].removeAllChildren(true);
-         this.card[2].removeAllChildren(true);
-         this.card[3].removeAllChildren(true);
-         this.card[4].removeAllChildren(true);
-         this.card[0].active=false;
-         this.card[1].active=false;
-         this.card[2].active=false;
-         this.card[3].active=false;
-         this.card[4].active=false;
 
-         var node1=this.card[0];
+         var node1=new cc.Node();
+         //var node1=new cc.Node();
          var mSf1 = node1.addComponent(cc.Sprite);
 
-         var node2=this.card[1];
+         var node2=new cc.Node();
          var mSf2 = node2.addComponent(cc.Sprite);
-        
-         var node3=this.card[2];
+
+         var node3=new cc.Node();
          var mSf3 = node3.addComponent(cc.Sprite);
         
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
@@ -287,30 +288,34 @@ var FlipCard=cc.Class({
         });
         
         mSf1.enabled=true;
-        node1.active=true;
-        node1.parent = this.node.parent;
-        node1.setPosition(-200,50);
+        //node1.active=true;
+        //node1.parent = this.node.parent;
+        //node1.setPosition(-200,50);
+        node1.parent=this.card[0];
 
         mSf2.enabled=true;
-        node2.active=true;
-        node2.parent = this.node.parent;
-        node2.setPosition(-200,50);
+        //node2.active=true;
+        //node2.parent = this.node.parent;
+        //node2.setPosition(-200,50);
+         node2.parent=this.card[1];
 
         mSf3.enabled=true;
-        node3.active=true;
-        node3.parent = this.node.parent;
-        node3.setPosition(-200,50);
+        //node3.active=true;
+        //node3.parent = this.node.parent;
+        //node3.setPosition(-200,50);
+         node3.parent=this.card[2];
                 
-        var action1=cc.moveTo(1, cc.p(-100, 50));
-        var action2=cc.moveTo(2, cc.p(0, 50));
+        //var action1=cc.moveTo(1, cc.p(-100, 50));
+        //var action2=cc.moveTo(2, cc.p(0, 50));
+         var action1=cc.moveTo(1, cc.p(100, 0));
+         var action2=cc.moveTo(2, cc.p(200, 0));
 
-        node1.runAction(action1);
-        node2.runAction(action2);
+         node1.runAction(action1);
+         node2.runAction(action2);
        
     },
     //翻牌效果 
     turnstart:function(){
-        //this.card[3].removeAllChildren();
         var node=new cc.Node();
         var mSf = node.addComponent(cc.Sprite);
         cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
@@ -321,9 +326,8 @@ var FlipCard=cc.Class({
         mSf.enabled=true;
         node.active=true;
         node.parent = this.node.parent;
-        //node.parent=this.card[3];
         node.setPosition(100,50);
-        
+
         var turn = cc.callFunc(this.showturn, this, node);
 
         var action1=cc.rotateTo(0.3, 0, 180);
@@ -335,8 +339,9 @@ var FlipCard=cc.Class({
     },
     //翻牌效果 回调
     showturn:function(node){
-        //this.card[3].removeAllChildren();
-        var mSf = this.card[3].addComponent(cc.Sprite);
+        var node1=new cc.Node();
+        node1.parent=this.card[3];
+        var mSf = node1.addComponent(cc.Sprite);
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
             var frame = atlas.getSpriteFrame('card_04');
             mSf.spriteFrame = frame;
@@ -349,14 +354,11 @@ var FlipCard=cc.Class({
         //mSf.node.parent = this.node.parent;
      
         //mSf.enabled=true;
-  
         node.active=false;
-        this.card[3].active=true;
         
     },
     //翻牌效果
     riverstart:function(){
-        //this.card[4].removeAllChildren();
         var node=new cc.Node();
         var mSf = node.addComponent(cc.Sprite);
         cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
@@ -381,8 +383,9 @@ var FlipCard=cc.Class({
     },
     //翻牌效果 回调
     showriver:function(node){
-        //this.card[4].removeAllChildren();
-        var mSf = this.card[4].addComponent(cc.Sprite);
+        var node1=new cc.Node();
+        node1.parent=this.card[4];
+        var mSf = node1.addComponent(cc.Sprite);
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
             var frame = atlas.getSpriteFrame('card_02');
             mSf.spriteFrame = frame;
@@ -395,9 +398,7 @@ var FlipCard=cc.Class({
         //mSf.node.parent = this.node.parent;
      
         //mSf.enabled=true;
-  
         node.active=false;
-        this.card[4].active=true;
 
     },
     flip:function(){
