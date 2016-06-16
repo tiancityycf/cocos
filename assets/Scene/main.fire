@@ -81,6 +81,9 @@
         "__id__": 87
       },
       {
+        "__id__": 88
+      },
+      {
         "__id__": 89
       },
       {
@@ -96,10 +99,7 @@
         "__id__": 93
       },
       {
-        "__id__": 94
-      },
-      {
-        "__id__": 98
+        "__id__": 97
       }
     ],
     "_rotationX": 0,
@@ -122,7 +122,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 100
+        "__id__": 99
       }
     ],
     "_prefab": null,
@@ -2921,41 +2921,9 @@
     "_reorderChildDirty": false,
     "_id": "bec219zunpOH5whzRSSBvIJ",
     "_active": true,
-    "_components": [
-      {
-        "__id__": 88
-      }
-    ],
+    "_components": [],
     "_prefab": null,
     "groupIndex": 0
-  },
-  {
-    "__type__": "cc.Sprite",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 87
-    },
-    "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "f0407862-1181-496e-a40c-dc8b0cce07a0"
-    },
-    "_type": 3,
-    "_sizeMode": 0,
-    "_fillType": 2,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_fillStart": 0,
-    "_fillRange": 1,
-    "_isTrimmedMode": true,
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_atlas": {
-      "__uuid__": "ac39fe71-83df-4df3-97cf-c6adfd799662"
-    }
   },
   {
     "__type__": "cc.Node",
@@ -3249,10 +3217,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 95
+        "__id__": 94
       },
       {
-        "__id__": 96
+        "__id__": 95
       }
     ],
     "_prefab": null,
@@ -3263,7 +3231,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 94
+      "__id__": 93
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -3291,7 +3259,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 94
+      "__id__": 93
     },
     "_enabled": true,
     "transition": 0,
@@ -3314,7 +3282,7 @@
     "hoverSprite": null,
     "clickEvents": [
       {
-        "__id__": 97
+        "__id__": 96
       }
     ],
     "_N$interactable": true,
@@ -3335,13 +3303,13 @@
     "_N$normalSprite": null,
     "_N$disabledSprite": null,
     "_N$target": {
-      "__id__": 94
+      "__id__": 93
     }
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
-      "__id__": 98
+      "__id__": 97
     },
     "component": "FlipCard",
     "handler": "mainstart"
@@ -3393,7 +3361,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 99
+        "__id__": 98
       }
     ],
     "_prefab": null,
@@ -3404,10 +3372,13 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 98
+      "__id__": 97
     },
     "_enabled": true,
     "card": [
+      {
+        "__id__": 88
+      },
       {
         "__id__": 89
       },
@@ -3419,16 +3390,13 @@
       },
       {
         "__id__": 92
-      },
-      {
-        "__id__": 93
       }
     ],
     "speed": 0.1,
-    "radial_round": {
-      "__id__": 88
-    },
-    "timer": null
+    "duration": 20,
+    "timing": false,
+    "timer": null,
+    "timersp": null
   },
   {
     "__type__": "cc.Canvas",

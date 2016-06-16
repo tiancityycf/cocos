@@ -268,6 +268,7 @@ var FlipCard=cc.Class({
     check:function(sit){
         var table_bg=this.node.parent.getChildByName("table_bg");
         var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
         //cc.log(pos);
         this.timestart(pos);
 
@@ -397,7 +398,6 @@ var FlipCard=cc.Class({
             var frame = atlas.getSpriteFrame('card_02');
             mSf.spriteFrame = frame;
         });
-        
 
         node.active=false;
 
