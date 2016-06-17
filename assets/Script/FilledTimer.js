@@ -5,50 +5,42 @@ cc.Class({
 
         speed: 0.1,
 
-        horizontal: {
-            default: null,
-            type: cc.Sprite
-        },
-
-        vertical: {
-            default: null,
-            type: cc.Sprite
-        },
-
         radial_round: {
-            default: null,
-            type: cc.Sprite
-        },
-
-        radial_semicircle: {
             default: null,
             type: cc.Sprite
         }
     },
 
+    onLoad:function(){
+        this.scheduleOnce(this.timestart, 3);
+    },
+    timestart:function(){
+        var node1=new cc.Node();
+        var sp = node1.addComponent(cc.Sprite);
+        sp.type=cc.Sprite.Type.FILLED;
+        sp.fillType=cc.Sprite.FillType.RADIAL;
+        sp.fillCenter = new cc.Vec2(0.5, 0.5);
+        sp.fillStart = 0;
+        sp.fillRange = 1;
+
+
+        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+            var frame1 = atlas.getSpriteFrame('game_seat_valid');
+            sp.spriteFrame = frame1;
+        });
+
+
+    },
     update: function (dt) {
-        // update fill start
-        //this._updataFillStart(this.horizontal, dt);
-        //this._updataFillStart(this.vertical, dt);
-        // update fill range
         this._updateFillRange(this.radial_round, 1, dt);
-        //this._updateFillRange(this.radial_semicircle, 0.5, dt);
     },
-    //进度条
-    _updataFillStart: function (sprite, dt) {
-        var fillStart = sprite.fillStart;
-        fillStart = fillStart > 0 ? fillStart -= (dt * this.speed) : 1;
-        sprite.fillStart = fillStart;
-    },
+
     //原型进度条
     _updateFillRange: function (sprite, range, dt) {
-
         var fillRange = sprite.fillRange;
-        //逆时针转
-        //fillRange = fillRange < range ? fillRange += (dt * this.speed) : 0;
         //顺时针转
         fillRange = fillRange < range ? fillRange -= (dt * this.speed) : 0;
-        //cc.log(sprite);
+
         sprite.fillRange = fillRange;
     }
 

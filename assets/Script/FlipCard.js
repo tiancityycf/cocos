@@ -2,10 +2,7 @@ var FlipCard=cc.Class({
     extends: cc.Component,
 
     properties: {
-        //label: {
-        //    default: null,
-        //    type: cc.Label
-        //},
+
         //t_prefab:{
         //    default:null,
         //    type:cc.Prefab
@@ -16,10 +13,21 @@ var FlipCard=cc.Class({
             type:cc.Node
         },
         speed: 0.1,
+        duration:20,
 
-        radial_round: {
+        timing:false,
+
+        timer: {
+            default: null,
+            type: cc.Node
+        },
+        timersp: {
             default: null,
             type: cc.Sprite
+        },
+        inpot:{
+            default: null,
+            type: cc.Node
         },
 
         //t_sprite:{//定义一个cc的类型，并定义上常用属性
@@ -38,9 +46,7 @@ var FlipCard=cc.Class({
         //    default:null,
         //    url:cc.Texture2D
         //},
-        //
-        //t_count_2:200,//基础类型
-        //
+
         ////可以只定义 get 方法，这样相当于一份 readonly 的属性。[当前有bug，只设定get也能修改]
         //t_getSet:{
         //    default:12,
@@ -51,21 +57,12 @@ var FlipCard=cc.Class({
         //t_array:{//定义一个数组
         //    default:[],
         //    type:[cc.Sprite]
-        //},
-        //game_card_reverse:{
-        //    default:null,
-        //    type:cc.Node
         //}
+
     },
 
     // use this for initialization
     onLoad: function () {
-        //this.mainstart();
-        //初始化圆形头像
-        //this.initstart();
-        //this.flopstart();
-        //this.turnstart();
-        //this.riverstart();
 
         //--->>> 获取组件的几种形式:
         //1. 通过属性检查器被赋值的label组件，直接拿到得到实例
@@ -196,38 +193,31 @@ var FlipCard=cc.Class({
 
 
 
-        //--->>> url raw资源获取
-        
-         //获得 Raw Asset 的 url
-        
-        
-        // var mSf = new cc.Node().addComponent(cc.Sprite);
-
-        // var texture = cc.textureCache.addImage(cc.url.raw("resources/card_02.png"));
-        // console.log("raw asset url:"+texture);
-        
-        // //this.t_url=mUrl;
-        
-        // var frame  = new cc.SpriteFrame(texture, cc.Rect(0, 0, 87, 123));     
-        
-        // mSf.spriteFrame =   frame;
-        // //mSf.spriteFrame.setTexture(this.t_url);
-        // //mSf.url=mUrl;
-        // mSf.node.setPosition(98,0);
-        // mSf.node.parent = this.node.parent;
-        
-        
-        //mSf.node.setScale(0.5);
-        // 加载 Texture，不需要后缀名
-        // cc.loader.loadRes("card_02", function (err, texture) {
-        //     //cc.log(err);
-        //     cc.log(texture);
-
-        //     cc.log("end");
-        // });
+       this.reqstart();
        
     },
+    reqstart:function(){
+        var url="http://172.16.0.210:2016/info.php";
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if(xhr.status == 200){
+                    var response = eval('(' + xhr.responseText + ')');
+                    //cc.log(response);
+                    //cc.log(response.code);
+                    //cc.log(response['code']);
+                    return response;
+                }else{
+                    cc.log("xhr.status=".xhr.status)
+                    return null;
+                }
+            }
+        };
 
+
+    },
 
     //圆形头像 cc.Mask 例子
     mainstart:function(){
@@ -235,6 +225,9 @@ var FlipCard=cc.Class({
         this.unschedule(this.flopstart);
         this.unschedule(this.turnstart);
         this.unschedule(this.riverstart);
+        this.unschedule(callback);
+        this.unschedule(callback2);
+
 
         this.card[0].removeAllChildren(true);
         this.card[1].removeAllChildren(true);
@@ -242,11 +235,28 @@ var FlipCard=cc.Class({
         this.card[3].removeAllChildren(true);
         this.card[4].removeAllChildren(true);
 
-        this.card[0].stopAllActions();
-        this.card[1].stopAllActions();
-        this.card[2].stopAllActions();
-        this.card[3].stopAllActions();
-        this.card[4].stopAllActions();
+        //this.card[0].stopAllActions();
+        //this.card[1].stopAllActions();
+        //this.card[2].stopAllActions();
+        //this.card[3].stopAllActions();
+        //this.card[4].stopAllActions();
+
+
+        this.inpotstart(50,100);
+
+        var callback=function(){
+            this.duration=6;
+            this.check(0);
+        };
+
+        var callback2=function(){
+            this.duration=10;
+            this.check(1);
+        };
+
+        this.scheduleOnce(callback, 0);
+
+        this.scheduleOnce(callback2, 6);
 
         this.scheduleOnce(this.flopstart, 0);
 
@@ -254,23 +264,89 @@ var FlipCard=cc.Class({
 
         this.scheduleOnce(this.riverstart, 4);
 
-    },
-    initstart:function(){
-        //var node = new cc.Node();
-        //node.width = 50;
-        //node.height = 50;
-        //node.setPosition(0,0);
-        //node.parent = this.node.parent;
-        //var mask = node.addComponent(cc.Mask);
-        //mask.type = cc.Mask.ELLIPSE;
-        //var node1 = new cc.Node();
-        //var mSf = node1.addComponent(cc.Sprite);
-        //cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-        //    mSf.spriteFrame = atlas.getSpriteFrame('game_card_reverse');
-        //});
-        //mSf.node.parent = node;
 
+    },
+    //check
+    check:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
      },
+    //弃牌
+    fold:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+    call:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+    raise:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+    //结束比牌
+    end:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+    //站起
+    quit:function(sit){
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        table_bg.getChildByName("seat_"+sit).opacity=100;
+        //cc.log(pos);
+        this.timestart(pos);
+    },
+
+    //inpot
+    inpotstart:function(pot,inpot){
+        if(this.inpot){
+
+        }else{
+            this.inpot=new cc.Node();
+
+            var sp = this.inpot.addComponent(cc.Sprite);
+            cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+                var frame1 = atlas.getSpriteFrame('game_inPot_frame');
+                sp.spriteFrame = frame1;
+            });
+            //var table_bg=this.node.parent.getChildByName("table_bg");
+            this.inpot.parent=this.node.parent;
+            //this.inpot.parent=table_bg;
+            this.inpot.setPosition(0,250);
+            var node=new cc.Node();
+            var lb = node.addComponent(cc.Label);
+            lb.fontSize=25;
+            node.name="inpot";
+            node.parent=this.inpot;
+            node.setPosition(0,-12);
+            lb.string=inpot;
+
+            var potNode=new cc.Node();
+            var plb = potNode.addComponent(cc.Label);
+            plb.fontSize=20;
+            potNode.name="pot";
+            potNode.parent=this.node.parent;
+            potNode.setPosition(0,180);
+            plb.string="pot:"+pot;
+        }
+    },
+
      //flop三张牌移动效果
      flopstart:function(){
 
@@ -396,113 +472,56 @@ var FlipCard=cc.Class({
             var frame = atlas.getSpriteFrame('card_02');
             mSf.spriteFrame = frame;
         });
-        
-        //mSf.node.setPosition(node.x,node.y);
-         
-        //mSf.enabled=false;
-        
-        //mSf.node.parent = this.node.parent;
-     
-        //mSf.enabled=true;
+
         node.active=false;
 
     },
-    flip:function(){
-        
-        var node=this.node;
-        
-        var opt="";
-        var turn = cc.callFunc(this.showturn, this, opt);
-
-        var river = cc.callFunc(this.showriver, this, opt);
 
 
-        var action1=cc.rotateTo(0.3, 0, 180);
-        //var action2=cc.removeSelf(true);
-        //var action2=cc.hide();
+    timestart:function(pos){
+        this.timer=new cc.Node();
 
-        //var action2=cc.delayTime(2);
-        
-        
-        //var seq=cc.sequence(action1,action2,finished);
-        var seq=cc.sequence(action1,turn,river);
-        
-        node.runAction(seq);
-        
-      
-        // this.scheduleOnce(function() {
-        //      // 这里的 this 指向 component
-        //      this.showself();
-        //  }, 2);
+        this.timer.scale=1.2;
 
-        // node2.runAction(action3);
-
-       
-        
-        cc.log("xxx");
-        //cc.moveTo(2, cc.p(80, 80),1);
-        //cc.moveTo(2, cc.p(80, 80));
-
+        var sp = this.timer.addComponent(cc.Sprite);
+        sp.type=cc.Sprite.Type.FILLED;
+        sp.fillType=cc.Sprite.FillType.RADIAL;
+        sp.fillCenter = new cc.Vec2(0.5, 0.5);
+        sp.fillStart = 0;
+        sp.fillRange = 0;
+        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+            var frame1 = atlas.getSpriteFrame('game_progress_frame');
+            sp.spriteFrame = frame1;
+        });
+        this.timersp=sp;
+        this.timer.parent=this.node.parent;
+        this.timer.position=pos;
+        this.timing=true;
     },
-    showself:function(){
-
-        cc.log("回调");
-        
-        var mSf = new cc.Node().addComponent(cc.Sprite);
-
-        var texture = cc.textureCache.addImage(cc.url.raw("resources/game_cards/card_04"));
-       
-        var frame  = new cc.SpriteFrame(texture, cc.Rect(0, 0, 87, 123));     
-        
-        mSf.spriteFrame =   frame;
-        
-        mSf.node.setPosition(98,0);
-        
-        //mSf.visible=false;
-        mSf.enabled=false;
-        
-        mSf.node.parent = this.node.parent;
-        
-        //mSf.visible=true;
-        mSf.enabled=true;
-
-       
-        this.game_card_reverse.active=false;
-
-        console.log("回调函数");
-        
-    },
-
     update: function (dt) {
-        // update fill start
-        //this._updataFillStart(this.horizontal, dt);
-        //this._updataFillStart(this.vertical, dt);
-        // update fill range
-        this._updateFillRange(this.radial_round, 1, dt);
-        //this._updateFillRange(this.radial_semicircle, 0.5, dt);
-    },
-    //进度条
-    _updataFillStart: function (sprite, dt) {
-        var fillStart = sprite.fillStart;
-        fillStart = fillStart > 0 ? fillStart -= (dt * this.speed) : 1;
-        sprite.fillStart = fillStart;
+        //cc.log(this.timer);
+        if (this.timing) {
+           this._updateTimer(dt);
+        };
+        //this._updateFillRange(this.radial_round, 1, dt);
     },
     //原型进度条
-    _updateFillRange: function (sprite, range, dt) {
+    _updateTimer: function (dt) {
+        var max=-1*(this.duration/20)
+        if(this.timing){
+            var fillRange = this.timersp.fillRange;
+            if(fillRange>max){
+                //顺时针转
+                fillRange = fillRange < 1 ? fillRange -= (dt * this.speed) : 0;
+                this.timersp.fillRange = fillRange;
+            }else{
+                this.timing=false;
+                this.timersp.destroy();
+                this.timer.destroy();
+            }
+        }
 
-        var fillRange = sprite.fillRange;
-        //逆时针转
-        //fillRange = fillRange < range ? fillRange += (dt * this.speed) : 0;
-        //顺时针转
-        fillRange = fillRange < range ? fillRange -= (dt * this.speed) : 0;
-        //cc.log(sprite);
-        sprite.fillRange = fillRange;
-    }
+    },
+
    
 });
-//module.exports.FlipCard = FlipCard;
-module.exports.haha = function () {
-    cc.log("haha");
-    var card=new FlipCard();
-    card.mainstart();
-};
