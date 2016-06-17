@@ -113,7 +113,7 @@ cc.Class({
             node_process.height = node_size['height'];
             node_process.scale = 1.3;
             load_time(sprite_process);
-            node_process.parent = seat_node;
+            node_process.parent = node_user;
             var time_interval = 0.1;
             this.schedule(function(){
                 this._CountDown(sprite_process,20,time_interval);
@@ -127,7 +127,7 @@ cc.Class({
     //倒计时的进度条
     _CountDown:function(sprite_process,long_time,time_interval){
         this.countdown_time++;//已经执行了多少次
-        var cycle_percent = 0.01;//一个周期的部分
+        var cycle_percent = 0.09;//一个周期的部分
         var cycle_time = 20;//一个周期所需的时间,20秒
         cycle_time = cycle_time * Math.ceil(parseInt(long_time)/cycle_time); //如果耗时大于一个周期所需的时间，说明用了延时道具
         var init_speed = cycle_percent / cycle_time;//初始速度
