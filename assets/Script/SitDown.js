@@ -62,16 +62,11 @@ cc.Class({
         var node_table_bg = this.node.parent;
         var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
         label_table_code.string = table_data['table_verify_code'];
+        //异步加载图片，不能放在循环内
         var load_avatar = function(url,sprite_user){
             cc.loader.load(url,function(err,tex){
                 var frame  = new cc.SpriteFrame(tex,cc.Rect(0, 0, 87, 123));
                 sprite_user.spriteFrame = frame;
-            });
-        };
-        var load_time = function(sprite_process){
-            cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
-                var frame1 = atlas.getSpriteFrame("game_progress_frame");
-                sprite_process.spriteFrame = frame1;
             });
         };
         //坐下
@@ -101,33 +96,39 @@ cc.Class({
             node_user.parent = node_mark;
             load_avatar(v['user_avatar'],sprite_user);
 
-            //倒计时
-            var node_process = new cc.Node();
-            var sprite_process = node_process.addComponent(cc.Sprite);
-            sprite_process.type = cc.Sprite.Type.FILLED;
-            sprite_process.fillType = cc.Sprite.FillType.RADIAL;
-            sprite_process.fillCenter = new cc.Vec2(0.5,0.5);
-            sprite_process.fillStart = 0;
-            sprite_process.fillRange = 0;
-            node_process.width = node_size['width'];
-            node_process.height = node_size['height'];
-            node_process.scale = 1.3;
-            load_time(sprite_process);
-            node_process.parent = node_user;
-            var time_interval = 0.1;
-            this.schedule(function(){
-                this._CountDown(sprite_process,20,time_interval);
-            },time_interval);
+            //添加倒计时
+            this._AddCountDown(node_table_bg,node_position);
         }
     },
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
 
     },
-    //倒计时的进度条
+    //添加倒计时的进度条
+    _AddCountDown:function(node_table_bg,node_position){
+        var node_process = new cc.Node();
+        var sprite_process = node_process.addComponent(cc.Sprite);
+        sprite_process.type = cc.Sprite.Type.FILLED;
+        sprite_process.fillType = cc.Sprite.FillType.RADIAL;
+        sprite_process.fillCenter = new cc.Vec2(0.5,0.5);
+        sprite_process.fillStart = 0;
+        sprite_process.fillRange = 0;
+        node_process.scale = 1.3;
+        node_process.setPosition(node_position['x'],node_position['y']);
+        cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+            var frame1 = atlas.getSpriteFrame("game_progress_frame");
+            sprite_process.spriteFrame = frame1;
+        });
+        node_process.parent = node_table_bg;
+        var time_interval = 0.1;
+        this.schedule(function(){
+            this._CountDown(sprite_process,20,time_interval);
+        },time_interval);
+    },
+    //倒计时开始
     _CountDown:function(sprite_process,long_time,time_interval){
         this.countdown_time++;//已经执行了多少次
-        var cycle_percent = 0.09;//一个周期的部分
+        var cycle_percent = 1;//一个周期的部分
         var cycle_time = 20;//一个周期所需的时间,20秒
         cycle_time = cycle_time * Math.ceil(parseInt(long_time)/cycle_time); //如果耗时大于一个周期所需的时间，说明用了延时道具
         var init_speed = cycle_percent / cycle_time;//初始速度
@@ -137,7 +138,10 @@ cc.Class({
         //fillRange = fillRange < range ? fillRange += (this.countdown_time * init_speed): 0;
         //顺时针转
         var do_time = time_interval * this.countdown_time;
-        fillRange = do_time < long_time ? fillRange -= (do_time * init_speed):0;
+        fillRange = do_time < long_time ? fillRange -= (time_interval * init_speed):0;
         sprite_process.fillRange = fillRange;
+        if(fillRange == 0){
+            this.unschedule();
+        }
     }
 });
