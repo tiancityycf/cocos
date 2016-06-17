@@ -2,22 +2,25 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-         label: {
-            default: null,
-            type: cc.Label
+        seat:{
+            default:[],
+            type:cc.Node
         },
-        t_prefab:{
-            default:null,
-            type:cc.Prefab
-        },
-        speed: 0.1,
-        radial_round: {
-            default: null,
-            type: cc.Sprite
-        },
-
         //倒计时
-        countdown_time:0//执行了多少次
+        countdown_execution_interval:0.1,//执行间隔
+        countdown_repeat_num:0,//重复了多少次
+        countdown_long_time:0,//倒计时时长，单位:秒
+        countdown_cycle_time:20,//倒计时一圈的时间，单位:秒
+        countdown_node:{
+            default:null,
+            type:cc.Node
+        },//倒计时，遮罩层所在的node
+        countdown_sprite:{
+            default:null,
+            type:cc.Sprite
+        },//倒计时，遮罩层的精灵
+        countdown_task:null,//倒计时执行任务,是一个function，方便销毁定时器
+        countdown_over_task:null,//倒计时结束，是一个function，执行完毕，最后会执行这个
     },
 
     // use this for initialization
@@ -97,7 +100,8 @@ cc.Class({
             load_avatar(v['user_avatar'],sprite_user);
 
             //添加倒计时
-            this._AddCountDown(node_table_bg,node_position);
+            this._AddCountDown(node_table_bg,v['seat_number'],15);
+            break;
         }
     },
     // called every frame, uncomment this function to activate update callback
@@ -105,43 +109,73 @@ cc.Class({
 
     },
     //添加倒计时的进度条
-    _AddCountDown:function(node_table_bg,node_position){
-        var node_process = new cc.Node();
-        var sprite_process = node_process.addComponent(cc.Sprite);
-        sprite_process.type = cc.Sprite.Type.FILLED;
-        sprite_process.fillType = cc.Sprite.FillType.RADIAL;
-        sprite_process.fillCenter = new cc.Vec2(0.5,0.5);
-        sprite_process.fillStart = 0;
-        sprite_process.fillRange = 0;
-        node_process.scale = 1.3;
-        node_process.setPosition(node_position['x'],node_position['y']);
-        cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
-            var frame1 = atlas.getSpriteFrame("game_progress_frame");
-            sprite_process.spriteFrame = frame1;
-        });
-        node_process.parent = node_table_bg;
-        var time_interval = 0.1;
-        this.schedule(function(){
-            this._CountDown(sprite_process,20,time_interval);
-        },time_interval);
-    },
-    //倒计时开始
-    _CountDown:function(sprite_process,long_time,time_interval){
-        this.countdown_time++;//已经执行了多少次
-        var cycle_percent = 1;//一个周期的部分
-        var cycle_time = 20;//一个周期所需的时间,20秒
-        cycle_time = cycle_time * Math.ceil(parseInt(long_time)/cycle_time); //如果耗时大于一个周期所需的时间，说明用了延时道具
-        var init_speed = cycle_percent / cycle_time;//初始速度
+    _AddCountDown:function(node_table_bg,seat_number,long_time){
+        var seat = node_table_bg.getChildByName("seat_"+seat_number);//获取该作为的节点
+        var seat_position = seat.getPosition();//获取该座位的位置坐标
+        var seat_size = seat.getContentSize();//获取该座位的尺寸
 
-        var fillRange = sprite_process.fillRange;
-        //逆时针转
-        //fillRange = fillRange < range ? fillRange += (this.countdown_time * init_speed): 0;
-        //顺时针转
-        var do_time = time_interval * this.countdown_time;
-        fillRange = do_time < long_time ? fillRange -= (time_interval * init_speed):0;
-        sprite_process.fillRange = fillRange;
+        //倒计时遮罩层
+        var node = new cc.Node();
+        node.scale = 1.3;
+        node.setPosition(seat_position);
+        node.parent = node_table_bg;
+        var sprite = node.addComponent(cc.Sprite);
+        sprite.type = cc.Sprite.Type.FILLED;
+        sprite.fillType = cc.Sprite.FillType.RADIAL;
+        sprite.fillCenter = new cc.Vec2(0.5,0.5);
+        sprite.fillStart = 0;
+        sprite.fillRange = 0;
+        cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+            var frame = atlas.getSpriteFrame("game_progress_frame");
+            sprite.spriteFrame = frame;
+        });
+        //倒计时文字
+        var node2 = new cc.Node();
+        node2.name = "time";
+        var label = node2.addComponent(cc.Label);
+        label.string = this.countdown_cycle_time + "s";
+        label.fontSize = 30;
+        node2.parent = node;
+        //node2.color = new cc.Color(0, 0, 0);
+        node2.setPosition(0,-10);
+
+        this.countdown_node = node;
+        this.countdown_sprite = sprite;
+        this.countdown_long_time = long_time;//执行时长
+        this.countdown_task = function(){
+            this._StartCountDown(1);
+        };
+        this.schedule(this.countdown_task,this.countdown_execution_interval);
+    },
+    //倒计时开始 direction(方向):1-顺时针2-逆时针
+    _StartCountDown:function(direction){
+        this.countdown_repeat_num++;//已经执行了多少次
+        var full_cycle = 1;//一个整圈
+        var speed = full_cycle / this.countdown_cycle_time;//速度
+
+        var sprite = this.countdown_node.getComponent(cc.Sprite);
+        var fillRange = sprite.fillRange;
+        var cost_time = this.countdown_execution_interval * this.countdown_repeat_num;//耗时
+        if(parseInt(cost_time) == cost_time ){
+            var time_node = this.countdown_node.getChildByName("time");
+            var time_label = time_node.getComponent(cc.Label);
+            time_label.string =  (parseInt(time_label.string) - 1)+"s";
+        }
+        if(direction == 2){
+            //逆时针
+            fillRange = cost_time < this.countdown_long_time ? fillRange += (this.countdown_execution_interval * speed):0;
+        }else{
+            //顺时针
+            fillRange = cost_time < this.countdown_long_time ? fillRange -= (this.countdown_execution_interval * speed):0;
+        }
+        sprite.fillRange = fillRange;
         if(fillRange == 0){
-            this.unschedule();
+            this.unschedule(this.countdown_task);//删除定时任务
+            this.countdown_node.destroy();//删除该节点
+            //如果执行完毕，判断是否有下一步动作，如果有，执行下一步
+            if(this.countdown_over_task != null ){
+               this.scheduleOnce(this.countdown_over_task,1);
+            }
         }
     }
 });
