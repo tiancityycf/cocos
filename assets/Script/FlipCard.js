@@ -2,10 +2,7 @@ var FlipCard=cc.Class({
     extends: cc.Component,
 
     properties: {
-        //label: {
-        //    default: null,
-        //    type: cc.Label
-        //},
+
         //t_prefab:{
         //    default:null,
         //    type:cc.Prefab
@@ -49,9 +46,7 @@ var FlipCard=cc.Class({
         //    default:null,
         //    url:cc.Texture2D
         //},
-        //
-        //t_count_2:200,//基础类型
-        //
+
         ////可以只定义 get 方法，这样相当于一份 readonly 的属性。[当前有bug，只设定get也能修改]
         //t_getSet:{
         //    default:12,
@@ -62,17 +57,13 @@ var FlipCard=cc.Class({
         //t_array:{//定义一个数组
         //    default:[],
         //    type:[cc.Sprite]
-        //},
-        //game_card_reverse:{
-        //    default:null,
-        //    type:cc.Node
         //}
+
     },
 
     // use this for initialization
     onLoad: function () {
 
-        //this.check(6,1);
         //--->>> 获取组件的几种形式:
         //1. 通过属性检查器被赋值的label组件，直接拿到得到实例
         //2. 通过属性检查器被赋值的label组件所在的node节点，然后通过getComponent获取
@@ -202,28 +193,31 @@ var FlipCard=cc.Class({
 
 
 
-        //--->>> url raw资源获取
-        
-         //获得 Raw Asset 的 url
-        
-        
-        // var mSf = new cc.Node().addComponent(cc.Sprite);
-
-        // var texture = cc.textureCache.addImage(cc.url.raw("resources/card_02.png"));
-        // console.log("raw asset url:"+texture);
-        
-        // //this.t_url=mUrl;
-        
-        // var frame  = new cc.SpriteFrame(texture, cc.Rect(0, 0, 87, 123));     
-        
-        // mSf.spriteFrame =   frame;
-        // //mSf.spriteFrame.setTexture(this.t_url);
-        // //mSf.url=mUrl;
-        // mSf.node.setPosition(98,0);
-        // mSf.node.parent = this.node.parent;
+       this.reqstart();
        
     },
+    reqstart:function(){
+        var url="http://172.16.0.210:2016/info.php";
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if(xhr.status == 200){
+                    var response = eval('(' + xhr.responseText + ')');
+                    //cc.log(response);
+                    //cc.log(response.code);
+                    //cc.log(response['code']);
+                    return response;
+                }else{
+                    cc.log("xhr.status=".xhr.status)
+                    return null;
+                }
+            }
+        };
 
+
+    },
 
     //圆形头像 cc.Mask 例子
     mainstart:function(){
@@ -241,11 +235,12 @@ var FlipCard=cc.Class({
         this.card[3].removeAllChildren(true);
         this.card[4].removeAllChildren(true);
 
-        this.card[0].stopAllActions();
-        this.card[1].stopAllActions();
-        this.card[2].stopAllActions();
-        this.card[3].stopAllActions();
-        this.card[4].stopAllActions();
+        //this.card[0].stopAllActions();
+        //this.card[1].stopAllActions();
+        //this.card[2].stopAllActions();
+        //this.card[3].stopAllActions();
+        //this.card[4].stopAllActions();
+
 
         this.inpotstart(50,100);
 
@@ -527,15 +522,6 @@ var FlipCard=cc.Class({
         }
 
     },
-    //原型进度条
-    _updateFillRange: function (sprite, range, dt) {
 
-        var fillRange = sprite.fillRange;
-        //逆时针转
-        //fillRange = fillRange < range ? fillRange += (dt * this.speed) : 0;
-        //顺时针转
-        fillRange = fillRange < range ? fillRange -= (dt * this.speed) : 0;
-        sprite.fillRange = fillRange;
-    }
    
 });
