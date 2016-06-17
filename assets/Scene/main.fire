@@ -4040,7 +4040,8 @@
     "timing": false,
     "timer": null,
     "timersp": null,
-    "inpot": null
+    "inpot": null,
+    "table_chips": []
   },
   {
     "__type__": "cc.Canvas",

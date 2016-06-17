@@ -30,6 +30,11 @@ cc.Class({
             type: cc.Node
         },
 
+        table_chips:{
+            default:[],
+            type:[cc.Node]
+        },
+
         //t_sprite:{//定义一个cc的类型，并定义上常用属性
         //    default:null,
         //    type:cc.SpriteFrame,//类型的定义
@@ -241,6 +246,7 @@ cc.Class({
         //this.card[3].stopAllActions();
         //this.card[4].stopAllActions();
 
+        this.chipsToTable(0,100,200);
 
         this.inpotstart(50,100);
 
@@ -313,38 +319,101 @@ cc.Class({
         this.timestart(pos);
     },
 
+    chipsToTable:function(sit,pot,inpot){
+        pot=Number(pot);
+        inpot=Number(inpot);
+        var audio="audio/audio_chipsToTable";
+        //var chips="game_chip_tip";
+        var table_bg=this.node.parent.getChildByName("table_bg");
+        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+
+        var node=new cc.Node();
+
+        var sp = node.addComponent(cc.Sprite);
+        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+            var frame1 = atlas.getSpriteFrame('game_chip_tip');
+            sp.spriteFrame = frame1;
+        });
+        node.parent=this.node.parent;
+        //node.parent=table_bg;
+        node.setPosition(pos);
+        var action=cc.moveTo(0.2, cc.p(0, -250));
+        this.table_chips.push(node);
+
+        // play audioSource
+        var audionode=new cc.Node();
+        var audiosource=audionode.addComponent(cc.AudioSource);
+
+        cc.loader.loadRes(audio, function (err, assets) {
+            node.runAction(action);
+            cc.audioEngine.playEffect(assets);
+        });
+
+            this.inpotstart(pot,inpot);
+
+    },
+
     //inpot
     inpotstart:function(pot,inpot){
+        pot=Number(pot);
+        inpot=Number(inpot);
         if(this.inpot){
-
+            var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
+            var inpotObj=this.inpot.getChildByName("inpot").getComponent(cc.Label);
+            potObj.string="pot:"+(Number(potObj.string.substr(4))+pot);
+            if(inpotObj){
+                inpotObj.string= Number(inpotObj.string)+inpot;
+            }else{
+                this.inpottop(inpot);
+            }
         }else{
             this.inpot=new cc.Node();
-
-            var sp = this.inpot.addComponent(cc.Sprite);
-            cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-                var frame1 = atlas.getSpriteFrame('game_inPot_frame');
-                sp.spriteFrame = frame1;
-            });
-            //var table_bg=this.node.parent.getChildByName("table_bg");
             this.inpot.parent=this.node.parent;
-            //this.inpot.parent=table_bg;
             this.inpot.setPosition(0,250);
-            var node=new cc.Node();
-            var lb = node.addComponent(cc.Label);
-            lb.fontSize=25;
-            node.name="inpot";
-            node.parent=this.inpot;
-            node.setPosition(0,-12);
-            lb.string=inpot;
+            //var sp = this.inpot.addComponent(cc.Sprite);
+            //cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+            //    var frame1 = atlas.getSpriteFrame('game_inPot_frame');
+            //    sp.spriteFrame = frame1;
+            //});
+            //var table_bg=this.node.parent.getChildByName("table_bg");
+
+            //this.inpot.parent=table_bg;
+
+            //var node=new cc.Node();
+            //var lb = node.addComponent(cc.Label);
+            //lb.fontSize=25;
+            //node.color = new cc.Color(0, 0, 0);
+            //node.name="inpot";
+            //node.parent=this.inpot;
+            //node.setPosition(0,-12);
+            //lb.string=inpot;
+            this.inpottop(inpot);
 
             var potNode=new cc.Node();
             var plb = potNode.addComponent(cc.Label);
             plb.fontSize=20;
+            potNode.color = new cc.Color(0, 0, 0);
             potNode.name="pot";
-            potNode.parent=this.node.parent;
-            potNode.setPosition(0,180);
+            potNode.parent=this.inpot;
+            potNode.setPosition(0,-60);
             plb.string="pot:"+pot;
         }
+    },
+    inpottop:function(inpot){
+
+        var sp = this.inpot.addComponent(cc.Sprite);
+        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+            var frame1 = atlas.getSpriteFrame('game_inPot_frame');
+            sp.spriteFrame = frame1;
+        });
+        var node=new cc.Node();
+        var lb = node.addComponent(cc.Label);
+        lb.fontSize=25;
+        lb.string=inpot;
+        node.color = new cc.Color(0, 0, 0);
+        node.name="inpot";
+        node.parent=this.inpot;
+        node.setPosition(0,-12);
     },
 
     //flop三张牌移动效果
@@ -396,7 +465,7 @@ cc.Class({
         node2.runAction(action2);
 
     },
-    //翻牌效果 
+    //翻牌效果
     turnstart:function(){
         var node=new cc.Node();
         var mSf = node.addComponent(cc.Sprite);
@@ -499,13 +568,11 @@ cc.Class({
         this.timing=true;
     },
     update: function (dt) {
-        //cc.log(this.timer);
-        if (this.timing) {
-            this._updateTimer(dt);
-        };
-        //this._updateFillRange(this.radial_round, 1, dt);
+        //if (this.timing) {
+        //    this._updateTimer(dt);
+        //};
     },
-    //原型进度条
+    //原型进度条 例子 暂时没用到
     _updateTimer: function (dt) {
         var max=-1*(this.duration/20)
         if(this.timing){
