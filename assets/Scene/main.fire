@@ -3210,7 +3210,7 @@
     "target": {
       "__id__": 95
     },
-    "component": "FlipCard",
+    "component": "main",
     "handler": "mainstart"
   },
   {
@@ -3267,7 +3267,7 @@
     "groupIndex": 0
   },
   {
-    "__type__": "b0086PsiR5AbopBSsMTDz4U",
+    "__type__": "ba49cogWFZADYkzvB39Ug3B",
     "_name": "",
     "_objFlags": 0,
     "node": {
