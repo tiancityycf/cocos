@@ -1,4 +1,3 @@
-var card=require("FlipCard");
 cc.Class({
     extends: cc.Component,
 
@@ -14,12 +13,7 @@ cc.Class({
     onLoad:function(){
 
     },
-    onStart:function(){
-        cc.log("点击开始按钮");
 
-        card.haha();
-        cc.log("点击开始按钮");
-    },
     update: function (dt) {
         
     },

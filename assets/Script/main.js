@@ -1,4 +1,4 @@
-var FlipCard=cc.Class({
+cc.Class({
     extends: cc.Component,
 
     properties: {
@@ -522,6 +522,5 @@ var FlipCard=cc.Class({
         }
 
     },
-
 
 });
