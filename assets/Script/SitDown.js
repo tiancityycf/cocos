@@ -98,7 +98,6 @@ cc.Class({
 
             //添加倒计时
             this._AddCountDown(node_table_bg,node_position);
-            break;
         }
     },
     // called every frame, uncomment this function to activate update callback
