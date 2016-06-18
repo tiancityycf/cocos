@@ -76,7 +76,6 @@ cc.Class({
         for(var k in table_data['table_info']){
             var v = table_data['table_info'][k];
             var seat_node = node_table_bg.getChildByName("seat_"+v['seat_number']);
-            var node_position = seat_node.getPosition();//获取坐标
             var node_size = seat_node.getContentSize();//获取node的尺寸
             //名字
             var label_nick = seat_node.getChildByName("nick").getComponent(cc.Label);
@@ -91,13 +90,14 @@ cc.Class({
             mask_user.type = cc.Mask.ELLIPSE;
             node_mark.width = node_size['width']-15;
             node_mark.height = node_size['height']-15;
-            node_mark.setPosition(node_position['x'],node_position['y']);
-            node_mark.parent =  node_table_bg;
+            node_mark.setPosition(0.5,0.5);
+            node_mark.parent =  seat_node;
 
             var node_user = new cc.Node();
             var sprite_user = node_user.addComponent(cc.Sprite);
             node_user.parent = node_mark;
             load_avatar(v['user_avatar'],sprite_user);
+            seat_node.getChildByName("game_tip").setLocalZOrder(3);
 
             //添加倒计时
             this._AddCountDown(node_table_bg,v['seat_number'],15);
@@ -119,6 +119,7 @@ cc.Class({
         node.scale = 1.3;
         node.setPosition(seat_position);
         node.parent = node_table_bg;
+        node.setLocalZOrder(2);
         var sprite = node.addComponent(cc.Sprite);
         sprite.type = cc.Sprite.Type.FILLED;
         sprite.fillType = cc.Sprite.FillType.RADIAL;
@@ -134,9 +135,9 @@ cc.Class({
         node2.name = "time";
         var label = node2.addComponent(cc.Label);
         label.string = this.countdown_cycle_time + "s";
-        label.fontSize = 30;
+        label.fontSize = 30;//设置字体大小
         node2.parent = node;
-        //node2.color = new cc.Color(0, 0, 0);
+        //node2.color = new cc.Color(0, 0, 0);//设置字体颜色
         node2.setPosition(0,-10);
 
         this.countdown_node = node;
