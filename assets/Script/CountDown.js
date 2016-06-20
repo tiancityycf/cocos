@@ -15,6 +15,12 @@ cc.Class({
     },
     //添加倒计时的进度条
     add_countdown:function(node_table_bg,seat_number,long_time){
+        //初始化
+        this.countdown_repeat_num = 0;
+        this.countdown_long_time = 0;
+
+
+
         var seat = node_table_bg.getChildByName("seat_"+seat_number);//获取该作为的节点
         var seat_position = seat.getPosition();//获取该座位的位置坐标
 

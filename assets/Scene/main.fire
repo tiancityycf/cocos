@@ -238,7 +238,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 750,
+      "width": 760,
       "height": 1334
     },
     "_children": [],
@@ -3786,7 +3786,7 @@
   {
     "__type__": "cc.Canvas",
     "_name": "",
-    "_objFlags": 3670016,
+    "_objFlags": 0,
     "node": {
       "__id__": 2
     },
