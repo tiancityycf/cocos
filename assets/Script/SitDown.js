@@ -96,8 +96,8 @@ cc.Class({
             var node_mark = new cc.Node();
             var mask_user = node_mark.addComponent(cc.Mask);
             mask_user.type = cc.Mask.ELLIPSE;
-            node_mark.width = node_size['width']-15;
-            node_mark.height = node_size['height']-15;
+            node_mark.width = node_size['width']-10;
+            node_mark.height = node_size['height']-10;
             node_mark.setPosition(0.5,0.5);
             node_mark.parent =  seat_node;
 
