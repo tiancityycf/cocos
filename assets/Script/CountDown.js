@@ -22,13 +22,15 @@ cc.Class({
 
 
         var seat = node_table_bg.getChildByName("seat_"+seat_number);//获取该作为的节点
-        var seat_position = seat.getPosition();//获取该座位的位置坐标
+        //var seat_position = seat.getPosition();//获取该座位的位置坐标
 
         //倒计时遮罩层
         var node = new cc.Node();
         node.scale = 1.3;
-        node.setPosition(seat_position);
-        node.parent = node_table_bg;
+        //node.setPosition(seat_position);
+        //node.parent = node_table_bg;
+        node.parent = seat;
+        node.setPosition(0.5,0.5);
         node.setLocalZOrder(2);
         var sprite = node.addComponent(cc.Sprite);
         sprite.type = cc.Sprite.Type.FILLED;

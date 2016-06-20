@@ -58,6 +58,14 @@ cc.Class({
                 sprite_user.spriteFrame = frame;
             });
         };
+        //加载手牌图片
+        var load_hand_card = function (sprite){
+            cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+                var frame = atlas.getSpriteFrame("game_handCard_cover_tip");
+                sprite.spriteFrame = frame;
+            });
+        };
+
 
         //坐下
         for(var k in table_data['table_info']){
@@ -85,6 +93,21 @@ cc.Class({
             node_user.parent = node_mark;
             load_avatar(v['user_avatar'],sprite_user);
             seat_node.getChildByName("game_tip").setLocalZOrder(3);
+
+            //发牌
+            var node_hand_card = new cc.Node();
+            var sprite_hand_card = node_hand_card.addComponent(cc.Sprite);
+            node_hand_card.scale = 1;
+            node_hand_card.name = "hand_card";
+            node_hand_card.parent = seat_node;
+            node_hand_card.setPosition(20,-30);
+            seat_node.getChildByName("hand_card").setLocalZOrder(3);
+            load_hand_card(sprite_hand_card);
+
+
+
+
+
 
             //添加倒计时
             //this.add_countdown(node_table_bg,v['seat_number'],15);
