@@ -292,9 +292,14 @@ cc.Class({
     check:function(sit){
         var node_table_bg = this.node.parent.getChildByName("table_bg");
         this.add_countdown(node_table_bg,sit,3);
+        //var turn = cc.callFunc(this.showriver, this, node);
 
         var url="game_check_tip";
-        this.game_tip(sit,url);
+        var check_finished=function(){
+            this.game_tip(sit,url);
+        };
+        this.countdown_over_task=check_finished;
+        //this.game_tip(sit,url);
 
     },
     //弃牌
@@ -303,7 +308,12 @@ cc.Class({
         this.add_countdown(node_table_bg,sit,10);
 
         var url="game_fold_tip";
-        this.game_tip(sit,url);
+        var fold_finished=function(){
+            this.game_tip(sit,url);
+        };
+        this.countdown_over_task=fold_finished;
+        //
+        //this.game_tip(sit,url);
 
 
     },
