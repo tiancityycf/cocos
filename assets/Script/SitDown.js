@@ -35,23 +35,11 @@ cc.Class({
                                     "user_avatar" : "http://img.51yche.com/avatar/2016-06-14/w_120x120_575ffcd3375aa.jpg",
                                     "user_chips" : "10000",
                                     "seat_number" : "7"
-                                },{
-                                    "user_id" : "6",
-                                    "user_nick" : "小刚4",
-                                    "user_avatar" : "http://img.51yche.com/avatar/2016-06-15/w_120x120_57602bd098133.jpg",
-                                    "user_chips" : "1000",
-                                    "seat_number" : "4"
-                                },
-                                {
-                                    "user_id" : "6",
-                                    "user_nick" : "小龙2",
-                                    "user_avatar" : "http://img.51yche.com/avatar/2016-06-14/w_120x120_575ffcd3375aa.jpg",
-                                    "user_chips" : "10000",
-                                    "seat_number" : "5"
                                 }
                             ],
                             "table_name":"devin的牌局",
-                            "table_verify_code":"23434566"
+                            "table_verify_code":"23434566",
+                            "dealer":1,
                         };
         return table_data;
     },
@@ -64,6 +52,14 @@ cc.Class({
         var node_table_bg = this.node.parent;
         var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
         label_table_code.string = table_data['table_verify_code'];
+        //dealer位
+        var dealer_node = node_table_bg.getChildByName("dealer_"+table_data['dealer']);
+        var dealer_sprite = dealer_node.addComponent(cc.Sprite);
+        cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+            var frame = atlas.getSpriteFrame("game_dealer_tip");
+            dealer_sprite.spriteFrame = frame;
+        });
+
         //异步加载图片，不能放在循环内
         var load_avatar = function(url,sprite_user){
             cc.loader.load(url,function(err,tex){
