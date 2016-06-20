@@ -1,5 +1,8 @@
+var CountDown = require('CountDown');
+
 cc.Class({
-    extends: cc.Component,
+    //extends: cc.Component,
+    extends: CountDown,
 
     properties: {
 
@@ -257,7 +260,7 @@ cc.Class({
 
         var callback2=function(){
             this.duration=10;
-            this.check(1);
+            this.fold(1);
         };
 
         this.scheduleOnce(callback, 0);
@@ -287,58 +290,37 @@ cc.Class({
     },
     //check
     check:function(sit){
-        var url="game_check_tip";
+        var node_table_bg = this.node.parent.getChildByName("table_bg");
+        this.add_countdown(node_table_bg,sit,3);
 
+        var url="game_check_tip";
         this.game_tip(sit,url);
-        //
-        //var game_tip=this.node.parent.getChildByName("table_bg").getChildByName("seat_"+sit).getChildByName("game_tip");
-        ////var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
-        //var sp=game_tip.getComponent(cc.Sprite);
-        //if(sp){
-        //    //sp.destroy();
-        //}else{
-        //    sp=game_tip.addComponent(cc.Sprite)
-        //}
-        //cc.loader.loadRes("GameMain_cn", cc.SpriteAtlas, function (err, atlas) {
-        //    sp.spriteFrame = atlas.getSpriteFrame(url);
-        //});
-        //this.timestart(pos);
+
     },
     //弃牌
     fold:function(sit){
-        var url="game_fold_tip";
+        var node_table_bg = this.node.parent.getChildByName("table_bg");
+        this.add_countdown(node_table_bg,sit,10);
 
-        var table_bg=this.node.parent.getChildByName("table_bg");
-        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
-        table_bg.getChildByName("seat_"+sit).opacity=100;
-        //cc.log(pos);
-        this.timestart(pos);
+        var url="game_fold_tip";
+        this.game_tip(sit,url);
+
+
     },
     call:function(sit){
         var url="game_call_tip";
+        this.game_tip(sit,url);
 
-        var table_bg=this.node.parent.getChildByName("table_bg");
-        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
-        table_bg.getChildByName("seat_"+sit).opacity=100;
-        //cc.log(pos);
-        this.timestart(pos);
     },
     bet:function(sit){
         var url="game_bet_tip";
-        var table_bg=this.node.parent.getChildByName("table_bg");
-        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
-        table_bg.getChildByName("seat_"+sit).opacity=100;
-        //cc.log(pos);
-        this.timestart(pos);
+        this.game_tip(sit,url);
+
     },
     raise:function(sit){
         var url="game_raise_tip";
+        this.game_tip(sit,url);
 
-        var table_bg=this.node.parent.getChildByName("table_bg");
-        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
-        table_bg.getChildByName("seat_"+sit).opacity=100;
-        //cc.log(pos);
-        this.timestart(pos);
     },
     //结束比牌
     end:function(sit){

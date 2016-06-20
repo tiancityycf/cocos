@@ -87,10 +87,10 @@ cc.Class({
             seat_node.getChildByName("game_tip").setLocalZOrder(3);
 
             //添加倒计时
-            this.add_countdown(node_table_bg,v['seat_number'],15);
+            //this.add_countdown(node_table_bg,v['seat_number'],15);
             //CountDown.add_countdown(node_table_bg,v['seat_number'],15);
             //this._AddCountDown(node_table_bg,v['seat_number'],15);
-            break;
+            //break;
         }
     },
     // called every frame, uncomment this function to activate update callback
