@@ -30,7 +30,7 @@ cc.Class({
 
         //倒计时遮罩层
         var node = new cc.Node();
-        node.scale = 1.3;
+        node.scale = 1.0;
         //node.setPosition(seat_position);
         //node.parent = node_table_bg;
         node.parent = seat;

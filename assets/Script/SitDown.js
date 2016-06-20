@@ -35,6 +35,19 @@ cc.Class({
                                     "user_avatar" : "http://img.51yche.com/avatar/2016-06-14/w_120x120_575ffcd3375aa.jpg",
                                     "user_chips" : "10000",
                                     "seat_number" : "7"
+                                },{
+                                    "user_id" : "6",
+                                    "user_nick" : "小刚4",
+                                    "user_avatar" : "http://img.51yche.com/avatar/2016-06-15/w_120x120_57602bd098133.jpg",
+                                    "user_chips" : "1000",
+                                    "seat_number" : "4"
+                                },
+                                {
+                                    "user_id" : "6",
+                                    "user_nick" : "小龙2",
+                                    "user_avatar" : "http://img.51yche.com/avatar/2016-06-14/w_120x120_575ffcd3375aa.jpg",
+                                    "user_chips" : "10000",
+                                    "seat_number" : "5"
                                 }
                             ],
                             "table_name":"devin的牌局",
