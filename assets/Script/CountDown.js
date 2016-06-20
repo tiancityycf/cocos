@@ -18,6 +18,10 @@ cc.Class({
         //初始化
         this.countdown_repeat_num = 0;
         this.countdown_long_time = 0;
+        if(this.countdown_task!= null){
+            this.unschedule(this.countdown_task);//删除定时任务
+            this.countdown_node.destroy();//删除该节点
+        }
 
 
 
