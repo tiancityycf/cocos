@@ -50,36 +50,6 @@ declare module cc {
 	@param subst JavaScript objects with which to replace substitution strings within msg. This gives you additional control over the format of the output. 
 	*/
 	export function info(obj : any, subst : any) : void;	
-	/** !#en
-	Creates the speed action which changes the speed of an action, making it take longer (speed > 1)
-	or less (speed < 1) time. <br/>
-	Useful to simulate 'slow motion' or 'fast forward' effect.
-	!#zh 修改目标动作的速率。
-	
-	@example 
-	```js
-	// change the target action speed;
-	var action = cc.scaleTo(0.2, 1, 0.6);
-	var newAction = cc.speed(action, 0.5);
-	``` 
-	*/
-	export function speed(action : ActionInterval, speed : number) : Action;	
-	/** !#en Create a follow action which makes its target follows another node.
-	!#zh 追踪目标节点的位置。
-	
-	@example 
-	```js
-	// example
-	// creates the action with a set boundary
-	var followAction = cc.follow(targetNode, cc.rect(0, 0, screenWidth * 2 - 100, screenHeight));
-	node.runAction(followAction);
-	
-	// creates the action with no boundary set
-	var followAction = cc.follow(targetNode);
-	node.runAction(followAction);
-	``` 
-	*/
-	export function follow(followedNode : Node, rect : Rect) : Action;	
 	/** !#en Creates an action with a Cardinal Spline array of points and tension.
 	!#zh 按基数样条曲线轨迹移动到目标位置。
 	@param points array of control points
@@ -113,6 +83,36 @@ declare module cc {
 	``` 
 	*/
 	export function catmullRomBy(dt : number, points : any[]) : ActionInterval;	
+	/** !#en
+	Creates the speed action which changes the speed of an action, making it take longer (speed > 1)
+	or less (speed < 1) time. <br/>
+	Useful to simulate 'slow motion' or 'fast forward' effect.
+	!#zh 修改目标动作的速率。
+	
+	@example 
+	```js
+	// change the target action speed;
+	var action = cc.scaleTo(0.2, 1, 0.6);
+	var newAction = cc.speed(action, 0.5);
+	``` 
+	*/
+	export function speed(action : ActionInterval, speed : number) : Action;	
+	/** !#en Create a follow action which makes its target follows another node.
+	!#zh 追踪目标节点的位置。
+	
+	@example 
+	```js
+	// example
+	// creates the action with a set boundary
+	var followAction = cc.follow(targetNode, cc.rect(0, 0, screenWidth * 2 - 100, screenHeight));
+	node.runAction(followAction);
+	
+	// creates the action with no boundary set
+	var followAction = cc.follow(targetNode);
+	node.runAction(followAction);
+	``` 
+	*/
+	export function follow(followedNode : Node, rect : Rect) : Action;	
 	/** !#en
 	Creates the action easing object with the rate parameter. <br />
 	From slow to fast.
@@ -2322,6 +2322,48 @@ declare module cc {
 		end() : void;	
 	}		
 		/** !#en
+		cc.MotionStreak manages a Ribbon based on it's motion in absolute space.                 <br/>
+		You construct it with a fadeTime, minimum segment size, texture path, texture            <br/>
+		length and color. The fadeTime controls how long it takes each vertex in                 <br/>
+		the streak to fade out, the minimum segment size it how many pixels the                  <br/>
+		streak will move before adding a new ribbon segment, and the texture                     <br/>
+		length is the how many pixels the texture is stretched across. The texture               <br/>
+		is vertically aligned along the streak segment.
+		!#zh 运动轨迹，用于游戏对象的运动轨迹上实现拖尾渐隐效果。 */
+		export class MotionStreak extends Component {		
+		/** !#en
+		!#zh 在编辑器模式下预览拖尾效果。 */
+		preview : boolean;		
+		/** !#en The fade time to fade.
+		!#zh 拖尾的渐隐时间，以秒为单位。 */
+		fadeTime : number;		
+		/** !#en The minimum segment size.
+		!#zh 拖尾之间最小距离。 */
+		minSeg : number;		
+		/** !#en The stroke's width.
+		!#zh 拖尾的宽度。 */
+		stroke : number;		
+		/** !#en The texture of the MotionStreak.
+		!#zh 拖尾的贴图。 */
+		texture : Texture2D;		
+		/** !#en The color of the MotionStreak.
+		!#zh 拖尾的颜色 */
+		color : Color;		
+		/** !#en The fast Mode.
+		!#zh 是否启用了快速模式。当启用快速模式，新的点会被更快地添加，但精度较低。 */
+		fastMode : boolean;		
+		/** !#en Remove all living segments of the ribbon.
+		!#zh 删除当前所有的拖尾片段。
+		
+		@example 
+		```js
+		// stop particle system.
+		myParticleSystem.stopSystem();
+		``` 
+		*/
+		reset() : void;	
+	}		
+		/** !#en
 		cc.ActionManager is a class that can manage actions.<br/>
 		Normally you won't need to use this class directly. 99% of the cases you will use the CCNode interface,
 		which uses this class's singleton object.
@@ -3289,48 +3331,6 @@ declare module cc {
 		/** !#en Minimum priority level for user scheduling.
 		!#zh 用户调度最低优先级。 */
 		PRIORITY_NON_SYSTEM : number;	
-	}		
-		/** !#en
-		cc.MotionStreak manages a Ribbon based on it's motion in absolute space.                 <br/>
-		You construct it with a fadeTime, minimum segment size, texture path, texture            <br/>
-		length and color. The fadeTime controls how long it takes each vertex in                 <br/>
-		the streak to fade out, the minimum segment size it how many pixels the                  <br/>
-		streak will move before adding a new ribbon segment, and the texture                     <br/>
-		length is the how many pixels the texture is stretched across. The texture               <br/>
-		is vertically aligned along the streak segment.
-		!#zh 运动轨迹，用于游戏对象的运动轨迹上实现拖尾渐隐效果。 */
-		export class MotionStreak extends Component {		
-		/** !#en
-		!#zh 在编辑器模式下预览拖尾效果。 */
-		preview : boolean;		
-		/** !#en The fade time to fade.
-		!#zh 拖尾的渐隐时间，以秒为单位。 */
-		fadeTime : number;		
-		/** !#en The minimum segment size.
-		!#zh 拖尾之间最小距离。 */
-		minSeg : number;		
-		/** !#en The stroke's width.
-		!#zh 拖尾的宽度。 */
-		stroke : number;		
-		/** !#en The texture of the MotionStreak.
-		!#zh 拖尾的贴图。 */
-		texture : Texture2D;		
-		/** !#en The color of the MotionStreak.
-		!#zh 拖尾的颜色 */
-		color : Color;		
-		/** !#en The fast Mode.
-		!#zh 是否启用了快速模式。当启用快速模式，新的点会被更快地添加，但精度较低。 */
-		fastMode : boolean;		
-		/** !#en Remove all living segments of the ribbon.
-		!#zh 删除当前所有的拖尾片段。
-		
-		@example 
-		```js
-		// stop particle system.
-		myParticleSystem.stopSystem();
-		``` 
-		*/
-		reset() : void;	
 	}		
 		/** Particle System base class. <br/>
 		Attributes of a Particle System:<br/>
@@ -7020,6 +7020,105 @@ declare module cc {
 		*/
 		builtinRaw(url : string) : string;	
 	}		
+		/** A cc.SpriteFrame has:<br/>
+		 - texture: A cc.Texture2D that will be used by the _ccsg.Sprite<br/>
+		 - rectangle: A rectangle of the texture<br/>
+		<br/>
+		You can modify the frame of a _ccsg.Sprite by doing:<br/> */
+		export class SpriteFrame extends Asset {		
+		constructor();		
+		/** Constructor of SpriteFrame class
+		@param rotated Whether the frame is rotated in the texture
+		@param offset The offset of the frame in the texture
+		@param originalSize The size of the frame in the texture
+		
+		@example 
+		```js
+		// ----------------------------------------------------
+		// 1. Create a cc.SpriteFrame with image path
+		var url = cc.url.raw('resources/textures/grossini_dance.png');
+		var frame1 = new cc.SpriteFrame(url, cc.Rect(0, 0, 90, 128));
+		
+		// ----------------------------------------------------
+		// 2. Create a cc.SpriteFrame with a texture, rect, rotated, offset and originalSize in pixels.
+		var url = cc.url.raw('resources/textures/grossini_dance.png');
+		var texture = cc.textureCache.addImage(url);
+		var frame1 = new cc.SpriteFrame(texture, cc.Rect(0, 0, 90, 128));
+		var frame2 = new cc.SpriteFrame(texture, cc.Rect(0, 0, 90, 128), false, 0, cc.Size(90, 128));
+		
+		// ----------------------------------------------------
+		// 3. load a cc.SpriteFrame with image path (Recommend)
+		var url = 'resources://test assets/PurpleMonster.png/PurpleMonster';
+		var self = this;
+		cc.loader.load(url, function (err, spriteFrame) {
+		        var node = new cc.Node("New Sprite");
+		        var sprite = node.addComponent(cc.Sprite);
+		        sprite.spriteFrame = spriteFrame;
+		        node.parent = self.node
+		    }
+		);
+		
+		``` 
+		*/
+		SpriteFrame(filename? : string|Texture2D, rect? : Rect, rotated? : boolean, offset? : Vec2, originalSize? : Size) : void;		
+		/** Top border of the sprite */
+		insetTop : number;		
+		/** Bottom border of the sprite */
+		insetBottom : number;		
+		/** Left border of the sprite */
+		insetLeft : number;		
+		/** Right border of the sprite */
+		insetRight : number;		
+		/** Returns whether the texture have been loaded 
+		*/
+		textureLoaded() : boolean;		
+		/** Add a event listener for texture loaded event. 
+		*/
+		addLoadedEventListener(callback : Function, target : any) : void;		
+		/** Returns whether the sprite frame is rotated in the texture. 
+		*/
+		isRotated() : boolean;		
+		/** Set whether the sprite frame is rotated in the texture. 
+		*/
+		setRotated(bRotated : boolean) : void;		
+		/** Returns the rect of the sprite frame in the texture. 
+		*/
+		getRect() : Rect;		
+		/** Sets the rect of the sprite frame in the texture. 
+		*/
+		setRect(rect : Rect) : void;		
+		/** Returns the original size of the trimmed image. 
+		*/
+		getOriginalSize() : Size;		
+		/** Sets the original size of the trimmed image. 
+		*/
+		setOriginalSize(size : Size) : void;		
+		/** Returns the texture of the frame. 
+		*/
+		getTexture() : Texture2D;		
+		/** Sets the texture of the frame, the texture is retained automatically. 
+		*/
+		_refreshTexture(texture : Texture2D) : void;		
+		/** Returns the offset of the frame in the texture. 
+		*/
+		getOffset() : Vec2;		
+		/** Sets the offset of the frame in the texture. 
+		*/
+		setOffset(offsets : Vec2) : void;		
+		/** Clone the sprite frame. 
+		*/
+		clone() : SpriteFrame;		
+		/** Initializes SpriteFrame with Texture, rect, rotated, offset and originalSize in pixels.<br/>
+		Please pass parameters to the constructor to initialize the sprite, do not call this function yourself. 
+		*/
+		initWithTexture(texture : string|Texture2D, rect? : Rect, rotated? : boolean, offset? : Vec2, originalSize? : Size) : boolean;		
+		/** Copy the sprite frame 
+		*/
+		copyWithZone() : SpriteFrame;		
+		/** Copy the sprite frame 
+		*/
+		copy() : SpriteFrame;	
+	}		
 		/** <p>
 		This class allows to easily create OpenGL or Canvas 2D textures from images, text or raw data.                                    <br/>
 		The created cc.Texture2D object will always have power-of-two dimensions.                                                <br/>
@@ -7347,105 +7446,6 @@ declare module cc {
 		If "key" is null, then a new texture will be created each time.</p> 
 		*/
 		addUIImage(image : HTMLImageElement|HTMLCanvasElement, key : string) : Texture2D;	
-	}		
-		/** A cc.SpriteFrame has:<br/>
-		 - texture: A cc.Texture2D that will be used by the _ccsg.Sprite<br/>
-		 - rectangle: A rectangle of the texture<br/>
-		<br/>
-		You can modify the frame of a _ccsg.Sprite by doing:<br/> */
-		export class SpriteFrame extends Asset {		
-		constructor();		
-		/** Constructor of SpriteFrame class
-		@param rotated Whether the frame is rotated in the texture
-		@param offset The offset of the frame in the texture
-		@param originalSize The size of the frame in the texture
-		
-		@example 
-		```js
-		// ----------------------------------------------------
-		// 1. Create a cc.SpriteFrame with image path
-		var url = cc.url.raw('resources/textures/grossini_dance.png');
-		var frame1 = new cc.SpriteFrame(url, cc.Rect(0, 0, 90, 128));
-		
-		// ----------------------------------------------------
-		// 2. Create a cc.SpriteFrame with a texture, rect, rotated, offset and originalSize in pixels.
-		var url = cc.url.raw('resources/textures/grossini_dance.png');
-		var texture = cc.textureCache.addImage(url);
-		var frame1 = new cc.SpriteFrame(texture, cc.Rect(0, 0, 90, 128));
-		var frame2 = new cc.SpriteFrame(texture, cc.Rect(0, 0, 90, 128), false, 0, cc.Size(90, 128));
-		
-		// ----------------------------------------------------
-		// 3. load a cc.SpriteFrame with image path (Recommend)
-		var url = 'resources://test assets/PurpleMonster.png/PurpleMonster';
-		var self = this;
-		cc.loader.load(url, function (err, spriteFrame) {
-		        var node = new cc.Node("New Sprite");
-		        var sprite = node.addComponent(cc.Sprite);
-		        sprite.spriteFrame = spriteFrame;
-		        node.parent = self.node
-		    }
-		);
-		
-		``` 
-		*/
-		SpriteFrame(filename? : string|Texture2D, rect? : Rect, rotated? : boolean, offset? : Vec2, originalSize? : Size) : void;		
-		/** Top border of the sprite */
-		insetTop : number;		
-		/** Bottom border of the sprite */
-		insetBottom : number;		
-		/** Left border of the sprite */
-		insetLeft : number;		
-		/** Right border of the sprite */
-		insetRight : number;		
-		/** Returns whether the texture have been loaded 
-		*/
-		textureLoaded() : boolean;		
-		/** Add a event listener for texture loaded event. 
-		*/
-		addLoadedEventListener(callback : Function, target : any) : void;		
-		/** Returns whether the sprite frame is rotated in the texture. 
-		*/
-		isRotated() : boolean;		
-		/** Set whether the sprite frame is rotated in the texture. 
-		*/
-		setRotated(bRotated : boolean) : void;		
-		/** Returns the rect of the sprite frame in the texture. 
-		*/
-		getRect() : Rect;		
-		/** Sets the rect of the sprite frame in the texture. 
-		*/
-		setRect(rect : Rect) : void;		
-		/** Returns the original size of the trimmed image. 
-		*/
-		getOriginalSize() : Size;		
-		/** Sets the original size of the trimmed image. 
-		*/
-		setOriginalSize(size : Size) : void;		
-		/** Returns the texture of the frame. 
-		*/
-		getTexture() : Texture2D;		
-		/** Sets the texture of the frame, the texture is retained automatically. 
-		*/
-		_refreshTexture(texture : Texture2D) : void;		
-		/** Returns the offset of the frame in the texture. 
-		*/
-		getOffset() : Vec2;		
-		/** Sets the offset of the frame in the texture. 
-		*/
-		setOffset(offsets : Vec2) : void;		
-		/** Clone the sprite frame. 
-		*/
-		clone() : SpriteFrame;		
-		/** Initializes SpriteFrame with Texture, rect, rotated, offset and originalSize in pixels.<br/>
-		Please pass parameters to the constructor to initialize the sprite, do not call this function yourself. 
-		*/
-		initWithTexture(texture : string|Texture2D, rect? : Rect, rotated? : boolean, offset? : Vec2, originalSize? : Size) : boolean;		
-		/** Copy the sprite frame 
-		*/
-		copyWithZone() : SpriteFrame;		
-		/** Copy the sprite frame 
-		*/
-		copy() : SpriteFrame;	
 	}		
 		/** A base node for CCNode and CCEScene, it will:
 		- provide the same api with origin cocos2d rendering node (SGNode)
