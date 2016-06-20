@@ -25,18 +25,12 @@ cc.Class({
             type:[cc.Node]
         },
 
-        //暂时没用到
-        speed: 0.1,
-        duration:20,
-        timing:false,
-        timer: {
-            default: null,
-            type: cc.Node
+        table_tips:{
+            default:[],
+            type:[cc.Node]
         },
-        timersp: {
-            default: null,
-            type: cc.Sprite
-        },
+
+
 
 
 
@@ -74,14 +68,6 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
 
-        //--->>> 获取组件的几种形式:
-        //1. 通过属性检查器被赋值的label组件，直接拿到得到实例
-        //2. 通过属性检查器被赋值的label组件所在的node节点，然后通过getComponent获取
-        // this.label.string = this.text;
-
-        //3. 获取当前this(node)节点上的label组件
-        // var _label = this.getComponent(cc.Label);
-
         //4. 先获取目标组件所在的节点，然后通过getComponent获取目标组件
         //var _label = cc.find("Canvas/label").getComponent(cc.Label);
 
@@ -91,41 +77,6 @@ cc.Class({
         //var _label = cc.find("Canvas/card_49").getComponent(cc.Sprite);
 
         //cc.log(_label instanceof cc.Sprite);       // true
-        //console.log(_label.Position);
-        //console.log(this.t_getSet);
-        //cc.log("haha")
-        //--->>>全局变量的访问
-        /* 任意脚本中定义如下：【注意不要有var哦】*/
-
-        // t_global = {
-        //  tw:100,
-        //  th:200
-        // };
-
-
-        // t_global.th = 2000;
-        // console.log(t_global.th);
-
-        // //--->>>模块之间的访问
-        // /*任意脚本中定义如下 【注意关键字是module.exports】
-
-        //  module.exports= {
-        //  tme_pa1:"100",
-        //  tme_pa2:333221
-        //  };
-
-        //  */
-        // //--->>>用 require + 文件名(不含路径) 来获取到其他 模块 的对象
-        // var tModuleData = require("testJs");
-        // tModuleData.tme_pa2 = 991;
-        // console.log(tModuleData.tme_pa2);
-
-
-        // //--->>>在当前节点下添加一个组件
-        // var mySprite = new cc.Node().addComponent(cc.Sprite);
-        // mySprite.spriteFrame = this.t_sprite;
-        // mySprite.node.parent = this.node;
-        // mySprite.node.setPosition(300,200);
 
 
         // //--->>>复制节点/或者复制 prefab
@@ -192,15 +143,6 @@ cc.Class({
         // this.node.emit("tEmitFun",{himi:27,say:"hello,cc!"});
 
 
-        // //--->>> 动作，类似c2dx api 基本无变化
-        // var mTo = cc.moveBy(1,-100, -200);
-        // var mAction = cc.repeatForever(cc.sequence(cc.moveBy(1,-100, -200),mTo.reverse(),cc.delayTime(0.5),cc.callFunc(function(action,data){
-        //     console.log("action callback:"+data.himi);
-        // },this,{tx:100,himi:"i'm action callback and bring data"})));
-        // mySprite.node.runAction(mAction);
-        // //暂停动作
-        // mySprite.node.stopAction(mAction);
-
 
 
         this.reqstart();
@@ -215,9 +157,7 @@ cc.Class({
             if (xhr.readyState == 4) {
                 if(xhr.status == 200){
                     var response = eval('(' + xhr.responseText + ')');
-                    //cc.log(response);
-                    //cc.log(response.code);
-                    //cc.log(response['code']);
+
                     return response;
                 }else{
                     cc.log("xhr.status=".xhr.status)
@@ -251,12 +191,11 @@ cc.Class({
         //this.card[3].stopAllActions();
         //this.card[4].stopAllActions();
 
-        this.chipsToTable(0,100,200);
 
         this.inpotstart(50,100);
 
         var callback=function(){
-            this.check(0,3);
+            this.bet(0,3);
         };
 
         var callback2=function(){
@@ -264,7 +203,7 @@ cc.Class({
         };
 
         var callback3=function(){
-            this.bet(7,5);
+            this.call(7,2);
         };
         //第一个动作
         this.scheduleOnce(callback, 0);
@@ -273,28 +212,37 @@ cc.Class({
 
         this.scheduleOnce(callback3, 10);
 
-        this.scheduleOnce(this.flopstart, 13);
+        var ttp=function(){
+            this.tableToPot(0,500);
+        };
+        this.scheduleOnce(ttp, 15);
 
 
-
-        this.scheduleOnce(this.turnstart, 15);
-
-        this.scheduleOnce(this.riverstart,17);
+        //this.scheduleOnce(this.flopstart, 13);
+        //
+        //this.scheduleOnce(this.turnstart, 15);
+        //
+        //this.scheduleOnce(this.riverstart,17);
 
 
     },
-    game_tip:function(sit,url){
+    //显示操作提示
+    game_tip:function(sit,url,clean){
         var game_tip=this.node.parent.getChildByName("table_bg").getChildByName("seat_"+sit).getChildByName("game_tip");
         //var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
         var sp=game_tip.getComponent(cc.Sprite);
         if(sp){
             //sp.destroy();
         }else{
-            sp=game_tip.addComponent(cc.Sprite)
+            sp=game_tip.addComponent(cc.Sprite);
         }
         cc.loader.loadRes("GameMain_cn", cc.SpriteAtlas, function (err, atlas) {
             sp.spriteFrame = atlas.getSpriteFrame(url);
         });
+        if(clean){
+            this.table_tips.push(game_tip);
+        };
+
     },
     //check
     check:function(sit,duration){
@@ -304,10 +252,9 @@ cc.Class({
 
         var url="game_check_tip";
         var finished=function(){
-            this.game_tip(sit,url);
+            this.game_tip(sit,url,true);
         };
         this.countdown_over_task=finished;
-        //this.game_tip(sit,url);
 
     },
     //弃牌
@@ -317,7 +264,7 @@ cc.Class({
 
         var url="game_fold_tip";
         var finished=function(){
-            this.game_tip(sit,url);
+            this.game_tip(sit,url,false);
         };
         this.countdown_over_task=finished;
 
@@ -328,8 +275,8 @@ cc.Class({
         this.add_countdown(node_table_bg,sit,duration);
 
         var finished=function(){
-            this.game_tip(sit,url);
-            this.chipsToTable(sit,50,100);
+            this.game_tip(sit,url,true);
+            this.chipsToTable(sit,50,100,2);
         };
         this.countdown_over_task=finished;
     },
@@ -339,8 +286,8 @@ cc.Class({
         this.add_countdown(node_table_bg,sit,duration);
 
         var finished=function(){
-            this.game_tip(sit,url);
-            this.chipsToTable(sit,50,100);
+            this.game_tip(sit,url,true);
+            this.chipsToTable(sit,50,100,2);
         };
         this.countdown_over_task=finished;
 
@@ -352,8 +299,8 @@ cc.Class({
         this.add_countdown(node_table_bg,sit,duration);
 
         var finished=function(){
-            this.game_tip(sit,url);
-            this.chipsToTable(sit,100,200);
+            this.game_tip(sit,url,true);
+            this.chipsToTable(sit,100,200,5);
         };
         this.countdown_over_task=finished;
 
@@ -374,14 +321,51 @@ cc.Class({
         //cc.log(pos);
         this.timestart(pos);
     },
+    //桌子上的筹码进入底池
+    tableToPot:function(pot,inpot){
 
-    chipsToTable:function(sit,pot,inpot){
+        if(this.table_tips){
+            for(var i=0;i<this.table_tips.length;i++){
+                var sp=this.table_tips[i].getComponent(cc.Sprite);
+                if(sp){
+                    sp.destroy();
+                }
+            }
+            this.table_tips=[];
+        };
+
+        var destorySelf=function(node){
+            if(node){
+                node.destroy();
+            }
+        };
+        var destroyChips=function(sp){
+            var action=cc.moveTo(0.5, cc.p(0, 200));
+            var hide = cc.callFunc(destorySelf, this, sp);
+            var seq=cc.sequence(action,hide);
+            //sp.runAction(action);
+            sp.runAction(seq);
+        };
+
+        if(this.table_chips){
+            for(var i=0;i<this.table_chips.length;i++){
+                this.table_chips[i].removeAllChildren(true);
+                destroyChips(this.table_chips[i]);
+            }
+        }
+        this.table_chips=[];
+    },
+
+
+    //筹码下注到桌子
+    chipsToTable:function(sit,pot,inpot,handPot){
         pot=Number(pot);
         inpot=Number(inpot);
         var audio="audio/audio_chipsToTable";
         //var chips="game_chip_tip";
         var table_bg=this.node.parent.getChildByName("table_bg");
         var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        var chipPos=table_bg.getChildByName("chip_"+sit).getPosition();//获取坐标
 
         var node=new cc.Node();
 
@@ -390,10 +374,25 @@ cc.Class({
             var frame1 = atlas.getSpriteFrame('game_chip_tip');
             sp.spriteFrame = frame1;
         });
-        node.parent=this.node.parent;
-        //node.parent=table_bg;
+        node.parent=table_bg;
+
         node.setPosition(pos);
-        var action=cc.moveTo(0.2, cc.p(0, -250));
+
+        var action=cc.moveTo(0.2,chipPos);
+
+        var showLabel=function(node){
+            var cn=new cc.Node();
+            var chipLabel = cn.addComponent(cc.Label);
+            cn.parent=node;
+            chipLabel.fontSize=20;
+            cn.color = new cc.Color(0, 0, 0);
+            cn.setPosition(0,-40);
+            chipLabel.string=handPot;
+        };
+        var showSelf = cc.callFunc(showLabel, this, node);
+
+        var seq=cc.sequence(action,showSelf);
+
         this.table_chips.push(node);
 
         // play audioSource
@@ -401,15 +400,15 @@ cc.Class({
         var audiosource=audionode.addComponent(cc.AudioSource);
 
         cc.loader.loadRes(audio, function (err, assets) {
-            node.runAction(action);
+            node.runAction(seq);
             cc.audioEngine.playEffect(assets);
         });
 
-            this.inpotstart(pot,inpot);
+        this.inpotstart(pot,inpot);
 
     },
 
-    //inpot
+    //inpot 底层筹码变化
     inpotstart:function(pot,inpot){
         pot=Number(pot);
         inpot=Number(inpot);
@@ -438,6 +437,7 @@ cc.Class({
             plb.string="pot:"+pot;
         }
     },
+    //底池 最终结果生成
     inpottop:function(inpot){
 
         var sp = this.inpot.addComponent(cc.Sprite);
@@ -449,7 +449,7 @@ cc.Class({
         var lb = node.addComponent(cc.Label);
         lb.fontSize=25;
         lb.string=inpot;
-        node.color = new cc.Color(0, 0, 0);
+        //node.color = new cc.Color(0, 0, 0);
         node.name="inpot";
         node.parent=this.inpot;
         node.setPosition(0,-12);
@@ -607,23 +607,6 @@ cc.Class({
         this.timing=true;
     },
     update: function (dt) {
-
-    },
-    //原型进度条 例子 暂时没用到
-    _updateTimer: function (dt) {
-        var max=-1*(this.duration/20)
-        if(this.timing){
-            var fillRange = this.timersp.fillRange;
-            if(fillRange>max){
-                //顺时针转
-                fillRange = fillRange < 1 ? fillRange -= (dt * this.speed) : 0;
-                this.timersp.fillRange = fillRange;
-            }else{
-                this.timing=false;
-                this.timersp.destroy();
-                this.timer.destroy();
-            }
-        }
 
     },
 
