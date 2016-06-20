@@ -15,19 +15,6 @@ cc.Class({
             default:[],
             type:cc.Node
         },
-        speed: 0.1,
-        duration:20,
-
-        timing:false,
-
-        timer: {
-            default: null,
-            type: cc.Node
-        },
-        timersp: {
-            default: null,
-            type: cc.Sprite
-        },
         inpot:{
             default: null,
             type: cc.Node
@@ -37,6 +24,21 @@ cc.Class({
             default:[],
             type:[cc.Node]
         },
+
+        //暂时没用到
+        speed: 0.1,
+        duration:20,
+        timing:false,
+        timer: {
+            default: null,
+            type: cc.Node
+        },
+        timersp: {
+            default: null,
+            type: cc.Sprite
+        },
+
+
 
         //t_sprite:{//定义一个cc的类型，并定义上常用属性
         //    default:null,
@@ -254,24 +256,30 @@ cc.Class({
         this.inpotstart(50,100);
 
         var callback=function(){
-            this.duration=6;
-            this.check(0);
+            this.check(0,3);
         };
 
         var callback2=function(){
-            this.duration=10;
-            this.fold(1);
+            this.fold(1,5);
         };
 
+        var callback3=function(){
+            this.bet(7,5);
+        };
+        //第一个动作
         this.scheduleOnce(callback, 0);
 
-        this.scheduleOnce(callback2, 6);
+        this.scheduleOnce(callback2, 4);
 
-        this.scheduleOnce(this.flopstart, 0);
+        this.scheduleOnce(callback3, 10);
 
-        this.scheduleOnce(this.turnstart, 3);
+        this.scheduleOnce(this.flopstart, 13);
 
-        this.scheduleOnce(this.riverstart, 4);
+
+
+        this.scheduleOnce(this.turnstart, 15);
+
+        this.scheduleOnce(this.riverstart,17);
 
 
     },
@@ -289,47 +297,65 @@ cc.Class({
         });
     },
     //check
-    check:function(sit){
+    check:function(sit,duration){
         var node_table_bg = this.node.parent.getChildByName("table_bg");
-        this.add_countdown(node_table_bg,sit,3);
+        this.add_countdown(node_table_bg,sit,duration);
         //var turn = cc.callFunc(this.showriver, this, node);
 
         var url="game_check_tip";
-        var check_finished=function(){
+        var finished=function(){
             this.game_tip(sit,url);
         };
-        this.countdown_over_task=check_finished;
+        this.countdown_over_task=finished;
         //this.game_tip(sit,url);
 
     },
     //弃牌
-    fold:function(sit){
+    fold:function(sit,duration){
         var node_table_bg = this.node.parent.getChildByName("table_bg");
-        this.add_countdown(node_table_bg,sit,10);
+        this.add_countdown(node_table_bg,sit,duration);
 
         var url="game_fold_tip";
-        var fold_finished=function(){
+        var finished=function(){
             this.game_tip(sit,url);
         };
-        this.countdown_over_task=fold_finished;
-        //
-        //this.game_tip(sit,url);
-
+        this.countdown_over_task=finished;
 
     },
-    call:function(sit){
-        var url="game_call_tip";
-        this.game_tip(sit,url);
-
-    },
-    bet:function(sit){
+    bet:function(sit,duration){
         var url="game_bet_tip";
-        this.game_tip(sit,url);
+        var node_table_bg = this.node.parent.getChildByName("table_bg");
+        this.add_countdown(node_table_bg,sit,duration);
+
+        var finished=function(){
+            this.game_tip(sit,url);
+            this.chipsToTable(sit,50,100);
+        };
+        this.countdown_over_task=finished;
+    },
+    call:function(sit,duration){
+        var url="game_call_tip";
+        var node_table_bg = this.node.parent.getChildByName("table_bg");
+        this.add_countdown(node_table_bg,sit,duration);
+
+        var finished=function(){
+            this.game_tip(sit,url);
+            this.chipsToTable(sit,50,100);
+        };
+        this.countdown_over_task=finished;
 
     },
-    raise:function(sit){
+
+    raise:function(sit,duration){
         var url="game_raise_tip";
-        this.game_tip(sit,url);
+        var node_table_bg = this.node.parent.getChildByName("table_bg");
+        this.add_countdown(node_table_bg,sit,duration);
+
+        var finished=function(){
+            this.game_tip(sit,url);
+            this.chipsToTable(sit,100,200);
+        };
+        this.countdown_over_task=finished;
 
     },
     //结束比牌
@@ -400,23 +426,6 @@ cc.Class({
             this.inpot=new cc.Node();
             this.inpot.parent=this.node.parent;
             this.inpot.setPosition(0,250);
-            //var sp = this.inpot.addComponent(cc.Sprite);
-            //cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-            //    var frame1 = atlas.getSpriteFrame('game_inPot_frame');
-            //    sp.spriteFrame = frame1;
-            //});
-            //var table_bg=this.node.parent.getChildByName("table_bg");
-
-            //this.inpot.parent=table_bg;
-
-            //var node=new cc.Node();
-            //var lb = node.addComponent(cc.Label);
-            //lb.fontSize=25;
-            //node.color = new cc.Color(0, 0, 0);
-            //node.name="inpot";
-            //node.parent=this.inpot;
-            //node.setPosition(0,-12);
-            //lb.string=inpot;
             this.inpottop(inpot);
 
             var potNode=new cc.Node();
@@ -598,9 +607,7 @@ cc.Class({
         this.timing=true;
     },
     update: function (dt) {
-        //if (this.timing) {
-        //    this._updateTimer(dt);
-        //};
+
     },
     //原型进度条 例子 暂时没用到
     _updateTimer: function (dt) {

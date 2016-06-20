@@ -66,6 +66,7 @@ cc.Class({
             var time_label = time_node.getComponent(cc.Label);
             time_label.string =  (parseInt(time_label.string) - 1)+"s";
         }
+
         if(direction == 2){
             //逆时针
             fillRange = cost_time < this.countdown_long_time ? fillRange += (this.countdown_execution_interval * speed):0;
