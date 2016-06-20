@@ -114,7 +114,7 @@ cc.Class({
             node_hand_card.name = "hand_card";
             node_hand_card.parent = seat_node;
             node_hand_card.setPosition(20,-30);
-            seat_node.getChildByName("hand_card").setLocalZOrder(3);
+            seat_node.getChildByName("hand_card").setLocalZOrder(1);
             load_hand_card(sprite_hand_card);
 
 
