@@ -608,7 +608,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -90
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1000,7 +1000,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -90
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1380,7 +1380,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -90
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1772,7 +1772,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -90
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2164,7 +2164,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -90
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2556,7 +2556,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -90
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2948,7 +2948,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -90
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3340,7 +3340,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -90
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3732,7 +3732,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -90
+      "y": -70
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3888,7 +3888,7 @@
     "_N$overflow": 0
   },
   {
-    "__type__": "e459bHzCGZMKLUsyLd5tc96",
+    "__type__": "eb90aLcyXpLXpOlY3Hs3Pt3",
     "_name": "",
     "_objFlags": 0,
     "node": {
