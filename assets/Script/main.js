@@ -31,8 +31,7 @@ cc.Class({
             default:[],
             type:[cc.Node]
         },
-        //是否有动作正在进行
-        action:false,
+
 
 
 
@@ -191,50 +190,95 @@ cc.Class({
                 response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["actions"][i-1]["timestamp"];
             }
         };
-        var ac=response["actions"];
-        return false;
-        var i=0;
-        while(true){
-            if(this.action){
-                //有动作正在进行 则等待
-            }else{
-                this.action=true;
-                switch(ac[i]["CMD"]){
-                    case 5:
-                        this.quit(ac[i]["chair_id"],ac[i]["duration"]);
-                        break;
-                    case 6:
-                        this.quit(ac[i]["chair_id"],ac[i]["duration"]);
-                        break;
-                    case 9:
-                        this.flopstart();
-                        break;
-                    case 10:
-                        this.turnstart();
-                        break;
-                    case 11:
-                        this.riverstart();
-                        break;
-                    case 12:
-                        this.check(ac[i]["chair_id"],ac[i]["duration"]);
-                        break;
-                    case 13:
-                        this.check(ac[i]["chair_id"],ac[i]["duration"]);
-                        break;
-                    case 14:
-                        this.check(ac[i]["chair_id"],ac[i]["duration"]);
-                        break;
-                    case 15:
-                        this.check(ac[i]["chair_id"],ac[i]["duration"]);
-                        break;
-                    default:
-                        this.action=false;
-                        break;
-                };
-                //执行下一个动作
-                i++;
-            }
-        }
+        this.actions=response["actions"];
+        this.i=0;
+        //var ac=response["actions"];
+        //var i=0;
+        //while(true){
+        //    if(i>=len){
+        //        cc.log("action end");
+        //        break;
+        //    };
+        //    if(this.action){
+        //        //有动作正在进行 则等待
+        //    }else{
+        //        cc.log("action start");
+        //
+        //        this.action=true;
+        //        switch(ac[i]["CMD"]){
+        //            case 5:
+        //                this.quit(ac[i]["chair_id"],ac[i]["duration"]);
+        //                break;
+        //            case 6:
+        //                this.quit(ac[i]["chair_id"],ac[i]["duration"]);
+        //                break;
+        //            case 9:
+        //                this.flopstart();
+        //                break;
+        //            case 10:
+        //                this.turnstart();
+        //                break;
+        //            case 11:
+        //                this.riverstart();
+        //                break;
+        //            case 12:
+        //                this.check(ac[i]["chair_id"],ac[i]["duration"]);
+        //                break;
+        //            case 13:
+        //                this.check(ac[i]["chair_id"],ac[i]["duration"]);
+        //                break;
+        //            case 14:
+        //                this.check(ac[i]["chair_id"],ac[i]["duration"]);
+        //                break;
+        //            case 15:
+        //                this.check(ac[i]["chair_id"],ac[i]["duration"]);
+        //                break;
+        //            default:
+        //                this.actionend();
+        //                break;
+        //        };
+        //        //执行下一个动作
+        //        i++;
+        //    }
+        //}
+    },
+
+    actionend:function(){
+        var i  = this.i;
+        cc.log(this.actions[i]);
+
+        switch(this.actions[i]["CMD"]){
+            case 5:
+                this.quit(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                break;
+            case 6:
+                this.quit(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                break;
+            case 9:
+                this.flopstart();
+                break;
+            case 10:
+                this.turnstart();
+                break;
+            case 11:
+                this.riverstart();
+                break;
+            case 12:
+                this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                break;
+            case 13:
+                this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                break;
+            case 14:
+                this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                break;
+            case 15:
+                this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                break;
+            default:
+                this.i=i+1;
+                break;
+        };
     },
 
     //圆形头像 cc.Mask 例子
@@ -259,7 +303,8 @@ cc.Class({
         //this.card[3].stopAllActions();
         //this.card[4].stopAllActions();
 
-
+        this.actionend();
+        return false;
 
 
         var callback=function(){
@@ -321,7 +366,7 @@ cc.Class({
             this.table_tips.push(game_tip);
         };
         //当前动作结束
-        this.action=false;
+        this.actionend();
     },
     //check
     check:function(sit,duration){
@@ -605,7 +650,7 @@ cc.Class({
         var action2=cc.moveTo(2, cc.p(200, 0));
         var action3=cc.callFunc(function(){
             //flop结束
-            this.action=false;
+            this.actionend();
         },this);
 
         var seq=cc.sequence(action2,action3);
@@ -657,7 +702,7 @@ cc.Class({
         //mSf.enabled=true;
         node.active=false;
 
-        this.action=false;
+        this.actionend();
 
 
     },
@@ -697,7 +742,7 @@ cc.Class({
 
         node.active=false;
 
-        this.action=false;
+        this.actionend();
 
     },
 
