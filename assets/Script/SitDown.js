@@ -52,6 +52,8 @@ cc.Class({
                             "table_name":"devin的牌局",
                             "table_verify_code":"23434566",
                             "dealer":1,
+                            "big_blind":6,
+                            "small_blind":3
                         };
         return table_data;
     },
@@ -71,6 +73,22 @@ cc.Class({
             var frame = atlas.getSpriteFrame("game_dealer_tip");
             dealer_sprite.spriteFrame = frame;
         });
+        //大盲位
+        var big_blind_node = node_table_bg.getChildByName("chip_"+table_data['big_blind']);
+        var big_blind_sprite = big_blind_node.addComponent(cc.Sprite);
+        cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+            var frame = atlas.getSpriteFrame("game_bigBlind_tip");
+            big_blind_sprite.spriteFrame = frame;
+        });
+        //小盲位
+        var small_blind_node = node_table_bg.getChildByName("chip_"+table_data['small_blind']);
+        var small_blind_sprite = small_blind_node.addComponent(cc.Sprite);
+        cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+            var frame = atlas.getSpriteFrame("game_smallBlind_tip");
+            small_blind_sprite.spriteFrame = frame;
+        });
+
+
 
         //异步加载图片，不能放在循环内
         var load_avatar = function(url,sprite_user){
