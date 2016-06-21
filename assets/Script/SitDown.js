@@ -275,7 +275,7 @@ cc.Class({
             label_nick.string = v['nick'].length>4 ? v['nick'].substring(0,4)+"...":v['nick'].substring(0,4);
             //带入的筹码
             var label_chips = seat_node.getChildByName("chips").getComponent(cc.Label);
-            label_chips.string = v['remain_chip'];
+            label_chips.string = v['remain_chip']+v['table_chip'];
 
             //头像
             var node_mark = new cc.Node();
@@ -308,9 +308,5 @@ cc.Class({
             //this._AddCountDown(node_table_bg,v['seat_number'],15);
             //break;
         }
-    },
-    // called every frame, uncomment this function to activate update callback
-    update: function (dt) {
-
-    },
+    }
 });
