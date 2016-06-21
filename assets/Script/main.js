@@ -240,9 +240,6 @@ cc.Class({
     //圆形头像 cc.Mask 例子
     mainstart:function(){
 
-        this.actions();
-        return false;
-
         this.unschedule(this.flopstart);
         this.unschedule(this.turnstart);
         this.unschedule(this.riverstart);
