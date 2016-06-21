@@ -31,10 +31,9 @@ cc.Class({
             default:[],
             type:[cc.Node]
         },
-        //动作列表
-        //actions:null,
-        //正在进行的动作
-        //i:0,
+
+        game_card_turn:0,
+        game_card_river:0,
 
 
 
@@ -186,109 +185,85 @@ cc.Class({
     actionend:function(){
         var i  = this.i;
         this.i=i+1;
-        cc.log(this.i);
-        cc.log(this.actions[i]);
-        switch(this.actions[i]["CMD"]){
-            case 5:
-                this.quit(this.actions[i]["chair_id"],this.actions[i]["duration"]);
-                break;
-            case 6:
-                this.quit(this.actions[i]["chair_id"],this.actions[i]["duration"]);
-                break;
-            case 9:
-                this.flopstart();
-                break;
-            case 10:
-                this.turnstart();
-                break;
-            case 11:
-                this.riverstart();
-                break;
-            case 12:
-                this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
-                break;
-            case 13:
-                this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
-                break;
-            case 14:
-                this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
-                break;
-            case 15:
-                this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
-                break;
-            default:
-                this.actionend();
-                break;
+
+        cc.log(i);
+        //cc.log(this.actions.length);
+        if(i<this.actions.length){
+            switch(this.actions[i]["CMD"]){
+                case 5:
+                    this.quit(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                    break;
+                case 6:
+                    this.quit(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                    break;
+                case 9:
+                    //"CMD" : 9,
+                    //"common_card" : [41, 40, 54],
+                    //"current_action_chair" : 4,
+                    //"current_pot" : 76,
+                    //"pot" : 76,
+                    //"timestamp" : 1466422815
+                    this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
+                    this.flopstart(this.actions[i]["common_card"]);
+                    break;
+                case 10:
+                    //"CMD" : 10,
+                    //"common_card" : [29],
+                    //"current_action_chair" : 4,
+                    //"current_pot" : 76,
+                    //"pot" : 76,
+                    //"timestamp" : 1466422848
+                    this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
+                    this.turnstart(this.actions[i]["common_card"]);
+                    break;
+                case 11:
+                    //"CMD" : 11,
+                    //"common_card" : [12],
+                    //"current_action_chair" : 4,
+                    //"current_pot" : 228,
+                    //"pot" : 228,
+                    //"timestamp" : 1466422859
+                    this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
+                    this.riverstart(this.actions[i]["common_card"]);
+                    break;
+                case 12:
+                    this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                    break;
+                case 13:
+                    this.call(this.actions[i]["chair_id"],this.actions[i]["duration"],this.actions[i]["current_pot"],this.actions[i]["pot"],this.actions[i]["chip"]);
+                    break;
+                case 14:
+                    this.call(this.actions[i]["chair_id"],this.actions[i]["duration"],this.actions[i]["current_pot"],this.actions[i]["pot"],this.actions[i]["chip"]);
+                    break;
+                case 15:
+                    this.fold(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                    break;
+                case 16:
+                    //this.fold(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                    break;
+                default:
+                    this.actionend();
+                    break;
+            };
+        }else{
+            this.i=0;
         };
     },
 
     //圆形头像 cc.Mask 例子
     mainstart:function(){
-
-        this.unschedule(this.flopstart);
-        this.unschedule(this.turnstart);
-        this.unschedule(this.riverstart);
-        this.unschedule(callback);
-        this.unschedule(callback2);
-
-
         this.card[0].removeAllChildren(true);
         this.card[1].removeAllChildren(true);
         this.card[2].removeAllChildren(true);
         this.card[3].removeAllChildren(true);
         this.card[4].removeAllChildren(true);
 
-        //this.card[0].stopAllActions();
-        //this.card[1].stopAllActions();
-        //this.card[2].stopAllActions();
-        //this.card[3].stopAllActions();
-        //this.card[4].stopAllActions();
-
+        this.card[0].stopAllActions();
+        this.card[1].stopAllActions();
+        this.card[2].stopAllActions();
+        this.card[3].stopAllActions();
+        this.card[4].stopAllActions();
         this.actionend();
-        return false;
-
-
-        var callback=function(){
-            this.bet(0,3,50,100,2);
-        };
-
-        var callback2=function(){
-            this.fold(1,5);
-        };
-
-
-        var callback3=function(){
-            this.raise(6,2,150,200,5);
-        };
-
-
-        var callback4=function(){
-            this.call(7,2,50,100,2);
-        };
-
-
-        //第一个动作
-        this.scheduleOnce(callback, 0);
-
-        this.scheduleOnce(callback2, 4);
-
-        this.scheduleOnce(callback3, 10);
-
-        this.scheduleOnce(callback4, 13);
-
-        var ttp=function(){
-            this.tableToPot(0,500);
-        };
-        this.scheduleOnce(ttp, 18);
-
-
-        //this.scheduleOnce(this.flopstart, 13);
-        //
-        //this.scheduleOnce(this.turnstart, 15);
-        //
-        //this.scheduleOnce(this.riverstart,17);
-
-
     },
     //显示操作提示
     game_tip:function(sit,url,clean){
@@ -546,8 +521,25 @@ cc.Class({
     },
 
     //flop三张牌移动效果
-    flopstart:function(){
-
+    flopstart:function(card){
+        var card1;
+        if(card[0]<10){
+            card1='card_0'+card[0];
+        }else{
+            card1='card_'+card[0];
+        }
+        var card2;
+        if(card[1]<10){
+            card2='card_0'+card[1];
+        }else{
+            card2='card_'+card[1];
+        }
+        var card3;
+        if(card[2]<10){
+            card3='card_0'+card[2];
+        }else{
+            card3='card_'+card[2];
+        }
         var node1=new cc.Node();
         //var node1=new cc.Node();
         var mSf1 = node1.addComponent(cc.Sprite);
@@ -559,12 +551,12 @@ cc.Class({
         var mSf3 = node3.addComponent(cc.Sprite);
 
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-            var frame1 = atlas.getSpriteFrame('card_01');
-            var frame2 = atlas.getSpriteFrame('card_03');
-            var frame3 = atlas.getSpriteFrame('card_05');
-            mSf1.spriteFrame = frame1;
-            mSf2.spriteFrame = frame2;
-            mSf3.spriteFrame = frame3;
+            //var frame1 = atlas.getSpriteFrame('card_01');
+            //var frame2 = atlas.getSpriteFrame('card_03');
+            //var frame3 = atlas.getSpriteFrame('card_05');
+            mSf1.spriteFrame = atlas.getSpriteFrame(card1);
+            mSf2.spriteFrame = atlas.getSpriteFrame(card2);
+            mSf3.spriteFrame = atlas.getSpriteFrame(card3);
         });
 
         mSf1.enabled=true;
@@ -602,7 +594,8 @@ cc.Class({
 
     },
     //翻牌效果
-    turnstart:function(){
+    turnstart:function(card){
+        this.game_card_turn=card[0];
         var node=new cc.Node();
         var mSf = node.addComponent(cc.Sprite);
         cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
@@ -626,29 +619,26 @@ cc.Class({
     },
     //翻牌效果 回调
     showturn:function(node){
+        var card1;
+        if(this.game_card_turn<10){
+            card1='card_0'+this.game_card_turn;
+        }else{
+            card1='card_'+this.game_card_turn;
+        }
         var node1=new cc.Node();
         node1.parent=this.card[3];
         var mSf = node1.addComponent(cc.Sprite);
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-            var frame = atlas.getSpriteFrame('card_04');
-            mSf.spriteFrame = frame;
+            mSf.spriteFrame = atlas.getSpriteFrame(card1);
         });
 
-        //mSf.node.setPosition(node.x,node.y);
-
-        //mSf.enabled=false;
-
-        //mSf.node.parent = this.node.parent;
-
-        //mSf.enabled=true;
-        node.active=false;
-
+        node.destroy();
         this.actionend();
-
 
     },
     //翻牌效果
-    riverstart:function(){
+    riverstart:function(card){
+        this.game_card_river=card[0];
         var node=new cc.Node();
         var mSf = node.addComponent(cc.Sprite);
         cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
@@ -673,15 +663,22 @@ cc.Class({
     },
     //翻牌效果 回调
     showriver:function(node){
+        var card1;
+        if(this.game_card_river<10){
+            card1='card_0'+this.game_card_river;
+        }else{
+            card1='card_'+this.game_card_river;
+        }
+
         var node1=new cc.Node();
         node1.parent=this.card[4];
         var mSf = node1.addComponent(cc.Sprite);
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-            var frame = atlas.getSpriteFrame('card_02');
-            mSf.spriteFrame = frame;
+            mSf.spriteFrame = atlas.getSpriteFrame(card1);
         });
 
-        node.active=false;
+        node.destroy();
+
 
         this.actionend();
 
