@@ -13,6 +13,27 @@ cc.Class({
         countdown_task:null,//倒计时执行任务,是一个function，方便销毁定时器
         countdown_over_task:null,//倒计时结束，是一个function，执行完毕，最后会执行这个
     },
+    reqstart:function(){
+        var url="http://172.16.0.210:2016/info.php";
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.send();
+        var me=this;
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if(xhr.status == 200){
+                    var response = eval('(' + xhr.responseText + ')');
+                    me.actions(response);
+                    return response;
+                }else{
+                    cc.log("xhr.status=".xhr.status);
+                    return null;
+                }
+            }
+        };
+
+    },
+
     //添加倒计时的进度条
     add_countdown:function(node_table_bg,seat_number,long_time){
         //初始化

@@ -152,26 +152,6 @@ cc.Class({
         this.inpotstart(3,0);
 
     },
-    reqstart:function(){
-        var url="http://172.16.0.210:2016/info.php";
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", url, true);
-        xhr.send();
-        var me=this;
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                if(xhr.status == 200){
-                    var response = eval('(' + xhr.responseText + ')');
-                    me.actions(response['actions']);
-                    return response;
-                }else{
-                    cc.log("xhr.status=".xhr.status);
-                    return null;
-                }
-            }
-        };
-
-    },
 
 
     //    站起							5
