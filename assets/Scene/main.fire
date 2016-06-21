@@ -3115,9 +3115,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 18,
-      "g": 15,
-      "b": 164,
+      "r": 9,
+      "g": 113,
+      "b": 152,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -3131,8 +3131,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 210,
-      "height": 30
+      "width": 100,
+      "height": 25
     },
     "_children": [],
     "_rotationX": 0,
@@ -3141,7 +3141,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -13,
+      "x": 0,
       "y": -49
     },
     "_skewX": 0,
@@ -3175,12 +3175,12 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_fontSize": 30,
-    "_lineHeight": 30,
+    "_fontSize": 25,
+    "_lineHeight": 25,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
-    "_N$string": "不忘初心的牌局",
+    "_N$string": "牌局名字",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$overflow": 0
@@ -3219,9 +3219,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 9,
+      "g": 113,
+      "b": 152,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -3235,8 +3235,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 90,
-      "height": 30
+      "width": 75,
+      "height": 25
     },
     "_children": [],
     "_rotationX": 0,
@@ -3245,8 +3245,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -31,
-      "y": -114
+      "x": 0,
+      "y": -80
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3276,8 +3276,8 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_fontSize": 30,
-    "_lineHeight": 30,
+    "_fontSize": 25,
+    "_lineHeight": 25,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -4713,11 +4713,7 @@
     ],
     "inpot": null,
     "table_chips": [],
-    "speed": 0.1,
-    "duration": 20,
-    "timing": false,
-    "timer": null,
-    "timersp": null
+    "table_tips": []
   },
   {
     "__type__": "cc.Canvas",

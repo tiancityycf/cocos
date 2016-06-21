@@ -59,7 +59,7 @@ cc.Class({
         var table_data = this.table_data();
         //牌局名字
         var label = this.getComponent(cc.Label);
-        label.string=table_data['table_name'];
+        label.string = "§ " + table_data['table_name'] + " §";
         //牌局号
         var node_table_bg = this.node.parent;
         var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
