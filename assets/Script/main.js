@@ -31,6 +31,8 @@ cc.Class({
             default:[],
             type:[cc.Node]
         },
+        //是否有动作正在进行
+        action:false,
 
 
 
@@ -179,42 +181,58 @@ cc.Class({
     //    "current_pot" : 4,
     //    "pot" : 4,
     //    "timestamp" : 1466422796,
-    actions:function(ac){
+    actions:function(response){
         var starttime=0;
-        var len=ac.length;
+        var len=response["actions"].length;
         for(var i=0;i<len;i++){
-            var duration;
-            if(i==(len-1)){
-                starttime=ac[i]["timestamp"];
-                duration=0;
-            }else{
-                //动作都延长一秒
-                duration=ac[i]["timestamp"]-starttime+1;
-            }
-
-        }
-        for(var i=0;i<ac.length;i++){
-            var duration;
             if(i==0){
-                starttime=ac[i]["timestamp"];
-                duration=0;
+                response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["start"]["timestamp"];
             }else{
-                duration=ac[i]["timestamp"]-starttime;
+                response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["actions"][i-1]["timestamp"];
             }
-
-            switch(ac[i]["CMD"]){
-                case 12:
-                    var callback=function(){
-                        this.check(ac[i]["chair_id"],3,ac[i]["current_pot"],ac[i]["pot"],2);
-                    };
-                    this.scheduleOnce(callback, duration);
-                    break;
-                case 2:
-                    break;
-                default:
-                    break;
+        };
+        ac=response["actions"];
+        var i=0;
+        while(true){
+            if(this.action){
+                //有动作正在进行 则等待
+            }else{
+                this.action=true;
+                switch(ac[i]["CMD"]){
+                    case 5:
+                        this.quit(ac[i]["chair_id"],ac[i]["duration"]);
+                        break;
+                    case 6:
+                        this.quit(ac[i]["chair_id"],ac[i]["duration"]);
+                        break;
+                    case 9:
+                        this.flopstart();
+                        break;
+                    case 10:
+                        this.turnstart();
+                        break;
+                    case 11:
+                        this.riverstart();
+                        break;
+                    case 12:
+                        this.check(ac[i]["chair_id"],ac[i]["duration"]);
+                        break;
+                    case 13:
+                        this.check(ac[i]["chair_id"],ac[i]["duration"]);
+                        break;
+                    case 14:
+                        this.check(ac[i]["chair_id"],ac[i]["duration"]);
+                        break;
+                    case 15:
+                        this.check(ac[i]["chair_id"],ac[i]["duration"]);
+                        break;
+                    default:
+                        this.action=false;
+                        break;
+                };
+                //执行下一个动作
+                i++;
             }
-            cc.log(ac[i]['CMD']);
         }
     },
 
@@ -304,7 +322,8 @@ cc.Class({
         if(clean){
             this.table_tips.push(game_tip);
         };
-
+        //当前动作结束
+        this.action=false;
     },
     //check
     check:function(sit,duration){
@@ -586,9 +605,16 @@ cc.Class({
         //var action2=cc.moveTo(2, cc.p(0, 50));
         var action1=cc.moveTo(1, cc.p(100, 0));
         var action2=cc.moveTo(2, cc.p(200, 0));
+        var action3=cc.callFunc(function(){
+            //flop结束
+            this.action=false;
+        },this);
+
+        var seq=cc.sequence(action2,action3);
 
         node1.runAction(action1);
-        node2.runAction(action2);
+        node2.runAction(seq);
+
 
     },
     //翻牌效果
@@ -633,6 +659,9 @@ cc.Class({
         //mSf.enabled=true;
         node.active=false;
 
+        this.action=false;
+
+
     },
     //翻牌效果
     riverstart:function(){
@@ -669,6 +698,8 @@ cc.Class({
         });
 
         node.active=false;
+
+        this.action=false;
 
     },
 
