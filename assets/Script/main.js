@@ -191,7 +191,7 @@ cc.Class({
                 response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["actions"][i-1]["timestamp"];
             }
         };
-        ac=response["actions"];
+        var ac=response["actions"];
         var i=0;
         while(true){
             if(this.action){
