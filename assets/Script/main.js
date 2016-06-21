@@ -192,6 +192,7 @@ cc.Class({
             }
         };
         var ac=response["actions"];
+        return false;
         var i=0;
         while(true){
             if(this.action){
