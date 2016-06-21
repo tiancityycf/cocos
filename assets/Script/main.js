@@ -184,9 +184,6 @@ cc.Class({
     actionend:function(){
         var i  = this.i;
         this.i=i+1;
-
-        cc.log(i);
-        //cc.log(this.actions.length);
         if(i<this.actions.length){
             switch(this.actions[i]["CMD"]){
                 case 5:
@@ -202,8 +199,13 @@ cc.Class({
                     //"current_pot" : 76,
                     //"pot" : 76,
                     //"timestamp" : 1466422815
-                    this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
-                    this.flopstart(this.actions[i]["common_card"]);
+                    this.scheduleOnce(function(){
+                        this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
+                    },1);
+                    this.scheduleOnce(function(){
+                        this.flopstart(this.actions[i]["common_card"]);
+                    },2);
+
                     break;
                 case 10:
                     //"CMD" : 10,
@@ -212,8 +214,13 @@ cc.Class({
                     //"current_pot" : 76,
                     //"pot" : 76,
                     //"timestamp" : 1466422848
-                    this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
-                    this.turnstart(this.actions[i]["common_card"]);
+                    this.scheduleOnce(function(){
+                        this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
+                    },1);
+                    this.scheduleOnce(function(){
+                        this.turnstart(this.actions[i]["common_card"]);
+                    },2);
+
                     break;
                 case 11:
                     //"CMD" : 11,
@@ -222,8 +229,12 @@ cc.Class({
                     //"current_pot" : 228,
                     //"pot" : 228,
                     //"timestamp" : 1466422859
-                    this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
-                    this.riverstart(this.actions[i]["common_card"]);
+                    this.scheduleOnce(function(){
+                        this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
+                    },1);
+                    this.scheduleOnce(function(){
+                        this.riverstart(this.actions[i]["common_card"]);
+                    },2);
                     break;
                 case 12:
                     this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
@@ -292,6 +303,14 @@ cc.Class({
 
         var url="game_check_tip";
         var finished=function(){
+            // play audioSource
+            var audio="audio/audio_check";
+            var audionode=new cc.Node();
+            var audiosource=audionode.addComponent(cc.AudioSource);
+
+            cc.loader.loadRes(audio, function (err, assets) {
+                cc.audioEngine.playEffect(assets);
+            });
             this.game_tip(sit,url,true);
         };
         this.countdown_over_task=finished;
@@ -306,6 +325,13 @@ cc.Class({
 
         var url="game_fold_tip";
         var finished=function(){
+            var audio="audio/audio_fold";
+            var audionode=new cc.Node();
+            var audiosource=audionode.addComponent(cc.AudioSource);
+
+            cc.loader.loadRes(audio, function (err, assets) {
+                cc.audioEngine.playEffect(assets);
+            });
             this.game_tip(sit,url,false);
         };
         this.countdown_over_task=finished;
