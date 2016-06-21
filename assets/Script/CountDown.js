@@ -12,6 +12,10 @@ cc.Class({
         },//倒计时，遮罩层所在的node
         countdown_task:null,//倒计时执行任务,是一个function，方便销毁定时器
         countdown_over_task:null,//倒计时结束，是一个function，执行完毕，最后会执行这个
+        //动作列表
+        actions:null,
+        //正在进行的动作
+        i:0,
     },
     //添加倒计时的进度条
     add_countdown:function(node_table_bg,seat_number,long_time){
@@ -97,7 +101,37 @@ cc.Class({
             }
         }
     },
-    //模拟数据
+    reqstart:function(){
+        var url="http://172.16.0.210:2016/info.php";
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.send();
+        var me=this;
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    var response = eval('(' + xhr.responseText + ')');
+                    var starttime=0;
+                    var len=response["actions"].length;
+                    for(var i=0;i<len;i++){
+                        if(i==0){
+                            response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["start"]["timestamp"];
+                        }else{
+                            response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["actions"][i-1]["timestamp"];
+                        }
+                    };
+                    //初始化动作属性
+                    me.actions=response["actions"];
+                    me.i=0;
+                    //me.actioninit(response);
+                    //return response;
+                } else {
+                    //return null;
+                }
+            }
+        }
+    },
+                //模拟数据
     table_data:function(){
         var table_data={
             "actions" : [{

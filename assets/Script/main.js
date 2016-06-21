@@ -31,6 +31,10 @@ cc.Class({
             default:[],
             type:[cc.Node]
         },
+        //动作列表
+        //actions:null,
+        //正在进行的动作
+        //i:0,
 
 
 
@@ -146,8 +150,6 @@ cc.Class({
         // this.node.emit("tEmitFun",{himi:27,say:"hello,cc!"});
 
 
-
-
         this.reqstart();
 
         this.inpotstart(3,0);
@@ -180,7 +182,7 @@ cc.Class({
     //    "current_pot" : 4,
     //    "pot" : 4,
     //    "timestamp" : 1466422796,
-    actions:function(response){
+    actioninit:function(response){
         var starttime=0;
         var len=response["actions"].length;
         for(var i=0;i<len;i++){
@@ -190,57 +192,9 @@ cc.Class({
                 response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["actions"][i-1]["timestamp"];
             }
         };
+        //初始化动作属性
         this.actions=response["actions"];
         this.i=0;
-        //var ac=response["actions"];
-        //var i=0;
-        //while(true){
-        //    if(i>=len){
-        //        cc.log("action end");
-        //        break;
-        //    };
-        //    if(this.action){
-        //        //有动作正在进行 则等待
-        //    }else{
-        //        cc.log("action start");
-        //
-        //        this.action=true;
-        //        switch(ac[i]["CMD"]){
-        //            case 5:
-        //                this.quit(ac[i]["chair_id"],ac[i]["duration"]);
-        //                break;
-        //            case 6:
-        //                this.quit(ac[i]["chair_id"],ac[i]["duration"]);
-        //                break;
-        //            case 9:
-        //                this.flopstart();
-        //                break;
-        //            case 10:
-        //                this.turnstart();
-        //                break;
-        //            case 11:
-        //                this.riverstart();
-        //                break;
-        //            case 12:
-        //                this.check(ac[i]["chair_id"],ac[i]["duration"]);
-        //                break;
-        //            case 13:
-        //                this.check(ac[i]["chair_id"],ac[i]["duration"]);
-        //                break;
-        //            case 14:
-        //                this.check(ac[i]["chair_id"],ac[i]["duration"]);
-        //                break;
-        //            case 15:
-        //                this.check(ac[i]["chair_id"],ac[i]["duration"]);
-        //                break;
-        //            default:
-        //                this.actionend();
-        //                break;
-        //        };
-        //        //执行下一个动作
-        //        i++;
-        //    }
-        //}
     },
 
     actionend:function(){
