@@ -1,5 +1,6 @@
+var Common = require('Common');
 cc.Class({
-    extends: cc.Component,
+    extends: Common,
     properties: {
         //倒计时
         countdown_execution_interval:0.1,//执行间隔
@@ -16,6 +17,8 @@ cc.Class({
         actions:null,
         //正在进行的动作
         i:0,
+        //该牌局的是数据
+        hand_data:null
     },
     //添加倒计时的进度条
     add_countdown:function(node_table_bg,seat_number,long_time){
@@ -102,6 +105,7 @@ cc.Class({
         }
     },
     reqstart:function(){
+        cc.log("开始");
         var url="http://172.16.0.210:2016/info.php";
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
@@ -123,6 +127,8 @@ cc.Class({
                     //初始化动作属性
                     me.actions=response["actions"];
                     me.i=0;
+                    me.hand_data = response;
+                    me.sit_down();//坐下
                     //me.actioninit(response);
                     //return response;
                 } else {

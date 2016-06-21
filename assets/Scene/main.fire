@@ -75,6 +75,9 @@
         "__id__": 3
       },
       {
+        "__id__": 112
+      },
+      {
         "__id__": 113
       },
       {
@@ -90,10 +93,7 @@
         "__id__": 117
       },
       {
-        "__id__": 118
-      },
-      {
-        "__id__": 122
+        "__id__": 121
       }
     ],
     "_rotationX": 0,
@@ -116,7 +116,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 124
+        "__id__": 123
       }
     ],
     "_prefab": null,
@@ -183,7 +183,10 @@
         "__id__": 86
       },
       {
-        "__id__": 90
+        "__id__": 89
+      },
+      {
+        "__id__": 92
       },
       {
         "__id__": 93
@@ -235,9 +238,6 @@
       },
       {
         "__id__": 109
-      },
-      {
-        "__id__": 110
       }
     ],
     "_rotationX": 0,
@@ -260,10 +260,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 111
+        "__id__": 110
       },
       {
-        "__id__": 112
+        "__id__": 111
       }
     ],
     "_prefab": null,
@@ -3156,13 +3156,10 @@
     "_components": [
       {
         "__id__": 87
-      },
-      {
-        "__id__": 88
       }
     ],
     "_prefab": {
-      "__id__": 89
+      "__id__": 88
     },
     "groupIndex": 0
   },
@@ -3184,23 +3181,6 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$overflow": 0
-  },
-  {
-    "__type__": "eb90aLcyXpLXpOlY3Hs3Pt3",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 86
-    },
-    "_enabled": true,
-    "countdown_execution_interval": 0.1,
-    "countdown_repeat_num": 0,
-    "countdown_long_time": 0,
-    "countdown_cycle_time": 20,
-    "countdown_node": null,
-    "countdown_task": null,
-    "countdown_over_task": null,
-    "seat": []
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -3259,11 +3239,11 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 91
+        "__id__": 90
       }
     ],
     "_prefab": {
-      "__id__": 92
+      "__id__": 91
     },
     "groupIndex": 0
   },
@@ -3272,7 +3252,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 90
+      "__id__": 89
     },
     "_enabled": true,
     "_useOriginalSize": false,
@@ -3289,7 +3269,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 90
+      "__id__": 89
     },
     "asset": {
       "__uuid__": "27756ebb-3d33-44b0-9b96-e858fadd4dd4"
@@ -4523,10 +4503,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 119
+        "__id__": 118
       },
       {
-        "__id__": 120
+        "__id__": 119
       }
     ],
     "_prefab": null,
@@ -4537,7 +4517,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 118
+      "__id__": 117
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -4565,7 +4545,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 118
+      "__id__": 117
     },
     "_enabled": true,
     "transition": 2,
@@ -4590,7 +4570,7 @@
     "hoverSprite": null,
     "clickEvents": [
       {
-        "__id__": 121
+        "__id__": 120
       }
     ],
     "_N$interactable": true,
@@ -4615,13 +4595,13 @@
       "__uuid__": "ad5138fe-6b83-4cfd-a96c-c3b9abc88b4c"
     },
     "_N$target": {
-      "__id__": 118
+      "__id__": 117
     }
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
-      "__id__": 122
+      "__id__": 121
     },
     "component": "main",
     "handler": "mainstart"
@@ -4673,7 +4653,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 123
+        "__id__": 122
       }
     ],
     "_prefab": null,
@@ -4684,9 +4664,10 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 122
+      "__id__": 121
     },
     "_enabled": true,
+    "seat": [],
     "countdown_execution_interval": 0.1,
     "countdown_repeat_num": 0,
     "countdown_long_time": 0,
@@ -4694,28 +4675,16 @@
     "countdown_node": null,
     "countdown_task": null,
     "countdown_over_task": null,
+    "actions": null,
+    "i": 0,
+    "hand_data": null,
     "data": null,
-    "card": [
-      {
-        "__id__": 113
-      },
-      {
-        "__id__": 114
-      },
-      {
-        "__id__": 115
-      },
-      {
-        "__id__": 116
-      },
-      {
-        "__id__": 117
-      }
-    ],
+    "card": [],
     "inpot": null,
     "table_chips": [],
     "table_tips": [],
-    "action": false
+    "game_card_turn": 0,
+    "game_card_river": 0
   },
   {
     "__type__": "cc.Canvas",

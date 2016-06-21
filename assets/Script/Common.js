@@ -1,6 +1,5 @@
-var CountDown = require('CountDown');
 cc.Class({
-    extends: CountDown,
+    extends:  cc.Component,
 
     properties: {
         seat:{
@@ -8,18 +7,20 @@ cc.Class({
             type:cc.Node
         }
     },
-
-    // use this for initialization
-    onLoad: function () {
-        this.sit_down();
-    },
     sit_down:function(){
-        var table_data = this.table_data();
+
+        var table_data = this.hand_data;
+        // if(table_data == null){
+        //     cc.log("没有数据");
+        //     return false;
+        // }
+        var node_table_bg = cc.find("Canvas/table_bg");
         //牌局名字
-        var label = this.getComponent(cc.Label);
+        //var label = this.getComponent(cc.Label);
+        var label = node_table_bg.getChildByName("table_name").getComponent(cc.Label);
         label.string = "§ " + table_data['table_name'] + " §";
         //牌局号
-        var node_table_bg = this.node.parent;
+        //var node_table_bg = this.node.parent;
         var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
         label_table_code.string = table_data['table_code'];
         //dealer位
@@ -45,6 +46,7 @@ cc.Class({
 
         //异步加载图片，不能放在循环内
         var load_avatar = function(url,sprite_user){
+            url = 'http://img.51yche.com/avatar/2016-06-14/w_120x120_575ffcd3375aa.jpg';
             cc.loader.load(url,function(err,tex){
                 var frame  = new cc.SpriteFrame(tex,cc.Rect(0, 0, 87, 123));
                 sprite_user.spriteFrame = frame;
@@ -95,12 +97,6 @@ cc.Class({
             node_hand_card.setPosition(20,-30);
             seat_node.getChildByName("hand_card").setLocalZOrder(1);
             load_hand_card(sprite_hand_card);
-
-            //添加倒计时
-            //this.add_countdown(node_table_bg,v['seat_number'],15);
-            //CountDown.add_countdown(node_table_bg,v['seat_number'],15);
-            //this._AddCountDown(node_table_bg,v['seat_number'],15);
-            //break;
         }
     }
 });

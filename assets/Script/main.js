@@ -1,5 +1,4 @@
 var CountDown = require('CountDown');
-
 cc.Class({
     //extends: cc.Component,
     extends: CountDown,
