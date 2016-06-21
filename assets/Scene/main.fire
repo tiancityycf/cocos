@@ -4714,7 +4714,8 @@
     ],
     "inpot": null,
     "table_chips": [],
-    "table_tips": []
+    "table_tips": [],
+    "action": false
   },
   {
     "__type__": "cc.Canvas",
