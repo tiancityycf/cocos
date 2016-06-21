@@ -182,25 +182,12 @@ cc.Class({
     //    "current_pot" : 4,
     //    "pot" : 4,
     //    "timestamp" : 1466422796,
-    actioninit:function(response){
-        var starttime=0;
-        var len=response["actions"].length;
-        for(var i=0;i<len;i++){
-            if(i==0){
-                response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["start"]["timestamp"];
-            }else{
-                response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["actions"][i-1]["timestamp"];
-            }
-        };
-        //初始化动作属性
-        this.actions=response["actions"];
-        this.i=0;
-    },
 
     actionend:function(){
         var i  = this.i;
+        this.i=i+1;
+        cc.log(this.i);
         cc.log(this.actions[i]);
-
         switch(this.actions[i]["CMD"]){
             case 5:
                 this.quit(this.actions[i]["chair_id"],this.actions[i]["duration"]);
@@ -230,7 +217,7 @@ cc.Class({
                 this.check(this.actions[i]["chair_id"],this.actions[i]["duration"]);
                 break;
             default:
-                this.i=i+1;
+                this.actionend();
                 break;
         };
     },
