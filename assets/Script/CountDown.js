@@ -105,7 +105,6 @@ cc.Class({
         }
     },
     reqstart:function(){
-        cc.log("开始");
         var url="http://172.16.0.210:2016/info.php";
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);

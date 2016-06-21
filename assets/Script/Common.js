@@ -8,7 +8,6 @@ cc.Class({
         }
     },
     sit_down:function(){
-
         var table_data = this.hand_data;
         // if(table_data == null){
         //     cc.log("没有数据");
