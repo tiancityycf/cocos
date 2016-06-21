@@ -202,9 +202,17 @@ cc.Class({
             this.fold(1,5);
         };
 
+
         var callback3=function(){
+            this.quit(6,2);
+        };
+
+
+        var callback4=function(){
             this.call(7,2);
         };
+
+
         //第一个动作
         this.scheduleOnce(callback, 0);
 
@@ -212,10 +220,12 @@ cc.Class({
 
         this.scheduleOnce(callback3, 10);
 
+        this.scheduleOnce(callback4, 12);
+
         var ttp=function(){
             this.tableToPot(0,500);
         };
-        this.scheduleOnce(ttp, 15);
+        this.scheduleOnce(ttp, 17);
 
 
         //this.scheduleOnce(this.flopstart, 13);
@@ -306,7 +316,7 @@ cc.Class({
 
     },
     //结束比牌
-    end:function(sit){
+    end:function(sit,duration){
         var table_bg=this.node.parent.getChildByName("table_bg");
         var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
         table_bg.getChildByName("seat_"+sit).opacity=100;
@@ -314,12 +324,16 @@ cc.Class({
         this.timestart(pos);
     },
     //站起
-    quit:function(sit){
+    quit:function(sit,duration){
         var table_bg=this.node.parent.getChildByName("table_bg");
-        var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
-        table_bg.getChildByName("seat_"+sit).opacity=100;
-        //cc.log(pos);
-        this.timestart(pos);
+        var seat=table_bg.getChildByName("seat_"+sit);
+        seat.removeAllChildren(true);
+
+        var finished=function(){
+            this.add_countdown(node_table_bg,sit,duration);
+        };
+        this.countdown_over_task=finished;
+
     },
     //桌子上的筹码进入底池
     tableToPot:function(pot,inpot){

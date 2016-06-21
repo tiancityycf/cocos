@@ -22,12 +22,24 @@ cc.Class({
                                     "user_avatar" : "http://img.51yche.com/avatar/2016-06-15/w_120x120_57602aed7d6d8.jpg",
                                     "user_chips" : "800",
                                     "seat_number" : "0"
-                                }, {
+                                },{
                                     "user_id" : "6",
                                     "user_nick" : "小刚",
                                     "user_avatar" : "http://img.51yche.com/avatar/2016-06-15/w_120x120_57602bd098133.jpg",
                                     "user_chips" : "1000",
                                     "seat_number" : "1"
+                                },{
+                                "user_id" : "7",
+                                "user_nick" : "小3",
+                                "user_avatar" : "http://img.51yche.com/avatar/2016-06-15/w_120x120_57602bd098133.jpg",
+                                "user_chips" : "1000",
+                                "seat_number" : "3"
+                                },{
+                                "user_id" : "8",
+                                "user_nick" : "小4",
+                                "user_avatar" : "http://img.51yche.com/avatar/2016-06-15/w_120x120_57602bd098133.jpg",
+                                "user_chips" : "1000",
+                                "seat_number" : "6"
                                 },
                                 {
                                     "user_id" : "6",
