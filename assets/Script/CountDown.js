@@ -90,6 +90,7 @@ cc.Class({
         if(fillRange == 0){
             this.unschedule(this.countdown_task);//删除定时任务
             this.countdown_node.destroy();//删除该节点
+            this.countdown_task = null;
             //如果执行完毕，判断是否有下一步动作，如果有，执行下一步
             if(this.countdown_over_task != null ){
                 this.scheduleOnce(this.countdown_over_task,0);
