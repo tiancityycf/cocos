@@ -11,6 +11,8 @@ cc.Class({
         //    type:cc.Prefab
         //},
 
+        data:null,
+
         card:{
             default:[],
             type:cc.Node
@@ -147,30 +149,100 @@ cc.Class({
 
         this.reqstart();
 
+        this.inpotstart(3,0);
+
     },
     reqstart:function(){
         var url="http://172.16.0.210:2016/info.php";
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
         xhr.send();
+        var me=this;
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 if(xhr.status == 200){
                     var response = eval('(' + xhr.responseText + ')');
-
+                    me.actions(response['actions']);
                     return response;
                 }else{
-                    cc.log("xhr.status=".xhr.status)
+                    cc.log("xhr.status=".xhr.status);
                     return null;
                 }
             }
         };
 
+    },
 
+
+    //    站起							5
+    //    离开房间						6
+    //    flop发牌命令					9
+    //    turn发牌命令					10
+    //    river发牌命令					11
+    //    check						    12
+    //    call							13
+    //    raise						    14
+    //    fold							15
+    //    一手结束数据    				16
+    //    发表情    					    17
+    //    发道具  						18
+    //    延时操作						19
+    //    主动亮牌						24
+    //    牌局结束                       25
+    //    发道具（可连发和群发）           35
+    //    聊天消息                       36
+
+    //    "CMD" : 13,
+    //    "chair_id" : 3,
+    //    "chip" : 1,
+    //    "current_action_chair" : 4,
+    //    "current_pot" : 4,
+    //    "pot" : 4,
+    //    "timestamp" : 1466422796,
+    actions:function(ac){
+        var starttime=0;
+        var len=ac.length;
+        for(var i=0;i<len;i++){
+            var duration;
+            if(i==(len-1)){
+                starttime=ac[i]["timestamp"];
+                duration=0;
+            }else{
+                //动作都延长一秒
+                duration=ac[i]["timestamp"]-starttime+1;
+            }
+
+        }
+        for(var i=0;i<ac.length;i++){
+            var duration;
+            if(i==0){
+                starttime=ac[i]["timestamp"];
+                duration=0;
+            }else{
+                duration=ac[i]["timestamp"]-starttime;
+            }
+
+            switch(ac[i]["CMD"]){
+                case 12:
+                    var callback=function(){
+                        this.check(ac[i]["chair_id"],3,ac[i]["current_pot"],ac[i]["pot"],2);
+                    };
+                    this.scheduleOnce(callback, duration);
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
+            cc.log(ac[i]['CMD']);
+        }
     },
 
     //圆形头像 cc.Mask 例子
     mainstart:function(){
+
+        this.actions();
+        return false;
 
         this.unschedule(this.flopstart);
         this.unschedule(this.turnstart);
@@ -192,10 +264,10 @@ cc.Class({
         //this.card[4].stopAllActions();
 
 
-        this.inpotstart(50,100);
+
 
         var callback=function(){
-            this.bet(0,3);
+            this.bet(0,3,50,100,2);
         };
 
         var callback2=function(){
@@ -204,12 +276,12 @@ cc.Class({
 
 
         var callback3=function(){
-            this.quit(6,2);
+            this.raise(6,2,150,200,5);
         };
 
 
         var callback4=function(){
-            this.call(7,2);
+            this.call(7,2,50,100,2);
         };
 
 
@@ -220,12 +292,12 @@ cc.Class({
 
         this.scheduleOnce(callback3, 10);
 
-        this.scheduleOnce(callback4, 12);
+        this.scheduleOnce(callback4, 13);
 
         var ttp=function(){
             this.tableToPot(0,500);
         };
-        this.scheduleOnce(ttp, 17);
+        this.scheduleOnce(ttp, 18);
 
 
         //this.scheduleOnce(this.flopstart, 13);
@@ -256,6 +328,7 @@ cc.Class({
     },
     //check
     check:function(sit,duration){
+        this.countdown_over_task=null;
         var node_table_bg = this.node.parent.getChildByName("table_bg");
         this.add_countdown(node_table_bg,sit,duration);
         //var turn = cc.callFunc(this.showriver, this, node);
@@ -269,6 +342,8 @@ cc.Class({
     },
     //弃牌
     fold:function(sit,duration){
+        this.countdown_over_task=null;
+
         var node_table_bg = this.node.parent.getChildByName("table_bg");
         this.add_countdown(node_table_bg,sit,duration);
 
@@ -279,44 +354,52 @@ cc.Class({
         this.countdown_over_task=finished;
 
     },
-    bet:function(sit,duration){
+    bet:function(sit,duration,pot,inpot,handChips){
+        this.countdown_over_task=null;
+
         var url="game_bet_tip";
         var node_table_bg = this.node.parent.getChildByName("table_bg");
         this.add_countdown(node_table_bg,sit,duration);
 
         var finished=function(){
             this.game_tip(sit,url,true);
-            this.chipsToTable(sit,50,100,2);
+            this.chipsToTable(sit,pot,inpot,handChips);
         };
         this.countdown_over_task=finished;
     },
-    call:function(sit,duration){
+    call:function(sit,duration,pot,inpot,handChips){
+        this.countdown_over_task=null;
+
         var url="game_call_tip";
         var node_table_bg = this.node.parent.getChildByName("table_bg");
         this.add_countdown(node_table_bg,sit,duration);
 
         var finished=function(){
             this.game_tip(sit,url,true);
-            this.chipsToTable(sit,50,100,2);
+            this.chipsToTable(sit,pot,inpot,handChips);
         };
         this.countdown_over_task=finished;
 
     },
 
-    raise:function(sit,duration){
+    raise:function(sit,duration,pot,inpot,handChips){
+        this.countdown_over_task=null;
+
         var url="game_raise_tip";
         var node_table_bg = this.node.parent.getChildByName("table_bg");
         this.add_countdown(node_table_bg,sit,duration);
 
         var finished=function(){
             this.game_tip(sit,url,true);
-            this.chipsToTable(sit,100,200,5);
+            this.chipsToTable(sit,pot,inpot,handChips);
         };
         this.countdown_over_task=finished;
 
     },
     //结束比牌
     end:function(sit,duration){
+        this.countdown_over_task=null;
+
         var table_bg=this.node.parent.getChildByName("table_bg");
         var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
         table_bg.getChildByName("seat_"+sit).opacity=100;
@@ -325,6 +408,8 @@ cc.Class({
     },
     //站起
     quit:function(sit,duration){
+        this.countdown_over_task=null;
+
         var table_bg=this.node.parent.getChildByName("table_bg");
         var seat=table_bg.getChildByName("seat_"+sit);
         seat.removeAllChildren(true);
@@ -378,8 +463,14 @@ cc.Class({
         var audio="audio/audio_chipsToTable";
         //var chips="game_chip_tip";
         var table_bg=this.node.parent.getChildByName("table_bg");
+        var chipNode=table_bg.getChildByName("chip_"+sit);
+
+        var chipSp=chipNode.getComponent(cc.Sprite);
+        if(chipSp){
+            chipSp.destroy();
+        };
         var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
-        var chipPos=table_bg.getChildByName("chip_"+sit).getPosition();//获取坐标
+        var chipPos=chipNode.getPosition();//获取坐标
 
         var node=new cc.Node();
 
@@ -428,9 +519,10 @@ cc.Class({
         inpot=Number(inpot);
         if(this.inpot){
             var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
-            var inpotObj=this.inpot.getChildByName("inpot").getComponent(cc.Label);
+            var inpotNode=this.inpot.getChildByName("inpot");
             potObj.string="pot:"+(Number(potObj.string.substr(4))+pot);
-            if(inpotObj){
+            if(inpotNode){
+                var inpotObj=inpotNode.getComponent(cc.Label);
                 inpotObj.string= Number(inpotObj.string)+inpot;
             }else{
                 this.inpottop(inpot);
@@ -439,8 +531,9 @@ cc.Class({
             this.inpot=new cc.Node();
             this.inpot.parent=this.node.parent;
             this.inpot.setPosition(0,250);
-            this.inpottop(inpot);
-
+            if(inpot>0){
+                this.inpottop(inpot);
+            };
             var potNode=new cc.Node();
             var plb = potNode.addComponent(cc.Label);
             plb.fontSize=20;
