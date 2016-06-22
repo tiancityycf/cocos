@@ -9,6 +9,9 @@ cc.Class({
     },
     sit_down:function(){
         var table_data = this.hand_data;
+        table_data['table_name']=table_data['table_name']?table_data['table_name']:"未知牌局";
+        table_data['table_code']=table_data['table_code']?table_data['table_code']:"位置邀请码";
+        table_data['table_type']=table_data['table_type']?table_data['table_type']:1;
         // if(table_data == null){
         //     cc.log("没有数据");
         //     return false;
