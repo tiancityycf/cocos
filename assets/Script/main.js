@@ -150,7 +150,7 @@ cc.Class({
 
         this.reqstart();
 
-        this.inpotstart(3,0);
+        this.inpotstart(0,0);
 
     },
 
@@ -243,7 +243,7 @@ cc.Class({
                     this.call(this.actions[i]["chair_id"],this.actions[i]["duration"],this.actions[i]["current_pot"],this.actions[i]["pot"],this.actions[i]["chip"]);
                     break;
                 case 14:
-                    this.call(this.actions[i]["chair_id"],this.actions[i]["duration"],this.actions[i]["current_pot"],this.actions[i]["pot"],this.actions[i]["chip"]);
+                    this.raise(this.actions[i]["chair_id"],this.actions[i]["duration"],this.actions[i]["current_pot"],this.actions[i]["pot"],this.actions[i]["chip"]);
                     break;
                 case 15:
                     this.fold(this.actions[i]["chair_id"],this.actions[i]["duration"]);
@@ -259,7 +259,22 @@ cc.Class({
             this.i=0;
         };
     },
-
+    //牌局开始，小盲和大盲下注
+    initsb:function(){
+        var hand_data = this.hand_data;
+        var sb_data = null;//小盲的数据
+        var bb_post = null;//大盲的数据
+        for(var k in hand_data['players']){
+            var v = hand_data['players'][k];
+            if(v['chair_id'] == hand_data['start']['sb_chair']){
+                sb_data = v;
+            }else if(v['chair_id'] == hand_data['start']['bb_chair']){
+                bb_post = v;
+            }
+        }
+        this.chipsToTable(sb_data['chair_id'],sb_data['table_chip'],0,sb_data['table_chip']);
+        this.chipsToTable(bb_post['chair_id'],bb_post['table_chip']+sb_data['table_chip'],0,bb_post['table_chip']);
+    },
     //圆形头像 cc.Mask 例子
     mainstart:function(){
         this.card[0].removeAllChildren(true);
@@ -273,6 +288,7 @@ cc.Class({
         this.card[2].stopAllActions();
         this.card[3].stopAllActions();
         this.card[4].stopAllActions();
+        this.initsb();
         this.actionend();
     },
     //显示操作提示
@@ -455,27 +471,42 @@ cc.Class({
         var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
         var chipPos=chipNode.getPosition();//获取坐标
 
-        var node=new cc.Node();
+        var node = new cc.Node();
+        node.name='table_chip_'+sit;
 
         var sp = node.addComponent(cc.Sprite);
         cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
             var frame1 = atlas.getSpriteFrame('game_chip_tip');
             sp.spriteFrame = frame1;
         });
-        node.parent=table_bg;
+        node.parent = table_bg;
 
         node.setPosition(pos);
 
-        var action=cc.moveTo(0.2,chipPos);
+        var action = cc.moveTo(0.2,chipPos);
 
         var showLabel=function(node){
-            var cn=new cc.Node();
-            var chipLabel = cn.addComponent(cc.Label);
-            cn.parent=node;
-            chipLabel.fontSize=20;
-            cn.color = new cc.Color(0, 0, 0);
-            cn.setPosition(0,-40);
-            chipLabel.string=handPot;
+            var node_name = node.name;//找到这个节点
+            var node = cc.find("Canvas/table_bg/"+node_name);//用这个方法找到节点，重新赋值，否则无法找到该节点的子节点
+            var table_chips_node = node.getChildByName("table_chip");
+            if(table_chips_node == null){
+                var cn = new cc.Node();
+                var chipLabel = cn.addComponent(cc.Label);
+                cn.name = "table_chip";
+                cn.parent = node;
+                chipLabel.fontSize = 20;
+                cn.color = new cc.Color(0, 0, 0);
+                cn.setPosition(0,-40);
+                chipLabel.string = handPot;
+            }else{
+                var chipLabel = table_chips_node.getComponent(cc.Label);
+                chipLabel.string = parseInt(chipLabel.string) + handPot;
+            }
+            //剩余的筹码变化
+            var seat_node = table_bg.getChildByName("seat_"+sit);
+            var seat_chips_node = seat_node.getChildByName("chips");
+            var seat_chips_label = seat_chips_node.getComponent(cc.Label);
+            seat_chips_label.string = parseInt(seat_chips_label.string) - handPot;
         };
         var showSelf = cc.callFunc(showLabel, this, node);
 
@@ -503,10 +534,12 @@ cc.Class({
         if(this.inpot){
             var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
             var inpotNode=this.inpot.getChildByName("inpot");
-            potObj.string="pot:"+(Number(potObj.string.substr(4))+pot);
+            //potObj.string="pot:"+(Number(potObj.string.substr(4))+pot);
+            potObj.string="pot:" + pot;
             if(inpotNode){
                 var inpotObj=inpotNode.getComponent(cc.Label);
-                inpotObj.string= Number(inpotObj.string)+inpot;
+                inpotObj.string = inpot;
+                //inpotObj.string= Number(inpotObj.string)+inpot;
             }else{
                 this.inpottop(inpot);
             }
