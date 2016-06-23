@@ -7,6 +7,9 @@ cc.Class({
             type:cc.Node
         },
         GameMain:null,//游戏资源
+        audio_chipsToTable:null,//下注的音频
+        audio_check:null,//check的音频
+        audio_fold:null,//fold的音频
     },
     sit_down:function(){
         //加载游戏资源图片

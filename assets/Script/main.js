@@ -354,15 +354,17 @@ cc.Class({
         //var turn = cc.callFunc(this.showriver, this, node);
 
         var url="game_check_tip";
+        var me = this;
         var finished=function(){
             // play audioSource
-            var audio="audio/audio_check";
-            var audionode=new cc.Node();
-            var audiosource=audionode.addComponent(cc.AudioSource);
-
-            cc.loader.loadRes(audio, function (err, assets) {
-                cc.audioEngine.playEffect(assets);
-            });
+            if(me.audio_check == null ){
+                cc.loader.loadRes("audio/audio_check", function (err, assets) {
+                    me.audio_check = assets;
+                    cc.audioEngine.playEffect(assets);
+                });
+            }else{
+                cc.audioEngine.playEffect(me.audio_check);
+            }
             this.game_tip(sit,url,true);
         };
         this.countdown_over_task=finished;
@@ -376,15 +378,17 @@ cc.Class({
         this.add_countdown(node_table_bg,sit,duration);
 
         var url="game_fold_tip";
-        var finished=function(){
-            var audio="audio/audio_fold";
-            var audionode=new cc.Node();
-            var audiosource=audionode.addComponent(cc.AudioSource);
-
-            cc.loader.loadRes(audio, function (err, assets) {
-                cc.audioEngine.playEffect(assets);
-            });
-            this.game_tip(sit,url,false);
+        var me = this;
+        var finished = function(){
+            if(me.audio_fold == null ){
+                cc.loader.loadRes("audio/audio_fold", function (err, assets) {
+                    me.audio_fold = assets;
+                    cc.audioEngine.playEffect(assets);
+                });
+            }else{
+                cc.audioEngine.playEffect(me.audio_fold);
+            }
+            me.game_tip(sit,url,false);
         };
         this.countdown_over_task=finished;
 
@@ -761,7 +765,6 @@ cc.Class({
     chipsToTable:function(sit,pot,inpot,handPot){
         pot=Number(pot);
         inpot=Number(inpot);
-        var audio="audio/audio_chipsToTable";
         //var chips="game_chip_tip";
         var table_bg=this.node.parent.getChildByName("table_bg");
         var chipNode=table_bg.getChildByName("chip_"+sit);
@@ -816,17 +819,19 @@ cc.Class({
 
         this.table_chips.push(node);
 
-        // play audioSource
-        var audionode=new cc.Node();
-        var audiosource=audionode.addComponent(cc.AudioSource);
-
-        cc.loader.loadRes(audio, function (err, assets) {
+        // play audioSource播放下注的声音
+        var me = this;
+        if(me.audio_chipsToTable == null){
+            cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
+                me.audio_chipsToTable = assets;
+                node.runAction(seq);
+                cc.audioEngine.playEffect(assets);
+            });
+        }else{
             node.runAction(seq);
-            cc.audioEngine.playEffect(assets);
-        });
-
+            cc.audioEngine.playEffect(this.audio_chipsToTable);
+        }
         this.inpotstart(pot);
-
     },
 
     //inpot 底层筹码变化
