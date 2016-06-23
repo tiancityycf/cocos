@@ -5,11 +5,6 @@ cc.Class({
 
     properties: {
 
-        //t_prefab:{
-        //    default:null,
-        //    type:cc.Prefab
-        //},
-
         data:null,
 
         card:{
@@ -34,11 +29,6 @@ cc.Class({
         game_card_turn:0,
         game_card_river:0,
 
-
-
-
-
-
         //t_sprite:{//定义一个cc的类型，并定义上常用属性
         //    default:null,
         //    type:cc.SpriteFrame,//类型的定义
@@ -50,11 +40,6 @@ cc.Class({
         //    serializable:true,//设置false就是临时变量
         //    editorOnly:false//导出项目前剔除此属性
         //},
-        //
-        //t_url:{
-        //    default:null,
-        //    url:cc.Texture2D
-        //},
 
         ////可以只定义 get 方法，这样相当于一份 readonly 的属性。[当前有bug，只设定get也能修改]
         //t_getSet:{
@@ -62,11 +47,7 @@ cc.Class({
         //    get:function(){return this.t_getSet},//get
         //    set:function(value){this.t_getSet =value;}//set
         //},
-        //
-        //t_array:{//定义一个数组
-        //    default:[],
-        //    type:[cc.Sprite]
-        //}
+
 
     },
 
@@ -152,7 +133,6 @@ cc.Class({
 
         this.inpotstart(0,0);
 
-        //this.end(1);
 
     },
 
@@ -259,6 +239,8 @@ cc.Class({
             };
         }else{
             this.i=0;
+            this.endshow();
+
         };
     },
     //牌局开始，小盲和大盲下注
@@ -416,7 +398,8 @@ cc.Class({
 		}
      ],
      */
-    end:function(data){
+    end:function(){
+        var data=this.hand_data["end"];
         if(data){
             var cardType={
                 "1":"高牌",          //1 高牌
@@ -430,81 +413,91 @@ cc.Class({
                 "9":"同花顺",        //9 同花顺
                 "10":"皇家同花顺",    //10 皇家同花顺
             };
-            data = [{
-                "chair_id" : 3,
-                "change_chip" : 114,
-                "hand_poker_0" : 13,
-                "hand_poker_1" : 43,
-                "new_chip" : 314,
-                "user_id" : 145,
-                "card_type":1
-            }, {
-                "chair_id" : 4,
-                "change_chip" : -114,
-                "hand_poker_0" : 57,
-                "hand_poker_1" : 52,
-                "new_chip" : 86,
-                "user_id" : 138,
-                "card_type":3
-            }
-            ];
-            this.endshow(1);
+            //data = [{
+            //    "chair_id" : 3,
+            //    "change_chip" : 114,
+            //    "hand_poker_0" : 13,
+            //    "hand_poker_1" : 43,
+            //    "new_chip" : 314,
+            //    "user_id" : 145,
+            //    "card_type":1
+            //}, {
+            //    "chair_id" : 4,
+            //    "change_chip" : -114,
+            //    "hand_poker_0" : 57,
+            //    "hand_poker_1" : 52,
+            //    "new_chip" : 86,
+            //    "user_id" : 138,
+            //    "card_type":3
+            //}
+            //];
+
+            cc.log(data);
             var len=data.length;
-            //this.endtip(1,200,33,44,"顺子");
             for(var i=0;i<len;i++){
                 this.endtip(data[i]["chair_id"],data[i]["change_chip"],data[i]["hand_poker_0"],data[i]["hand_poker_1"],cardType[data[i]["card_type"]]);
             }
         };
     },
     //亮出所有剩余公牌，准备比牌
-    endshow:function(cards){
-        cards = [44,11,22,33,23];
+    endshow:function(){
+        //cards = [44,11,22,33,23];
         //cards = [44,23];
         //cards = [23];
+        var cards=[];
 
-        var len=cards.length;
+        var len = cards.length?cards.length:0;
+
+        var duration=1;
         switch(len) {
             case 1:
                 this.scheduleOnce(function(){
                     this.tableToPot(100,200);
-                },1);
+                },duration);
 
+                duration=duration+1;
                 var rivercard=[cards[0]];
                 this.scheduleOnce(function(){
                     this.riverstart(rivercard);
-                },2);
+                },duration);
 
                 break;
             case 2:
                 this.scheduleOnce(function(){
                     this.tableToPot(100,200);
-                },1);
+                },duration);
 
+                duration=duration+1;
                 var turnpcard=[cards[0]];
                 this.scheduleOnce(function(){
                     this.turnstart(turnpcard);
-                },2);
+                },duration);
 
+                duration=duration+3;
                 var rivercard=[cards[1]];
                 this.scheduleOnce(function(){
                     this.riverstart(rivercard);
-                },5);
+                },duration);
 
                 break;
             case 5:
                 this.scheduleOnce(function(){
                     this.tableToPot(100,200);
-                },1);
+                },duration);
+
+                duration=duration+1;
                 var flopcard=[cards[0],cards[1],cards[2]];
                 this.scheduleOnce(function(){
                     this.flopstart(flopcard);
-                },2);
+                },duration);
 
+                duration=duration+3;
                 var turnpcard=[cards[3]];
                 this.scheduleOnce(function(){
                     this.turnstart(turnpcard);
-                },5);
+                },duration);
 
+                duration=duration+2;
                 var rivercard=[cards[4]];
                 this.scheduleOnce(function(){
                     this.riverstart(rivercard);
@@ -514,85 +507,119 @@ cc.Class({
             default:
                 this.scheduleOnce(function(){
                     this.tableToPot(100,200);
-                },1);
+                },duration);
                 break;
         }
+        duration=duration+1;
+        this.scheduleOnce(function(){
+            this.end();
+        },duration);
     },
     //比牌结束显示输赢详情
-    endtip:function(sit,chips,card1,card2,cardType){
+    endtip:function(sit,chips,card1,card2,cardType) {
+        if (card1 == 0 && card2 == 0) {
+            return false;
+        };
         var table_bg = this.node.parent.getChildByName("table_bg");
-        var pos=table_bg.getChildByName("seat_"+sit).getPosition();
+        var pos = table_bg.getChildByName("seat_" + sit).getPosition();
 
 
-        var node=new cc.Node();
+        var node = new cc.Node();
         var lo = node.addComponent(cc.Layout);
 
-        node.parent=this.node.parent;
+        node.parent = this.node.parent;
         node.setPosition(pos);
         //node.setPosition(x,y);
 
-        var font=20;//上下label字体大小
-        var color=new cc.Color(0, 0, 0);//上下字体颜色
+        var font = 20;//上下label字体大小
+        var color = new cc.Color(0, 0, 0);//上下字体颜色
 
         //牌型cardType
-        var ctNode=new cc.Node();
-        var ctChip=ctNode.addComponent(cc.Sprite);
-        ctNode.parent=node;
-        ctNode.setPosition(0,-60);
+        var ctNode = new cc.Node();
+        var ctChip = ctNode.addComponent(cc.Sprite);
+        ctNode.parent = node;
+        ctNode.setPosition(0, -60);
 
 
         cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-            if(chips>0){
-                var lbNode=new cc.Node();
-                var lbChip=lbNode.addComponent(cc.Sprite);
+            if (chips > 0) {
+                var lbNode = new cc.Node();
+                var lbChip = lbNode.addComponent(cc.Sprite);
                 lbChip.spriteFrame = atlas.getSpriteFrame('game_endhand');
-                lbNode.parent=node;
-                lbNode.setPosition(0,60);
+                lbNode.parent = node;
+                lbNode.setPosition(0, 60);
                 //营收文字
-                var lbbNode=new cc.Node();
-                var lbb=lbbNode.addComponent(cc.Label);
-                lbb.string="+"+chips;
-                lbbNode.parent=lbNode;
-                lbb.fontSize=font;
+                var lbbNode = new cc.Node();
+                var lbb = lbbNode.addComponent(cc.Label);
+                lbb.string = "+" + chips;
+                lbbNode.parent = lbNode;
+                lbb.fontSize = font;
                 lbbNode.color = color;
-                lbbNode.setPosition(0,-10);
+                lbbNode.setPosition(0, -10);
             };
-            ctChip.spriteFrame = atlas.getSpriteFrame('game_endhand');
-            //牌型文字
-            var ctlNode=new cc.Node();
-            var ctl=ctlNode.addComponent(cc.Label);
-            ctl.string=cardType;
-            ctlNode.parent=ctNode;
-            ctl.fontSize=font;
-            ctlNode.color = color;
-            ctlNode.setPosition(0,-10);
+            //2牌都亮时显示牌型
+            if (card1 > 0 && card2 > 0) {
+                ctChip.spriteFrame = atlas.getSpriteFrame('game_endhand');
+                //牌型文字
+                var ctlNode = new cc.Node();
+                var ctl = ctlNode.addComponent(cc.Label);
+                ctl.string = cardType;
+                ctlNode.parent = ctNode;
+                ctl.fontSize = font;
+                ctlNode.color = color;
+                ctlNode.setPosition(0, -10);
+            }
         });
         //底牌
-        var c1Node=new cc.Node();
-        var c2Node=new cc.Node();
-        var c1Chip=c1Node.addComponent(cc.Sprite);
-        var c2Chip=c2Node.addComponent(cc.Sprite);
-        c1Node.scale=0.6;
-        c2Node.scale=0.6;
-        c1Node.parent=node;
-        c2Node.parent=node;
-        c1Node.setPosition(-28,0);
-        c2Node.setPosition(28,0);
+        var c1Node = new cc.Node();
+        var c2Node = new cc.Node();
+        var c1Chip = c1Node.addComponent(cc.Sprite);
+        var c2Chip = c2Node.addComponent(cc.Sprite);
+        c1Node.scale = 0.6;
+        c2Node.scale = 0.6;
+        c1Node.parent = node;
+        c2Node.parent = node;
+        c1Node.setPosition(-28, 0);
+        c2Node.setPosition(28, 0);
 
-        if(card1<10){
-            card1='card_0'+card1;
-        }else{
-            card1='card_'+card1;
+        if (card1 > 0 && card2 > 0) {
+            if (card1 < 10) {
+                card1 = 'card_0' + card1;
+            } else {
+                card1 = 'card_' + card1;
+            }
+
+            if(card2<10){
+                card2='card_0'+card2;
+            }else{
+                card2='card_'+card2;
+            }
+
+            cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
+                c1Chip.spriteFrame = atlas.getSpriteFrame(card1);
+                c2Chip.spriteFrame = atlas.getSpriteFrame(card2);
+            });
+
+        } else {
+            if(card1 > 0 ){
+                //显示牌背
+                cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
+                    c1Chip.spriteFrame = atlas.getSpriteFrame(card1);
+                });
+                //显示牌背
+                cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+                    c2Chip.spriteFrame = atlas.getSpriteFrame('game_card_reverse');
+                });
+            }else{
+                cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
+                    c2Chip.spriteFrame = atlas.getSpriteFrame(card2);
+                });
+                //显示牌背
+                cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
+                    c1Chip.spriteFrame = atlas.getSpriteFrame('game_card_reverse');
+                });
+            }
         }
-        if(card2<10){
-            card2='card_0'+card2;
-        }else{
-            card2='card_'+card2;
-        }
-        cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-            c1Chip.spriteFrame = atlas.getSpriteFrame(card1);
-            c2Chip.spriteFrame = atlas.getSpriteFrame(card2);
-        });
     },
     //站起
     quit:function(sit,duration){
