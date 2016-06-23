@@ -250,21 +250,62 @@ cc.Class({
 
         };
     },
-    //牌局开始，小盲和大盲下注
+    //初始化小盲位，大盲位
     initsb:function(){
+        var table_data = this.hand_data;
+        var node_table_bg = cc.find("Canvas/table_bg");
+        //dealer位
+        var dealer_node = node_table_bg.getChildByName("dealer_"+table_data['start']['d_chair']);
+        var dealer_sprite = dealer_node.addComponent(cc.Sprite);
+        //大盲位
+        var big_blind_node = node_table_bg.getChildByName("chip_"+table_data['start']['bb_chair']);
+        var big_blind_sprite = big_blind_node.addComponent(cc.Sprite);
+        //小盲位
+        var small_blind_node = node_table_bg.getChildByName("chip_"+table_data['start']['sb_chair']);
+        var small_blind_sprite = small_blind_node.addComponent(cc.Sprite);
+
+        //dealer位的图片加载
+        var dealer_frame = this.GameMain.getSpriteFrame("game_dealer_tip");
+        dealer_sprite.spriteFrame = dealer_frame;
+        //大盲位的图片加载
+        var big_blind_frame = this.GameMain.getSpriteFrame("game_bigBlind_tip");
+        big_blind_sprite.spriteFrame = big_blind_frame;
+        //小盲位的图片加载
+        var small_blind_frame = this.GameMain.getSpriteFrame("game_smallBlind_tip");
+        small_blind_sprite.spriteFrame = small_blind_frame;
+        this.scheduleOnce(this.start_game,1);
+    },
+    //牌局开始，小盲和大盲下注
+    start_game:function(){
         var hand_data = this.hand_data;
+        var me = this;
+        //加载手牌图片
+        var frame = this.GameMain.getSpriteFrame("game_handCard_cover_tip");
         var sb_data = null;//小盲的数据
-        var bb_post = null;//大盲的数据
+        var bb_data = null;//大盲的数据
+        //发牌
         for(var k in hand_data['players']){
             var v = hand_data['players'][k];
+            var seat_node =  cc.find("Canvas/table_bg").getChildByName("seat_"+v['chair_id']);
+            var node_hand_card = new cc.Node();
+            var sprite_hand_card = node_hand_card.addComponent(cc.Sprite);
+            node_hand_card.scale = 1;
+            node_hand_card.name = "hand_card";
+            node_hand_card.parent = seat_node;
+            node_hand_card.setPosition(20,-30);
+            seat_node.getChildByName("hand_card").setLocalZOrder(1);
+            sprite_hand_card.spriteFrame = frame;
             if(v['chair_id'] == hand_data['start']['sb_chair']){
                 sb_data = v;
             }else if(v['chair_id'] == hand_data['start']['bb_chair']){
-                bb_post = v;
+                bb_data = v;
             }
         }
-        this.chipsToTable(sb_data['chair_id'],sb_data['table_chip'],0,sb_data['table_chip']);
-        this.chipsToTable(bb_post['chair_id'],bb_post['table_chip']+sb_data['table_chip'],0,bb_post['table_chip']);
+        me.scheduleOnce(function(){
+            me.chipsToTable(sb_data['chair_id'],sb_data['table_chip'],0,sb_data['table_chip']);
+            me.chipsToTable(bb_data['chair_id'],bb_data['table_chip']+sb_data['table_chip'],0,bb_data['table_chip']);
+            me.actionend();
+        },1);
     },
     //圆形头像 cc.Mask 例子
     mainstart:function(){
@@ -277,7 +318,6 @@ cc.Class({
         };
 
         this.initsb();
-        this.actionend();
     },
     buttonDisable:function(){
         var b=this.node.parent.getChildByName("game_table_start_normal");

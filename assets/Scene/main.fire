@@ -3750,8 +3750,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 80,
-      "y": -300
+      "x": 0,
+      "y": -450
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -4668,6 +4668,7 @@
     },
     "_enabled": true,
     "seat": [],
+    "GameMain": null,
     "countdown_execution_interval": 0.1,
     "countdown_repeat_num": 0,
     "countdown_long_time": 0,

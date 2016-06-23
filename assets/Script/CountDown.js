@@ -49,10 +49,8 @@ cc.Class({
         sprite.fillCenter = new cc.Vec2(0.5,0.5);
         sprite.fillStart = 0;
         sprite.fillRange = 0;
-        cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
-            var frame = atlas.getSpriteFrame("game_progress_frame");
-            sprite.spriteFrame = frame;
-        });
+        var frame = this.GameMain.getSpriteFrame("game_progress_frame");
+        sprite.spriteFrame = frame;
         //倒计时文字
         var node2 = new cc.Node();
         node2.name = "time";
