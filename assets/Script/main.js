@@ -29,6 +29,13 @@ cc.Class({
         game_card_turn:0,
         game_card_river:0,
 
+        end_tips_layout:{
+            default:[],
+            type:cc.Node
+        },
+        //游戏加载以后播放了几次
+        game_start_num:0,
+
         //t_sprite:{//定义一个cc的类型，并定义上常用属性
         //    default:null,
         //    type:cc.SpriteFrame,//类型的定义
@@ -302,20 +309,14 @@ cc.Class({
     },
     //圆形头像 cc.Mask 例子
     mainstart:function(){
-
         this.buttonDisable();
+        if(this.game_start_num>0){
+            //当游戏第二次以后播放，重置游戏场景
+            this.resetGame();
+        }else{
+            this.game_start_num++;
+        };
 
-        this.card[0].removeAllChildren(true);
-        this.card[1].removeAllChildren(true);
-        this.card[2].removeAllChildren(true);
-        this.card[3].removeAllChildren(true);
-        this.card[4].removeAllChildren(true);
-
-        this.card[0].stopAllActions();
-        this.card[1].stopAllActions();
-        this.card[2].stopAllActions();
-        this.card[3].stopAllActions();
-        this.card[4].stopAllActions();
         this.initsb();
     },
     buttonDisable:function(){
@@ -483,7 +484,6 @@ cc.Class({
             //}
             //];
 
-            cc.log(data);
             var len=data.length;
             for(var i=0;i<len;i++){
                 this.endtip(data[i]["chair_id"],data[i]["change_chip"],data[i]["hand_poker_0"],data[i]["hand_poker_1"],cardType[data[i]["card_type"]]);
@@ -495,8 +495,12 @@ cc.Class({
         //cards = [44,11,22,33,23];
         //cards = [44,23];
         //cards = [23];
-        var cards=[];
-
+        //var cards=[];
+        if("undefined" != typeof this.hand_data["common_card"]){
+            var cards=this.hand_data["common_card"];
+        }else{
+            var cards=[];
+        }
         var len = cards.length?cards.length:0;
 
         var duration=1;
@@ -564,6 +568,7 @@ cc.Class({
         duration=duration+1;
         this.scheduleOnce(function(){
             this.end();
+            this.buttonenable();
         },duration);
     },
     //比牌结束显示输赢详情
@@ -576,6 +581,7 @@ cc.Class({
 
 
         var node = new cc.Node();
+        this.end_tips_layout.push(node);
         var lo = node.addComponent(cc.Layout);
 
         node.parent = this.node.parent;
@@ -674,6 +680,24 @@ cc.Class({
                 });
             }
         }
+    },
+    resetGame:function(){
+        this.resetSeat()
+
+        this.card[0].removeAllChildren(true);
+        this.card[1].removeAllChildren(true);
+        this.card[2].removeAllChildren(true);
+        this.card[3].removeAllChildren(true);
+        this.card[4].removeAllChildren(true);
+
+        if("undefined" != typeof this.end_tips_layout){
+            var len=this.end_tips_layout.length;
+            if(len>0){
+                for(var i=0;i<len;i++){
+                    this.end_tips_layout[i].destroy();
+                };
+            }
+        };
     },
     //站起
     quit:function(sit,duration){

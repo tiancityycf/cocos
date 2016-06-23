@@ -76,5 +76,18 @@ cc.Class({
             var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
             label_table_code.string = "盲注 "+sb_data['table_chip']+"/"+bb_data['table_chip'];
         }
+    },
+    resetSeat:function(){
+        var table_data = this.hand_data;
+        var node_table_bg = cc.find("Canvas/table_bg");
+
+        //坐下
+        for(var k in table_data['players']){
+            var v = table_data['players'][k];
+            var seat_node = node_table_bg.getChildByName("seat_"+v['chair_id']);
+            //带入的筹码
+            var label_chips = seat_node.getChildByName("chips").getComponent(cc.Label);
+            label_chips.string = v['remain_chip']+v['table_chip'];
+        }
     }
 });

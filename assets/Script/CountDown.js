@@ -126,10 +126,8 @@ cc.Class({
                     me.i=0;
                     me.hand_data = response;
                     me.sit_down();//坐下
-                    //me.actioninit(response);
-                    //return response;
                 } else {
-                    //return null;
+
                 }
             }
         }
