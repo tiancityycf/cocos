@@ -68,9 +68,6 @@ cc.Class({
         //4. 先获取目标组件所在的节点，然后通过getComponent获取目标组件
         //var _label = cc.find("Canvas/label").getComponent(cc.Label);
 
-        //5.也可以如下形式【注意此种方式，目前有BUG，无法正常使用 (0.7.1) 】
-        // var _label = cc.find("Canvas/label<cc.Label>");
-
         //var _label = cc.find("Canvas/card_49").getComponent(cc.Sprite);
 
         //cc.log(_label instanceof cc.Sprite);       // true
@@ -498,7 +495,7 @@ cc.Class({
         switch(len) {
             case 1:
                 this.scheduleOnce(function(){
-                    this.tableToPot(100,200);
+                    this.tableToPot(0,200);
                 },duration);
 
                 duration=duration+1;
@@ -510,7 +507,7 @@ cc.Class({
                 break;
             case 2:
                 this.scheduleOnce(function(){
-                    this.tableToPot(100,200);
+                    this.tableToPot(0,200);
                 },duration);
 
                 duration=duration+1;
@@ -528,7 +525,7 @@ cc.Class({
                 break;
             case 5:
                 this.scheduleOnce(function(){
-                    this.tableToPot(100,200);
+                    this.tableToPot(0,200);
                 },duration);
 
                 duration=duration+1;
@@ -552,7 +549,7 @@ cc.Class({
                 break;
             default:
                 this.scheduleOnce(function(){
-                    this.tableToPot(100,200);
+                    this.tableToPot(0,200);
                 },duration);
                 break;
         }
@@ -606,10 +603,8 @@ cc.Class({
                 lbbNode.setPosition(0, -10);
             };
             //2牌都亮时显示牌型
-            cc.log(card1);
-            cc.log(card2);
+
             if (card1 > 0 && card2 > 0) {
-                cc.log("in");
                 ctChip.spriteFrame = atlas.getSpriteFrame('game_endhand');
                 //牌型文字
                 var ctlNode = new cc.Node();
@@ -834,7 +829,7 @@ cc.Class({
         this.inpotstart(pot);
     },
 
-    //inpot 底层筹码变化
+    //inpot 底池筹码变化
     inpotstart:function(pot){
         pot = parseInt(pot);
         pot = isNaN(pot)== true?0:pot;
@@ -842,7 +837,8 @@ cc.Class({
             var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
             potObj.string="pot:" + pot;
         }else{
-            this.inpot=new cc.Node();
+            this.inpot = new cc.Node();
+            this.cleanNode.push(this.inpot);
             this.inpot.parent=this.node.parent;
             this.inpot.setPosition(0,250);
             var potNode=new cc.Node();
