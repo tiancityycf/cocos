@@ -33,6 +33,10 @@ cc.Class({
             default:[],
             type:cc.Node
         },
+        cleanSp:{
+            default:[],
+            type:cc.Sprite
+        },
         //游戏加载以后播放了几次
         game_start_num:0,
 
@@ -343,7 +347,7 @@ cc.Class({
         if(clean){
             this.table_tips.push(game_tip);
         }else{
-            this.cleanNode.push(game_tip);
+            this.cleanSp.push(sp);
         };
         //当前动作结束
         this.actionend();
@@ -467,25 +471,6 @@ cc.Class({
                 "9":"同花顺",        //9 同花顺
                 "10":"皇家同花顺",    //10 皇家同花顺
             };
-            //data = [{
-            //    "chair_id" : 3,
-            //    "change_chip" : 114,
-            //    "hand_poker_0" : 13,
-            //    "hand_poker_1" : 43,
-            //    "new_chip" : 314,
-            //    "user_id" : 145,
-            //    "card_type":1
-            //}, {
-            //    "chair_id" : 4,
-            //    "change_chip" : -114,
-            //    "hand_poker_0" : 57,
-            //    "hand_poker_1" : 52,
-            //    "new_chip" : 86,
-            //    "user_id" : 138,
-            //    "card_type":3
-            //}
-            //];
-
             var len=data.length;
             for(var i=0;i<len;i++){
                 this.endtip(data[i]["chair_id"],data[i]["change_chip"],data[i]["hand_poker_0"],data[i]["hand_poker_1"],cardType[data[i]["card_type"]]);
@@ -698,6 +683,17 @@ cc.Class({
                 for(var i=0;i<len;i++){
                     if(cc.isValid(this.cleanNode[i])){
                         this.cleanNode[i].destroy();
+                    };
+                };
+            }
+        };
+
+        if("undefined" != typeof this.cleanSp){
+            var len=this.cleanSp.length;
+            if(len>0){
+                for(var i=0;i<len;i++){
+                    if(cc.isValid(this.cleanSp[i])){
+                        this.cleanSp[i].destroy();
                     };
                 };
             }
