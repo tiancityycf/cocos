@@ -838,7 +838,7 @@ cc.Class({
             potObj.string="pot:" + pot;
         }else{
             this.inpot = new cc.Node();
-            this.cleanNode.push(this.inpot);
+            //this.cleanNode.push(this.inpot);
             this.inpot.parent=this.node.parent;
             this.inpot.setPosition(0,250);
             var potNode=new cc.Node();
