@@ -29,7 +29,7 @@ cc.Class({
         game_card_turn:0,
         game_card_river:0,
 
-        end_tips_layout:{
+        cleanNode:{
             default:[],
             type:cc.Node
         },
@@ -342,6 +342,8 @@ cc.Class({
         });
         if(clean){
             this.table_tips.push(game_tip);
+        }else{
+            this.cleanNode.push(game_tip);
         };
         //当前动作结束
         this.actionend();
@@ -585,7 +587,7 @@ cc.Class({
 
 
         var node = new cc.Node();
-        this.end_tips_layout.push(node);
+        this.cleanNode.push(node);
         var lo = node.addComponent(cc.Layout);
 
         node.parent = this.node.parent;
@@ -694,11 +696,13 @@ cc.Class({
         this.card[3].removeAllChildren(true);
         this.card[4].removeAllChildren(true);
 
-        if("undefined" != typeof this.end_tips_layout){
-            var len=this.end_tips_layout.length;
+        if("undefined" != typeof this.cleanNode){
+            var len=this.cleanNode.length;
             if(len>0){
                 for(var i=0;i<len;i++){
-                    this.end_tips_layout[i].destroy();
+                    if(cc.isValid(this.cleanNode[i])){
+                        this.cleanNode[i].destroy();
+                    };
                 };
             }
         };
@@ -723,7 +727,7 @@ cc.Class({
         if(this.table_tips){
             for(var i=0;i<this.table_tips.length;i++){
                 var sp=this.table_tips[i].getComponent(cc.Sprite);
-                if(sp){
+                if(cc.isValid(sp)){
                     sp.destroy();
                 }
             }
@@ -731,7 +735,7 @@ cc.Class({
         };
 
         var destorySelf=function(node){
-            if(node){
+            if(cc.isValid(node)){
                 node.destroy();
             }
         };
@@ -770,7 +774,7 @@ cc.Class({
         var chipNode=table_bg.getChildByName("chip_"+sit);
 
         var chipSp=chipNode.getComponent(cc.Sprite);
-        if(chipSp){
+        if(cc.isValid(chipSp)){
             chipSp.destroy();
         };
         var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
@@ -993,8 +997,9 @@ cc.Class({
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
             mSf.spriteFrame = atlas.getSpriteFrame(card1);
         });
-
-        node.destroy();
+        if(cc.isValid(node)){
+            node.destroy();
+        }
         this.actionend();
 
     },
@@ -1038,8 +1043,9 @@ cc.Class({
         cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
             mSf.spriteFrame = atlas.getSpriteFrame(card1);
         });
-
-        node.destroy();
+        if(cc.isValid(node)){
+            node.destroy();
+        }
 
 
         this.actionend();
