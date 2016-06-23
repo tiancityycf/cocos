@@ -131,7 +131,7 @@ cc.Class({
 
         this.reqstart();
 
-        this.inpotstart(0,0);
+        this.inpotstart(0);
 
 
     },
@@ -667,6 +667,14 @@ cc.Class({
                 destroyChips(this.table_chips[i]);
             }
         }
+        //底池筹码变化
+        var inpotNode=this.inpot.getChildByName("inpot");
+        if(inpotNode!=null){
+            var inpotObj=inpotNode.getComponent(cc.Label);
+            inpotObj.string = inpot;
+        }else{
+            this.inpottop(inpot);
+        }
         this.table_chips=[];
     },
 
@@ -739,33 +747,21 @@ cc.Class({
             cc.audioEngine.playEffect(assets);
         });
 
-        this.inpotstart(pot,inpot);
+        this.inpotstart(pot);
 
     },
 
     //inpot 底层筹码变化
-    inpotstart:function(pot,inpot){
-        pot=Number(pot);
-        inpot=Number(inpot);
+    inpotstart:function(pot){
+        pot = parseInt(pot);
+        pot = isNaN(pot)== true?0:pot;
         if(this.inpot){
             var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
-            var inpotNode=this.inpot.getChildByName("inpot");
-            //potObj.string="pot:"+(Number(potObj.string.substr(4))+pot);
             potObj.string="pot:" + pot;
-            if(inpotNode){
-                var inpotObj=inpotNode.getComponent(cc.Label);
-                inpotObj.string = inpot;
-                //inpotObj.string= Number(inpotObj.string)+inpot;
-            }else{
-                this.inpottop(inpot);
-            }
         }else{
             this.inpot=new cc.Node();
             this.inpot.parent=this.node.parent;
             this.inpot.setPosition(0,250);
-            if(inpot>0){
-                this.inpottop(inpot);
-            };
             var potNode=new cc.Node();
             var plb = potNode.addComponent(cc.Label);
             plb.fontSize=20;
