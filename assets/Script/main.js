@@ -29,6 +29,13 @@ cc.Class({
         game_card_turn:0,
         game_card_river:0,
 
+        end_tips_layout:{
+            default:[],
+            type:cc.Node
+        },
+        //游戏加载以后播放了几次
+        game_start_num:0,
+
         //t_sprite:{//定义一个cc的类型，并定义上常用属性
         //    default:null,
         //    type:cc.SpriteFrame,//类型的定义
@@ -261,18 +268,14 @@ cc.Class({
     },
     //圆形头像 cc.Mask 例子
     mainstart:function(){
-        //cc.game.pause();
         this.buttonDisable();
-        this.card[0].removeAllChildren(true);
-        this.card[1].removeAllChildren(true);
-        this.card[2].removeAllChildren(true);
-        this.card[3].removeAllChildren(true);
-        this.card[4].removeAllChildren(true);
-        //this.card[0].stopAllActions();
-        //this.card[1].stopAllActions();
-        //this.card[2].stopAllActions();
-        //this.card[3].stopAllActions();
-        //this.card[4].stopAllActions();
+        if(this.game_start_num>0){
+            //当游戏第二次以后播放，重置游戏场景
+            this.resetGame();
+        }else{
+            this.game_start_num++;
+        };
+
         this.initsb();
         this.actionend();
     },
@@ -538,7 +541,7 @@ cc.Class({
 
 
         var node = new cc.Node();
-        node.name="endtipLayout";
+        this.end_tips_layout.push(node);
         var lo = node.addComponent(cc.Layout);
 
         node.parent = this.node.parent;
@@ -638,16 +641,23 @@ cc.Class({
             }
         }
     },
-    resetEndtip:function(){
-        return false;
-        for(var i=0;i<5;i++){
-            var node=new cc.Node();
-            node.name="endtipLayout";
-            this.node.parent.addChild(node);
+    resetGame:function(){
+        this.resetSeat()
+
+        this.card[0].removeAllChildren(true);
+        this.card[1].removeAllChildren(true);
+        this.card[2].removeAllChildren(true);
+        this.card[3].removeAllChildren(true);
+        this.card[4].removeAllChildren(true);
+
+        if("undefined" != typeof this.end_tips_layout){
+            var len=this.end_tips_layout.length;
+            if(len>0){
+                for(var i=0;i<len;i++){
+                    this.end_tips_layout[i].destroy();
+                };
+            }
         };
-        var lo=this.node.parent.getChildByName("endtipLayout");
-        cc.log(lo);
-        //lo.destroy();
     },
     //站起
     quit:function(sit,duration){
