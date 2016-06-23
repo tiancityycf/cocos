@@ -880,8 +880,8 @@ cc.Class({
 
         //var action1=cc.moveTo(1, cc.p(-100, 50));
         //var action2=cc.moveTo(2, cc.p(0, 50));
-        var action1=cc.moveTo(1, cc.p(100, 0));
-        var action2=cc.moveTo(2, cc.p(200, 0));
+        var action1=cc.moveTo(1, cc.p(90, 0));
+        var action2=cc.moveTo(2, cc.p(180, 0));
         var action3=cc.callFunc(function(){
             //flop结束
             this.actionend();
