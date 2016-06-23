@@ -261,6 +261,9 @@ cc.Class({
     },
     //圆形头像 cc.Mask 例子
     mainstart:function(){
+
+        this.buttonDisable();
+
         this.card[0].removeAllChildren(true);
         this.card[1].removeAllChildren(true);
         this.card[2].removeAllChildren(true);
@@ -274,6 +277,14 @@ cc.Class({
         this.card[4].stopAllActions();
         this.initsb();
         this.actionend();
+    },
+    buttonDisable:function(){
+        var b=this.node.parent.getChildByName("game_table_start_normal");
+        b.getComponent(cc.Button).interactable=false;
+    },
+    buttonenable:function(){
+        var b=this.node.parent.getChildByName("game_table_start_normal");
+        b.getComponent(cc.Button).interactable=true;
     },
     //显示操作提示
     game_tip:function(sit,url,clean){
@@ -558,7 +569,10 @@ cc.Class({
                 lbbNode.setPosition(0, -10);
             };
             //2牌都亮时显示牌型
+            cc.log(card1);
+            cc.log(card2);
             if (card1 > 0 && card2 > 0) {
+                cc.log("in");
                 ctChip.spriteFrame = atlas.getSpriteFrame('game_endhand');
                 //牌型文字
                 var ctlNode = new cc.Node();
@@ -568,7 +582,7 @@ cc.Class({
                 ctl.fontSize = font;
                 ctlNode.color = color;
                 ctlNode.setPosition(0, -10);
-            }
+            };
         });
         //底牌
         var c1Node = new cc.Node();
@@ -584,27 +598,27 @@ cc.Class({
 
         if (card1 > 0 && card2 > 0) {
             if (card1 < 10) {
-                card1 = 'card_0' + card1;
+                var card_1 = 'card_0' + card1;
             } else {
-                card1 = 'card_' + card1;
+                var card_1 = 'card_' + card1;
             }
 
             if(card2<10){
-                card2='card_0'+card2;
+                var card_2='card_0'+card2;
             }else{
-                card2='card_'+card2;
+                var card_2='card_'+card2;
             }
 
             cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-                c1Chip.spriteFrame = atlas.getSpriteFrame(card1);
-                c2Chip.spriteFrame = atlas.getSpriteFrame(card2);
+                c1Chip.spriteFrame = atlas.getSpriteFrame(card_1);
+                c2Chip.spriteFrame = atlas.getSpriteFrame(card_2);
             });
 
         } else {
             if(card1 > 0 ){
                 //显示牌背
                 cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-                    c1Chip.spriteFrame = atlas.getSpriteFrame(card1);
+                    c1Chip.spriteFrame = atlas.getSpriteFrame(card_1);
                 });
                 //显示牌背
                 cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
@@ -612,7 +626,7 @@ cc.Class({
                 });
             }else{
                 cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-                    c2Chip.spriteFrame = atlas.getSpriteFrame(card2);
+                    c2Chip.spriteFrame = atlas.getSpriteFrame(card_2);
                 });
                 //显示牌背
                 cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
