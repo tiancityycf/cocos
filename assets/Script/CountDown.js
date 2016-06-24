@@ -103,7 +103,29 @@ cc.Class({
         }
     },
     reqstart:function(){
-        var url="http://172.16.0.210:2016/info.php";
+        var search = window.location.search; //获取url中"?"符后的字串
+        //var theRequest = {};
+        var hand_id=0;
+        if (search.indexOf("?") != -1) {
+            var str = search.substr(1);
+            var strs = str.split("&");
+            for(var i = 0; i < strs.length; i++) {
+                //theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+                if(strs[i].split("=")[0]=="hand_id"){
+                    hand_id=strs[i].split("=")[1];
+                }
+            }
+        }
+
+        var url="";
+        if(hand_id>0){
+            url="http://qa-api.kkpoker.com:8090/Html/get_mongo_data/hand_id/"+hand_id;
+        }else{
+            //测试数据
+            url="http://172.16.0.210:2016/info.php";
+         }
+
+
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
         xhr.send();
