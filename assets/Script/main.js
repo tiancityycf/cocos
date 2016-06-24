@@ -141,7 +141,6 @@ cc.Class({
 
         this.inpotstart(0);
 
-
     },
 
 
@@ -561,9 +560,6 @@ cc.Class({
     },
     //比牌结束显示输赢详情
     endtip:function(sit,chips,card1,card2,cardType) {
-        if (card1 == 0 && card2 == 0) {
-            return false;
-        };
         var table_bg = this.node.parent.getChildByName("table_bg");
         var pos = table_bg.getChildByName("seat_" + sit).getPosition();
 
@@ -588,6 +584,7 @@ cc.Class({
 
 
         if (chips > 0) {
+            this.potToWinner(pos);
             var lbNode = new cc.Node();
             var lbChip = lbNode.addComponent(cc.Sprite);
             lbChip.spriteFrame = this.GameMain.getSpriteFrame('game_endhand');
@@ -614,7 +611,10 @@ cc.Class({
             ctlNode.color = color;
             ctlNode.setPosition(0, -10);
         };
-
+        if (card1 == 0 && card2 == 0) {
+            //不显示底牌
+            return false;
+        };
         //底牌
         var c1Node = new cc.Node();
         var c2Node = new cc.Node();
@@ -706,6 +706,24 @@ cc.Class({
         };
         this.countdown_over_task=finished;
 
+    },
+
+    //底池的筹码分给赢的人 pos赢钱的人的座位位置
+    potToWinner:function(pos){
+        var node=new cc.Node();
+        node.parent=this.node.parent;
+        node.setPosition(0,200);
+        var sp = node.addComponent(cc.Sprite);
+        sp.spriteFrame = this.GameMain.getSpriteFrame('game_chip_tip');
+        var destorySelf=function(node){
+            if(cc.isValid(node)){
+                node.destroy();
+            }
+        };
+        var action=cc.moveTo(0.5, pos);
+        var hide = cc.callFunc(destorySelf, this, node);
+        var seq=cc.sequence(action,hide);
+        node.runAction(seq);
     },
     //桌子上的筹码进入底池
     tableToPot:function(pot,inpot){
