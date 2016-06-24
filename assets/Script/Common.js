@@ -7,6 +7,7 @@ cc.Class({
             type:cc.Node
         },
         GameMain:null,//游戏资源
+        GameCards:null,//游戏的牌中的资源
         audio_chipsToTable:null,//下注的音频
         audio_check:null,//check的音频
         audio_fold:null,//fold的音频
@@ -17,6 +18,22 @@ cc.Class({
         cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
             me.GameMain = atlas;
         });
+        cc.loader.loadRes("game_cards",cc.SpriteAtlas,function(err,atlas){
+            me.GameCards = atlas;
+        });
+        //加载游戏音频
+        // cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
+        //     me.audio_chipsToTable = assets;
+        //     cc.log("audio_chipsToTable");
+        // });
+        // cc.loader.loadRes("audio/audio_check", function (err, assets) {
+        //     me.audio_check = assets;
+        //     cc.log("audio_check");
+        // });
+        // cc.loader.loadRes("audio/audio_fold", function (err, assets) {
+        //     me.audio_fold = assets;
+        //     cc.log("audio_fold");
+        // });
 
         var table_data = this.hand_data;
         table_data['table_name']=table_data['table_name']?table_data['table_name']:"未知牌局";

@@ -4669,6 +4669,9 @@
     "_enabled": true,
     "seat": [],
     "GameMain": null,
+    "audio_chipsToTable": null,
+    "audio_check": null,
+    "audio_fold": null,
     "countdown_execution_interval": 0.1,
     "countdown_repeat_num": 0,
     "countdown_long_time": 0,
@@ -4701,7 +4704,9 @@
     "table_chips": [],
     "table_tips": [],
     "game_card_turn": 0,
-    "game_card_river": 0
+    "game_card_river": 0,
+    "cleanNode": [],
+    "game_start_num": 0
   },
   {
     "__type__": "cc.Canvas",

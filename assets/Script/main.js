@@ -604,38 +604,35 @@ cc.Class({
         ctNode.setPosition(0, -60);
 
 
-        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-            if (chips > 0) {
-                var lbNode = new cc.Node();
-                var lbChip = lbNode.addComponent(cc.Sprite);
-                lbChip.spriteFrame = atlas.getSpriteFrame('game_endhand');
-                lbNode.parent = node;
-                lbNode.setPosition(0, 60);
-                //营收文字
-                var lbbNode = new cc.Node();
-                var lbb = lbbNode.addComponent(cc.Label);
-                lbb.string = "+" + chips;
-                lbbNode.parent = lbNode;
-                lbb.fontSize = font;
-                lbbNode.color = color;
-                lbbNode.setPosition(0, -10);
-            };
-            //2牌都亮时显示牌型
-            cc.log(card1);
-            cc.log(card2);
-            if (card1 > 0 && card2 > 0) {
-                cc.log("in");
-                ctChip.spriteFrame = atlas.getSpriteFrame('game_endhand');
-                //牌型文字
-                var ctlNode = new cc.Node();
-                var ctl = ctlNode.addComponent(cc.Label);
-                ctl.string = cardType;
-                ctlNode.parent = ctNode;
-                ctl.fontSize = font;
-                ctlNode.color = color;
-                ctlNode.setPosition(0, -10);
-            };
-        });
+
+        if (chips > 0) {
+            var lbNode = new cc.Node();
+            var lbChip = lbNode.addComponent(cc.Sprite);
+            lbChip.spriteFrame = this.GameMain.getSpriteFrame('game_endhand');
+            lbNode.parent = node;
+            lbNode.setPosition(0, 60);
+            //营收文字
+            var lbbNode = new cc.Node();
+            var lbb = lbbNode.addComponent(cc.Label);
+            lbb.string = "+" + chips;
+            lbbNode.parent = lbNode;
+            lbb.fontSize = font;
+            lbbNode.color = color;
+            lbbNode.setPosition(0, -10);
+        };
+        //2牌都亮时显示牌型
+        if (card1 > 0 && card2 > 0) {
+            ctChip.spriteFrame =  this.GameMain.getSpriteFrame('game_endhand');
+            //牌型文字
+            var ctlNode = new cc.Node();
+            var ctl = ctlNode.addComponent(cc.Label);
+            ctl.string = cardType;
+            ctlNode.parent = ctNode;
+            ctl.fontSize = font;
+            ctlNode.color = color;
+            ctlNode.setPosition(0, -10);
+        };
+
         //底牌
         var c1Node = new cc.Node();
         var c2Node = new cc.Node();
@@ -661,29 +658,19 @@ cc.Class({
                 var card_2='card_'+card2;
             }
 
-            cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-                c1Chip.spriteFrame = atlas.getSpriteFrame(card_1);
-                c2Chip.spriteFrame = atlas.getSpriteFrame(card_2);
-            });
+            c1Chip.spriteFrame = this.GameCards.getSpriteFrame(card_1);
+            c2Chip.spriteFrame = this.GameCards.getSpriteFrame(card_2);
 
         } else {
             if(card1 > 0 ){
                 //显示牌背
-                cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-                    c1Chip.spriteFrame = atlas.getSpriteFrame(card_1);
-                });
+                c1Chip.spriteFrame = this.GameCards.getSpriteFrame(card_1);
                 //显示牌背
-                cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-                    c2Chip.spriteFrame = atlas.getSpriteFrame('game_card_reverse');
-                });
+                c2Chip.spriteFrame = this.GameMain.getSpriteFrame('game_card_reverse');
             }else{
-                cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-                    c2Chip.spriteFrame = atlas.getSpriteFrame(card_2);
-                });
+                c2Chip.spriteFrame = this.GameCards.getSpriteFrame(card_2);
                 //显示牌背
-                cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-                    c1Chip.spriteFrame = atlas.getSpriteFrame('game_card_reverse');
-                });
+                c1Chip.spriteFrame = this.GameMain.getSpriteFrame('game_card_reverse');
             }
         }
     },
@@ -784,10 +771,7 @@ cc.Class({
         node.name='table_chip_'+sit;
 
         var sp = node.addComponent(cc.Sprite);
-        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-            var frame1 = atlas.getSpriteFrame('game_chip_tip');
-            sp.spriteFrame = frame1;
-        });
+        sp.spriteFrame = this.GameMain.getSpriteFrame('game_chip_tip');
         node.parent = table_bg;
 
         node.setPosition(pos);
@@ -804,7 +788,7 @@ cc.Class({
                 cn.name = "table_chip";
                 cn.parent = node;
                 chipLabel.fontSize = 20;
-                cn.color = new cc.Color(0, 0, 0);
+                cn.color = new cc.Color(9,113,152);
                 cn.setPosition(0,-40);
                 chipLabel.string = handPot;
             }else{
@@ -842,31 +826,31 @@ cc.Class({
     inpotstart:function(pot){
         pot = parseInt(pot);
         pot = isNaN(pot)== true?0:pot;
+        if(pot == 0){
+            return false;
+        }
         if(this.inpot){
             var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
-            potObj.string="pot:" + pot;
+            potObj.string="底池：" + pot;
         }else{
             this.inpot=new cc.Node();
             this.inpot.parent=this.node.parent;
             this.inpot.setPosition(0,250);
             var potNode=new cc.Node();
             var plb = potNode.addComponent(cc.Label);
-            plb.fontSize=20;
-            potNode.color = new cc.Color(0, 0, 0);
+            plb.fontSize = 20;
+            potNode.color = new cc.Color(9,113,152);
             potNode.name="pot";
             potNode.parent=this.inpot;
             potNode.setPosition(0,-60);
-            plb.string="pot:"+pot;
+            plb.string="底池：" + pot;
         }
     },
     //底池 最终结果生成
     inpottop:function(inpot){
 
         var sp = this.inpot.addComponent(cc.Sprite);
-        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-            var frame1 = atlas.getSpriteFrame('game_inPot_frame');
-            sp.spriteFrame = frame1;
-        });
+        sp.spriteFrame = this.GameMain.getSpriteFrame('game_inPot_frame');
         var node=new cc.Node();
         var lb = node.addComponent(cc.Label);
         lb.fontSize=25;
@@ -910,14 +894,9 @@ cc.Class({
         var node3=new cc.Node();
         var mSf3 = node3.addComponent(cc.Sprite);
 
-        cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-            //var frame1 = atlas.getSpriteFrame('card_01');
-            //var frame2 = atlas.getSpriteFrame('card_03');
-            //var frame3 = atlas.getSpriteFrame('card_05');
-            mSf1.spriteFrame = atlas.getSpriteFrame(card1);
-            mSf2.spriteFrame = atlas.getSpriteFrame(card2);
-            mSf3.spriteFrame = atlas.getSpriteFrame(card3);
-        });
+        mSf1.spriteFrame = this.GameCards.getSpriteFrame(card1);
+        mSf2.spriteFrame = this.GameCards.getSpriteFrame(card2);
+        mSf3.spriteFrame = this.GameCards.getSpriteFrame(card3);
 
         mSf1.enabled=true;
         //node1.active=true;
@@ -961,15 +940,13 @@ cc.Class({
         this.game_card_turn=card[0];
         var node=new cc.Node();
         var mSf = node.addComponent(cc.Sprite);
-        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-            var frame = atlas.getSpriteFrame('game_card_reverse');
-            mSf.spriteFrame = frame;
-        });
+        var frame = this.GameMain.getSpriteFrame('game_card_reverse');
+        mSf.spriteFrame = frame;
 
         mSf.enabled=true;
         node.active=true;
         node.parent = this.node.parent;
-        node.setPosition(100,50);
+        node.setPosition(101,-10);
 
         var turn = cc.callFunc(this.showturn, this, node);
 
@@ -994,9 +971,7 @@ cc.Class({
         var node1=new cc.Node();
         node1.parent=this.card[3];
         var mSf = node1.addComponent(cc.Sprite);
-        cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-            mSf.spriteFrame = atlas.getSpriteFrame(card1);
-        });
+        mSf.spriteFrame = this.GameCards.getSpriteFrame(card1);
         if(cc.isValid(node)){
             node.destroy();
         }
@@ -1008,16 +983,14 @@ cc.Class({
         this.game_card_river=card[0];
         var node=new cc.Node();
         var mSf = node.addComponent(cc.Sprite);
-        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-            var frame = atlas.getSpriteFrame('game_card_reverse');
-            mSf.spriteFrame = frame;
-        });
+        var frame = this.GameMain.getSpriteFrame('game_card_reverse');
+        mSf.spriteFrame = frame;
 
         mSf.enabled=true;
         node.active=true;
         //node.parent = this.card[4];
         node.parent=this.node.parent;
-        node.setPosition(200,50);
+        node.setPosition(192,-10);
 
         var turn = cc.callFunc(this.showriver, this, node);
 
@@ -1040,9 +1013,7 @@ cc.Class({
         var node1=new cc.Node();
         node1.parent=this.card[4];
         var mSf = node1.addComponent(cc.Sprite);
-        cc.loader.loadRes("game_cards", cc.SpriteAtlas, function (err, atlas) {
-            mSf.spriteFrame = atlas.getSpriteFrame(card1);
-        });
+        mSf.spriteFrame = this.GameCards.getSpriteFrame(card1);
         if(cc.isValid(node)){
             node.destroy();
         }
@@ -1064,10 +1035,8 @@ cc.Class({
         sp.fillCenter = new cc.Vec2(0.5, 0.5);
         sp.fillStart = 0;
         sp.fillRange = 0;
-        cc.loader.loadRes("GameMain", cc.SpriteAtlas, function (err, atlas) {
-            var frame1 = atlas.getSpriteFrame('game_progress_frame');
-            sp.spriteFrame = frame1;
-        });
+        var frame1 = this.GameMain.getSpriteFrame('game_progress_frame');
+        sp.spriteFrame = frame1;
         this.timersp=sp;
         this.timer.parent=this.node.parent;
         this.timer.position=pos;
