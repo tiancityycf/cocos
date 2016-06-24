@@ -166,6 +166,7 @@ cc.Class({
     actionend:function(){
         var i  = this.i;
         this.i=i+1;
+
         if(i<this.actions.length){
             switch(this.actions[i]["CMD"]){
                 case 5:
@@ -237,10 +238,10 @@ cc.Class({
                     this.actionend();
                     break;
             };
-        }else{
-            this.i=0;
-            this.endshow();
-
+        }else {
+            if (i == this.actions.length) {
+                this.endshow();
+            }
         };
     },
     //初始化小盲位，大盲位
@@ -682,6 +683,8 @@ cc.Class({
                 this.inpot.destroy();
             };
         };
+
+        this.i = 0;
     },
     //站起
     quit:function(sit,duration){

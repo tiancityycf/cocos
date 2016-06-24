@@ -147,6 +147,7 @@ cc.Class({
                     me.actions=response["actions"];
                     me.i=0;
                     me.hand_data = response;
+                    cc.log(response);
                     me.sit_down();//坐下
                 } else {
 
