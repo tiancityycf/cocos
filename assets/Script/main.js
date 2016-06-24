@@ -781,7 +781,8 @@ cc.Class({
                 cn.name = "table_chip";
                 cn.parent = node;
                 chipLabel.fontSize = 20;
-                cn.color = new cc.Color(9,113,152);
+                cn.color = new cc.Color(0,0,0);
+                cn.opacity = 100;
                 cn.setPosition(0,-40);
                 chipLabel.string = handPot;
             }else{
@@ -833,7 +834,8 @@ cc.Class({
             var potNode=new cc.Node();
             var plb = potNode.addComponent(cc.Label);
             plb.fontSize = 20;
-            potNode.color = new cc.Color(9,113,152);
+            potNode.color = new cc.Color(0,0,0);
+            potNode.opacity = 100;
             potNode.name="pot";
             potNode.parent=this.inpot;
             potNode.setPosition(0,-60);
