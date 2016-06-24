@@ -3112,12 +3112,12 @@
     "__type__": "cc.Node",
     "_name": "table_name",
     "_objFlags": 0,
-    "_opacity": 255,
+    "_opacity": 100,
     "_color": {
       "__type__": "cc.Color",
-      "r": 9,
-      "g": 113,
-      "b": 152,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -3196,12 +3196,12 @@
     "__type__": "cc.Node",
     "_name": "table_code",
     "_objFlags": 0,
-    "_opacity": 255,
+    "_opacity": 100,
     "_color": {
       "__type__": "cc.Color",
-      "r": 9,
-      "g": 113,
-      "b": 152,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -4669,6 +4669,7 @@
     "_enabled": true,
     "seat": [],
     "GameMain": null,
+    "GameCards": null,
     "audio_chipsToTable": null,
     "audio_check": null,
     "audio_fold": null,
@@ -4706,6 +4707,7 @@
     "game_card_turn": 0,
     "game_card_river": 0,
     "cleanNode": [],
+    "cleanSp": [],
     "game_start_num": 0
   },
   {
