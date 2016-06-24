@@ -951,8 +951,20 @@ cc.Class({
 
         var seq=cc.sequence(action2,action3);
 
-        node1.runAction(action1);
-        node2.runAction(seq);
+        var me = this;
+        if(me.audio_distributeCard == null){
+            cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
+                me.audio_distributeCard = assets;
+                node1.runAction(action1);
+                node2.runAction(seq);
+                cc.audioEngine.playEffect(assets);
+            });
+        }else{
+            node1.runAction(action1);
+            node2.runAction(seq);
+            cc.audioEngine.playEffect(this.audio_distributeCard);
+        }
+
 
 
     },
@@ -977,8 +989,18 @@ cc.Class({
         var action1=cc.rotateTo(0.3, 0, 180);
 
         var seq=cc.sequence(action1,turn);
+        var me = this;
+        if(me.audio_distributeCard == null){
+            cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
+                me.audio_distributeCard = assets;
+                node.runAction(seq);
+                cc.audioEngine.playEffect(assets);
+            });
+        }else{
+            node.runAction(seq);
+            cc.audioEngine.playEffect(this.audio_distributeCard);
+        }
 
-        node.runAction(seq);
 
     },
     /**
@@ -1022,7 +1044,17 @@ cc.Class({
 
         var seq=cc.sequence(action1,turn);
 
-        node.runAction(seq);
+        var me = this;
+        if(me.audio_distributeCard == null){
+            cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
+                me.audio_distributeCard = assets;
+                node.runAction(seq);
+                cc.audioEngine.playEffect(assets);
+            });
+        }else{
+            node.runAction(seq);
+            cc.audioEngine.playEffect(this.audio_distributeCard);
+        }
 
     },
     //翻牌效果 回调

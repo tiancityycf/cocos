@@ -4713,6 +4713,7 @@
     "audio_chipsToTable": null,
     "audio_check": null,
     "audio_fold": null,
+    "audio_distributeCard": null,
     "countdown_execution_interval": 0.1,
     "countdown_repeat_num": 0,
     "countdown_long_time": 0,

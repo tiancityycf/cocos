@@ -11,6 +11,7 @@ cc.Class({
         audio_chipsToTable:null,//下注的音频
         audio_check:null,//check的音频
         audio_fold:null,//fold的音频
+        audio_distributeCard:null,//翻牌的声音
     },
     sit_down:function(){
         //加载游戏资源图片
@@ -107,6 +108,16 @@ cc.Class({
             //带入的筹码
             var label_chips = seat_node.getChildByName("chips").getComponent(cc.Label);
             label_chips.string = v['remain_chip']+v['table_chip'];
+        }
+    },
+    //js获取当前url的参数
+    getQueryString:function(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null){
+            return  unescape(r[2]);
+        }else{
+            return null;
         }
     }
 });
