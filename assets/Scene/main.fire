@@ -4724,23 +4724,7 @@
     "i": 0,
     "hand_data": null,
     "data": null,
-    "card": [
-      {
-        "__id__": 112
-      },
-      {
-        "__id__": 113
-      },
-      {
-        "__id__": 114
-      },
-      {
-        "__id__": 115
-      },
-      {
-        "__id__": 116
-      }
-    ],
+    "card": [],
     "inpot": null,
     "table_chips": [],
     "table_tips": [],

@@ -108,5 +108,15 @@ cc.Class({
             var label_chips = seat_node.getChildByName("chips").getComponent(cc.Label);
             label_chips.string = v['remain_chip']+v['table_chip'];
         }
+    },
+    //js获取当前url的参数
+    getQueryString:function(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null){
+            return  unescape(r[2]);
+        }else{
+            return null;
+        }
     }
 });
