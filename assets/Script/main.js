@@ -495,7 +495,7 @@ cc.Class({
         switch(len) {
             case 1:
                 this.scheduleOnce(function(){
-                    this.tableToPot(0,200);
+                    this.tableToPot(0,0);
                 },duration);
 
                 duration=duration+1;
@@ -507,7 +507,7 @@ cc.Class({
                 break;
             case 2:
                 this.scheduleOnce(function(){
-                    this.tableToPot(0,200);
+                    this.tableToPot(0,0);
                 },duration);
 
                 duration=duration+1;
@@ -525,7 +525,7 @@ cc.Class({
                 break;
             case 5:
                 this.scheduleOnce(function(){
-                    this.tableToPot(0,200);
+                    this.tableToPot(0,0);
                 },duration);
 
                 duration=duration+1;
@@ -549,7 +549,7 @@ cc.Class({
                 break;
             default:
                 this.scheduleOnce(function(){
-                    this.tableToPot(0,200);
+                    this.tableToPot(0,0);
                 },duration);
                 break;
         }
@@ -686,6 +686,12 @@ cc.Class({
                 };
             }
         };
+
+        if("undefined" != typeof this.inpot){
+            if(cc.isValid(this.inpot)){
+                this.inpot.destroy();
+            };
+        };
     },
     //站起
     quit:function(sit,duration){
@@ -726,12 +732,14 @@ cc.Class({
             //sp.runAction(action);
             sp.runAction(seq);
         };
-
-        if(this.table_chips){
+        var len=this.table_chips.length;
+        if(len>0){
             for(var i=0;i<this.table_chips.length;i++){
                 this.table_chips[i].removeAllChildren(true);
                 destroyChips(this.table_chips[i]);
             }
+        }else{
+            return false;
         }
         //底池筹码变化
         var inpotNode=this.inpot.getChildByName("inpot");
@@ -822,27 +830,34 @@ cc.Class({
         if(pot == 0){
             return false;
         }
-        if(this.inpot){
-            var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
-            potObj.string="底池：" + pot;
-        }else{
-            this.inpot = new cc.Node();
-            //this.cleanNode.push(this.inpot);
-            this.inpot.parent=this.node.parent;
-            this.inpot.setPosition(0,250);
-            var potNode=new cc.Node();
-            var plb = potNode.addComponent(cc.Label);
-            plb.fontSize = 20;
-            potNode.color = new cc.Color(9,113,152);
-            potNode.name="pot";
-            potNode.parent=this.inpot;
-            potNode.setPosition(0,-60);
-            plb.string="底池：" + pot;
+        if("undefined" != typeof this.inpot){
+            if(cc.isValid(this.inpot)){
+                var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
+                potObj.string="底池：" + pot;
+            }else{
+                this.inpot = new cc.Node();
+                //this.cleanNode.push(this.inpot);
+                this.inpot.parent=this.node.parent;
+                this.inpot.setPosition(0,250);
+                var potNode=new cc.Node();
+                var plb = potNode.addComponent(cc.Label);
+                plb.fontSize = 20;
+                potNode.color = new cc.Color(9,113,152);
+                potNode.name="pot";
+                potNode.parent=this.inpot;
+                potNode.setPosition(0,-60);
+                plb.string="底池：" + pot;
+            }
         }
     },
     //底池 最终结果生成
     inpottop:function(inpot){
+        inpot = parseInt(inpot);
+        inpot = isNaN(inpot)== true?0:inpot;
 
+        if(inpot==0){
+            return false;
+        }
         var sp = this.inpot.addComponent(cc.Sprite);
         sp.spriteFrame = this.GameMain.getSpriteFrame('game_inPot_frame');
         var node=new cc.Node();
