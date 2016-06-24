@@ -4713,6 +4713,7 @@
     "audio_chipsToTable": null,
     "audio_check": null,
     "audio_fold": null,
+    "audio_distributeCard": null,
     "countdown_execution_interval": 0.1,
     "countdown_repeat_num": 0,
     "countdown_long_time": 0,
@@ -4724,7 +4725,23 @@
     "i": 0,
     "hand_data": null,
     "data": null,
-    "card": [],
+    "card": [
+      {
+        "__id__": 112
+      },
+      {
+        "__id__": 113
+      },
+      {
+        "__id__": 114
+      },
+      {
+        "__id__": 115
+      },
+      {
+        "__id__": 116
+      }
+    ],
     "inpot": null,
     "table_chips": [],
     "table_tips": [],

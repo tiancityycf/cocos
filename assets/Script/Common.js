@@ -11,6 +11,7 @@ cc.Class({
         audio_chipsToTable:null,//下注的音频
         audio_check:null,//check的音频
         audio_fold:null,//fold的音频
+        audio_distributeCard:null,//翻牌的声音
     },
     sit_down:function(){
         //加载游戏资源图片
