@@ -39,7 +39,6 @@ cc.Class({
         table_data['table_name']=table_data['table_name']?table_data['table_name']:"未知牌局";
         table_data['table_code']=table_data['table_code']?table_data['table_code']:"位置邀请码";
         table_data['table_type']=table_data['table_type']?table_data['table_type']:1;
-
         var node_table_bg = cc.find("Canvas/table_bg");
         //牌局名字
         //var label = this.getComponent(cc.Label);
