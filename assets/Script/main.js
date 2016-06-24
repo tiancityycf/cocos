@@ -33,6 +33,10 @@ cc.Class({
             default:[],
             type:cc.Node
         },
+        cleanSp:{
+            default:[],
+            type:cc.Sprite
+        },
         //游戏加载以后播放了几次
         game_start_num:0,
 
@@ -63,9 +67,6 @@ cc.Class({
 
         //4. 先获取目标组件所在的节点，然后通过getComponent获取目标组件
         //var _label = cc.find("Canvas/label").getComponent(cc.Label);
-
-        //5.也可以如下形式【注意此种方式，目前有BUG，无法正常使用 (0.7.1) 】
-        // var _label = cc.find("Canvas/label<cc.Label>");
 
         //var _label = cc.find("Canvas/card_49").getComponent(cc.Sprite);
 
@@ -343,7 +344,7 @@ cc.Class({
         if(clean){
             this.table_tips.push(game_tip);
         }else{
-            this.cleanNode.push(game_tip);
+            this.cleanSp.push(sp);
         };
         //当前动作结束
         this.actionend();
@@ -471,25 +472,6 @@ cc.Class({
                 "9":"同花顺",        //9 同花顺
                 "10":"皇家同花顺",    //10 皇家同花顺
             };
-            //data = [{
-            //    "chair_id" : 3,
-            //    "change_chip" : 114,
-            //    "hand_poker_0" : 13,
-            //    "hand_poker_1" : 43,
-            //    "new_chip" : 314,
-            //    "user_id" : 145,
-            //    "card_type":1
-            //}, {
-            //    "chair_id" : 4,
-            //    "change_chip" : -114,
-            //    "hand_poker_0" : 57,
-            //    "hand_poker_1" : 52,
-            //    "new_chip" : 86,
-            //    "user_id" : 138,
-            //    "card_type":3
-            //}
-            //];
-
             var len=data.length;
             for(var i=0;i<len;i++){
                 this.endtip(data[i]["chair_id"],data[i]["change_chip"],data[i]["hand_poker_0"],data[i]["hand_poker_1"],cardType[data[i]["card_type"]]);
@@ -513,7 +495,7 @@ cc.Class({
         switch(len) {
             case 1:
                 this.scheduleOnce(function(){
-                    this.tableToPot(100,200);
+                    this.tableToPot(0,200);
                 },duration);
 
                 duration=duration+1;
@@ -525,7 +507,7 @@ cc.Class({
                 break;
             case 2:
                 this.scheduleOnce(function(){
-                    this.tableToPot(100,200);
+                    this.tableToPot(0,200);
                 },duration);
 
                 duration=duration+1;
@@ -543,7 +525,7 @@ cc.Class({
                 break;
             case 5:
                 this.scheduleOnce(function(){
-                    this.tableToPot(100,200);
+                    this.tableToPot(0,200);
                 },duration);
 
                 duration=duration+1;
@@ -567,7 +549,7 @@ cc.Class({
                 break;
             default:
                 this.scheduleOnce(function(){
-                    this.tableToPot(100,200);
+                    this.tableToPot(0,200);
                 },duration);
                 break;
         }
@@ -689,6 +671,17 @@ cc.Class({
                 for(var i=0;i<len;i++){
                     if(cc.isValid(this.cleanNode[i])){
                         this.cleanNode[i].destroy();
+                    };
+                };
+            }
+        };
+
+        if("undefined" != typeof this.cleanSp){
+            var len=this.cleanSp.length;
+            if(len>0){
+                for(var i=0;i<len;i++){
+                    if(cc.isValid(this.cleanSp[i])){
+                        this.cleanSp[i].destroy();
                     };
                 };
             }
@@ -822,7 +815,7 @@ cc.Class({
         this.inpotstart(pot);
     },
 
-    //inpot 底层筹码变化
+    //inpot 底池筹码变化
     inpotstart:function(pot){
         pot = parseInt(pot);
         pot = isNaN(pot)== true?0:pot;
@@ -833,7 +826,8 @@ cc.Class({
             var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
             potObj.string="底池：" + pot;
         }else{
-            this.inpot=new cc.Node();
+            this.inpot = new cc.Node();
+            //this.cleanNode.push(this.inpot);
             this.inpot.parent=this.node.parent;
             this.inpot.setPosition(0,250);
             var potNode=new cc.Node();
