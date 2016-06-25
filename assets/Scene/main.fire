@@ -4604,9 +4604,7 @@
       "a": 255
     },
     "duration": 0.1,
-    "pressedSprite": {
-      "__uuid__": "b9703bd5-28d0-4a1d-a0e7-f46a1c8aab10"
-    },
+    "pressedSprite": null,
     "hoverSprite": null,
     "clickEvents": [
       {
@@ -4743,7 +4741,7 @@
       }
     ],
     "inpot": null,
-    "table_chips_inpot": false,
+    "table_chips_inpot": 0,
     "table_chips": [],
     "table_tips": [],
     "game_card_turn": 0,
