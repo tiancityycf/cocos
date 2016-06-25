@@ -923,6 +923,9 @@ cc.Class({
             var node=new cc.Node();
             var lb = node.addComponent(cc.Label);
             lb.fontSize=25;
+            if(addNum>0){
+                inpot = inpot+addNum;
+            };
             lb.string=inpot;
             //node.color = new cc.Color(0, 0, 0);
             node.name="inpot";
