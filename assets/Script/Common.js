@@ -51,8 +51,9 @@ cc.Class({
             label_table_code.string = table_data['table_code'];
         }
         //异步加载头像，不能放在循环内
+        var img_host = this.getDataConfig("img_host");
         var load_avatar = function(url,sprite_user){
-            url = 'http://img.51yche.com/avatar/2016-06-14/w_120x120_575ffcd3375aa.jpg';
+            url = img_host + url;
             cc.loader.load(url,function(err,tex){
                 var frame  = new cc.SpriteFrame(tex,cc.Rect(0, 0, 87, 123));
                 sprite_user.spriteFrame = frame;
@@ -155,5 +156,21 @@ cc.Class({
         if (str_length < len) {
             return str;
         }
+    },
+    //获取json的配置
+    getDataConfig:function(key){
+        var config ={
+                        "env":"env_qa",
+                        "env_product":{
+                            "data_host":"http://qa-api.kkpoker.com:8090",
+                            "img_host":"http://qa-img.kkpoker.com:8090"
+                        },
+                        "env_qa":{
+                            "data_host":"http://qa-api.kkpoker.com:8090",
+                            "img_host":"http://qa-img.kkpoker.com:8090"
+                        }
+                    };
+        var env_key = config['env'];
+        return config[env_key][key];
     },
 });
