@@ -84,14 +84,6 @@ cc.Class({
         // tPrefab.setPosition(-210,100);
 
 
-        // //--->>>  销毁节点(销毁节点并不会立刻发生，而是在当前 帧逻辑更新结束后，统一执行)
-        // if (cc.isValid(this.label.node) ) {
-        //     console.log("有效存在，进行摧毁");
-        //     this.label.destroy();
-        // }else{
-        //     console.log("已摧毁");
-        // }
-
         // //--->>> 事件监听 on 4种形式
         // //枚举类型注册
         // var tFun =function (event){
@@ -141,6 +133,7 @@ cc.Class({
 
         this.inpotstart(0);
 
+
     },
 
 
@@ -173,6 +166,7 @@ cc.Class({
     actionend:function(){
         var i  = this.i;
         this.i=i+1;
+
         if(i<this.actions.length){
             switch(this.actions[i]["CMD"]){
                 case 5:
@@ -248,10 +242,10 @@ cc.Class({
                     this.actionend();
                     break;
             };
-        }else{
-            this.i=0;
-            this.endshow();
-
+        }else {
+            if (i == this.actions.length) {
+                this.endshow();
+            }
         };
     },
     //初始化小盲位，大盲位
@@ -562,7 +556,6 @@ cc.Class({
         var table_bg = this.node.parent.getChildByName("table_bg");
         var pos = table_bg.getChildByName("seat_" + sit).getPosition();
 
-
         var node = new cc.Node();
         this.cleanNode.push(node);
         var lo = node.addComponent(cc.Layout);
@@ -579,8 +572,6 @@ cc.Class({
         var ctChip = ctNode.addComponent(cc.Sprite);
         ctNode.parent = node;
         ctNode.setPosition(0, -60);
-
-
 
         if (chips > 0) {
             this.potToWinner(pos);
@@ -691,6 +682,8 @@ cc.Class({
                 this.inpot.destroy();
             };
         };
+
+        this.i = 0;
     },
     //站起
     quit:function(sit,duration){
@@ -709,20 +702,25 @@ cc.Class({
 
     //底池的筹码分给赢的人 pos赢钱的人的座位位置
     potToWinner:function(pos){
-        var node=new cc.Node();
-        node.parent=this.node.parent;
-        node.setPosition(0,200);
-        var sp = node.addComponent(cc.Sprite);
-        sp.spriteFrame = this.GameMain.getSpriteFrame('game_chip_tip');
+
         var destorySelf=function(node){
             if(cc.isValid(node)){
                 node.destroy();
             }
         };
-        var action=cc.moveTo(0.5, pos);
-        var hide = cc.callFunc(destorySelf, this, node);
-        var seq=cc.sequence(action,hide);
-        node.runAction(seq);
+        var num=5;//生成多少筹码
+        for(var i=0;i<num;i++){
+            var node=new cc.Node();
+            node.parent=this.node.parent;
+            node.setPosition(0,200);
+            var sp = node.addComponent(cc.Sprite);
+            sp.spriteFrame = this.GameMain.getSpriteFrame('game_chip_tip');
+            var action=cc.moveTo(0.1*i, pos);
+            var hide = cc.callFunc(destorySelf, this, node);
+            var seq=cc.sequence(action,hide);
+            node.runAction(seq);
+        }
+
     },
     //桌子上的筹码进入底池
     tableToPot:function(pot,inpot){
