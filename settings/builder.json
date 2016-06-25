@@ -8,6 +8,6 @@
   },
   "packageName": "org.cocos2d.kkpoker",
   "startScene": "b1a3242c-6595-42df-a0fc-e177f727763d",
-  "title": "kkpoker",
+  "title": "kkreplay",
   "webOrientation": "auto"
 }

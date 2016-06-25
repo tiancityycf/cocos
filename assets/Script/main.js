@@ -307,8 +307,11 @@ cc.Class({
         me.scheduleOnce(function(){
             me.chipsToTable(sb_data['chair_id'],sb_data['table_chip'],0,sb_data['table_chip']);
             me.chipsToTable(bb_data['chair_id'],bb_data['table_chip']+sb_data['table_chip'],0,bb_data['table_chip']);
-            me.actionend();
         },1);
+        //必须等小盲大盲下注以后，再执行其他动作
+        me.scheduleOnce(function(){
+            me.actionend();
+        },2);
     },
     //圆形头像 cc.Mask 例子
     mainstart:function(){
@@ -323,6 +326,10 @@ cc.Class({
         this.initsb();
     },
     buttonDisable:function(){
+        if(this.GameMain==null){
+            //资源未加载成功，不能点击
+            return false;
+        };
         var b=this.node.parent.getChildByName("game_table_start_normal");
         b.getComponent(cc.Button).interactable=false;
     },
