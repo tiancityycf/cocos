@@ -15,7 +15,9 @@ cc.Class({
             default: null,
             type: cc.Node
         },
-
+        //桌子上的筹码数量
+        table_chips_inpot:0,
+        //桌子上需要收入底池的筹码节点
         table_chips:{
             default:[],
             type:[cc.Node]
@@ -183,6 +185,7 @@ cc.Class({
                     //"pot" : 76,
                     //"timestamp" : 1466422815
                     this.scheduleOnce(function(){
+                        this.table_chips_inpot=0;
                         this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
                     },1);
                     this.scheduleOnce(function(){
@@ -198,6 +201,7 @@ cc.Class({
                     //"pot" : 76,
                     //"timestamp" : 1466422848
                     this.scheduleOnce(function(){
+                        this.table_chips_inpot=0;
                         this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
                     },1);
                     this.scheduleOnce(function(){
@@ -213,6 +217,7 @@ cc.Class({
                     //"pot" : 228,
                     //"timestamp" : 1466422859
                     this.scheduleOnce(function(){
+                        this.table_chips_inpot=0;
                         this.tableToPot(this.actions[i]["current_pot"],this.actions[i]["pot"]);
                     },1);
                     this.scheduleOnce(function(){
@@ -483,13 +488,16 @@ cc.Class({
         }
         var len = cards.length?cards.length:0;
 
-        var duration=1;
+        var duration=0;
+        //桌子上有筹码时才再回收一次
+        if(this.table_chips_inpot>0){
+            duration=duration+1;
+            this.scheduleOnce(function(){
+                this.tableToPot(0,0,this.table_chips_inpot);
+            },duration);
+        }
         switch(len) {
             case 1:
-                this.scheduleOnce(function(){
-                    this.tableToPot(0,0);
-                },duration);
-
                 duration=duration+1;
                 var rivercard=[cards[0]];
                 this.scheduleOnce(function(){
@@ -498,10 +506,6 @@ cc.Class({
 
                 break;
             case 2:
-                this.scheduleOnce(function(){
-                    this.tableToPot(0,0);
-                },duration);
-
                 duration=duration+1;
                 var turnpcard=[cards[0]];
                 this.scheduleOnce(function(){
@@ -516,10 +520,6 @@ cc.Class({
 
                 break;
             case 5:
-                this.scheduleOnce(function(){
-                    this.tableToPot(0,0);
-                },duration);
-
                 duration=duration+1;
                 var flopcard=[cards[0],cards[1],cards[2]];
                 this.scheduleOnce(function(){
@@ -540,9 +540,7 @@ cc.Class({
 
                 break;
             default:
-                this.scheduleOnce(function(){
-                    this.tableToPot(0,0);
-                },duration);
+
                 break;
         }
         duration=duration+1;
@@ -723,7 +721,7 @@ cc.Class({
 
     },
     //桌子上的筹码进入底池
-    tableToPot:function(pot,inpot){
+    tableToPot:function(pot,inpot,addNum){
 
         if(this.table_tips){
             for(var i=0;i<this.table_tips.length;i++){
@@ -756,14 +754,15 @@ cc.Class({
         }else{
             return false;
         }
-        //底池筹码变化
-        var inpotNode=this.inpot.getChildByName("inpot");
-        if(inpotNode!=null){
-            var inpotObj=inpotNode.getComponent(cc.Label);
-            inpotObj.string = inpot;
-        }else{
-            this.inpottop(inpot);
-        }
+        this.inpottop(inpot,addNum);
+        ////底池筹码变化
+        //var inpotNode=this.inpot.getChildByName("inpot");
+        //if(inpotNode!=null){
+        //    var inpotObj=inpotNode.getComponent(cc.Label);
+        //    inpotObj.string = inpot;
+        //}else{
+        //    this.inpottop(inpot,0);
+        //}
         this.table_chips=[];
     },
 
@@ -812,6 +811,9 @@ cc.Class({
                 var chipLabel = table_chips_node.getComponent(cc.Label);
                 chipLabel.string = parseInt(chipLabel.string) + handPot;
             }
+            //桌子上总筹码数量
+            this.table_chips_inpot=this.table_chips_inpot+handPot;
+
             //剩余的筹码变化
             var seat_node = table_bg.getChildByName("seat_"+sit);
             var seat_chips_node = seat_node.getChildByName("chips");
@@ -867,24 +869,34 @@ cc.Class({
             }
         }
     },
-    //底池 最终结果生成
-    inpottop:function(inpot){
+    //底池 最终结果生成 inpot 总底池   addNum 新增加了多少 默认0 当传递第二个参数时，第一个参数可以传0
+    inpottop:function(inpot,addNum){
         inpot = parseInt(inpot);
         inpot = isNaN(inpot)== true?0:inpot;
 
-        if(inpot==0){
-            return false;
+        addNum = parseInt(addNum);
+        addNum = isNaN(addNum)== true?0:addNum;
+
+        //底池筹码变化
+        var inpotNode=this.inpot.getChildByName("inpot");
+        if(inpotNode!=null){
+            var inpotObj=inpotNode.getComponent(cc.Label);
+            if(addNum>0){
+                inpot=parseInt(inpotObj.string)+addNum;
+            };
+            inpotObj.string = inpot;
+        }else{
+            var sp = this.inpot.addComponent(cc.Sprite);
+            sp.spriteFrame = this.GameMain.getSpriteFrame('game_inPot_frame');
+            var node=new cc.Node();
+            var lb = node.addComponent(cc.Label);
+            lb.fontSize=25;
+            lb.string=inpot;
+            //node.color = new cc.Color(0, 0, 0);
+            node.name="inpot";
+            node.parent=this.inpot;
+            node.setPosition(0,-12);
         }
-        var sp = this.inpot.addComponent(cc.Sprite);
-        sp.spriteFrame = this.GameMain.getSpriteFrame('game_inPot_frame');
-        var node=new cc.Node();
-        var lb = node.addComponent(cc.Label);
-        lb.fontSize=25;
-        lb.string=inpot;
-        //node.color = new cc.Color(0, 0, 0);
-        node.name="inpot";
-        node.parent=this.inpot;
-        node.setPosition(0,-12);
     },
 
     /**
