@@ -20,18 +20,18 @@ cc.Class({
             me.GameCards = atlas;
         });
         //加载游戏音频
-        // cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
-        //     me.audio_chipsToTable = assets;
-        //     cc.log("audio_chipsToTable");
-        // });
-        // cc.loader.loadRes("audio/audio_check", function (err, assets) {
-        //     me.audio_check = assets;
-        //     cc.log("audio_check");
-        // });
-        // cc.loader.loadRes("audio/audio_fold", function (err, assets) {
-        //     me.audio_fold = assets;
-        //     cc.log("audio_fold");
-        // });
+        cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
+            me.audio_chipsToTable = assets;
+        });
+        cc.loader.loadRes("audio/audio_check", function (err, assets) {
+            me.audio_check = assets;
+        });
+        cc.loader.loadRes("audio/audio_fold", function (err, assets) {
+            me.audio_fold = assets;
+        });
+        cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
+            me.audio_distributeCard = assets;
+        });
 
         var table_data = this.hand_data;
         table_data['table_name']=table_data['table_name']?table_data['table_name']:"未知牌局";
