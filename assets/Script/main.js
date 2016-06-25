@@ -326,6 +326,10 @@ cc.Class({
         this.initsb();
     },
     buttonDisable:function(){
+        if(this.GameMain==null){
+            //资源未加载成功，不能点击
+            return false;
+        };
         var b=this.node.parent.getChildByName("game_table_start_normal");
         b.getComponent(cc.Button).interactable=false;
     },
