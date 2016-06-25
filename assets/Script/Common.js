@@ -85,6 +85,7 @@ cc.Class({
             var node_user = new cc.Node();
             var sprite_user = node_user.addComponent(cc.Sprite);
             node_user.parent = node_mark;
+            node_user.scale = (node_size['width']-10)/120;
             load_avatar(v['avatar'],sprite_user);
             seat_node.getChildByName("game_tip").setLocalZOrder(3);
 
