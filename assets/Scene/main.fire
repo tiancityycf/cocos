@@ -4604,7 +4604,9 @@
       "a": 255
     },
     "duration": 0.1,
-    "pressedSprite": null,
+    "pressedSprite": {
+      "__uuid__": "b9703bd5-28d0-4a1d-a0e7-f46a1c8aab10"
+    },
     "hoverSprite": null,
     "clickEvents": [
       {
