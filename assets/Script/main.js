@@ -240,6 +240,10 @@ cc.Class({
                 case 16:
                     //this.fold(this.actions[i]["chair_id"],this.actions[i]["duration"]);
                     break;
+                case 19:
+                    //延时
+                    this.delay_think(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                    break;
                 default:
                     this.actionend();
                     break;
@@ -351,8 +355,7 @@ cc.Class({
     //check
     check:function(sit,duration){
         this.countdown_over_task=null;
-        var node_table_bg = this.node.parent.getChildByName("table_bg");
-        this.add_countdown(node_table_bg,sit,duration);
+        this.add_countdown(sit,duration);
         //var turn = cc.callFunc(this.showriver, this, node);
 
         var url="game_check_tip";
@@ -376,8 +379,7 @@ cc.Class({
     fold:function(sit,duration){
         this.countdown_over_task=null;
 
-        var node_table_bg = this.node.parent.getChildByName("table_bg");
-        this.add_countdown(node_table_bg,sit,duration);
+        this.add_countdown(sit,duration);
 
         var url="game_fold_tip";
         var me = this;
@@ -399,8 +401,7 @@ cc.Class({
         this.countdown_over_task=null;
 
         var url="game_bet_tip";
-        var node_table_bg = this.node.parent.getChildByName("table_bg");
-        this.add_countdown(node_table_bg,sit,duration);
+        this.add_countdown(sit,duration);
 
         var finished=function(){
             this.game_tip(sit,url,true);
@@ -412,8 +413,7 @@ cc.Class({
         this.countdown_over_task=null;
 
         var url="game_call_tip";
-        var node_table_bg = this.node.parent.getChildByName("table_bg");
-        this.add_countdown(node_table_bg,sit,duration);
+        this.add_countdown(sit,duration);
 
         var finished=function(){
             this.game_tip(sit,url,true);
@@ -427,8 +427,7 @@ cc.Class({
         this.countdown_over_task=null;
 
         var url="game_raise_tip";
-        var node_table_bg = this.node.parent.getChildByName("table_bg");
-        this.add_countdown(node_table_bg,sit,duration);
+        this.add_countdown(sit,duration);
 
         var finished=function(){
             this.game_tip(sit,url,true);
@@ -701,8 +700,8 @@ cc.Class({
         var seat=table_bg.getChildByName("seat_"+sit);
         seat.removeAllChildren(true);
 
-        var finished=function(){
-            this.add_countdown(node_table_bg,sit,duration);
+        var finished = function(){
+            this.add_countdown(sit,duration);
         };
         this.countdown_over_task=finished;
 
@@ -1102,6 +1101,15 @@ cc.Class({
         this.timer.parent=this.node.parent;
         this.timer.position=pos;
         this.timing=true;
+    },
+    //延时操作
+    delay_think:function(seat_number,duration){
+        this.add_countdown(seat_number,duration);
+        var me = this;
+        var finished = function(){
+            me.delay_countdown(seat_number,duration);
+        };
+        this.countdown_over_task = finished;
     },
     update: function (dt) {
 

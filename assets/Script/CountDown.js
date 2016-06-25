@@ -21,10 +21,12 @@ cc.Class({
         hand_data:null
     },
     //添加倒计时的进度条
-    add_countdown:function(node_table_bg,seat_number,long_time){
+    add_countdown:function(seat_number,long_time){
+        var node_table_bg = cc.find("Canvas/table_bg");
         //初始化
         this.countdown_repeat_num = 0;
         this.countdown_long_time = 0;
+        this.countdown_cycle_time = 20;
         if(this.countdown_task!= null){
             this.unschedule(this.countdown_task);//删除定时任务
             this.countdown_node.destroy();//删除该节点
@@ -62,7 +64,6 @@ cc.Class({
         node2.setPosition(0,-10);
 
         this.countdown_node = node;
-        this.countdown_sprite = sprite;
         this.countdown_long_time = long_time;//执行时长
         this.countdown_task = function(){
             this.start_countdown(1);
@@ -101,6 +102,53 @@ cc.Class({
                 this.scheduleOnce(this.countdown_over_task,0);
             }
         }
+    },
+    //延长时间
+    delay_countdown:function(seat_number,duration){
+        var remain_time = parseInt(this.countdown_cycle_time - duration);//剩余的时间
+        var total_time = 20 + remain_time;
+        this.countdown_cycle_time = total_time; //一圈的总耗时
+        this.countdown_repeat_num = 0; //已经执行了多少
+        if(this.countdown_task!= null){
+            this.unschedule(this.countdown_task);//删除定时任务
+            this.countdown_node.destroy();//删除该节点
+        }
+        //延时
+        var node_table_bg = cc.find("Canvas/table_bg");
+        var seat = node_table_bg.getChildByName("seat_"+seat_number);//获取该作为的节点
+        //倒计时遮罩层
+        var node = new cc.Node();
+        node.scale = 1.0;
+        node.parent = seat;
+        node.setPosition(0.5,0.5);
+        node.setLocalZOrder(2);
+        var sprite = node.addComponent(cc.Sprite);
+        sprite.type = cc.Sprite.Type.FILLED;
+        sprite.fillType = cc.Sprite.FillType.RADIAL;
+        sprite.fillCenter = new cc.Vec2(0.5,0.5);
+        sprite.fillStart = 0;
+        sprite.fillRange = 0;
+        var frame = this.GameMain.getSpriteFrame("game_progress_frame");
+        sprite.spriteFrame = frame;
+        //倒计时文字
+        var node2 = new cc.Node();
+        node2.name = "time";
+        var label = node2.addComponent(cc.Label);
+        label.string = this.countdown_cycle_time + "s";
+        label.fontSize = 30;//设置字体大小
+        node2.parent = node;
+        node2.setPosition(0,-10);
+
+        this.countdown_node = node;
+        this.countdown_task = function(){
+            this.start_countdown(1);
+        };
+        this.schedule(this.countdown_task,this.countdown_execution_interval);
+        var me = this;
+        this.countdown_over_task = function(){
+            me.actionend();
+        };
+
     },
     reqstart:function(){
         var url="http://172.16.0.210:2016/info.php";
