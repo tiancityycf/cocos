@@ -93,6 +93,7 @@ cc.Class({
             fillRange = cost_time < this.countdown_long_time ? fillRange -= (this.countdown_execution_interval * speed):0;
         }
         sprite.fillRange = fillRange;
+        cc.log(fillRange);
         if(fillRange == 0){
             this.unschedule(this.countdown_task);//删除定时任务
             this.countdown_node.destroy();//删除该节点
