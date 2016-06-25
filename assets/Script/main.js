@@ -340,9 +340,22 @@ cc.Class({
         }else{
             sp=game_tip.addComponent(cc.Sprite);
         }
-        cc.loader.loadRes("GameMain_cn", cc.SpriteAtlas, function (err, atlas) {
-            sp.spriteFrame = atlas.getSpriteFrame(url);
-        });
+        if(url == 'game_allIn_tip'){
+            var me = this;
+            if(this.GameMain == null){
+                cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+                    me.GameMain = atlas;
+                    sp.spriteFrame = me.GameMain.getSpriteFrame(url);
+                });
+            }else{
+                sp.spriteFrame = me.GameMain.getSpriteFrame(url);
+            }
+        }else{
+            cc.loader.loadRes("GameMain_cn", cc.SpriteAtlas, function (err, atlas) {
+                sp.spriteFrame = atlas.getSpriteFrame(url);
+            });
+        }
+
         if(clean){
             this.table_tips.push(game_tip);
         }else{
@@ -415,6 +428,12 @@ cc.Class({
         this.add_countdown(sit,duration);
 
         var finished=function(){
+            var seat_node = cc.find("Canvas/table_bg/seat_"+sit+"/chips");
+            var seat_lable = seat_node.getComponent(cc.Label);
+            var seat_chips = parseInt(seat_lable.string);
+            if(seat_chips <= handChips){
+                url = 'game_allIn_tip';
+            }
             this.game_tip(sit,url,true);
             this.chipsToTable(sit,pot,inpot,handChips);
         };
@@ -429,6 +448,12 @@ cc.Class({
         this.add_countdown(sit,duration);
 
         var finished=function(){
+            var seat_node = cc.find("Canvas/table_bg/seat_"+sit+"/chips");
+            var seat_lable = seat_node.getComponent(cc.Label);
+            var seat_chips = parseInt(seat_lable.string);
+            if(seat_chips <= handChips){
+                url = 'game_allIn_tip';
+            }
             this.game_tip(sit,url,true);
             this.chipsToTable(sit,pot,inpot,handChips);
         };
@@ -1100,8 +1125,8 @@ cc.Class({
         this.timer.scale=1.2;
 
         var sp = this.timer.addComponent(cc.Sprite);
-        sp.type=cc.Sprite.Type.FILLED;
-        sp.fillType=cc.Sprite.FillType.RADIAL;
+        sp.type = cc.Sprite.Type.FILLED;
+        sp.fillType = cc.Sprite.FillType.RADIAL;
         sp.fillCenter = new cc.Vec2(0.5, 0.5);
         sp.fillStart = 0;
         sp.fillRange = 0;
