@@ -537,7 +537,7 @@ cc.Class({
                     this.turnstart(turnpcard);
                 },duration);
 
-                duration=duration+3;
+                duration=duration+2;
                 var rivercard=[cards[1]];
                 this.scheduleOnce(function(){
                     this.riverstart(rivercard);
@@ -557,7 +557,7 @@ cc.Class({
                     this.turnstart(turnpcard);
                 },duration);
 
-                duration=duration+2;
+                duration=duration+1;
                 var rivercard=[cards[4]];
                 this.scheduleOnce(function(){
                     this.riverstart(rivercard);

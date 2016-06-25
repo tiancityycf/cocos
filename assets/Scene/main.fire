@@ -4519,8 +4519,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 274,
-      "height": 88
+      "width": 137,
+      "height": 137
     },
     "_children": [],
     "_rotationX": 0,
@@ -4529,7 +4529,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 3,
+      "x": 1,
       "y": -550
     },
     "_skewX": 0,
@@ -4561,7 +4561,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "9a0d1411-7707-4cdf-b841-a974d62aefbf"
+      "__uuid__": "26c48164-69d5-4a79-b457-ca2956c9a86b"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -4577,7 +4577,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": {
-      "__uuid__": "219ec989-b7a7-4a33-a52a-47db3ab8bb4c"
+      "__uuid__": "56dfe7e2-2ece-4260-a03f-124e9a032b61"
     }
   },
   {
@@ -4605,7 +4605,7 @@
     },
     "duration": 0.1,
     "pressedSprite": {
-      "__uuid__": "63156707-33f5-413b-8e21-ffa660eaefb4"
+      "__uuid__": "b9703bd5-28d0-4a1d-a0e7-f46a1c8aab10"
     },
     "hoverSprite": null,
     "clickEvents": [
@@ -4629,10 +4629,10 @@
       "a": 255
     },
     "_N$normalSprite": {
-      "__uuid__": "9a0d1411-7707-4cdf-b841-a974d62aefbf"
+      "__uuid__": "26c48164-69d5-4a79-b457-ca2956c9a86b"
     },
     "_N$disabledSprite": {
-      "__uuid__": "ad5138fe-6b83-4cfd-a96c-c3b9abc88b4c"
+      "__uuid__": "1a3e5b3c-f36d-4621-a476-3b998e97d4a9"
     },
     "_N$target": {
       "__id__": 117
@@ -4743,6 +4743,7 @@
       }
     ],
     "inpot": null,
+    "table_chips_inpot": false,
     "table_chips": [],
     "table_tips": [],
     "game_card_turn": 0,
