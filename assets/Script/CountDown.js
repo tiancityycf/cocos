@@ -22,6 +22,14 @@ cc.Class({
     },
     //添加倒计时的进度条
     add_countdown:function(seat_number,long_time){
+        if(parseInt(long_time) == 0 ){
+            cc.log("时间是0");
+            var me = this;
+            this.scheduleOnce(function(){
+                me.scheduleOnce(this.countdown_over_task,0);
+            },1);
+            return false;
+        }
         var node_table_bg = cc.find("Canvas/table_bg");
         //初始化
         this.countdown_repeat_num = 0;
@@ -93,7 +101,6 @@ cc.Class({
             fillRange = cost_time < this.countdown_long_time ? fillRange -= (this.countdown_execution_interval * speed):0;
         }
         sprite.fillRange = fillRange;
-        cc.log(fillRange);
         if(fillRange == 0){
             this.unschedule(this.countdown_task);//删除定时任务
             this.countdown_node.destroy();//删除该节点
@@ -189,7 +196,11 @@ cc.Class({
                         if(i==0){
                             response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["start"]["timestamp"];
                         }else{
-                            response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["actions"][i-1]["timestamp"];
+                            if(response["actions"][i-1]['CMD'] == 19){
+                                response["actions"][i]["duration"] = 0;
+                            }else{
+                                response["actions"][i]["duration"]=response["actions"][i]["timestamp"]-response["actions"][i-1]["timestamp"];
+                            }
                         }
                     };
                     //初始化动作属性
