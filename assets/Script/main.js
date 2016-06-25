@@ -503,7 +503,7 @@ cc.Class({
             };
             var len=data.length;
             for(var i=0;i<len;i++){
-                this.endtip(data[i]["chair_id"],data[i]["change_chip"],data[i]["hand_poker_0"],data[i]["hand_poker_1"],cardType[data[i]["card_type"]]);
+                this.endtip(data[i]["chair_id"],data[i]["change_chip"],data[i]["hand_poker_0"],data[i]["hand_poker_1"],cardType[data[i]["card_type"]],data[i]["new_chip"]);
             }
         };
     },
@@ -582,7 +582,7 @@ cc.Class({
         },duration);
     },
     //比牌结束显示输赢详情
-    endtip:function(sit,chips,card1,card2,cardType) {
+    endtip:function(sit,chips,card1,card2,cardType,new_chips) {
         var table_bg = this.node.parent.getChildByName("table_bg");
         var pos = table_bg.getChildByName("seat_" + sit).getPosition();
 
@@ -603,6 +603,10 @@ cc.Class({
         ctNode.parent = node;
         ctNode.setPosition(0, -60);
 
+        //显示当前的筹码数
+        var seat_chips_node = cc.find("Canvas/table_bg/seat_"+sit+"/chips");
+        var seat_chips_lable = seat_chips_node.getComponent(cc.Label);
+        seat_chips_lable.string = new_chips;
         if (chips > 0) {
             this.potToWinner(pos);
             var lbNode = new cc.Node();
@@ -618,7 +622,7 @@ cc.Class({
             lbb.fontSize = font;
             lbbNode.color = color;
             lbbNode.setPosition(0, -10);
-        };
+        }
         //2牌都亮时显示牌型
         if (card1 > 0 && card2 > 0) {
             ctChip.spriteFrame =  this.GameMain.getSpriteFrame('game_endhand');
