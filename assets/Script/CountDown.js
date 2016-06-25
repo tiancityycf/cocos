@@ -56,7 +56,7 @@ cc.Class({
         sprite.type = cc.Sprite.Type.FILLED;
         sprite.fillType = cc.Sprite.FillType.RADIAL;
         sprite.fillCenter = new cc.Vec2(0.5,0.5);
-        sprite.fillStart = 0;
+        sprite.fillStart = 0.25;
         sprite.fillRange = 0;
         var frame = this.GameMain.getSpriteFrame("game_progress_frame");
         sprite.spriteFrame = frame;
@@ -133,7 +133,7 @@ cc.Class({
         sprite.type = cc.Sprite.Type.FILLED;
         sprite.fillType = cc.Sprite.FillType.RADIAL;
         sprite.fillCenter = new cc.Vec2(0.5,0.5);
-        sprite.fillStart = 0;
+        sprite.fillStart = 0.25;
         sprite.fillRange = 0;
         var frame = this.GameMain.getSpriteFrame("game_progress_frame");
         sprite.spriteFrame = frame;
