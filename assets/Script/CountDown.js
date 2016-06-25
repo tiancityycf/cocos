@@ -23,7 +23,6 @@ cc.Class({
     //添加倒计时的进度条
     add_countdown:function(seat_number,long_time){
         if(parseInt(long_time) == 0 ){
-            cc.log("时间是0");
             var me = this;
             this.scheduleOnce(function(){
                 me.scheduleOnce(this.countdown_over_task,0);
