@@ -39,8 +39,8 @@ cc.Class({
             default:[],
             type:cc.Sprite
         },
-        //游戏加载以后播放了几次
-        game_start_num:0,
+        //游戏是否在播放 0-未播放 1-正在播放 2-播放完毕
+        game_start:0,
 
         //t_sprite:{//定义一个cc的类型，并定义上常用属性
         //    default:null,
@@ -66,6 +66,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        cc.game.config.showFPS=false;
 
         //4. 先获取目标组件所在的节点，然后通过getComponent获取目标组件
         //var _label = cc.find("Canvas/label").getComponent(cc.Label);
@@ -315,15 +316,54 @@ cc.Class({
     },
     //圆形头像 cc.Mask 例子
     mainstart:function(){
-        this.buttonDisable();
-        if(this.game_start_num>0){
-            //当游戏第二次以后播放，重置游戏场景
-            this.resetGame();
-        }else{
-            this.game_start_num++;
+        if(this.GameMain==null){
+            //资源未加载成功，不能点击
+            return false;
         };
+        cc.log(this.game_start);
+        if(this.game_start==1){
+            if(cc.game.isPaused()){
+                cc.game.resume();
+            }else{
+                cc.game.pause();
+            };
+        }else{
+            if(this.game_start==0){
+                this.game_start=1;
+                this.initsb();
+            }else{
+                //当游戏播放完毕 重置游戏场景
+                this.resetGame();
+                this.game_start=0;
+            }
+        };
+        //this.buttonResume();
+        //if(this.game_start>0){
+        //    if(cc.game.isPaused()){
+        //        cc.game.resume();
+        //    }else{
+        //        cc.game.pause();
+        //    }
+        //    //当游戏第二次以后播放，重置游戏场景
+        //    this.resetGame();
+        //}else{
+        //    this.game_start++;
+        //};
 
-        this.initsb();
+        //this.initsb();
+    },
+    buttonResume:function(){
+
+        //var b=this.node.parent.getChildByName("game_table_start_normal");
+        //b.getComponent(cc.Button).interactable=false;
+    },
+    buttonPause:function(){
+        if(this.GameMain==null){
+            //资源未加载成功，不能点击
+            return false;
+        };
+        var b=this.node.parent.getChildByName("game_table_start_normal");
+        b.getComponent(cc.Button).interactable=false;
     },
     buttonDisable:function(){
         if(this.GameMain==null){
@@ -504,7 +544,9 @@ cc.Class({
             var len=data.length;
             for(var i=0;i<len;i++){
                 this.endtip(data[i]["chair_id"],data[i]["change_chip"],data[i]["hand_poker_0"],data[i]["hand_poker_1"],cardType[data[i]["card_type"]],data[i]["new_chip"]);
-            }
+            };
+            //游戏播放完毕
+            this.game_start=2;
         };
     },
     //亮出所有剩余公牌，准备比牌
