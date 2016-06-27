@@ -823,9 +823,6 @@ cc.Class({
 
         var sp = node.addComponent(cc.Sprite);
         sp.spriteFrame = this.GameMain.getSpriteFrame('game_chip_tip');
-        node.parent = table_bg;
-
-        node.setPosition(pos);
 
         var action = cc.moveTo(0.2,chipPos);
 
@@ -862,17 +859,26 @@ cc.Class({
 
         this.table_chips.push(node);
 
+        //先把节点enable=false，加载完声音，把节点显示出来，接着做动作
+        node.parent = table_bg;
+        node.setPosition(pos);
+        node.enabled=false;
+
         // play audioSource播放下注的声音
         var me = this;
         if(me.audio_chipsToTable == null){
             cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
                 me.audio_chipsToTable = assets;
-                node.runAction(seq);
                 cc.audioEngine.playEffect(assets);
+                //把节点显示出来，接着做动作
+                node.enabled=true;
+                node.runAction(seq);
             });
         }else{
-            node.runAction(seq);
             cc.audioEngine.playEffect(this.audio_chipsToTable);
+            //把节点显示出来，接着做动作
+            node.enabled=true;
+            node.runAction(seq);
         }
         this.inpotstart(pot);
     },
@@ -979,19 +985,19 @@ cc.Class({
         //node1.active=true;
         //node1.parent = this.node.parent;
         //node1.setPosition(-200,50);
-        node1.parent=this.card[0];
+
 
         mSf2.enabled=true;
         //node2.active=true;
         //node2.parent = this.node.parent;
         //node2.setPosition(-200,50);
-        node2.parent=this.card[1];
+
 
         mSf3.enabled=true;
         //node3.active=true;
         //node3.parent = this.node.parent;
         //node3.setPosition(-200,50);
-        node3.parent=this.card[2];
+
 
         //var action1=cc.moveTo(1, cc.p(-100, 50));
         //var action2=cc.moveTo(2, cc.p(0, 50));
@@ -1008,14 +1014,20 @@ cc.Class({
         if(me.audio_distributeCard == null){
             cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
                 me.audio_distributeCard = assets;
+                cc.audioEngine.playEffect(assets);
+                node1.parent=this.card[0];
+                node2.parent=this.card[1];
+                node3.parent=this.card[2];
                 node1.runAction(action1);
                 node2.runAction(seq);
-                cc.audioEngine.playEffect(assets);
             });
         }else{
+            cc.audioEngine.playEffect(this.audio_distributeCard);
+            node1.parent=this.card[0];
+            node2.parent=this.card[1];
+            node3.parent=this.card[2];
             node1.runAction(action1);
             node2.runAction(seq);
-            cc.audioEngine.playEffect(this.audio_distributeCard);
         }
 
 

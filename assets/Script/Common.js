@@ -120,6 +120,9 @@ cc.Class({
     },
     //js获取当前url的参数
     getQueryString:function(name){
+        if(undefined==window.location){
+            return null;
+        };
         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if(r!=null){
