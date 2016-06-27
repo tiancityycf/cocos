@@ -759,6 +759,17 @@ cc.Class({
             };
         };
 
+        //清理所有的最后的tips
+        if(this.table_tips){
+            for(var i=0;i<this.table_tips.length;i++){
+                //var sp=this.table_tips[i].getComponent(cc.Sprite);
+                if(cc.isValid(this.table_tips[i])){
+                    this.table_tips[i].destroy();
+                }
+            }
+            this.table_tips=[];
+        };
+
         this.i = 0;
     },
     //站起
