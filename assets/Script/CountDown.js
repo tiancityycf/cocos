@@ -159,7 +159,6 @@ cc.Class({
     },
     reqstart:function(){
         var hand_id = this.getQueryString("hand_id");
-        cc.log(hand_id);
         // var search = window.location.search; //获取url中"?"符后的字串
         // var hand_id=0;
         // if (search.indexOf("?") != -1) {
