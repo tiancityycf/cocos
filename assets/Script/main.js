@@ -66,7 +66,9 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        cc.game.config.showFPS=false;
+        //cc.game.config.showFPS=false;
+
+        cc.director.setDisplayStats(false);
 
         //4. 先获取目标组件所在的节点，然后通过getComponent获取目标组件
         //var _label = cc.find("Canvas/label").getComponent(cc.Label);
