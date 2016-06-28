@@ -385,7 +385,7 @@ cc.Class({
         var game_tip=this.node.parent.getChildByName("table_bg").getChildByName("seat_"+sit).getChildByName("game_tip");
         //var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
         var sp=game_tip.getComponent(cc.Sprite);
-        if(sp){
+        if(cc.isValid(sp)){
             //sp.destroy();
         }else{
             sp=game_tip.addComponent(cc.Sprite);
@@ -773,6 +773,8 @@ cc.Class({
             }
             this.table_tips=[];
         };
+
+        this.table_chips_inpot=0;
 
         this.i = 0;
     },
