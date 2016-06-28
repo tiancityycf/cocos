@@ -140,7 +140,6 @@ cc.Class({
 
         this.inpotstart(0);
 
-
     },
 
 
@@ -335,12 +334,13 @@ cc.Class({
             };
         }else{
             this.buttonPause();
+            this.game_start=1;
             if(this.game_start==0){
-                this.game_start=1;
+                //this.game_start=1;
             }else{
                 //当游戏播放完毕 重置游戏场景
                 this.resetGame();
-                this.game_start=0;
+                //this.game_start=0;
             };
             this.initsb();
         };
@@ -384,12 +384,18 @@ cc.Class({
     game_tip:function(sit,url,clean){
         var game_tip=this.node.parent.getChildByName("table_bg").getChildByName("seat_"+sit).getChildByName("game_tip");
         //var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
+        cc.log("1111");
+        cc.log(game_tip);
         var sp=game_tip.getComponent(cc.Sprite);
         if(cc.isValid(sp)){
             //sp.destroy();
         }else{
+            cc.log("1111");
+
             sp=game_tip.addComponent(cc.Sprite);
         }
+        cc.log("2222");
+
         if(url == 'game_allIn_tip'){
             var me = this;
             if(this.GameMain == null){
@@ -727,6 +733,7 @@ cc.Class({
         }
     },
     resetGame:function(){
+        //cc.game.restart();
         this.resetSeat()
 
         this.card[0].removeAllChildren(true);
@@ -766,10 +773,10 @@ cc.Class({
         //清理所有的最后的tips
         if(this.table_tips){
             for(var i=0;i<this.table_tips.length;i++){
-                //var sp=this.table_tips[i].getComponent(cc.Sprite);
-                if(cc.isValid(this.table_tips[i])){
-                    this.table_tips[i].destroy();
-                }
+                var sp=this.table_tips[i].getComponent(cc.Sprite);
+                if(cc.isValid(sp)){
+                    sp.destroy();
+                };
             }
             this.table_tips=[];
         };
@@ -777,20 +784,31 @@ cc.Class({
         this.table_chips_inpot=0;
 
         this.i = 0;
+
+        //this.game_start=0;
     },
     //站起
     quit:function(sit,duration){
-        this.countdown_over_task=null;
 
-        var table_bg=this.node.parent.getChildByName("table_bg");
-        var seat=table_bg.getChildByName("seat_"+sit);
-        seat.removeAllChildren(true);
+        var me=this;
+
+        me.countdown_over_task=null;
 
         var finished = function(){
-            this.add_countdown(sit,duration);
+            var table_bg=me.node.parent.getChildByName("table_bg");
+            var seat=table_bg.getChildByName("seat_"+sit);
+            //seat.enabled=false;
+            seat.removeAllChildren(true);
+            //当前动作结束
+            me.actionend();
         };
-        this.countdown_over_task=finished;
 
+        if(duration>0){
+            me.add_countdown(sit,duration);
+        }else{
+            finished();
+        }
+        this.countdown_over_task=finished;
     },
 
     //底池的筹码分给赢的人 pos赢钱的人的座位位置
