@@ -292,7 +292,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 760,
+      "width": 960,
       "height": 1334
     },
     "_children": [],
@@ -331,7 +331,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "433c3791-25ed-4e94-8894-72e7dad6af14"
+      "__uuid__": "d5e079ed-488b-4fd5-8bc3-b3e082b34d96"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -4750,7 +4750,7 @@
     "game_card_river": 0,
     "cleanNode": [],
     "cleanSp": [],
-    "game_start_num": 0
+    "game_start": 0
   },
   {
     "__type__": "cc.Canvas",

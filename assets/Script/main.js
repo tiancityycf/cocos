@@ -66,6 +66,8 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        //1242x2208
+        cc.log(cc.director.getWinSize());
         cc.game.config.showFPS=false;
 
         //4. 先获取目标组件所在的节点，然后通过getComponent获取目标组件
