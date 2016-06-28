@@ -124,6 +124,9 @@ cc.Class({
             seat_node.getChildByName("avatar").setOpacity(255);
             seat_node.getChildByName("nick").setOpacity(255);
             seat_node.getChildByName("chips").setOpacity(255);
+            if(cc.isValid(seat_node.getChildByName("hand_card"))){
+                seat_node.getChildByName("hand_card").destroy();
+            }
         }
     },
     //js获取当前url的参数
