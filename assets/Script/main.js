@@ -384,17 +384,12 @@ cc.Class({
     game_tip:function(sit,url,clean){
         var game_tip=this.node.parent.getChildByName("table_bg").getChildByName("seat_"+sit).getChildByName("game_tip");
         //var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
-        cc.log("1111");
-        cc.log(game_tip);
         var sp=game_tip.getComponent(cc.Sprite);
         if(cc.isValid(sp)){
             //sp.destroy();
         }else{
-            cc.log("1111");
-
             sp=game_tip.addComponent(cc.Sprite);
         }
-        cc.log("2222");
 
         if(url == 'game_allIn_tip'){
             var me = this;
