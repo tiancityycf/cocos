@@ -730,6 +730,7 @@ cc.Class({
     resetGame:function(){
         //cc.game.restart();
         this.resetSeat()
+        cc.log("重播");
 
         this.card[0].removeAllChildren(true);
         this.card[1].removeAllChildren(true);
@@ -793,7 +794,14 @@ cc.Class({
             var table_bg=me.node.parent.getChildByName("table_bg");
             var seat=table_bg.getChildByName("seat_"+sit);
             //seat.enabled=false;
-            seat.removeAllChildren(true);
+            //隐藏图像
+            seat.getChildByName("avatar").setOpacity(0);
+            seat.getChildByName("nick").setOpacity(0);
+            seat.getChildByName("chips").setOpacity(0);
+            seat.getChildByName("hand_card").setOpacity(0);
+            if(cc.isValid(seat.getChildByName("game_tip").getComponent(cc.Sprite))){
+                seat.getChildByName("game_tip").getComponent(cc.Sprite).destroy();
+            }
             //当前动作结束
             me.actionend();
         };
