@@ -784,7 +784,15 @@ cc.Class({
 
         var table_bg=this.node.parent.getChildByName("table_bg");
         var seat=table_bg.getChildByName("seat_"+sit);
-        seat.removeAllChildren(true);
+        //隐藏图像
+        seat.getChildByName("avatar").setOpacity(0);
+        seat.getChildByName("nick").setOpacity(0);
+        seat.getChildByName("chips").setOpacity(0);
+        seat.getChildByName("hand_card").setOpacity(0);
+        if(cc.isValid(seat.getChildByName("game_tip").getComponent(cc.Sprite))){
+            seat.getChildByName("game_tip").getComponent(cc.Sprite).destroy();
+        }
+       //seat.removeAllChildren(true);
 
         var finished = function(){
             this.add_countdown(sit,duration);

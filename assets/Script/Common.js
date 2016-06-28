@@ -78,6 +78,7 @@ cc.Class({
                 label_chips.string = v['remain_chip']+v['table_chip'];
                 //头像
                 var node_mark = new cc.Node();
+                node_mark.name='avatar';
                 var mask_user = node_mark.addComponent(cc.Mask);
                 mask_user.type = cc.Mask.ELLIPSE;
                 node_mark.width = node_size['width']-10;
@@ -120,6 +121,9 @@ cc.Class({
             //带入的筹码
             var label_chips = seat_node.getChildByName("chips").getComponent(cc.Label);
             label_chips.string = v['remain_chip']+v['table_chip'];
+            seat_node.getChildByName("avatar").setOpacity(255);
+            seat_node.getChildByName("nick").setOpacity(255);
+            seat_node.getChildByName("chips").setOpacity(255);
         }
     },
     //js获取当前url的参数
