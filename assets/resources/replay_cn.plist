@@ -4,48 +4,33 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>replay_disable.png</key>
+            <key>game_table_start_normal.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{137,137}</string>
+                <string>{130,130}</string>
                 <key>spriteSourceSize</key>
-                <string>{137,137}</string>
+                <string>{130,130}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{137,137}}</string>
+                <string>{{1,1},{130,130}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>replay_normal.png</key>
+            <key>game_table_start_pause.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{137,137}</string>
+                <string>{130,130}</string>
                 <key>spriteSourceSize</key>
-                <string>{137,137}</string>
+                <string>{130,130}</string>
                 <key>textureRect</key>
-                <string>{{140,1},{137,137}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>replay_press.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{137,137}</string>
-                <key>spriteSourceSize</key>
-                <string>{137,137}</string>
-                <key>textureRect</key>
-                <string>{{279,1},{137,137}}</string>
+                <string>{{133,1},{130,130}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -61,9 +46,9 @@
             <key>realTextureFileName</key>
             <string>replay_cn.png</string>
             <key>size</key>
-            <string>{417,139}</string>
+            <string>{264,132}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:20d1892f013fc0b55df7fd356485265f:3d8997687e94dd42166e5ac8cf075482:927fa0916d7a7e610ae6b4a702924af2$</string>
+            <string>$TexturePacker:SmartUpdate:4118c64a19043fdecff4e3fb45baf40f:4665ff96f48548ef1fbfc94a3648d4b4:927fa0916d7a7e610ae6b4a702924af2$</string>
             <key>textureFileName</key>
             <string>replay_cn.png</string>
         </dict>

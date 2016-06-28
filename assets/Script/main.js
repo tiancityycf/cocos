@@ -70,6 +70,8 @@ cc.Class({
         cc.log(cc.director.getWinSize());
         cc.game.config.showFPS=false;
 
+        cc.director.setDisplayStats(false);
+
         //4. 先获取目标组件所在的节点，然后通过getComponent获取目标组件
         //var _label = cc.find("Canvas/label").getComponent(cc.Label);
 
@@ -316,56 +318,55 @@ cc.Class({
             me.actionend();
         },2);
     },
-    //圆形头像 cc.Mask 例子
     mainstart:function(){
+
         if(this.GameMain==null){
             //资源未加载成功，不能点击
             return false;
         };
-        cc.log(this.game_start);
+
         if(this.game_start==1){
-            if(cc.game.isPaused()){
-                cc.game.resume();
+            if(cc.director.isPaused()){
+                cc.director.resume();
+                this.buttonPause();
             }else{
-                cc.game.pause();
+                this.buttonResume();
+                cc.director.pause();
             };
         }else{
+            this.buttonPause();
             if(this.game_start==0){
                 this.game_start=1;
-                this.initsb();
             }else{
                 //当游戏播放完毕 重置游戏场景
                 this.resetGame();
                 this.game_start=0;
-            }
+            };
+            this.initsb();
         };
-        //this.buttonResume();
-        //if(this.game_start>0){
-        //    if(cc.game.isPaused()){
-        //        cc.game.resume();
-        //    }else{
-        //        cc.game.pause();
-        //    }
-        //    //当游戏第二次以后播放，重置游戏场景
-        //    this.resetGame();
-        //}else{
-        //    this.game_start++;
-        //};
 
-        //this.initsb();
     },
     buttonResume:function(){
-
-        //var b=this.node.parent.getChildByName("game_table_start_normal");
-        //b.getComponent(cc.Button).interactable=false;
+        var btsp=this.node.parent.getChildByName("game_table_start_normal").getComponent(cc.Sprite);
+        if(this.replay_cn == null){
+            cc.loader.loadRes("replay_cn",cc.SpriteAtlas,function(err,atlas){
+                me.replay_cn = atlas;
+                btsp.spriteFrame = this.replay_cn.getSpriteFrame("game_table_start_normal");
+            });
+        }else{
+            btsp.spriteFrame = this.replay_cn.getSpriteFrame("game_table_start_normal");
+        }
     },
     buttonPause:function(){
-        if(this.GameMain==null){
-            //资源未加载成功，不能点击
-            return false;
-        };
-        var b=this.node.parent.getChildByName("game_table_start_normal");
-        b.getComponent(cc.Button).interactable=false;
+        var btsp=this.node.parent.getChildByName("game_table_start_normal").getComponent(cc.Sprite);
+        if(this.replay_cn == null){
+            cc.loader.loadRes("replay_cn",cc.SpriteAtlas,function(err,atlas){
+                this.replay_cn = atlas;
+                btsp.spriteFrame = this.replay_cn.getSpriteFrame("game_table_start_pause");
+            });
+        }else{
+            btsp.spriteFrame = this.replay_cn.getSpriteFrame("game_table_start_pause");
+        }
     },
     buttonDisable:function(){
         if(this.GameMain==null){
@@ -549,6 +550,7 @@ cc.Class({
             };
             //游戏播放完毕
             this.game_start=2;
+            this.buttonResume();
         };
     },
     //亮出所有剩余公牌，准备比牌

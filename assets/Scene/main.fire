@@ -4519,8 +4519,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 137,
-      "height": 137
+      "width": 130,
+      "height": 130
     },
     "_children": [],
     "_rotationX": 0,
@@ -4561,7 +4561,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "26c48164-69d5-4a79-b457-ca2956c9a86b"
+      "__uuid__": "aeb2ec1f-6226-49df-99fc-124c149e1802"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -4588,7 +4588,7 @@
       "__id__": 117
     },
     "_enabled": true,
-    "transition": 2,
+    "transition": 0,
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 211,
@@ -4604,9 +4604,7 @@
       "a": 255
     },
     "duration": 0.1,
-    "pressedSprite": {
-      "__uuid__": "b9703bd5-28d0-4a1d-a0e7-f46a1c8aab10"
-    },
+    "pressedSprite": null,
     "hoverSprite": null,
     "clickEvents": [
       {
@@ -4628,12 +4626,8 @@
       "b": 124,
       "a": 255
     },
-    "_N$normalSprite": {
-      "__uuid__": "26c48164-69d5-4a79-b457-ca2956c9a86b"
-    },
-    "_N$disabledSprite": {
-      "__uuid__": "1a3e5b3c-f36d-4621-a476-3b998e97d4a9"
-    },
+    "_N$normalSprite": null,
+    "_N$disabledSprite": null,
     "_N$target": {
       "__id__": 117
     }
@@ -4709,6 +4703,7 @@
     "_enabled": true,
     "seat": [],
     "GameMain": null,
+    "replay_cn": null,
     "GameCards": null,
     "audio_chipsToTable": null,
     "audio_check": null,
