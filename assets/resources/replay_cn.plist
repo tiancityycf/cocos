@@ -4,6 +4,51 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>close_audio.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{128,128}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,265},{128,128}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>forward_normal.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{128,128}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{131,265},{128,128}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>forward_unnormal.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{128,128}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{133,1},{128,128}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>game_table_start_normal.png</key>
             <dict>
                 <key>aliases</key>
@@ -30,7 +75,22 @@
                 <key>spriteSourceSize</key>
                 <string>{130,130}</string>
                 <key>textureRect</key>
-                <string>{{133,1},{130,130}}</string>
+                <string>{{1,133},{130,130}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>open_audio.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{128,128}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{133,131},{128,128}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -46,9 +106,9 @@
             <key>realTextureFileName</key>
             <string>replay_cn.png</string>
             <key>size</key>
-            <string>{264,132}</string>
+            <string>{262,394}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:4118c64a19043fdecff4e3fb45baf40f:4665ff96f48548ef1fbfc94a3648d4b4:927fa0916d7a7e610ae6b4a702924af2$</string>
+            <string>$TexturePacker:SmartUpdate:ebb6f4317a928b5fffe6892fcd3068b5:b5049d54803fe438ef71328a989a6c35:927fa0916d7a7e610ae6b4a702924af2$</string>
             <key>textureFileName</key>
             <string>replay_cn.png</string>
         </dict>
