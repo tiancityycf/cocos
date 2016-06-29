@@ -778,7 +778,15 @@ cc.Class({
                 };
             }
             this.table_tips=[];
-        };
+        }
+        //清理dealer
+        var dealer_node = cc.find("Canvas/table_bg/dealer_"+this.hand_data['start']['d_chair']);
+        if(dealer_node.getComponent(cc.Sprite) != null){
+            dealer_node.getComponent(cc.Sprite).destroy();
+            cc.log("清理dealer位成功");
+        }
+
+
 
         this.table_chips_inpot=0;
 
@@ -788,13 +796,12 @@ cc.Class({
     },
     //站起
     quit:function(sit,duration){
-
         var me=this;
 
         me.countdown_over_task=null;
 
         var finished = function(){
-            var table_bg=me.node.parent.getChildByName("table_bg");
+            var table_bg = cc.find("Canvas/table_bg");
             var seat=table_bg.getChildByName("seat_"+sit);
             //seat.enabled=false;
             //隐藏图像
@@ -802,19 +809,14 @@ cc.Class({
             seat.getChildByName("nick").setOpacity(0);
             seat.getChildByName("chips").setOpacity(0);
             seat.getChildByName("hand_card").setOpacity(0);
-            if(cc.isValid(seat.getChildByName("game_tip").getComponent(cc.Sprite))){
+            if(seat.getChildByName("game_tip").getComponent(cc.Sprite)!=null){
                 seat.getChildByName("game_tip").getComponent(cc.Sprite).destroy();
             }
             //当前动作结束
             me.actionend();
         };
-
-        if(duration>0){
-            me.add_countdown(sit,duration);
-        }else{
-            finished();
-        }
-        this.countdown_over_task=finished;
+        me.add_countdown(sit,duration);
+        this.countdown_over_task = finished;
     },
 
     //底池的筹码分给赢的人 pos赢钱的人的座位位置
