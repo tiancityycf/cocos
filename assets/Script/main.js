@@ -264,13 +264,22 @@ cc.Class({
         var node_table_bg = cc.find("Canvas/table_bg");
         //dealer位
         var dealer_node = node_table_bg.getChildByName("dealer_"+table_data['start']['d_chair']);
-        var dealer_sprite = dealer_node.addComponent(cc.Sprite);
+        var dealer_sprite = dealer_node.getComponent(cc.Sprite);
+        if(dealer_sprite == null){
+            var dealer_sprite = dealer_node.addComponent(cc.Sprite);
+        }
         //大盲位
         var big_blind_node = node_table_bg.getChildByName("chip_"+table_data['start']['bb_chair']);
-        var big_blind_sprite = big_blind_node.addComponent(cc.Sprite);
+        var big_blind_sprite = big_blind_node.getComponent(cc.Sprite);
+        if(big_blind_sprite == null){
+            var big_blind_sprite = big_blind_node.addComponent(cc.Sprite);
+        }
         //小盲位
         var small_blind_node = node_table_bg.getChildByName("chip_"+table_data['start']['sb_chair']);
-        var small_blind_sprite = small_blind_node.addComponent(cc.Sprite);
+        var small_blind_sprite = small_blind_node.getComponent(cc.Sprite);
+        if(small_blind_sprite == null){
+            var small_blind_sprite = small_blind_node.addComponent(cc.Sprite);
+        }
 
         //dealer位的图片加载
         var dealer_frame = this.GameMain.getSpriteFrame("game_dealer_tip");
@@ -783,11 +792,7 @@ cc.Class({
         var dealer_node = cc.find("Canvas/table_bg/dealer_"+this.hand_data['start']['d_chair']);
         if(dealer_node.getComponent(cc.Sprite) != null){
             dealer_node.getComponent(cc.Sprite).destroy();
-            cc.log("清理dealer位成功");
         }
-
-
-
         this.table_chips_inpot=0;
 
         this.i = 0;
