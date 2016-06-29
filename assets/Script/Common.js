@@ -107,8 +107,14 @@ cc.Class({
             if(parseInt(table_data['table_code'])==0){
                 var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
                 label_table_code.string = "盲注 "+sb_data['table_chip']+"/"+bb_data['table_chip'];
+            };
+            //删除加载图片
+            var splash = document.getElementById('splash');
+            if(undefined!=splash){
+                splash.style.display = 'none';
             }
         });
+
     },
     resetSeat:function(){
         var table_data = this.hand_data;

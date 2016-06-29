@@ -137,10 +137,11 @@ cc.Class({
 
 
         this.reqstart();
-
-        this.inpotstart(0);
+        //
+        //this.inpotstart(0);
 
     },
+
 
 
     //    站起							5
