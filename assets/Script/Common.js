@@ -209,10 +209,10 @@ cc.Class({
         var sprite_url = "";
         if(this.open_fixedThinkTime == 1){
             this.open_fixedThinkTime = 0;
-            sprite_url='forward_unnormal';
+            sprite_url='forward_normal';
         }else{
             this.open_fixedThinkTime = 1;
-            sprite_url='forward_normal';
+            sprite_url='forward_unnormal';
         }
         var fast_forward =cc.find("Canvas/fast_forward");
         var sprite = fast_forward.getComponent(cc.Sprite);
