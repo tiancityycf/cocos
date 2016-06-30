@@ -146,17 +146,13 @@ cc.Class({
             label_table_sb.fontSize = me.fontStyle['table_sb']['fontSize'];
             label_table_sb.lineHeight = me.fontStyle['table_sb']['lineHeight'];
 
-            this.cleanLoading();
+            //删除加载图片
+            var splash = document.getElementById('splash');
+            if(undefined!=splash){
+                splash.style.display = 'none';
+            }
         });
 
-    },
-    //隐藏加载过程
-    cleanLoading:function(){
-        //删除加载图片
-        var splash = document.getElementById('splash');
-        if(undefined!=splash){
-            splash.style.display = 'none';
-        }
     },
     resetSeat:function(){
         var table_data = this.hand_data;
