@@ -135,10 +135,7 @@ cc.Class({
         // });
         // this.node.emit("tEmitFun",{himi:27,say:"hello,cc!"});
 
-
         this.reqstart();
-        //
-        //this.inpotstart(0);
 
     },
 
@@ -1283,3 +1280,4 @@ cc.Class({
     },
 
 });
+
