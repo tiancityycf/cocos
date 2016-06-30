@@ -927,7 +927,8 @@ cc.Class({
                 var chipLabel = cn.addComponent(cc.Label);
                 cn.name = "table_chip";
                 cn.parent = node;
-                chipLabel.fontSize = 20;
+                chipLabel.fontSize = this.fontStyle['chip']['fontSize'];
+                chipLabel.lineHeight = this.fontStyle['chip']['lineHeight'];
                 cn.color = new cc.Color(0,0,0);
                 cn.opacity = 100;
                 cn.setPosition(0,-40);
