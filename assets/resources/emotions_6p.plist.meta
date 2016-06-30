@@ -10,7 +10,7 @@
   "subMetas": {
     "face1-game_emotion_01_01.png": {
       "ver": "1.0.3",
-      "uuid": "fdc3079e-44ae-4452-9d2b-045334bc0479",
+      "uuid": "031df026-07f5-4e44-b0ae-526dd6c49389",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -32,7 +32,7 @@
     },
     "face1-game_emotion_01_02.png": {
       "ver": "1.0.3",
-      "uuid": "235c1d7d-940e-409c-88e5-8f3eeec269d8",
+      "uuid": "0c47418d-7f85-479c-8b34-3875ea1c3d01",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -54,7 +54,7 @@
     },
     "face1-game_emotion_01_03.png": {
       "ver": "1.0.3",
-      "uuid": "7342e0e1-b259-414e-9451-34b71ee7525c",
+      "uuid": "f8e31a81-49d8-4c6c-8800-19cae079cdbd",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -76,7 +76,7 @@
     },
     "face1-game_emotion_01_04.png": {
       "ver": "1.0.3",
-      "uuid": "4a4d3733-b480-4f23-b92d-f3a6be550a97",
+      "uuid": "e00631ab-699f-4a0c-94db-9277b9038a06",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -98,7 +98,7 @@
     },
     "face1-game_emotion_01_05.png": {
       "ver": "1.0.3",
-      "uuid": "df1c94f0-cc7c-44ee-b637-7004eae20209",
+      "uuid": "c5f7403d-cf82-4ab6-a973-a11513da87d5",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -120,7 +120,7 @@
     },
     "face1-game_emotion_01_06.png": {
       "ver": "1.0.3",
-      "uuid": "c3c9691b-dba7-4ff2-870e-79019a05d46a",
+      "uuid": "5942d4fc-c64f-4b4d-8e7d-e246a9d60ffc",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -142,7 +142,7 @@
     },
     "face1-game_emotion_01_07.png": {
       "ver": "1.0.3",
-      "uuid": "e884f61e-e649-4f2d-88b7-cd52f6b4a592",
+      "uuid": "52428fa0-794b-43e8-9f51-adfd72510592",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -164,7 +164,7 @@
     },
     "face1-game_emotion_01_08.png": {
       "ver": "1.0.3",
-      "uuid": "e9fa158a-f078-4957-a284-26711a2836c8",
+      "uuid": "d9070555-f632-4b6d-81aa-878f69e925ba",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -186,7 +186,7 @@
     },
     "face1-game_emotion_01_09.png": {
       "ver": "1.0.3",
-      "uuid": "a7e27111-ed3c-4977-b685-f632a2431df7",
+      "uuid": "3e3047c9-07fb-4069-a4c3-a20d93261bb9",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -208,7 +208,7 @@
     },
     "face1-game_emotion_01_10.png": {
       "ver": "1.0.3",
-      "uuid": "85a2b416-6043-46fd-94be-f7bef502d09f",
+      "uuid": "247dc801-ac6a-46d3-945e-05f9e2a0665c",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -230,7 +230,7 @@
     },
     "face10-game_emotion_10_01.png": {
       "ver": "1.0.3",
-      "uuid": "8301a1af-1feb-4843-b0ed-1f024573004a",
+      "uuid": "adc2bea3-3555-4e9f-a859-e4bf722d5033",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -252,7 +252,7 @@
     },
     "face10-game_emotion_10_02.png": {
       "ver": "1.0.3",
-      "uuid": "373cecb3-2ded-485a-80d6-23da9f070c0a",
+      "uuid": "5da118a6-d07c-401b-95d6-3810b8f01c91",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -274,7 +274,7 @@
     },
     "face10-game_emotion_10_03.png": {
       "ver": "1.0.3",
-      "uuid": "f82a2b04-1e36-4947-85ba-f6ef8206f8b5",
+      "uuid": "e2f33f99-3137-4faf-83f2-bbd59168248f",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -296,7 +296,7 @@
     },
     "face10-game_emotion_10_04.png": {
       "ver": "1.0.3",
-      "uuid": "b14b0457-941c-41a9-ba07-c6b2a160f944",
+      "uuid": "4d36fd6a-1d56-4e50-b83d-57dfc8c1cdb0",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -318,7 +318,7 @@
     },
     "face10-game_emotion_10_05.png": {
       "ver": "1.0.3",
-      "uuid": "a8faeff6-ef7d-4d3a-8ba5-999e4796ed23",
+      "uuid": "aa42c07e-e23a-45c6-b86e-d1e8bbb36997",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -340,7 +340,7 @@
     },
     "face10-game_emotion_10_06.png": {
       "ver": "1.0.3",
-      "uuid": "5874e785-c43c-42d1-bbb5-b058df3e376d",
+      "uuid": "61687dcb-39a9-49e6-a9aa-62568a429783",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -362,7 +362,7 @@
     },
     "face10-game_emotion_10_07.png": {
       "ver": "1.0.3",
-      "uuid": "39a156b4-9525-45f4-a69d-c20f845a453c",
+      "uuid": "bfd14343-6e41-45c5-b21b-67d7a1956dae",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -384,7 +384,7 @@
     },
     "face10-game_emotion_10_08.png": {
       "ver": "1.0.3",
-      "uuid": "58388123-d4d7-4b3b-ac1c-8d10a7955c59",
+      "uuid": "de5fe3a9-592e-4171-8a2e-2bde102795dd",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -406,7 +406,7 @@
     },
     "face11-game_emotion_11_01.png": {
       "ver": "1.0.3",
-      "uuid": "7e01b92f-05b6-44c8-897b-a4fe4c23cc50",
+      "uuid": "5aa56627-34d0-432b-9a6a-df4425f1b072",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -428,7 +428,7 @@
     },
     "face11-game_emotion_11_02.png": {
       "ver": "1.0.3",
-      "uuid": "7ca72dfb-6334-4226-8f45-b8a83069a81c",
+      "uuid": "d60c7978-3e11-42d4-ad90-2353ae3f8720",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -450,7 +450,7 @@
     },
     "face11-game_emotion_11_03.png": {
       "ver": "1.0.3",
-      "uuid": "fc4ee289-e198-486d-8b2f-0c86ad27339d",
+      "uuid": "30387530-8eb8-4f0a-88f0-e23755a7fddb",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -472,7 +472,7 @@
     },
     "face11-game_emotion_11_04.png": {
       "ver": "1.0.3",
-      "uuid": "9a6f8cdc-8768-4447-ad74-4fff41733bfd",
+      "uuid": "6bf2fba3-2811-4fb4-8af0-85efc0f1adc8",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -494,7 +494,7 @@
     },
     "face11-game_emotion_11_05.png": {
       "ver": "1.0.3",
-      "uuid": "068ca1e6-8d01-41c3-b0cf-813742cd2a59",
+      "uuid": "21c3545e-9fe0-4c8d-a025-0fdb811ef4b8",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -516,7 +516,7 @@
     },
     "face11-game_emotion_11_06.png": {
       "ver": "1.0.3",
-      "uuid": "d4a9b323-1acb-4f5f-9b5e-791642af830e",
+      "uuid": "9b635dae-1231-4a1b-8ecf-e847f5384568",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -538,7 +538,7 @@
     },
     "face12-game_emotion_12_01.png": {
       "ver": "1.0.3",
-      "uuid": "f83f7b0e-77c7-4963-be60-58f11fd9495a",
+      "uuid": "46212cdb-4b95-4857-9ff5-c06052ca87ca",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -560,7 +560,7 @@
     },
     "face12-game_emotion_12_02.png": {
       "ver": "1.0.3",
-      "uuid": "9e09177f-7429-4644-9433-cdc607b15603",
+      "uuid": "9999d749-0bd3-435a-a928-65f747f4bbec",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -582,7 +582,7 @@
     },
     "face12-game_emotion_12_03.png": {
       "ver": "1.0.3",
-      "uuid": "15b7ad38-6a9d-428c-b40b-5b343536ea97",
+      "uuid": "d8bab31b-33b0-41cf-9bef-43dc2d7634e4",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -604,7 +604,7 @@
     },
     "face12-game_emotion_12_04.png": {
       "ver": "1.0.3",
-      "uuid": "54c7adb8-635b-47b7-9b0b-2587abd8d8ad",
+      "uuid": "dabc163c-a4ad-4fd0-9fb3-982408f0c1ca",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -626,7 +626,7 @@
     },
     "face12-game_emotion_12_05.png": {
       "ver": "1.0.3",
-      "uuid": "ff354cc8-918b-467e-99fa-075f7c3dfbd2",
+      "uuid": "5558b0ea-9ced-41b4-8ba4-41ba8fb60bc1",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -648,7 +648,7 @@
     },
     "face12-game_emotion_12_06.png": {
       "ver": "1.0.3",
-      "uuid": "748ce905-7c6d-47a8-bf4c-a933ee893cce",
+      "uuid": "ac1b2140-9299-404e-abe0-f93436d246c9",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -670,7 +670,7 @@
     },
     "face12-game_emotion_12_07.png": {
       "ver": "1.0.3",
-      "uuid": "234b504f-6aa1-46c2-aafc-e31ba56ea7b0",
+      "uuid": "9ca57112-5e62-450a-ba8b-8035c04001d2",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -692,7 +692,7 @@
     },
     "face12-game_emotion_12_08.png": {
       "ver": "1.0.3",
-      "uuid": "358fcd24-bb84-48ac-a52d-0ac003d10c9b",
+      "uuid": "411defb3-95ff-4301-ae3d-b9a760dfdf58",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -714,7 +714,7 @@
     },
     "face2-game_emotion_02_01.png": {
       "ver": "1.0.3",
-      "uuid": "4818e453-d9ae-4b9e-bfa7-37447fffeda3",
+      "uuid": "d1e20f79-c303-4b2b-a3df-e0ebec21e54f",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -736,7 +736,7 @@
     },
     "face2-game_emotion_02_02.png": {
       "ver": "1.0.3",
-      "uuid": "8b7003cb-c212-48df-894c-349852619df4",
+      "uuid": "0c61e5a1-71e3-4672-aa33-c7c964617a96",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -758,7 +758,7 @@
     },
     "face2-game_emotion_02_03.png": {
       "ver": "1.0.3",
-      "uuid": "bf44b118-b14d-4c33-b85d-3b920d08ec39",
+      "uuid": "1325f78f-b766-4445-bc03-4b27a18b829d",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -780,7 +780,7 @@
     },
     "face2-game_emotion_02_04.png": {
       "ver": "1.0.3",
-      "uuid": "2f336d37-c4f4-4f22-80fb-a7f7df63223e",
+      "uuid": "7f92cc20-6da9-4b41-addd-4ad0b8480d6f",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -802,7 +802,7 @@
     },
     "face2-game_emotion_02_05.png": {
       "ver": "1.0.3",
-      "uuid": "db9c325b-3e92-4d87-a3d3-233acb900bdb",
+      "uuid": "752648a5-e024-4a4b-8f89-9d99d0abfdfb",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -824,7 +824,7 @@
     },
     "face2-game_emotion_02_06.png": {
       "ver": "1.0.3",
-      "uuid": "2a7d0247-8bf1-449c-ae77-4fcb01146026",
+      "uuid": "6118076c-e3f3-483f-b4de-07d75349ded4",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -846,7 +846,7 @@
     },
     "face2-game_emotion_02_07.png": {
       "ver": "1.0.3",
-      "uuid": "1d4d1133-b7c0-4aa7-907a-694f8eae1849",
+      "uuid": "1aa0e8d7-8a7c-4ce7-aeb2-0c96f8c83435",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -868,7 +868,7 @@
     },
     "face2-game_emotion_02_08.png": {
       "ver": "1.0.3",
-      "uuid": "2408df3b-c3ac-44ae-ab91-c53d4d2972ba",
+      "uuid": "7d301e8f-d1ef-403d-bd87-a1172fafc9a4",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -890,7 +890,7 @@
     },
     "face2-game_emotion_02_09.png": {
       "ver": "1.0.3",
-      "uuid": "3b72b493-48d2-42da-8d77-3b6770990bda",
+      "uuid": "f09ebdcc-40d6-4198-be1e-de282c74e790",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -912,7 +912,7 @@
     },
     "face2-game_emotion_02_10.png": {
       "ver": "1.0.3",
-      "uuid": "448a5804-cdee-476c-bc2b-5dc13487c6b0",
+      "uuid": "d595c53b-0531-4fc4-a139-a515b79145ca",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -934,7 +934,7 @@
     },
     "face3-game_emotion_03_01.png": {
       "ver": "1.0.3",
-      "uuid": "2b75f952-a4b6-40c8-8998-771242381746",
+      "uuid": "2de7df5a-b0f1-4dee-b39c-9466545d50b7",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -956,7 +956,7 @@
     },
     "face3-game_emotion_03_02.png": {
       "ver": "1.0.3",
-      "uuid": "b41cdeb8-4356-4f1f-9114-16cddfcb446c",
+      "uuid": "797e5f2d-04bc-4b26-b5e7-07a26635f378",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -978,7 +978,7 @@
     },
     "face3-game_emotion_03_03.png": {
       "ver": "1.0.3",
-      "uuid": "e87bbc05-2527-4efb-a562-41e4e1ebac25",
+      "uuid": "1565dd6a-1810-4fe5-8b67-9b98d7d65f16",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1000,7 +1000,7 @@
     },
     "face3-game_emotion_03_04.png": {
       "ver": "1.0.3",
-      "uuid": "458e0e7f-2661-4073-8884-36e3e1a669b6",
+      "uuid": "6755ec06-af03-4842-a472-d6b892e72b0b",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1022,7 +1022,7 @@
     },
     "face3-game_emotion_03_05.png": {
       "ver": "1.0.3",
-      "uuid": "4b903d9e-a762-429c-bebe-970d4e8671e4",
+      "uuid": "d1206592-7f6e-4212-9d3a-3f81ae365a0b",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1044,7 +1044,7 @@
     },
     "face3-game_emotion_03_06.png": {
       "ver": "1.0.3",
-      "uuid": "465a3d3a-ddec-4b13-9aa1-490f0326d1d8",
+      "uuid": "059127de-ec13-4f60-a984-84564b77716b",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1066,7 +1066,7 @@
     },
     "face3-game_emotion_03_07.png": {
       "ver": "1.0.3",
-      "uuid": "482f7783-9e83-413b-8b78-38fe647a5e3f",
+      "uuid": "d76c006a-7c75-43d4-b1d9-406382060426",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1088,7 +1088,7 @@
     },
     "face4-game_emotion_04_01.png": {
       "ver": "1.0.3",
-      "uuid": "0b3cfecf-055e-4aad-afbf-8fb0026e4855",
+      "uuid": "a93f0a0e-fdf2-4255-9db8-131b475e61cd",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1110,7 +1110,7 @@
     },
     "face4-game_emotion_04_02.png": {
       "ver": "1.0.3",
-      "uuid": "f8416826-d22d-4fe4-8b59-96c55571efec",
+      "uuid": "c04eb03c-1f77-4340-ac64-eeb6c093df7e",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1132,7 +1132,7 @@
     },
     "face4-game_emotion_04_03.png": {
       "ver": "1.0.3",
-      "uuid": "9c67365b-a66e-44bb-9456-0856d13a8d98",
+      "uuid": "eea1d719-000a-4db1-8e5d-79f36fee153e",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1154,7 +1154,7 @@
     },
     "face4-game_emotion_04_04.png": {
       "ver": "1.0.3",
-      "uuid": "5d247a67-0be8-4efb-8037-4c5dbf4543cb",
+      "uuid": "cbacb6c5-d201-4891-869a-d8921da0e624",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1176,7 +1176,7 @@
     },
     "face4-game_emotion_04_05.png": {
       "ver": "1.0.3",
-      "uuid": "40d32d75-4d1f-42a8-9f99-4f232b169be7",
+      "uuid": "76ef6b85-92ec-44ef-863d-369464ec99a1",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1198,7 +1198,7 @@
     },
     "face4-game_emotion_04_06.png": {
       "ver": "1.0.3",
-      "uuid": "4065e8a6-0a14-49f1-9880-9396e33e5d0a",
+      "uuid": "c65b3f33-c88b-45e2-95b9-6e817707a031",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1220,7 +1220,7 @@
     },
     "face4-game_emotion_04_07.png": {
       "ver": "1.0.3",
-      "uuid": "5c24e1b5-3d27-49bb-bfaf-5de75bc9efe5",
+      "uuid": "d33e5650-2400-496c-94f4-2103ffdfc0fd",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1242,7 +1242,7 @@
     },
     "face4-game_emotion_04_08.png": {
       "ver": "1.0.3",
-      "uuid": "2842daeb-e4b0-4670-8d83-28ea58488b85",
+      "uuid": "f4f197ab-925b-4a87-b12e-d2f3ae33dae0",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1264,7 +1264,7 @@
     },
     "face4-game_emotion_04_09.png": {
       "ver": "1.0.3",
-      "uuid": "ae46d21d-8599-441b-9892-81232f88a9e3",
+      "uuid": "5cb9c82f-5d88-42c7-bad7-d10b00a5a000",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1286,7 +1286,7 @@
     },
     "face4-game_emotion_04_10.png": {
       "ver": "1.0.3",
-      "uuid": "de700452-e4e2-4e09-a644-e9c6ce108e73",
+      "uuid": "d085d229-0a0f-4fc1-8072-065bbd4af632",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1308,7 +1308,7 @@
     },
     "face5-game_emotion_05_01.png": {
       "ver": "1.0.3",
-      "uuid": "0f859178-1af6-42b0-b731-c049d8ae107c",
+      "uuid": "eb95d72c-f1d1-489d-a206-8afc788fda28",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1330,7 +1330,7 @@
     },
     "face5-game_emotion_05_02.png": {
       "ver": "1.0.3",
-      "uuid": "f66f66de-ab4e-4092-a6d4-14446e6a87f4",
+      "uuid": "7d192b4c-7032-49af-9248-8e61776036da",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1352,7 +1352,7 @@
     },
     "face5-game_emotion_05_03.png": {
       "ver": "1.0.3",
-      "uuid": "9ea93b0d-23a9-4884-88d6-dede6732dee5",
+      "uuid": "4581111a-aa69-4983-81fd-816596a64a6b",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1374,7 +1374,7 @@
     },
     "face5-game_emotion_05_04.png": {
       "ver": "1.0.3",
-      "uuid": "5ab7c922-8330-4a84-9792-a73ee58ec96e",
+      "uuid": "4cc6b19c-b222-456a-938f-7619616fbf0d",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1396,7 +1396,7 @@
     },
     "face5-game_emotion_05_05.png": {
       "ver": "1.0.3",
-      "uuid": "62b363b2-f540-476d-a897-629fa41ef692",
+      "uuid": "92faf5f1-cf1d-477b-b2ce-2cd806518bc9",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1418,7 +1418,7 @@
     },
     "face5-game_emotion_05_06.png": {
       "ver": "1.0.3",
-      "uuid": "b76d7540-e359-4357-8a99-9fc107e14cb7",
+      "uuid": "80b79757-d7fb-4408-8aa3-b73ff9e1bf1f",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1440,7 +1440,7 @@
     },
     "face5-game_emotion_05_07.png": {
       "ver": "1.0.3",
-      "uuid": "52981494-3774-4d6d-b418-2da4c6dabc27",
+      "uuid": "ee6599f2-2d4a-4d1f-9e05-07f7b9cf0d00",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1462,7 +1462,7 @@
     },
     "face5-game_emotion_05_08.png": {
       "ver": "1.0.3",
-      "uuid": "6666e4e0-67fc-4aa5-a1fe-1472897539cc",
+      "uuid": "410ae776-cd6a-4cea-8d3f-b0862c9b4b0f",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1484,7 +1484,7 @@
     },
     "face5-game_emotion_05_09.png": {
       "ver": "1.0.3",
-      "uuid": "69d782fa-e0c2-4c73-9763-aa1cfb732008",
+      "uuid": "d6b0ae4f-03d9-4203-9ab6-d07b85ba0075",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1506,7 +1506,7 @@
     },
     "face6-game_emotion_06_01.png": {
       "ver": "1.0.3",
-      "uuid": "063f1918-c30e-4385-9c05-f7f5fb40bb79",
+      "uuid": "f2acef6e-651f-469a-97f4-a73d789cd9ce",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1528,7 +1528,7 @@
     },
     "face6-game_emotion_06_02.png": {
       "ver": "1.0.3",
-      "uuid": "f9b8dab0-a93d-4ead-afab-fc63d9856e39",
+      "uuid": "126deb93-17fc-4a13-bbb3-a82a3b4f73f2",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1550,7 +1550,7 @@
     },
     "face6-game_emotion_06_03.png": {
       "ver": "1.0.3",
-      "uuid": "3e44e2dd-abe4-4ec9-8721-a93d5cf8b55c",
+      "uuid": "9e9e1236-3295-4f17-be82-098e9dfb2f4e",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1572,7 +1572,7 @@
     },
     "face6-game_emotion_06_04.png": {
       "ver": "1.0.3",
-      "uuid": "839c40ec-1918-4eca-a453-7646e03b85a0",
+      "uuid": "a5bc74a0-4a0c-4e9f-8711-76d273fc46ff",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1594,7 +1594,7 @@
     },
     "face6-game_emotion_06_05.png": {
       "ver": "1.0.3",
-      "uuid": "199d9892-c1b6-4fb5-a951-1ba528d35ffe",
+      "uuid": "66a34f57-e3a3-4fac-96ec-a389a42f6473",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1616,7 +1616,7 @@
     },
     "face6-game_emotion_06_06.png": {
       "ver": "1.0.3",
-      "uuid": "39f59017-6024-4725-b223-3cc83ff871d3",
+      "uuid": "60b99827-2dfa-4759-b451-13458fd1b651",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1638,7 +1638,7 @@
     },
     "face6-game_emotion_06_07.png": {
       "ver": "1.0.3",
-      "uuid": "45f8445f-da51-46c5-82bf-da9ce33bd68f",
+      "uuid": "e3b20463-fe09-4be6-9d23-03e38e900a07",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1660,7 +1660,7 @@
     },
     "face6-game_emotion_06_08.png": {
       "ver": "1.0.3",
-      "uuid": "d95a8604-59f4-46ba-a125-8dea7a3cad48",
+      "uuid": "8ec9a02e-e3c3-46e2-9f19-d56b4ed6494a",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1682,7 +1682,7 @@
     },
     "face7-game_emotion_07_01.png": {
       "ver": "1.0.3",
-      "uuid": "3dbeb543-54f0-4eef-9fe7-9f03ca2554e2",
+      "uuid": "281e4fec-d3d6-4783-9bb6-d1f2a0ed2bae",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1704,7 +1704,7 @@
     },
     "face7-game_emotion_07_02.png": {
       "ver": "1.0.3",
-      "uuid": "29f0888b-0e07-4143-8729-391510b9758c",
+      "uuid": "6a372cd8-134d-43bc-9471-8b305439efc4",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1726,7 +1726,7 @@
     },
     "face7-game_emotion_07_03.png": {
       "ver": "1.0.3",
-      "uuid": "a47ee40d-7032-4602-abda-5e5cdd2b104a",
+      "uuid": "bad39f85-98ef-4382-994f-37b754b9ef51",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1748,7 +1748,7 @@
     },
     "face7-game_emotion_07_04.png": {
       "ver": "1.0.3",
-      "uuid": "ba4ed755-83a2-4e21-888f-c6145e5e1246",
+      "uuid": "205dc9da-7cab-4000-b917-7483f4f5dff9",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1770,7 +1770,7 @@
     },
     "face7-game_emotion_07_05.png": {
       "ver": "1.0.3",
-      "uuid": "edfce824-dcd2-40d1-a86c-a3c8cde67f12",
+      "uuid": "08cbc465-e5b9-427b-9306-5ee3d3ec055a",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1792,7 +1792,7 @@
     },
     "face7-game_emotion_07_06.png": {
       "ver": "1.0.3",
-      "uuid": "0a8a5505-8e2d-419a-bb9f-c1eb0cab3a31",
+      "uuid": "ef6fb91f-ec0d-41e7-b949-d86d175e8594",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1814,7 +1814,7 @@
     },
     "face7-game_emotion_07_07.png": {
       "ver": "1.0.3",
-      "uuid": "4d5791a2-3ab7-4f35-b913-ebe3c057138b",
+      "uuid": "bfa97f56-0447-4d80-be55-97bee7ddcec7",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1836,7 +1836,7 @@
     },
     "face7-game_emotion_07_08.png": {
       "ver": "1.0.3",
-      "uuid": "856d5b4a-0675-4775-bf74-0441be2cbd06",
+      "uuid": "7742645d-1148-4c0f-8ba6-f727fcb89cec",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1858,7 +1858,7 @@
     },
     "face7-game_emotion_07_09.png": {
       "ver": "1.0.3",
-      "uuid": "1c700bf6-bbfd-4e86-9924-c597daa95399",
+      "uuid": "752202f6-d887-4ec5-9beb-202b18f49176",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1880,7 +1880,7 @@
     },
     "face7-game_emotion_07_10.png": {
       "ver": "1.0.3",
-      "uuid": "5a1b74e0-3f7d-480f-b3fa-c72efa067c76",
+      "uuid": "81812d57-bbf0-4747-aa10-94729a56c576",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1902,7 +1902,7 @@
     },
     "face8-game_emotion_08_01.png": {
       "ver": "1.0.3",
-      "uuid": "a0f44652-ff09-456d-8167-b310d0971c6d",
+      "uuid": "8fadfd46-3f7b-4493-bee2-5db045328cea",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1924,7 +1924,7 @@
     },
     "face8-game_emotion_08_02.png": {
       "ver": "1.0.3",
-      "uuid": "55df1859-2ab0-46ba-ad53-75e9c690df35",
+      "uuid": "cad2fd47-fa52-479e-88a8-9e80411d6216",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1946,7 +1946,7 @@
     },
     "face8-game_emotion_08_03.png": {
       "ver": "1.0.3",
-      "uuid": "38b86bf0-9703-4856-9ede-b0fffe764f25",
+      "uuid": "cab0018b-1196-4f30-af77-98833d084134",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1968,7 +1968,7 @@
     },
     "face8-game_emotion_08_04.png": {
       "ver": "1.0.3",
-      "uuid": "ff33b386-390b-4976-b913-aa33d2eb1e48",
+      "uuid": "5b7e60d2-2450-4360-b863-10ee5a9dc3d5",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -1990,7 +1990,7 @@
     },
     "face8-game_emotion_08_05.png": {
       "ver": "1.0.3",
-      "uuid": "4dac362a-de40-4d7e-8b1d-bf92f69a0d3d",
+      "uuid": "16b5a586-c97e-4730-9261-f7274c888ad1",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2012,7 +2012,7 @@
     },
     "face8-game_emotion_08_06.png": {
       "ver": "1.0.3",
-      "uuid": "96120782-43c5-49dd-acb8-23b9b6197980",
+      "uuid": "9c3d3f02-7908-4e24-a263-3380e6c2433a",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2034,7 +2034,7 @@
     },
     "face8-game_emotion_08_07.png": {
       "ver": "1.0.3",
-      "uuid": "466d95c0-f2f1-46d0-aec8-82121808bcab",
+      "uuid": "3903de4c-7444-4117-b126-4e2d672a991f",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2056,7 +2056,7 @@
     },
     "face8-game_emotion_08_08.png": {
       "ver": "1.0.3",
-      "uuid": "e7d515e5-ae66-426c-8e1d-d1c6abc192c5",
+      "uuid": "4d77faab-44ca-4499-89cf-371a5c140fdf",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2078,7 +2078,7 @@
     },
     "face8-game_emotion_08_09.png": {
       "ver": "1.0.3",
-      "uuid": "845765ca-9bf3-4418-ae7a-a99a4c95cb52",
+      "uuid": "cde770d2-d08f-42c8-9a37-5fd59936743a",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2100,7 +2100,7 @@
     },
     "face8-game_emotion_08_10.png": {
       "ver": "1.0.3",
-      "uuid": "47e93938-6307-420f-9371-3fae93f180a2",
+      "uuid": "11402778-6a12-4acb-aeec-7926cafe9334",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2122,7 +2122,7 @@
     },
     "face8-game_emotion_08_11.png": {
       "ver": "1.0.3",
-      "uuid": "2b41a955-6bcb-4701-b824-1ec9f37575b4",
+      "uuid": "72cfbc7e-69e5-4370-8658-964d8a5cc18e",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2144,7 +2144,7 @@
     },
     "face8-game_emotion_08_12.png": {
       "ver": "1.0.3",
-      "uuid": "1a3123d7-3b0c-4bb4-8573-e84ed7019cc1",
+      "uuid": "b1375185-f0f2-456c-b46b-e3870b1f1c3f",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2166,7 +2166,7 @@
     },
     "face8-game_emotion_08_13.png": {
       "ver": "1.0.3",
-      "uuid": "51c7055b-fcfc-4de9-87df-9000cd957690",
+      "uuid": "fae0b3b9-8ac4-4034-8375-923348fa4ff5",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2188,7 +2188,7 @@
     },
     "face8-game_emotion_08_14.png": {
       "ver": "1.0.3",
-      "uuid": "e91d31b9-50af-43c7-8f5b-64976d594b64",
+      "uuid": "0324806c-6f83-4217-bf63-bce5cdb3ae2d",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2210,7 +2210,7 @@
     },
     "face8-game_emotion_08_15.png": {
       "ver": "1.0.3",
-      "uuid": "575e568d-3e90-4e1f-86a3-e05fedd5f50f",
+      "uuid": "9cda510d-c600-4f21-bf31-d5a05b5bb648",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2232,7 +2232,7 @@
     },
     "face8-game_emotion_08_16.png": {
       "ver": "1.0.3",
-      "uuid": "2c420153-adb0-4549-8c78-a71129143eec",
+      "uuid": "b3e0529d-f16a-4f97-959a-00abe75cce66",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2254,7 +2254,7 @@
     },
     "face9-game_emotion_09_01.png": {
       "ver": "1.0.3",
-      "uuid": "c871fc86-097b-4ccd-b7b4-fadc86f156a7",
+      "uuid": "a576f876-97eb-46c9-a433-aae29ab20923",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2276,7 +2276,7 @@
     },
     "face9-game_emotion_09_02.png": {
       "ver": "1.0.3",
-      "uuid": "1a2d2ec4-7c03-4fe8-b2b8-a7fb9d0e67b6",
+      "uuid": "e5f0aa6e-b9b9-4c0c-a371-f05a6a535d69",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2298,7 +2298,7 @@
     },
     "face9-game_emotion_09_03.png": {
       "ver": "1.0.3",
-      "uuid": "bbddf06e-a079-4f74-9b74-b916bd7c766a",
+      "uuid": "41f69291-fc67-4f44-9b56-3d1cb946420c",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2320,7 +2320,7 @@
     },
     "face9-game_emotion_09_04.png": {
       "ver": "1.0.3",
-      "uuid": "7efc9fa5-b154-467a-9d60-348687f96f7d",
+      "uuid": "4d39a615-92b7-4e99-ac6e-c26ab1aafc51",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2342,7 +2342,7 @@
     },
     "face9-game_emotion_09_05.png": {
       "ver": "1.0.3",
-      "uuid": "50d4036f-59e4-491f-b8e5-47d6f806a65f",
+      "uuid": "63e179aa-89c3-4005-9cb5-f2ccdc479ccd",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2364,7 +2364,7 @@
     },
     "face9-game_emotion_09_06.png": {
       "ver": "1.0.3",
-      "uuid": "27ce94c5-d5ff-4248-a153-92c932b366e8",
+      "uuid": "29b9bb93-28d6-4b81-ab5a-f67cdcf18d6e",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2386,7 +2386,7 @@
     },
     "face9-game_emotion_09_07.png": {
       "ver": "1.0.3",
-      "uuid": "4f8e282a-33b3-4d51-b800-77025426fa06",
+      "uuid": "dc18c2bb-2bab-48db-a3d8-088b3c3b14a9",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2408,7 +2408,7 @@
     },
     "face9-game_emotion_09_08.png": {
       "ver": "1.0.3",
-      "uuid": "f1dcdc25-f10a-4732-a13f-1e64192961a5",
+      "uuid": "309d23b3-b67a-4b12-b3e5-d1dfd1ee9456",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2430,7 +2430,7 @@
     },
     "game_emotion_01.png": {
       "ver": "1.0.3",
-      "uuid": "cd90705d-408f-4b75-b0d7-6a8e462dd9a4",
+      "uuid": "bf4aebbe-a730-4f3b-b8e4-db5c223c8333",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2452,7 +2452,7 @@
     },
     "game_emotion_02.png": {
       "ver": "1.0.3",
-      "uuid": "8a6eadbf-7a38-4e33-9c9b-1cadbaa2018e",
+      "uuid": "52a2d716-3062-4eaf-bcd2-1818f49a20dd",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2474,7 +2474,7 @@
     },
     "game_emotion_03.png": {
       "ver": "1.0.3",
-      "uuid": "2b4c66d3-f695-4045-a286-40e047dfd907",
+      "uuid": "179a3ae0-6a29-45fe-a558-33f551c232bf",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2496,7 +2496,7 @@
     },
     "game_emotion_04.png": {
       "ver": "1.0.3",
-      "uuid": "cd093e14-cc0a-421e-9353-4427f86db376",
+      "uuid": "6c245e71-1fef-4ea7-934e-d44eaccaf470",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2518,7 +2518,7 @@
     },
     "game_emotion_05.png": {
       "ver": "1.0.3",
-      "uuid": "25a600c8-9ba5-4436-838a-e4a43ef60dcd",
+      "uuid": "77d28245-4a1a-40ea-9b28-d926a594daab",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2540,7 +2540,7 @@
     },
     "game_emotion_06.png": {
       "ver": "1.0.3",
-      "uuid": "c53724f3-1870-44b4-80b9-43a06261ae19",
+      "uuid": "e96cb214-5cfc-4f3c-94d0-e533b1578977",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2562,7 +2562,7 @@
     },
     "game_emotion_07.png": {
       "ver": "1.0.3",
-      "uuid": "af0ad17e-6fe9-4dad-b7f5-613f6cb64aff",
+      "uuid": "ce88634e-856c-4ac7-a990-b0491b520eaa",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2584,7 +2584,7 @@
     },
     "game_emotion_08.png": {
       "ver": "1.0.3",
-      "uuid": "60e99793-71ae-4e6e-8542-5ec9b7755cdf",
+      "uuid": "27938d20-401c-43c1-9e19-c0257ef1c03f",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2606,7 +2606,7 @@
     },
     "game_emotion_09.png": {
       "ver": "1.0.3",
-      "uuid": "4e8f8932-076f-463d-9964-c96e2bdca5bb",
+      "uuid": "bf268dad-c783-42cf-8c0c-339be27b90fd",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2628,7 +2628,7 @@
     },
     "game_emotion_10.png": {
       "ver": "1.0.3",
-      "uuid": "9ea389bd-d8fe-4bd7-8280-db041c2e68b2",
+      "uuid": "6c55725b-c083-4e95-86db-0c33c3d01648",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2650,7 +2650,7 @@
     },
     "game_emotion_11.png": {
       "ver": "1.0.3",
-      "uuid": "c85467cd-714b-4d96-97e1-cc320070c063",
+      "uuid": "3c932fe1-9a3f-4460-8a65-9a954a7a3b85",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -2672,7 +2672,7 @@
     },
     "game_emotion_12.png": {
       "ver": "1.0.3",
-      "uuid": "f45db1a6-5fed-4cd0-93c6-96082a517e79",
+      "uuid": "f7ca8225-839f-413f-8812-7230a73ad590",
       "rawTextureUuid": "b9fc4a66-5ee8-43ce-bfc1-11c3876231e6",
       "trimType": "auto",
       "trimThreshold": 1,
