@@ -261,13 +261,22 @@ cc.Class({
         var node_table_bg = cc.find("Canvas/table_bg");
         //dealer位
         var dealer_node = node_table_bg.getChildByName("dealer_"+table_data['start']['d_chair']);
-        var dealer_sprite = dealer_node.addComponent(cc.Sprite);
+        var dealer_sprite = dealer_node.getComponent(cc.Sprite);
+        if(dealer_sprite == null){
+            var dealer_sprite = dealer_node.addComponent(cc.Sprite);
+        }
         //大盲位
         var big_blind_node = node_table_bg.getChildByName("chip_"+table_data['start']['bb_chair']);
-        var big_blind_sprite = big_blind_node.addComponent(cc.Sprite);
+        var big_blind_sprite = big_blind_node.getComponent(cc.Sprite);
+        if(big_blind_sprite == null){
+            var big_blind_sprite = big_blind_node.addComponent(cc.Sprite);
+        }
         //小盲位
         var small_blind_node = node_table_bg.getChildByName("chip_"+table_data['start']['sb_chair']);
-        var small_blind_sprite = small_blind_node.addComponent(cc.Sprite);
+        var small_blind_sprite = small_blind_node.getComponent(cc.Sprite);
+        if(small_blind_sprite == null){
+            var small_blind_sprite = small_blind_node.addComponent(cc.Sprite);
+        }
 
         //dealer位的图片加载
         var dealer_frame = this.GameMain.getSpriteFrame("game_dealer_tip");
@@ -316,7 +325,6 @@ cc.Class({
         },2);
     },
     mainstart:function(){
-
         if(this.GameMain==null){
             //资源未加载成功，不能点击
             return false;
@@ -342,7 +350,6 @@ cc.Class({
             };
             this.initsb();
         };
-
     },
     buttonResume:function(){
         var btsp=this.node.parent.getChildByName("game_table_start_normal").getComponent(cc.Sprite);
@@ -423,13 +430,15 @@ cc.Class({
         var me = this;
         var finished=function(){
             // play audioSource
-            if(me.audio_check == null ){
-                cc.loader.loadRes("audio/audio_check", function (err, assets) {
-                    me.audio_check = assets;
-                    cc.audioEngine.playEffect(assets);
-                });
-            }else{
-                cc.audioEngine.playEffect(me.audio_check);
+            if(me.open_mute == 0){
+                if(me.audio_check == null ){
+                    cc.loader.loadRes("audio/audio_check", function (err, assets) {
+                        me.audio_check = assets;
+                        cc.audioEngine.playEffect(assets);
+                    });
+                }else{
+                    cc.audioEngine.playEffect(me.audio_check);
+                }
             }
             this.game_tip(sit,url,true);
         };
@@ -445,13 +454,15 @@ cc.Class({
         var url="game_fold_tip";
         var me = this;
         var finished = function(){
-            if(me.audio_fold == null ){
-                cc.loader.loadRes("audio/audio_fold", function (err, assets) {
-                    me.audio_fold = assets;
-                    cc.audioEngine.playEffect(assets);
-                });
-            }else{
-                cc.audioEngine.playEffect(me.audio_fold);
+            if(me.open_mute == 0){
+                if(me.audio_fold == null ){
+                    cc.loader.loadRes("audio/audio_fold", function (err, assets) {
+                        me.audio_fold = assets;
+                        cc.audioEngine.playEffect(assets);
+                    });
+                }else{
+                    cc.audioEngine.playEffect(me.audio_fold);
+                }
             }
             me.game_tip(sit,url,false);
         };
@@ -727,8 +738,8 @@ cc.Class({
     },
     resetGame:function(){
         //cc.game.restart();
-        this.resetSeat()
-        cc.log("重播");
+        this.resetSeat();
+
 
         this.card[0].removeAllChildren(true);
         this.card[1].removeAllChildren(true);
@@ -773,8 +784,12 @@ cc.Class({
                 };
             }
             this.table_tips=[];
-        };
-
+        }
+        //清理dealer
+        var dealer_node = cc.find("Canvas/table_bg/dealer_"+this.hand_data['start']['d_chair']);
+        if(dealer_node.getComponent(cc.Sprite) != null){
+            dealer_node.getComponent(cc.Sprite).destroy();
+        }
         this.table_chips_inpot=0;
 
         this.i = 0;
@@ -783,13 +798,12 @@ cc.Class({
     },
     //站起
     quit:function(sit,duration){
-
         var me=this;
 
         me.countdown_over_task=null;
 
         var finished = function(){
-            var table_bg=me.node.parent.getChildByName("table_bg");
+            var table_bg = cc.find("Canvas/table_bg");
             var seat=table_bg.getChildByName("seat_"+sit);
             //seat.enabled=false;
             //隐藏图像
@@ -797,19 +811,14 @@ cc.Class({
             seat.getChildByName("nick").setOpacity(0);
             seat.getChildByName("chips").setOpacity(0);
             seat.getChildByName("hand_card").setOpacity(0);
-            if(cc.isValid(seat.getChildByName("game_tip").getComponent(cc.Sprite))){
+            if(seat.getChildByName("game_tip").getComponent(cc.Sprite)!=null){
                 seat.getChildByName("game_tip").getComponent(cc.Sprite).destroy();
             }
             //当前动作结束
             me.actionend();
         };
-
-        if(duration>0){
-            me.add_countdown(sit,duration);
-        }else{
-            finished();
-        }
-        this.countdown_over_task=finished;
+        me.add_countdown(sit,duration);
+        this.countdown_over_task = finished;
     },
 
     //底池的筹码分给赢的人 pos赢钱的人的座位位置
@@ -944,16 +953,22 @@ cc.Class({
 
         // play audioSource播放下注的声音
         var me = this;
-        if(me.audio_chipsToTable == null){
-            cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
-                me.audio_chipsToTable = assets;
-                cc.audioEngine.playEffect(assets);
+        if(me.open_mute == 0){
+            if(me.audio_chipsToTable == null){
+                cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
+                    me.audio_chipsToTable = assets;
+                    cc.audioEngine.playEffect(assets);
+                    //把节点显示出来，接着做动作
+                    node.enabled=true;
+                    node.runAction(seq);
+                });
+            }else{
+                cc.audioEngine.playEffect(this.audio_chipsToTable);
                 //把节点显示出来，接着做动作
                 node.enabled=true;
                 node.runAction(seq);
-            });
+            }
         }else{
-            cc.audioEngine.playEffect(this.audio_chipsToTable);
             //把节点显示出来，接着做动作
             node.enabled=true;
             node.runAction(seq);
@@ -1089,27 +1104,32 @@ cc.Class({
         var seq=cc.sequence(action2,action3);
 
         var me = this;
-        if(me.audio_distributeCard == null){
-            cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
-                me.audio_distributeCard = assets;
-                cc.audioEngine.playEffect(assets);
+        if(me.open_mute == 0){
+            if(me.audio_distributeCard == null){
+                cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
+                    me.audio_distributeCard = assets;
+                    cc.audioEngine.playEffect(assets);
+                    node1.parent=this.card[0];
+                    node2.parent=this.card[1];
+                    node3.parent=this.card[2];
+                    node1.runAction(action1);
+                    node2.runAction(seq);
+                });
+            }else{
+                cc.audioEngine.playEffect(this.audio_distributeCard);
                 node1.parent=this.card[0];
                 node2.parent=this.card[1];
                 node3.parent=this.card[2];
                 node1.runAction(action1);
                 node2.runAction(seq);
-            });
+            }
         }else{
-            cc.audioEngine.playEffect(this.audio_distributeCard);
             node1.parent=this.card[0];
             node2.parent=this.card[1];
             node3.parent=this.card[2];
             node1.runAction(action1);
             node2.runAction(seq);
         }
-
-
-
     },
     /**
     *  说明：翻牌效果
@@ -1133,18 +1153,20 @@ cc.Class({
 
         var seq=cc.sequence(action1,turn);
         var me = this;
-        if(me.audio_distributeCard == null){
-            cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
-                me.audio_distributeCard = assets;
+        if(me.open_mute == 0){
+            if(me.audio_distributeCard == null){
+                cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
+                    me.audio_distributeCard = assets;
+                    node.runAction(seq);
+                    cc.audioEngine.playEffect(assets);
+                });
+            }else{
                 node.runAction(seq);
-                cc.audioEngine.playEffect(assets);
-            });
+                cc.audioEngine.playEffect(this.audio_distributeCard);
+            }
         }else{
             node.runAction(seq);
-            cc.audioEngine.playEffect(this.audio_distributeCard);
         }
-
-
     },
     /**
      *  说明：翻牌效果 回调
@@ -1188,17 +1210,20 @@ cc.Class({
         var seq=cc.sequence(action1,turn);
 
         var me = this;
-        if(me.audio_distributeCard == null){
-            cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
-                me.audio_distributeCard = assets;
+        if(me.open_mute == 0){
+            if(me.audio_distributeCard == null){
+                cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
+                    me.audio_distributeCard = assets;
+                    node.runAction(seq);
+                    cc.audioEngine.playEffect(assets);
+                });
+            }else{
                 node.runAction(seq);
-                cc.audioEngine.playEffect(assets);
-            });
+                cc.audioEngine.playEffect(this.audio_distributeCard);
+            }
         }else{
             node.runAction(seq);
-            cc.audioEngine.playEffect(this.audio_distributeCard);
         }
-
     },
     //翻牌效果 回调
     showriver:function(node){

@@ -22,12 +22,17 @@ cc.Class({
     },
     //添加倒计时的进度条
     add_countdown:function(seat_number,long_time){
+        var me = this;
         if(parseInt(long_time) == 0 ){
-            var me = this;
             this.scheduleOnce(function(){
                 me.scheduleOnce(this.countdown_over_task,0);
             },1);
             return false;
+        }else{
+            //判断是否开启固定思考模式
+            if(me.open_fixedThinkTime == 1){
+                long_time = me.fixedThinkTime;
+            }
         }
         var node_table_bg = cc.find("Canvas/table_bg");
         //初始化

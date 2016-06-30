@@ -13,6 +13,9 @@ cc.Class({
         audio_check:null,//check的音频
         audio_fold:null,//fold的音频
         audio_distributeCard:null,//翻牌的声音
+        open_fixedThinkTime:0,//开启固定思考时间的设置0-否1-开启
+        fixedThinkTime:2,//固定思考时间，配合open_fixedThinkTime使用，单位：秒
+        open_mute:0,//是否开启静音模式0-否1-是
     },
     sit_down:function(){
         //加载游戏资源图片
@@ -24,18 +27,20 @@ cc.Class({
             me.replay_cn = atlas;
         });
         //加载游戏音频
-        cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
-            me.audio_chipsToTable = assets;
-        });
-        cc.loader.loadRes("audio/audio_check", function (err, assets) {
-            me.audio_check = assets;
-        });
-        cc.loader.loadRes("audio/audio_fold", function (err, assets) {
-            me.audio_fold = assets;
-        });
-        cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
-            me.audio_distributeCard = assets;
-        });
+        if(this.open_mute == 0){
+            cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
+                me.audio_chipsToTable = assets;
+            });
+            cc.loader.loadRes("audio/audio_check", function (err, assets) {
+                me.audio_check = assets;
+            });
+            cc.loader.loadRes("audio/audio_fold", function (err, assets) {
+                me.audio_fold = assets;
+            });
+            cc.loader.loadRes("audio/audio_distributeCard", function (err, assets) {
+                me.audio_distributeCard = assets;
+            });
+        }
 
         var table_data = this.hand_data;
         table_data['table_name']=table_data['table_name']?table_data['table_name']:"未知牌局";
@@ -199,4 +204,32 @@ cc.Class({
         var env_key = config['env'];
         return config[env_key][key];
     },
+    //开启固定思考时间status:0-关闭1-开启
+    set_fixedThinkTime:function(){
+        var sprite_url = "";
+        if(this.open_fixedThinkTime == 1){
+            this.open_fixedThinkTime = 0;
+            sprite_url='forward_normal';
+        }else{
+            this.open_fixedThinkTime = 1;
+            sprite_url='forward_unnormal';
+        }
+        var fast_forward =cc.find("Canvas/fast_forward");
+        var sprite = fast_forward.getComponent(cc.Sprite);
+        sprite.spriteFrame = this.replay_cn.getSpriteFrame(sprite_url);
+    },
+    //开启静音模式status:0-关闭1-开启
+    set_mute:function(){
+        var sprite_url = "";
+        if(this.open_mute == 1){
+            this.open_mute = 0;
+            sprite_url='open_audio';
+        }else{
+            this.open_mute = 1;
+            sprite_url='close_audio';
+        }
+        var fast_forward =cc.find("Canvas/sound");
+        var sprite = fast_forward.getComponent(cc.Sprite);
+        sprite.spriteFrame = this.replay_cn.getSpriteFrame(sprite_url);
+    }
 });
