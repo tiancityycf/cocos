@@ -1000,7 +1000,8 @@ cc.Class({
                 this.inpot.setPosition(0,250);
                 var potNode=new cc.Node();
                 var plb = potNode.addComponent(cc.Label);
-                plb.fontSize = 20;
+                plb.fontSize = this.fontStyle['pot']['fontSize'];
+                plb.lineHeight = this.fontStyle['pot']['lineHeight'];
                 potNode.color = new cc.Color(0,0,0);
                 potNode.opacity = 100;
                 potNode.name="pot";

@@ -30,7 +30,8 @@ cc.Class({
                 "table_code":{"fontSize":30,"lineHeight":30},
                 "nick":{"fontSize":30,"lineHeight":30},
                 "chips":{"fontSize":30,"lineHeight":30},
-                "chip":{"fontSize":30,"lineHeight":30}
+                "chip":{"fontSize":30,"lineHeight":30},
+                "pot":{"fontSize":30,"lineHeight":30}
             };
         }else{
             me.fontStyle={
@@ -39,7 +40,8 @@ cc.Class({
                 "table_code":{"fontSize":25,"lineHeight":25},
                 "nick":{"fontSize":25,"lineHeight":25},
                 "chips":{"fontSize":25,"lineHeight":25},
-                "chip":{"fontSize":25,"lineHeight":25}
+                "chip":{"fontSize":25,"lineHeight":25},
+                "pot":{"fontSize":25,"lineHeight":25}
             };
         }
         cc.loader.loadRes("game_cards",cc.SpriteAtlas,function(err,atlas){
