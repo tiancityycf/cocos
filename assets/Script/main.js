@@ -72,6 +72,8 @@ cc.Class({
 
         cc.director.setDisplayStats(false);
 
+        this.eventListen();
+
         //4. 先获取目标组件所在的节点，然后通过getComponent获取目标组件
         //var _label = cc.find("Canvas/label").getComponent(cc.Label);
 
@@ -90,41 +92,7 @@ cc.Class({
         // tPrefab.parent = this.node;
         // tPrefab.setPosition(-210,100);
 
-
-        // //--->>> 事件监听 on 4种形式
-        // //枚举类型注册
-        // var tFun =function (event){
-        //     console.log("touchend event:"+event.touch.getLocation().x +"|"+event.touch.getLocation().y);
-        // };
-        // this.node.on(cc.Node.EventType.TOUCH_END,tFun,this);
-
-        // //事件名注册
-        // // var tFun =function (event){
-        // //   console.log("touchend event");
-        // // };
-        // // this.node.on("touchend",tFun);
-
-        // // this.node.on("touchend",function (event){
-        // //   console.log("touchend event");
-        // // });
-
-        // // this.node.on("touchend",function (event){
-        // //   console.log("touchend event");
-        // // },this);
-
-        // // this.node.on("touchend",function (event){
-        // //   console.log("touchend event");
-        // // }.bind(this));
-
-        // //--->>> 一次性的事件监听 once
-        // // this.node.once("touchend",function (event){
-        // //   console.log("touchend event");
-        // // });
-
-
-        // //--->>> 关闭监听
-        // this.node.off("touchend",tFun,this);
-
+        
 
         // //--->>> 发射事件（事件手动触发)
         // this.node.on("tEmitFun",function (event){
@@ -139,6 +107,43 @@ cc.Class({
 
     },
 
+    eventListen:function(){
+        //当手指触点落在目标节点区域内时
+        var fast_forward=cc.find("Canvas/fast_forward");
+
+        fast_forward.on("mouseenter",function(event){
+            fast_forward.getChildByName("forward_tips").opacity=255;
+        });
+        fast_forward.on("mouseleave",function(event){
+            fast_forward.getChildByName("forward_tips").opacity=0;
+        });
+
+        fast_forward.on("touchstart",function(event){
+            fast_forward.getChildByName("forward_tips").opacity=255;
+        });
+
+        fast_forward.on("touchend",function(event){
+            fast_forward.getChildByName("forward_tips").opacity=0;
+        });
+
+        //当手指触点落在目标节点区域内时
+        var sound=cc.find("Canvas/sound");
+
+        sound.on("mouseenter",function(event){
+            sound.getChildByName("sound_tips").opacity=255;
+        });
+        sound.on("mouseleave",function(event){
+            sound.getChildByName("sound_tips").opacity=0;
+        });
+
+        sound.on("touchstart",function(event){
+            sound.getChildByName("sound_tips").opacity=255;
+        });
+
+        sound.on("touchend",function(event){
+            sound.getChildByName("sound_tips").opacity=0;
+        });
+    },
 
 
     //    站起							5
