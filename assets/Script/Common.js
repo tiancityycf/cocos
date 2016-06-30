@@ -16,10 +16,32 @@ cc.Class({
         open_fixedThinkTime:0,//开启固定思考时间的设置0-否1-开启
         fixedThinkTime:2,//固定思考时间，配合open_fixedThinkTime使用，单位：秒
         open_mute:0,//是否开启静音模式0-否1-是
+        is_mobile:0,//是否是手机访问0-否1-是
+        fontStyle:null,//字体样式
     },
     sit_down:function(){
         //加载游戏资源图片
         var me = this;
+        me.is_mobile = this.isMobile();
+        if(me.is_mobile == 1){
+            me.fontStyle={
+                "table_name":{"fontSize":30,"lineHeight":30},
+                "table_sb":{"fontSize":30,"lineHeight":30},
+                "table_code":{"fontSize":30,"lineHeight":30},
+                "nick":{"fontSize":30,"lineHeight":30},
+                "chips":{"fontSize":30,"lineHeight":30},
+                "chip":{"fontSize":30,"lineHeight":30}
+            };
+        }else{
+            me.fontStyle={
+                "table_name":{"fontSize":25,"lineHeight":25},
+                "table_sb":{"fontSize":25,"lineHeight":25},
+                "table_code":{"fontSize":25,"lineHeight":25},
+                "nick":{"fontSize":25,"lineHeight":25},
+                "chips":{"fontSize":25,"lineHeight":25},
+                "chip":{"fontSize":25,"lineHeight":25}
+            };
+        }
         cc.loader.loadRes("game_cards",cc.SpriteAtlas,function(err,atlas){
             me.GameCards = atlas;
         });
@@ -41,7 +63,7 @@ cc.Class({
                 me.audio_distributeCard = assets;
             });
         }
-
+        this.hand_data['start']['d_chair']=2;
         var table_data = this.hand_data;
         table_data['table_name']=table_data['table_name']?table_data['table_name']:"未知牌局";
         table_data['table_code']=table_data['table_code']?table_data['table_code']:"位置邀请码";
@@ -51,10 +73,15 @@ cc.Class({
         //var label = this.getComponent(cc.Label);
         var label = node_table_bg.getChildByName("table_name").getComponent(cc.Label);
         label.string = "§ " + table_data['table_name'] + " §";
+        label.fontSize = me.fontStyle['table_name']['fontSize'];
+        label.lineHeight = me.fontStyle['table_name']['lineHeight'];
+
         //牌局号,如果是快速牌局显示牌局号，如果是俱乐部牌局，显示盲注
         if(parseInt(table_data['table_code'])!=0){
             var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
             label_table_code.string = table_data['table_code'];
+            label_table_code.fontSize = me.fontStyle['table_code']['fontSize'];
+            label_table_code.lineHeight = me.fontStyle['table_code']['lineHeight'];
         }
         //异步加载头像，不能放在循环内
         var img_host = this.getDataConfig("img_host");
@@ -77,11 +104,14 @@ cc.Class({
                 //名字
                 var label_nick = seat_node.getChildByName("nick").getComponent(cc.Label);
                 label_nick.string = me.getLength(v['nick'])>10?me.cutStr(v['nick'],7):v['nick'];
-                label_nick.fontSize = 25;
+                label_nick.fontSize = me.fontStyle['nick']['fontSize'];
+                label_nick.lineHeight = me.fontStyle['nick']['lineHeight'];
+
                 //带入的筹码
                 var label_chips = seat_node.getChildByName("chips").getComponent(cc.Label);
                 label_chips.string = v['remain_chip']+v['table_chip'];
-                label_chips = 25;
+                label_chips.fontSize = me.fontStyle['chips']['fontSize'];
+                label_chips.lineHeight = me.fontStyle['chips']['lineHeight'];
                 //头像
                 var node_mark = new cc.Node();
                 node_mark.name='avatar';
@@ -110,10 +140,12 @@ cc.Class({
                     bb_data = v;
                 }
             }
-            if(parseInt(table_data['table_code'])==0){
-                var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
-                label_table_code.string = "盲注 "+sb_data['table_chip']+"/"+bb_data['table_chip'];
-            };
+            //盲注
+            var label_table_sb = node_table_bg.getChildByName("table_sb").getComponent(cc.Label);
+            label_table_sb.string = "盲注 "+sb_data['table_chip']+"/"+bb_data['table_chip'];
+            label_table_sb.fontSize = me.fontStyle['table_sb']['fontSize'];
+            label_table_sb.lineHeight = me.fontStyle['table_sb']['lineHeight'];
+
             this.cleanLoading();
         });
 
@@ -236,5 +268,14 @@ cc.Class({
         var fast_forward =cc.find("Canvas/sound");
         var sprite = fast_forward.getComponent(cc.Sprite);
         sprite.spriteFrame = this.replay_cn.getSpriteFrame(sprite_url);
+    },
+    //判断是否是手机访问
+    isMobile:function(){
+        var ua = navigator.userAgent;
+        var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+        isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+        isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+        isMobile = isIphone || isAndroid;
+        return isMobile;
     }
 });
