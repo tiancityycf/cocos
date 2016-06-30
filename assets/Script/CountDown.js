@@ -105,6 +105,10 @@ cc.Class({
             fillRange = cost_time < this.countdown_long_time ? fillRange -= (this.countdown_execution_interval * speed):0;
         }
         sprite.fillRange = fillRange;
+        //如果开启固定思考时间的设置，并且这个过程的执行时间大于思考时间时，直接结束倒计时
+        if(this.open_fixedThinkTime == 1 && this.countdown_long_time > this.fixedThinkTime){
+            fillRange = 0;
+        }
         if(fillRange == 0){
             this.unschedule(this.countdown_task);//删除定时任务
             this.countdown_node.destroy();//删除该节点

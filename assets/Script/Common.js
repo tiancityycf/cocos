@@ -77,10 +77,11 @@ cc.Class({
                 //名字
                 var label_nick = seat_node.getChildByName("nick").getComponent(cc.Label);
                 label_nick.string = me.getLength(v['nick'])>10?me.cutStr(v['nick'],7):v['nick'];
-                label_nick.fontSize = 20;
+                label_nick.fontSize = 25;
                 //带入的筹码
                 var label_chips = seat_node.getChildByName("chips").getComponent(cc.Label);
                 label_chips.string = v['remain_chip']+v['table_chip'];
+                label_chips = 25;
                 //头像
                 var node_mark = new cc.Node();
                 node_mark.name='avatar';
