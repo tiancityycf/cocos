@@ -931,7 +931,7 @@ cc.Class({
                 chipLabel.lineHeight = this.fontStyle['chip']['lineHeight'];
                 cn.color = new cc.Color(0,0,0);
                 cn.opacity = 100;
-                cn.setPosition(0,-40);
+                cn.setPosition(0,-30);
                 chipLabel.string = handPot;
             }else{
                 var chipLabel = table_chips_node.getComponent(cc.Label);

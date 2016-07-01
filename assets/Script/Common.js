@@ -65,7 +65,7 @@ cc.Class({
                 me.audio_distributeCard = assets;
             });
         }
-        this.hand_data['start']['d_chair']=2;
+
         var table_data = this.hand_data;
         table_data['table_name']=table_data['table_name']?table_data['table_name']:"未知牌局";
         table_data['table_code']=table_data['table_code']?table_data['table_code']:"位置邀请码";
