@@ -66,8 +66,13 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        //1242x2208
-        cc.log(cc.director.getWinSize());
+        var me = this;
+        me.is_mobile = this.isMobile();
+        if(me.is_mobile == 0){
+            var canvas = cc.find("Canvas");
+            canvas.width = 418;
+            canvas.height = 738;
+        }
         cc.game.config.showFPS=false;
 
         cc.director.setDisplayStats(false);
@@ -265,7 +270,7 @@ cc.Class({
         var table_data = this.hand_data;
         var node_table_bg = cc.find("Canvas/table_bg");
         //dealer位
-        var dealer_node = node_table_bg.getChildByName("dealer_"+table_data['start']['d_chair']);
+        var dealer_node = cc.find("Canvas/table_bg/seat_"+table_data['start']['d_chair']+"/dealer");
         var dealer_sprite = dealer_node.getComponent(cc.Sprite);
         if(dealer_sprite == null){
             var dealer_sprite = dealer_node.addComponent(cc.Sprite);
@@ -404,7 +409,7 @@ cc.Class({
         if(url == 'game_allIn_tip'){
             var me = this;
             if(this.GameMain == null){
-                cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+                cc.loader.loadRes("GameMain_6p",cc.SpriteAtlas,function(err,atlas){
                     me.GameMain = atlas;
                     sp.spriteFrame = me.GameMain.getSpriteFrame(url);
                 });
@@ -412,7 +417,7 @@ cc.Class({
                 sp.spriteFrame = me.GameMain.getSpriteFrame(url);
             }
         }else{
-            cc.loader.loadRes("GameMain_cn", cc.SpriteAtlas, function (err, atlas) {
+            cc.loader.loadRes("GameMain_cn_6p", cc.SpriteAtlas, function (err, atlas) {
                 sp.spriteFrame = atlas.getSpriteFrame(url);
             });
         }
@@ -791,7 +796,7 @@ cc.Class({
             this.table_tips=[];
         }
         //清理dealer
-        var dealer_node = cc.find("Canvas/table_bg/dealer_"+this.hand_data['start']['d_chair']);
+        var dealer_node = cc.find("Canvas/table_bg/seat_"+this.hand_data['start']['d_chair']+"/dealer");
         if(dealer_node.getComponent(cc.Sprite) != null){
             dealer_node.getComponent(cc.Sprite).destroy();
         }
@@ -931,7 +936,7 @@ cc.Class({
                 chipLabel.lineHeight = this.fontStyle['chip']['lineHeight'];
                 cn.color = new cc.Color(0,0,0);
                 cn.opacity = 100;
-                cn.setPosition(0,-30);
+                cn.setPosition(0,-40);
                 chipLabel.string = handPot;
             }else{
                 var chipLabel = table_chips_node.getComponent(cc.Label);

@@ -44,6 +44,8 @@ cc.Class({
                 "pot":{"fontSize":25,"lineHeight":25}
             };
         }
+
+
         cc.loader.loadRes("game_cards",cc.SpriteAtlas,function(err,atlas){
             me.GameCards = atlas;
         });
@@ -94,7 +96,7 @@ cc.Class({
                 sprite_user.spriteFrame = frame;
             });
         };
-        cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+        cc.loader.loadRes("GameMain_6p",cc.SpriteAtlas,function(err,atlas){
             me.GameMain = atlas;
             var sb_data = null;//小盲的数据
             var bb_data = null;//大盲的数据
@@ -119,8 +121,8 @@ cc.Class({
                 node_mark.name='avatar';
                 var mask_user = node_mark.addComponent(cc.Mask);
                 mask_user.type = cc.Mask.ELLIPSE;
-                node_mark.width = node_size['width']-10;
-                node_mark.height = node_size['height']-10;
+                node_mark.width = node_size['width']-15;
+                node_mark.height = node_size['height']-15;
                 node_mark.setPosition(0.5,0.5);
                 node_mark.parent =  seat_node;
                 
@@ -128,7 +130,7 @@ cc.Class({
                 var sprite_user = node_user.addComponent(cc.Sprite);
                 node_user.parent = node_mark;
                 if(v['avatar'] != null && v['avatar']!=""){
-                    node_user.scale = (node_size['width']-10)/120;
+                    node_user.scale = (node_size['width']-15)/120;
                     load_avatar(v['avatar'],sprite_user);
                 }else{
                     sprite_user.spriteFrame =  me.GameMain.getSpriteFrame("game_seat_valid");
@@ -274,6 +276,7 @@ cc.Class({
         isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
         isAndroid = ua.match(/(Android)\s+([\d.]+)/),
         isMobile = isIphone || isAndroid;
-        return isMobile;
+        var bool = isMobile === null?0:1;
+        return bool;
     }
 });

@@ -43,15 +43,12 @@ cc.Class({
             this.unschedule(this.countdown_task);//删除定时任务
             this.countdown_node.destroy();//删除该节点
         }
-
-
-
         var seat = node_table_bg.getChildByName("seat_"+seat_number);//获取该作为的节点
-        //var seat_position = seat.getPosition();//获取该座位的位置坐标
 
         //倒计时遮罩层
         var node = new cc.Node();
-        node.scale = 1.0;
+        node.scale = 0.85;
+        cc.log(node.scale);
         //node.setPosition(seat_position);
         //node.parent = node_table_bg;
         node.parent = seat;
@@ -134,7 +131,7 @@ cc.Class({
         var seat = node_table_bg.getChildByName("seat_"+seat_number);//获取该作为的节点
         //倒计时遮罩层
         var node = new cc.Node();
-        node.scale = 1.0;
+        node.scale = 0.85;
         node.parent = seat;
         node.setPosition(0.5,0.5);
         node.setLocalZOrder(2);
