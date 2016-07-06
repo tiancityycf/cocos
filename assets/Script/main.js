@@ -676,7 +676,7 @@ cc.Class({
         var ctNode = new cc.Node();
         var ctChip = ctNode.addComponent(cc.Sprite);
         ctNode.parent = node;
-        ctNode.setPosition(0, -60);
+        ctNode.setPosition(0, -80);
 
         //显示当前的筹码数
         var seat_chips_node = cc.find("Canvas/table_bg/seat_"+sit+"/chips");
@@ -688,7 +688,7 @@ cc.Class({
             var lbChip = lbNode.addComponent(cc.Sprite);
             lbChip.spriteFrame = this.GameMain.getSpriteFrame('game_endhand');
             lbNode.parent = node;
-            lbNode.setPosition(0, 60);
+            lbNode.setPosition(0, 80);
             //营收文字
             var lbbNode = new cc.Node();
             var lbb = lbbNode.addComponent(cc.Label);
