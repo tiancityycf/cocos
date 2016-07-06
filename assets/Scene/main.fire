@@ -1549,7 +1549,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -70
+      "y": -80
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -4764,7 +4764,7 @@
     "countdown_execution_interval": 0.1,
     "countdown_repeat_num": 0,
     "countdown_long_time": 0,
-    "countdown_cycle_time": 20,
+    "countdown_cycle_time": 15,
     "countdown_node": null,
     "countdown_task": null,
     "countdown_over_task": null,

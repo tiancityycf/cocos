@@ -136,7 +136,7 @@ cc.Class({
                     sprite_user.spriteFrame =  me.GameMain.getSpriteFrame("game_seat_valid");
                 }
 
-                seat_node.getChildByName("game_tip").setLocalZOrder(3);
+                seat_node.getChildByName("game_tip").setLocalZOrder(2);
 
                 if(v['chair_id'] == table_data['start']['sb_chair']){
                     sb_data = v;

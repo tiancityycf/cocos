@@ -255,6 +255,13 @@ cc.Class({
                     //延时
                     this.delay_think(this.actions[i]["chair_id"],this.actions[i]["duration"]);
                     break;
+                case 9999:
+                    //正在等待
+                    this.add_countdown(this.actions[i]["chair_id"],this.actions[i]["duration"]);
+                    this.countdown_over_task = function(){
+                        this.actionend();
+                    };
+                    break;
                 default:
                     this.actionend();
                     break;
@@ -274,6 +281,9 @@ cc.Class({
         var dealer_sprite = dealer_node.getComponent(cc.Sprite);
         if(dealer_sprite == null){
             var dealer_sprite = dealer_node.addComponent(cc.Sprite);
+        }else{
+            //如果存在，设置可见
+            dealer_sprite.setVisible(true);
         }
         //大盲位
         var big_blind_node = node_table_bg.getChildByName("chip_"+table_data['start']['bb_chair']);
@@ -421,7 +431,6 @@ cc.Class({
                 sp.spriteFrame = atlas.getSpriteFrame(url);
             });
         }
-
         if(clean){
             this.table_tips.push(game_tip);
         }else{
@@ -798,7 +807,8 @@ cc.Class({
         //清理dealer
         var dealer_node = cc.find("Canvas/table_bg/seat_"+this.hand_data['start']['d_chair']+"/dealer");
         if(dealer_node.getComponent(cc.Sprite) != null){
-            dealer_node.getComponent(cc.Sprite).destroy();
+            dealer_node.getComponent(cc.Sprite).setVisible(false);
+            //dealer_node.getComponent(cc.Sprite).destroy();
         }
         this.table_chips_inpot=0;
 
@@ -1254,7 +1264,6 @@ cc.Class({
             node.destroy();
         }
 
-
         this.actionend();
 
     },
@@ -1290,6 +1299,22 @@ cc.Class({
     update: function (dt) {
 
     },
-
+    //别人正在操作时，站起
+    other_quit:function(sit){
+        var finished = function(){
+            var table_bg = cc.find("Canvas/table_bg");
+            var seat=table_bg.getChildByName("seat_"+sit);
+            //seat.enabled=false;
+            //隐藏图像
+            seat.getChildByName("avatar").setOpacity(0);
+            seat.getChildByName("nick").setOpacity(0);
+            seat.getChildByName("chips").setOpacity(0);
+            seat.getChildByName("hand_card").setOpacity(0);
+            if(seat.getChildByName("game_tip").getComponent(cc.Sprite)!=null){
+                seat.getChildByName("game_tip").getComponent(cc.Sprite).destroy();
+            }
+        };
+        finished();
+    },
 });
 
