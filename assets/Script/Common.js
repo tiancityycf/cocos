@@ -6,6 +6,8 @@ cc.Class({
             default:[],
             type:cc.Node
         },
+        Lang:null,//语言版本
+        SourceSuffix:null,//资源后缀
         GameMain:null,//游戏资源
         replay_cn:null,//游戏资源
         GameCards:null,//游戏的牌中的资源
@@ -44,8 +46,6 @@ cc.Class({
                 "pot":{"fontSize":25,"lineHeight":25}
             };
         }
-
-
         cc.loader.loadRes("game_cards",cc.SpriteAtlas,function(err,atlas){
             me.GameCards = atlas;
         });
@@ -69,28 +69,12 @@ cc.Class({
         }
 
         var table_data = this.hand_data;
-        table_data['table_name']=table_data['table_name']?table_data['table_name']:"未知牌局";
-        table_data['table_code']=table_data['table_code']?table_data['table_code']:"位置邀请码";
-        table_data['table_type']=table_data['table_type']?table_data['table_type']:1;
+        table_data['table_name']=table_data['table_name']?table_data['table_name']:"";
+        table_data['table_code']=table_data['table_code']?table_data['table_code']:"";
         var node_table_bg = cc.find("Canvas/table_bg");
-        //牌局名字
-        //var label = this.getComponent(cc.Label);
-        var label = node_table_bg.getChildByName("table_name").getComponent(cc.Label);
-        label.string = "§ " + table_data['table_name'] + " §";
-        label.fontSize = me.fontStyle['table_name']['fontSize'];
-        label.lineHeight = me.fontStyle['table_name']['lineHeight'];
 
-        //牌局号,如果是快速牌局显示牌局号，如果是俱乐部牌局，显示盲注
-        if(parseInt(table_data['table_code'])!=0){
-            var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
-            label_table_code.string = table_data['table_code'];
-            label_table_code.fontSize = me.fontStyle['table_code']['fontSize'];
-            label_table_code.lineHeight = me.fontStyle['table_code']['lineHeight'];
-        }
         //异步加载头像，不能放在循环内
-        var img_host = this.getDataConfig("img_host");
         var load_avatar = function(url,sprite_user){
-            url = img_host + url;
             cc.loader.load(url,function(err,tex){
                 var frame  = new cc.SpriteFrame(tex,cc.Rect(0, 0, 87, 123));
                 sprite_user.spriteFrame = frame;
@@ -144,9 +128,22 @@ cc.Class({
                     bb_data = v;
                 }
             }
+            //牌局名字
+            var label = node_table_bg.getChildByName("table_name").getComponent(cc.Label);
+            label.string = "§ " + table_data['table_name'] + " §";
+            label.fontSize = me.fontStyle['table_name']['fontSize'];
+            label.lineHeight = me.fontStyle['table_name']['lineHeight'];
+
+            //牌局号,如果是快速牌局显示牌局号，如果是俱乐部牌局，显示盲注
+            if(parseInt(table_data['table_code'])!=0){
+                var label_table_code = node_table_bg.getChildByName("table_code").getComponent(cc.Label);
+                label_table_code.string = table_data['table_code'];
+                label_table_code.fontSize = me.fontStyle['table_code']['fontSize'];
+                label_table_code.lineHeight = me.fontStyle['table_code']['lineHeight'];
+            }
             //盲注
             var label_table_sb = node_table_bg.getChildByName("table_sb").getComponent(cc.Label);
-            label_table_sb.string = "盲注 "+sb_data['table_chip']+"/"+bb_data['table_chip'];
+            label_table_sb.string = me.ConvertLang("blind")+" "+sb_data['table_chip']+"/"+bb_data['table_chip'];
             label_table_sb.fontSize = me.fontStyle['table_sb']['fontSize'];
             label_table_sb.lineHeight = me.fontStyle['table_sb']['lineHeight'];
 
@@ -225,22 +222,6 @@ cc.Class({
             return str;
         }
     },
-    //获取json的配置
-    getDataConfig:function(key){
-        var config ={
-                        "env":"env_qa",
-                        "env_product":{
-                            "data_host":"http://qa-api.kkpoker.com:8090",
-                            "img_host":"http://qa-img.kkpoker.com:8090"
-                        },
-                        "env_qa":{
-                            "data_host":"http://qa-api.kkpoker.com:8090",
-                            "img_host":"http://qa-img.kkpoker.com:8090"
-                        }
-                    };
-        var env_key = config['env'];
-        return config[env_key][key];
-    },
     //开启固定思考时间status:0-关闭1-开启
     set_fixedThinkTime:function(){
         var sprite_url = "";
@@ -278,5 +259,31 @@ cc.Class({
         isMobile = isIphone || isAndroid;
         var bool = isMobile === null?0:1;
         return bool;
+    },
+    //语言翻译
+    ConvertLang:function(key){
+        var config_lang={};
+        config_lang['zh-cn']={"pot":"底池","blind":"盲注","mute":"静音","no_think":"忽略思考时间"};
+        config_lang['thai-th']={"pot":"กองกลาง","blind":"Stakes","mute":"Mute","no_think":"fast-forwward"};
+        config_lang['en-us']={"pot":"Pot","blind":"Stakes","mute":"Mute","no_think":"fast-forwward"};
+        config_lang['zh-tw']={"pot":"底池","blind":"盲注","mute":"靜音","no_think":"忽略思考時間"};
+        config_lang['ko']={"pot":"底池","blind":"맹주","mute":"정음 ","no_think":"忽略思考时间"};
+        return config_lang[this.Lang][key];
+    },
+    //多语言替换座位
+    ReplaceSeat:function(){
+        if(this.Lang == 'thai-th'){
+            for(var i=0;i<9;i++){
+                cc.find("Canvas/table_bg/seat_"+i).getComponent(cc.Sprite).setVisible(false);
+            }
+            cc.loader.loadRes("GameMain_th_6p",cc.SpriteAtlas,function(err,atlas){
+                var game_seat_empty = atlas.getSpriteFrame("game_seat_empty");
+                for(var i=0;i<9;i++){
+                    var sprite = cc.find("Canvas/table_bg/seat_"+i).getComponent(cc.Sprite)
+                    sprite.spriteFrame = game_seat_empty;
+                    sprite.setVisible(true);
+                }
+            });
+        }
     }
 });

@@ -205,7 +205,13 @@ cc.Class({
         //hand_id=33310;
         //hand_id=33509;
         if(hand_id != null){
-            url = this.getDataConfig("data_host")+"/Html/get_mongo_data/hand_id/"+hand_id;
+            var host_name = window.location.host;
+            var reg = /^localhost:/;
+            if(reg.test(host_name)==true){
+                url = "http://qa-api.kkpoker.com:8090/Html/get_mongo_data/hand_id/"+hand_id;
+            }else{
+                url = "http://" + host_name + "/Html/get_mongo_data/hand_id/"+hand_id;
+            }
         }else{
             //测试数据
             url="http://172.16.0.210:2016/info.php";
@@ -278,13 +284,13 @@ cc.Class({
         }
         //找到同时进行的工作
         var action_result=[];//动作列表
-        var other_reuslt=[];//同时进行的动作
+        var other_result=[];//同时进行的动作
         for(var i=0;i<action_data_len;i++){
             var other_is_sum_up=0;//是否需要归纳0-否1-是
             var data = null;//命令数据
             if(action_data[i]['type'] == "others"){
                 data={"CMD":9999,"chair_id":action_data[i]['current_action_chair'],"chip":0,"pot":0,"timestamp":action_data[i]['timestamp']}
-                other_reuslt.push(action_data[i]);//把同时进行的动作存起来
+                other_result.push(action_data[i]);//把同时进行的动作存起来
                 other_is_sum_up=1;
             }else{
                 data = action_data[i];
@@ -302,9 +308,9 @@ cc.Class({
                 var sort_num = action_result.length - 1;
                 //把other动作绑定到action动作当中
                 if(action_result[sort_num]['others']==undefined){
-                    action_result[sort_num]['others']=[other_reuslt.length-1];
+                    action_result[sort_num]['others']=[other_result.length-1];
                 }else{
-                    action_result[sort_num]['others'].push(other_reuslt.length-1);
+                    action_result[sort_num]['others'].push(other_result.length-1);
                 }
             }
         }
@@ -338,213 +344,7 @@ cc.Class({
             }
         }
         hand_data['actions']=action_result2;
-        hand_data['others']=other_reuslt;
+        hand_data['others']=other_result;
         return hand_data;
-    },
-    //模拟数据
-    table_data:function(){
-        var table_data={
-            "actions" : [{
-                "CMD" : 13,
-                "chair_id" : 3,
-                "chip" : 1,
-                "current_action_chair" : 4,
-                "current_pot" : 4,
-                "pot" : 4,
-                "timestamp" : 1466422796,
-                "user_id" : 145
-            }, {
-                "CMD" : 19,
-                "chair_id" : 4,
-                "delay_time" : 20,
-                "timestamp" : 1466422800,
-                "user_id" : 138
-            }, {
-                "CMD" : 19,
-                "chair_id" : 4,
-                "delay_time" : 20,
-                "timestamp" : 1466422802,
-                "user_id" : 138
-            }, {
-                "CMD" : 14,
-                "chair_id" : 4,
-                "chip" : 6,
-                "current_action_chair" : 3,
-                "current_pot" : 10,
-                "pot" : 10,
-                "timestamp" : 1466422807,
-                "user_id" : 138
-            }, {
-                "CMD" : 14,
-                "chair_id" : 3,
-                "chip" : 36,
-                "current_action_chair" : 4,
-                "current_pot" : 46,
-                "pot" : 46,
-                "timestamp" : 1466422811,
-                "user_id" : 145
-            }, {
-                "CMD" : 13,
-                "chair_id" : 4,
-                "chip" : 30,
-                "current_action_chair" : 99,
-                "current_pot" : 76,
-                "pot" : 76,
-                "timestamp" : 1466422814,
-                "user_id" : 138
-            }, {
-                "CMD" : 9,
-                "common_card" : [41, 40, 54],
-                "current_action_chair" : 4,
-                "current_pot" : 76,
-                "pot" : 76,
-                "timestamp" : 1466422815
-            }, {
-                "CMD" : 17,
-                "chair_id" : 4,
-                "index" : 4,
-                "timestamp" : 1466422829,
-                "user_id" : 138
-            }, {
-                "CMD" : 12,
-                "chair_id" : 4,
-                "chip" : 0,
-                "current_action_chair" : 3,
-                "current_pot" : 76,
-                "pot" : 76,
-                "timestamp" : 1466422831,
-                "user_id" : 138
-            }, {
-                "CMD" : 17,
-                "chair_id" : 4,
-                "index" : 2,
-                "timestamp" : 1466422832,
-                "user_id" : 138
-            }, {
-                "CMD" : 18,
-                "from_chair" : 3,
-                "from_user" : 145,
-                "index" : 0,
-                "timestamp" : 1466422839,
-                "to_chair" : [4],
-                "to_user" : [138]
-            }, {
-                "CMD" : 18,
-                "from_chair" : 3,
-                "from_user" : 145,
-                "index" : 2,
-                "timestamp" : 1466422841,
-                "to_chair" : [4],
-                "to_user" : [138]
-            }, {
-                "CMD" : 12,
-                "chair_id" : 3,
-                "chip" : 0,
-                "current_action_chair" : 99,
-                "current_pot" : 76,
-                "pot" : 76,
-                "timestamp" : 1466422847,
-                "user_id" : 145
-            }, {
-                "CMD" : 10,
-                "common_card" : [29],
-                "current_action_chair" : 4,
-                "current_pot" : 76,
-                "pot" : 76,
-                "timestamp" : 1466422848
-            }, {
-                "CMD" : 14,
-                "chair_id" : 4,
-                "chip" : 76,
-                "current_action_chair" : 3,
-                "current_pot" : 152,
-                "pot" : 152,
-                "timestamp" : 1466422856,
-                "user_id" : 138
-            }, {
-                "CMD" : 13,
-                "chair_id" : 3,
-                "chip" : 76,
-                "current_action_chair" : 99,
-                "current_pot" : 228,
-                "pot" : 228,
-                "timestamp" : 1466422857,
-                "user_id" : 145
-            }, {
-                "CMD" : 11,
-                "common_card" : [12],
-                "current_action_chair" : 4,
-                "current_pot" : 228,
-                "pot" : 228,
-                "timestamp" : 1466422859
-            }, {
-                "CMD" : 12,
-                "chair_id" : 4,
-                "chip" : 0,
-                "current_action_chair" : 3,
-                "current_pot" : 228,
-                "pot" : 228,
-                "timestamp" : 1466422862,
-                "user_id" : 138
-            }, {
-                "CMD" : 12,
-                "chair_id" : 3,
-                "chip" : 0,
-                "current_action_chair" : 99,
-                "current_pot" : 228,
-                "pot" : 228,
-                "timestamp" : 1466422863,
-                "user_id" : 145
-            }
-            ],
-            "end" : [{
-                "chair_id" : 3,
-                "change_chip" : 114,
-                "hand_poker_0" : 13,
-                "hand_poker_1" : 43,
-                "new_chip" : 314,
-                "user_id" : 145
-            }, {
-                "chair_id" : 4,
-                "change_chip" : -114,
-                "hand_poker_0" : 57,
-                "hand_poker_1" : 52,
-                "new_chip" : 86,
-                "user_id" : 138
-            }
-            ],
-            "hand_id" : 1,
-            "players" : [{
-                "avatar" : "http://img.51yche.com/avatar/2016-06-15/w_120x120_57602bd098133.jpg",
-                "chair_id" : 3,
-                "hand_poker_0" : 13,
-                "hand_poker_1" : 43,
-                "nick" : "小行星星",
-                "remain_chip" : 199,
-                "table_chip" : 1,
-                "user_id" : 145
-            }, {
-                "avatar" : "http://img.51yche.com/avatar/2016-06-14/w_120x120_575ffcd3375aa.jpg",
-                "chair_id" : 4,
-                "hand_poker_0" : 57,
-                "hand_poker_1" : 52,
-                "nick" : "舞",
-                "remain_chip" : 198,
-                "table_chip" : 2,
-                "user_id" : 138
-            }
-            ],
-            "start" : {
-                "bb_chair" : 4,
-                "current_action_chair" : 3,
-                "d_chair" : 3,
-                "sb_chair" : 3,
-                "timestamp" : 1466422792
-            },
-            "table_id" : 2321,
-            "table_name":"扑克之夜第一局",
-            "table_code":"5672823"
-        };
-        return table_data;
-    },
+    }
 });

@@ -79,6 +79,26 @@ cc.Class({
 
         this.eventListen();
 
+        //资源的后缀,方便加载不同资源
+        var lang = this.getQueryString("lang");
+        lang = lang?lang:"zh-cn";
+        //lang = 'en-us';
+        var config_lang = {"zh-cn":"cn","thai-th":"th","en-us":"en","zh-tw":"tw","ko":"ko"};
+        if(config_lang[lang] == null || config_lang[lang] == undefined){
+            lang = "zh-cn";
+        }
+        this.Lang = lang;
+        this.SourceSuffix = config_lang[lang];
+        //按钮的提示
+        var sound_tip = cc.find("Canvas/sound/sound_tips");
+        sound_tip.getComponent(cc.Label).string=this.ConvertLang("mute");//静音
+        var forward_tip = cc.find("Canvas/fast_forward/forward_tips");
+        forward_tip.getComponent(cc.Label).string=this.ConvertLang("no_think");//忽略思考
+        //多语言替换座位
+        this.ReplaceSeat();
+
+
+
         //4. 先获取目标组件所在的节点，然后通过getComponent获取目标组件
         //var _label = cc.find("Canvas/label").getComponent(cc.Label);
 
@@ -427,7 +447,7 @@ cc.Class({
                 sp.spriteFrame = me.GameMain.getSpriteFrame(url);
             }
         }else{
-            cc.loader.loadRes("GameMain_cn_6p", cc.SpriteAtlas, function (err, atlas) {
+            cc.loader.loadRes("GameMain_"+this.SourceSuffix+"_6p", cc.SpriteAtlas, function (err, atlas) {
                 sp.spriteFrame = atlas.getSpriteFrame(url);
             });
         }
@@ -1007,7 +1027,7 @@ cc.Class({
         if("undefined" != typeof this.inpot){
             if(cc.isValid(this.inpot)){
                 var potObj=this.inpot.getChildByName("pot").getComponent(cc.Label);
-                potObj.string="底池：" + pot;
+                potObj.string=this.ConvertLang("pot")+"：" + pot;
             }else{
                 this.inpot = new cc.Node();
                 //this.cleanNode.push(this.inpot);
@@ -1022,7 +1042,7 @@ cc.Class({
                 potNode.name="pot";
                 potNode.parent=this.inpot;
                 potNode.setPosition(0,-60);
-                plb.string="底池：" + pot;
+                plb.string=this.ConvertLang("pot")+"：" + pot;
             }
         }
     },

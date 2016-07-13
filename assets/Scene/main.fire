@@ -3499,7 +3499,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
+      "width": 0,
       "height": 25
     },
     "_children": [],
@@ -3545,7 +3545,7 @@
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": false,
-    "_N$string": "牌局名字",
+    "_N$string": "",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$overflow": 0
@@ -3583,7 +3583,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 50,
+      "width": 0,
       "height": 25
     },
     "_children": [],
@@ -3629,7 +3629,7 @@
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": false,
-    "_N$string": "盲注",
+    "_N$string": "",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$overflow": 0
@@ -3667,7 +3667,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 75,
+      "width": 0,
       "height": 25
     },
     "_children": [],
@@ -3713,7 +3713,7 @@
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": false,
-    "_N$string": "牌局号",
+    "_N$string": "",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$overflow": 0
@@ -4550,7 +4550,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
+      "width": 0,
       "height": 25
     },
     "_children": [],
@@ -4594,7 +4594,7 @@
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
-    "_N$string": "忽略思考时间",
+    "_N$string": "",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$overflow": 0
@@ -4749,6 +4749,8 @@
     },
     "_enabled": true,
     "seat": [],
+    "Lang": null,
+    "SourceSuffix": null,
     "GameMain": null,
     "replay_cn": null,
     "GameCards": null,
@@ -4882,7 +4884,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 50,
+      "width": 0,
       "height": 25
     },
     "_children": [],
@@ -4926,7 +4928,7 @@
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
-    "_N$string": "静音",
+    "_N$string": "",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$overflow": 0
