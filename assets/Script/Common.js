@@ -264,10 +264,10 @@ cc.Class({
     ConvertLang:function(key){
         var config_lang={};
         config_lang['zh-cn']={"pot":"底池","blind":"盲注","mute":"静音","no_think":"忽略思考时间"};
-        config_lang['thai-th']={"pot":"กองกลาง","blind":"Stakes","mute":"Mute","no_think":"fast-forwward"};
-        config_lang['en-us']={"pot":"Pot","blind":"Stakes","mute":"Mute","no_think":"fast-forwward"};
         config_lang['zh-tw']={"pot":"底池","blind":"盲注","mute":"靜音","no_think":"忽略思考時間"};
-        config_lang['ko']={"pot":"底池","blind":"맹주","mute":"정음 ","no_think":"忽略思考时间"};
+        config_lang['thai-th']={"pot":"กองกลาง","blind":"Stakes","mute":"ปิดเสียง","no_think":"fast-forwward"};
+        config_lang['en-us']={"pot":"Pot","blind":"Stakes","mute":"Mute","no_think":"fast-forwward"};
+        config_lang['ko']={"pot":"바닥풀 ","blind":"맹주","mute":"정음 ","no_think":"忽略思考时间"};
         return config_lang[this.Lang][key];
     },
     //多语言替换座位
