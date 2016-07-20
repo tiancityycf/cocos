@@ -195,6 +195,7 @@ cc.Class({
             }
         }
     },
+    //ajax 请求
     reqstart:function(){
         var hand_id = this.getQueryString("hand_id");
         var url="";
@@ -250,6 +251,42 @@ cc.Class({
                 }
             }
         }
+    },
+    //web socket连接
+    wsstart:function(){
+        var ws = new WebSocket("ws://127.0.0.1:3564");
+        ws.onopen = function (event) {
+            console.log("Send Text WS was opened.");
+        };
+        ws.onmessage = function (event) {
+            console.log("response text msg: " + event.data);
+        };
+        ws.onerror = function (event) {
+            console.log("Send Text fired an error");
+        };
+        ws.onclose = function (event) {
+            console.log("WebSocket instance closed.");
+        };
+
+        setTimeout(function () {
+            if (ws.readyState === WebSocket.OPEN) {
+                cc.log("send message to server");
+                ws.send("Hello WebSocket, I'm a text message.");
+            }
+            else {
+                console.log("WebSocket instance wasn't ready...");
+            }
+        }, 3);
+
+        setTimeout(function () {
+            if (ws.readyState === WebSocket.OPEN) {
+                cc.log("send message to server");
+                ws.send("Hello WebSocket, I'm a text message.");
+            }
+            else {
+                console.log("WebSocket instance wasn't ready...");
+            }
+        }, 10);
     },
     //组装action和other
     sorting_data:function(hand_data){

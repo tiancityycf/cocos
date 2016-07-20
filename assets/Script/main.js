@@ -1,6 +1,5 @@
 var CountDown = require('CountDown');
 cc.Class({
-    //extends: cc.Component,
     extends: CountDown,
 
     properties: {
@@ -128,7 +127,11 @@ cc.Class({
         // });
         // this.node.emit("tEmitFun",{himi:27,say:"hello,cc!"});
 
-        this.reqstart();
+        //牌局回放加载数据
+        //this.reqstart();
+
+        //websocket请求
+        this.wsstart();
 
     },
 
