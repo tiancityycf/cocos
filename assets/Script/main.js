@@ -393,24 +393,24 @@ cc.Class({
     },
     buttonResume:function(){
         var btsp=this.node.parent.getChildByName("game_table_start_normal").getComponent(cc.Sprite);
-        if(this.replay_cn == null){
-            cc.loader.loadRes("replay_cn",cc.SpriteAtlas,function(err,atlas){
-                me.replay_cn = atlas;
-                btsp.spriteFrame = this.replay_cn.getSpriteFrame("game_table_start_normal");
+        if(this.GameMain == null){
+            cc.loader.loadRes("GameMain_6p",cc.SpriteAtlas,function(err,atlas){
+                me.GameMain = atlas;
+                btsp.spriteFrame = this.GameMain.getSpriteFrame("game_table_start_normal");
             });
         }else{
-            btsp.spriteFrame = this.replay_cn.getSpriteFrame("game_table_start_normal");
+            btsp.spriteFrame = this.GameMain.getSpriteFrame("game_table_start_normal");
         }
     },
     buttonPause:function(){
         var btsp=this.node.parent.getChildByName("game_table_start_normal").getComponent(cc.Sprite);
-        if(this.replay_cn == null){
-            cc.loader.loadRes("replay_cn",cc.SpriteAtlas,function(err,atlas){
-                this.replay_cn = atlas;
-                btsp.spriteFrame = this.replay_cn.getSpriteFrame("game_table_start_pause");
+        if(this.GameMain == null){
+            cc.loader.loadRes("GameMain",cc.SpriteAtlas,function(err,atlas){
+                this.GameMain = atlas;
+                btsp.spriteFrame = this.GameMain.getSpriteFrame("game_table_start_pause");
             });
         }else{
-            btsp.spriteFrame = this.replay_cn.getSpriteFrame("game_table_start_pause");
+            btsp.spriteFrame = this.GameMain.getSpriteFrame("game_table_start_pause");
         }
     },
     buttonDisable:function(){

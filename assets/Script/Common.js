@@ -9,7 +9,7 @@ cc.Class({
         Lang:null,//语言版本
         SourceSuffix:null,//资源后缀
         GameMain:null,//游戏资源
-        replay_cn:null,//游戏资源
+        //replay_cn:null,//游戏资源
         GameCards:null,//游戏的牌中的资源
         audio_chipsToTable:null,//下注的音频
         audio_check:null,//check的音频
@@ -49,9 +49,9 @@ cc.Class({
         cc.loader.loadRes("game_cards",cc.SpriteAtlas,function(err,atlas){
             me.GameCards = atlas;
         });
-        cc.loader.loadRes("replay_cn",cc.SpriteAtlas,function(err,atlas){
-            me.replay_cn = atlas;
-        });
+        //cc.loader.loadRes("replay_cn",cc.SpriteAtlas,function(err,atlas){
+        //    me.replay_cn = atlas;
+        //});
         //加载游戏音频
         if(this.open_mute == 0){
             cc.loader.loadRes("audio/audio_chipsToTable", function (err, assets) {
@@ -234,7 +234,7 @@ cc.Class({
         }
         var fast_forward =cc.find("Canvas/fast_forward");
         var sprite = fast_forward.getComponent(cc.Sprite);
-        sprite.spriteFrame = this.replay_cn.getSpriteFrame(sprite_url);
+        sprite.spriteFrame = this.GameMain.getSpriteFrame(sprite_url);
     },
     //开启静音模式status:0-关闭1-开启
     set_mute:function(){
@@ -248,7 +248,7 @@ cc.Class({
         }
         var fast_forward =cc.find("Canvas/sound");
         var sprite = fast_forward.getComponent(cc.Sprite);
-        sprite.spriteFrame = this.replay_cn.getSpriteFrame(sprite_url);
+        sprite.spriteFrame = this.GameMain.getSpriteFrame(sprite_url);
     },
     //判断是否是手机访问
     isMobile:function(){
