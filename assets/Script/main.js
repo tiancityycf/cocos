@@ -95,7 +95,7 @@ cc.Class({
         var forward_tip = cc.find("Canvas/fast_forward/forward_tips");
         forward_tip.getComponent(cc.Label).string=this.ConvertLang("no_think");//忽略思考
         //多语言替换座位
-        this.ReplaceSeat();
+        //this.ReplaceSeat();
 
 
 

@@ -271,19 +271,19 @@ cc.Class({
         return config_lang[this.Lang][key];
     },
     //多语言替换座位
-    ReplaceSeat:function(){
-        if(this.Lang == 'thai-th'){
-            for(var i=0;i<9;i++){
-                cc.find("Canvas/table_bg/seat_"+i).getComponent(cc.Sprite).setVisible(false);
-            }
-            cc.loader.loadRes("GameMain_th_6p",cc.SpriteAtlas,function(err,atlas){
-                var game_seat_empty = atlas.getSpriteFrame("game_seat_empty");
-                for(var i=0;i<9;i++){
-                    var sprite = cc.find("Canvas/table_bg/seat_"+i).getComponent(cc.Sprite)
-                    sprite.spriteFrame = game_seat_empty;
-                    sprite.setVisible(true);
-                }
-            });
-        }
-    }
+    //ReplaceSeat:function(){
+    //    if(this.Lang == 'thai-th'){
+    //        for(var i=0;i<9;i++){
+    //            cc.find("Canvas/table_bg/seat_"+i).getComponent(cc.Sprite).setVisible(false);
+    //        }
+    //        cc.loader.loadRes("GameMain_th_6p",cc.SpriteAtlas,function(err,atlas){
+    //            var game_seat_empty = atlas.getSpriteFrame("game_seat_empty");
+    //            for(var i=0;i<9;i++){
+    //                var sprite = cc.find("Canvas/table_bg/seat_"+i).getComponent(cc.Sprite)
+    //                sprite.spriteFrame = game_seat_empty;
+    //                sprite.setVisible(true);
+    //            }
+    //        });
+    //    }
+    //}
 });
