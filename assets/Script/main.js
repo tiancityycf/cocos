@@ -91,8 +91,7 @@ cc.Class({
         //按钮的提示
         var sound_tip = cc.find("Canvas/sound/sound_tips");
         sound_tip.getComponent(cc.Label).string=this.ConvertLang("mute");//静音
-        var forward_tip = cc.find("Canvas/fast_forward/forward_tips");
-        forward_tip.getComponent(cc.Label).string=this.ConvertLang("no_think");//忽略思考
+
         //多语言替换座位
         //this.ReplaceSeat();
 
@@ -136,23 +135,6 @@ cc.Class({
     },
 
     eventListen:function(){
-        //当手指触点落在目标节点区域内时
-        var fast_forward=cc.find("Canvas/fast_forward");
-
-        fast_forward.on("mouseenter",function(event){
-            fast_forward.getChildByName("forward_tips").opacity=255;
-        });
-        fast_forward.on("mouseleave",function(event){
-            fast_forward.getChildByName("forward_tips").opacity=0;
-        });
-
-        fast_forward.on("touchstart",function(event){
-            fast_forward.getChildByName("forward_tips").opacity=255;
-        });
-
-        fast_forward.on("touchend",function(event){
-            fast_forward.getChildByName("forward_tips").opacity=0;
-        });
 
         //当手指触点落在目标节点区域内时
         var sound=cc.find("Canvas/sound");

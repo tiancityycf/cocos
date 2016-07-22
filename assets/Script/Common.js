@@ -218,20 +218,7 @@ cc.Class({
             return str;
         }
     },
-    //开启固定思考时间status:0-关闭1-开启
-    set_fixedThinkTime:function(){
-        var sprite_url = "";
-        if(this.open_fixedThinkTime == 1){
-            this.open_fixedThinkTime = 0;
-            sprite_url='forward_normal';
-        }else{
-            this.open_fixedThinkTime = 1;
-            sprite_url='forward_unnormal';
-        }
-        var fast_forward =cc.find("Canvas/fast_forward");
-        var sprite = fast_forward.getComponent(cc.Sprite);
-        sprite.spriteFrame = this.GameMain.getSpriteFrame(sprite_url);
-    },
+
     //开启静音模式status:0-关闭1-开启
     set_mute:function(){
         var sprite_url = "";
