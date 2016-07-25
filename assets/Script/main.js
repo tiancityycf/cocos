@@ -132,6 +132,9 @@ cc.Class({
         //websocket请求
         this.wsstart();
 
+        this.onSeat();
+
+
     },
 
     eventListen:function(){

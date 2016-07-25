@@ -151,24 +151,78 @@ cc.Class({
         });
 
     },
-    resetSeat:function(){
-        var table_data = this.hand_data;
+    //监听座位点击事件
+    onSeat:function(){
+        cc.log("onSeat init");
         var node_table_bg = cc.find("Canvas/table_bg");
+        for(var i=0;i<9;i++){
+            //var v = table_data['players'][k];
+            var seat_node = node_table_bg.getChildByName("seat_"+i);
+            seat_node.on("mouseup",function(event){
+                this.seatClick (event);
+            },this);
+        }
+    },
+    //点击座位坐下 未完成
+    seatClick:function(e){
+        var me = this;
+        var seatName = e.currentTarget._name;
+        var v={};
+        v["nick"]   =   "南洋波霸";
+        v["remain_chip"]    =   "1000";
+        v["table_chip"]     =   "10";
+        //v["avatar"]         =   "/1_5734451068aaa.jpg";
+        v["avatar"]         =   "";
 
-        //坐下
-        for(var k in table_data['players']){
-            var v = table_data['players'][k];
-            var seat_node = node_table_bg.getChildByName("seat_"+v['chair_id']);
-            //带入的筹码
-            var label_chips = seat_node.getChildByName("chips").getComponent(cc.Label);
-            label_chips.string = v['remain_chip']+v['table_chip'];
-            seat_node.getChildByName("avatar").setOpacity(255);
-            seat_node.getChildByName("nick").setOpacity(255);
-            seat_node.getChildByName("chips").setOpacity(255);
-            if(cc.isValid(seat_node.getChildByName("hand_card"))){
-                seat_node.getChildByName("hand_card").destroy();
+        var node_table_bg = cc.find("Canvas/table_bg");
+        var seat_node = node_table_bg.getChildByName(seatName);
+        var node_size = seat_node.getContentSize();//获取node的尺寸
+        //名字
+        var label_nick = seat_node.getChildByName("nick").getComponent(cc.Label);
+        label_nick.string = me.getLength(v['nick'])>10?me.cutStr(v['nick'],7):v['nick'];
+        label_nick.fontSize = 30;
+        label_nick.lineHeight = 30;
+
+        //带入的筹码
+        var label_chips = seat_node.getChildByName("chips").getComponent(cc.Label);
+        label_chips.string = v['remain_chip']+v['table_chip'];
+        label_chips.fontSize = 30;
+        label_chips.lineHeight = 30;
+
+        //头像
+        var node_mark = new cc.Node();
+        node_mark.name='avatar';
+        var mask_user = node_mark.addComponent(cc.Mask);
+        mask_user.type = cc.Mask.ELLIPSE;
+        node_mark.width = node_size['width']-15;
+        node_mark.height = node_size['height']-15;
+        node_mark.setPosition(0.5,0.5);
+        node_mark.parent =  seat_node;
+
+        var node_user = new cc.Node();
+        var sprite_user = node_user.addComponent(cc.Sprite);
+        node_user.parent = node_mark;
+        if(v['avatar'] != null && v['avatar']!=""){
+            //异步加载头像，不能放在循环内
+            var load_avatar = function(url,sprite_user){
+                cc.loader.load(url,function(err,tex){
+                    var frame  = new cc.SpriteFrame(tex,cc.Rect(0, 0, 87, 123));
+                    sprite_user.spriteFrame = frame;
+                });
+            };
+            node_user.scale = (node_size['width']-15)/120;
+            load_avatar(v['avatar'],sprite_user);
+        }else{
+            if(this.GameMain == null){
+                cc.loader.loadRes("GameMain_6p",cc.SpriteAtlas,function(err,atlas){
+                    this.GameMain = atlas;
+                    sprite_user.spriteFrame =  this.GameMain.getSpriteFrame("game_seat_valid");
+                });
+            }else{
+                sprite_user.spriteFrame =  this.GameMain.getSpriteFrame("game_seat_valid");
             }
         }
+        seat_node.getChildByName("game_tip").setLocalZOrder(2);
     },
     //js获取当前url的参数
     getQueryString:function(name){
