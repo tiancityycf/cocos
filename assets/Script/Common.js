@@ -166,6 +166,19 @@ cc.Class({
     //点击座位坐下 未完成
     seatClick:function(e){
         var me = this;
+        if(me.ws){
+            //请求后台坐下
+            if (me.ws.readyState === WebSocket.OPEN) {
+                cc.log("send message to server3000");
+                me.ws.send(JSON.stringify({Ai: {
+                    Ai_id: '123456',
+                    Hand:[1,2]
+                }}))
+            }
+            else {
+                console.log("WebSocket instance wasn't ready...");
+            }
+        };
         var seatName = e.currentTarget._name;
         var v={};
         v["nick"]   =   "南洋波霸";
