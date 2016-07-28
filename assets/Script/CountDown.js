@@ -17,8 +17,6 @@ cc.Class({
         actions:null,
         //正在进行的动作
         i:0,
-        //websocket
-        ws:null,
         //该牌局的是数据
         hand_data:null
     },
@@ -254,54 +252,7 @@ cc.Class({
             }
         }
     },
-    //web socket连接
-    wsstart:function(){
-        var me=this;
-        var ws = new WebSocket("ws://127.0.0.1:3564");
-        ws.binaryType = "arraybuffer" ;
-        var decoder = new TextDecoder('utf-8')
 
-
-        ws.onopen = function (event) {
-            me.ws = ws;
-            console.log("Send Text WS was opened.");
-        };
-
-        ws.onmessage = function (event) {
-            console.log("response text msg: " + event.data);
-
-            var input = event.data;
-
-            var data = JSON.parse(decoder.decode(event.data));
-            console.log(data);
-
-        };
-        ws.onerror = function (event) {
-            console.log("Send Text fired an error");
-        };
-        ws.onclose = function (event) {
-            console.log("WebSocket instance closed.");
-        };
-
-        setTimeout(function () {
-            if(me.ws!=null){
-                cc.log(me.ws.readyState);
-                if (me.ws.readyState === WebSocket.OPEN) {
-                    cc.log("send message to server3000");
-                    me.ws.send(JSON.stringify({Ai: {
-                        Ai_id: '123456',
-                        Hand:[1,2]
-                    }}))
-                }
-                else {
-                    console.log("WebSocket instance wasn't ready...");
-                }
-            }else{
-                cc.log("ws is null");
-            }
-        }, 3000);
-
-    },
     //组装action和other
     sorting_data:function(hand_data){
         //过滤掉无用的others动作

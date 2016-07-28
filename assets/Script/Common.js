@@ -19,6 +19,57 @@ cc.Class({
         open_mute:0,//是否开启静音模式0-否1-是
         is_mobile:0,//是否是手机访问0-否1-是
         fontStyle:null,//字体样式
+        //websocket
+        ws:null,
+    },
+    //web socket连接
+    wsstart:function(){
+        var me=this;
+        var ws = new WebSocket("ws://127.0.0.1:3564");
+        ws.binaryType = "arraybuffer" ;
+        var decoder = new TextDecoder('utf-8')
+
+
+        ws.onopen = function (event) {
+            me.ws = ws;
+            console.log("Send Text WS was opened.");
+        };
+
+        ws.onmessage = function (event) {
+            console.log("response text msg: " + event.data);
+
+            var input = event.data;
+
+            var data = JSON.parse(decoder.decode(event.data));
+
+            console.log(data);
+
+        };
+        ws.onerror = function (event) {
+            console.log("Send Text fired an error");
+        };
+        ws.onclose = function (event) {
+            console.log("WebSocket instance closed.");
+        };
+
+        //setTimeout(function () {
+        //    if(me.ws!=null){
+        //        cc.log(me.ws.readyState);
+        //        if (me.ws.readyState === WebSocket.OPEN) {
+        //            cc.log("send message to server3000");
+        //            me.ws.send(JSON.stringify({Ai: {
+        //                Ai_id: '123456',
+        //                Hand:[1,2]
+        //            }}))
+        //        }
+        //        else {
+        //            console.log("WebSocket instance wasn't ready...");
+        //        }
+        //    }else{
+        //        cc.log("ws is null");
+        //    }
+        //}, 3000);
+
     },
     sit_down:function(){
         //加载游戏资源图片
@@ -166,26 +217,37 @@ cc.Class({
     //点击座位坐下 未完成
     seatClick:function(e){
         var me = this;
-        if(me.ws){
-            //请求后台坐下
-            if (me.ws.readyState === WebSocket.OPEN) {
-                cc.log("send message to server3000");
-                me.ws.send(JSON.stringify({Ai: {
-                    Ai_id: '123456',
-                    Hand:[1,2]
-                }}))
-            }
-            else {
-                console.log("WebSocket instance wasn't ready...");
-            }
-        };
-        var seatName = e.currentTarget._name;
+
+        var rName = cc.random0To1();
         var v={};
-        v["nick"]   =   "南洋波霸";
+        v["nick"]   =   "波霸"+rName;
         v["remain_chip"]    =   "1000";
         v["table_chip"]     =   "10";
         //v["avatar"]         =   "/1_5734451068aaa.jpg";
         v["avatar"]         =   "";
+
+
+        if(me.ws){
+            //请求后台坐下
+            if (me.ws.readyState === WebSocket.OPEN) {
+                cc.log("send message to server3000");
+                me.ws.send(JSON.stringify({C2S_Login: {
+                                    Ai_id: '123456',
+                                    Hand:[1,2]
+                                }}));
+                me.ws.send(JSON.stringify({C2S_Login: {
+                    UserAccount: "tian",
+                    UserName: "nick",
+                    UserPassword: "123456",
+                }}));
+            }
+            else {
+                this.wsstart();
+                console.log("WebSocket instance wasn't ready...");
+            }
+        };
+        var seatName = e.currentTarget._name;
+
 
         var node_table_bg = cc.find("Canvas/table_bg");
         var seat_node = node_table_bg.getChildByName(seatName);
