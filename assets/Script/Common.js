@@ -41,6 +41,7 @@ cc.Class({
             var input = event.data;
 
             var data = JSON.parse(decoder.decode(event.data));
+            console.log("server response");
 
             console.log(data);
 
@@ -231,9 +232,11 @@ cc.Class({
             //请求后台坐下
             if (me.ws.readyState === WebSocket.OPEN) {
                 cc.log("send message to server3000");
-                me.ws.send(JSON.stringify({C2S_Login: {
-                                    Ai_id: '123456',
-                                    Hand:[1,2]
+                me.ws.send(JSON.stringify({C2S_Join: {
+                                    UserId: '123456',
+                                    UserName:v["nick"],
+                                    TableId:'22222',
+                                    UserToken:'33333',
                                 }}));
                 me.ws.send(JSON.stringify({C2S_Login: {
                     UserAccount: "tian",
