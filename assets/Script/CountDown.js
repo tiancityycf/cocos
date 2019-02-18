@@ -40,7 +40,7 @@ cc.Class({
                 long_time = me.fixedThinkTime;
             }
         }
-        var node_table_bg = cc.find("Canvas/table_bg");
+        var node_table_bg = cc.find("Canvas");
         //初始化
         this.countdown_repeat_num = 0;
         this.countdown_long_time = 0;
@@ -137,7 +137,7 @@ cc.Class({
             this.countdown_node.destroy();//删除该节点
         }
         //延时
-        var node_table_bg = cc.find("Canvas/table_bg");
+        var node_table_bg = cc.find("Canvas");
         var seat = node_table_bg.getChildByName("seat_"+seat_number);//获取该作为的节点
         //倒计时遮罩层
         var node = new cc.Node();

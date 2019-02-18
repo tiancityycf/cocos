@@ -1,9 +1,10 @@
 {
-  "ver": "1.0.0",
+  "ver": "2.2.0",
   "uuid": "24e07000-e189-4c09-8859-47cc25581533",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
+  "premultiplyAlpha": false,
   "subMetas": {
     "game_cards": {
       "ver": "1.0.3",
@@ -13,11 +14,11 @@
       "trimThreshold": 1,
       "rotated": false,
       "offsetX": -16.5,
-      "offsetY": 7.5,
+      "offsetY": 7,
       "trimX": 2,
       "trimY": 2,
       "width": 987,
-      "height": 1005,
+      "height": 1006,
       "rawWidth": 1024,
       "rawHeight": 1024,
       "borderTop": 0,

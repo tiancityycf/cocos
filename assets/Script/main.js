@@ -69,12 +69,13 @@ cc.Class({
         me.is_mobile = this.isMobile();
         if(me.is_mobile == 0){
             var canvas = cc.find("Canvas");
-            canvas.width = 418;
-            canvas.height = 738;
+			
+            //canvas.width = 418;
+            //canvas.height = 738;
         }
         cc.game.config.showFPS=false;
 
-        cc.director.setDisplayStats(false);
+        //cc.director.setDisplayStats(false);
 
         this.eventListen();
 
@@ -283,9 +284,9 @@ cc.Class({
     //初始化小盲位，大盲位
     initsb:function(){
         var table_data = this.hand_data;
-        var node_table_bg = cc.find("Canvas/table_bg");
+        var node_table_bg = cc.find("Canvas");
         //dealer位
-        var dealer_node = cc.find("Canvas/table_bg/seat_"+table_data['start']['d_chair']+"/dealer");
+        var dealer_node = cc.find("Canvas/seat_"+table_data['start']['d_chair']+"/dealer");
         var dealer_sprite = dealer_node.getComponent(cc.Sprite);
         if(dealer_sprite == null){
             var dealer_sprite = dealer_node.addComponent(cc.Sprite);
@@ -328,7 +329,7 @@ cc.Class({
         //发牌
         for(var k in hand_data['players']){
             var v = hand_data['players'][k];
-            var seat_node =  cc.find("Canvas/table_bg").getChildByName("seat_"+v['chair_id']);
+            var seat_node =  cc.find("Canvas").getChildByName("seat_"+v['chair_id']);
             var node_hand_card = new cc.Node();
             var sprite_hand_card = node_hand_card.addComponent(cc.Sprite);
             node_hand_card.scale = 1;
@@ -415,7 +416,7 @@ cc.Class({
     },
     //显示操作提示
     game_tip:function(sit,url,clean){
-        var game_tip=this.node.parent.getChildByName("table_bg").getChildByName("seat_"+sit).getChildByName("game_tip");
+        var game_tip=this.node.parent.getChildByName("Canvas").getChildByName("seat_"+sit).getChildByName("game_tip");
         //var pos=table_bg.getChildByName("seat_"+sit).getPosition();//获取坐标
         var sp=game_tip.getComponent(cc.Sprite);
         if(cc.isValid(sp)){
@@ -515,7 +516,7 @@ cc.Class({
         this.add_countdown(sit,duration);
 
         var finished=function(){
-            var seat_node = cc.find("Canvas/table_bg/seat_"+sit+"/chips");
+            var seat_node = cc.find("Canvas/seat_"+sit+"/chips");
             var seat_lable = seat_node.getComponent(cc.Label);
             var seat_chips = parseInt(seat_lable.string);
             if(seat_chips <= handChips){
@@ -535,7 +536,7 @@ cc.Class({
         this.add_countdown(sit,duration);
 
         var finished=function(){
-            var seat_node = cc.find("Canvas/table_bg/seat_"+sit+"/chips");
+            var seat_node = cc.find("Canvas/seat_"+sit+"/chips");
             var seat_lable = seat_node.getComponent(cc.Label);
             var seat_chips = parseInt(seat_lable.string);
             if(seat_chips <= handChips){
@@ -666,7 +667,7 @@ cc.Class({
     },
     //比牌结束显示输赢详情
     endtip:function(sit,chips,card1,card2,cardType,new_chips) {
-        var table_bg = this.node.parent.getChildByName("table_bg");
+        var table_bg = this.node.parent.getChildByName("Canvas");
         var pos = table_bg.getChildByName("seat_" + sit).getPosition();
 
         var node = new cc.Node();
@@ -687,7 +688,7 @@ cc.Class({
         ctNode.setPosition(0, -80);
 
         //显示当前的筹码数
-        var seat_chips_node = cc.find("Canvas/table_bg/seat_"+sit+"/chips");
+        var seat_chips_node = cc.find("Canvas/seat_"+sit+"/chips");
         var seat_chips_lable = seat_chips_node.getComponent(cc.Label);
         seat_chips_lable.string = new_chips;
         if (chips > 0) {
@@ -813,7 +814,7 @@ cc.Class({
             this.table_tips=[];
         }
         //清理dealer
-        var dealer_node = cc.find("Canvas/table_bg/seat_"+this.hand_data['start']['d_chair']+"/dealer");
+        var dealer_node = cc.find("Canvas/seat_"+this.hand_data['start']['d_chair']+"/dealer");
         if(dealer_node.getComponent(cc.Sprite) != null){
             dealer_node.getComponent(cc.Sprite).setVisible(false);
             //dealer_node.getComponent(cc.Sprite).destroy();
@@ -831,7 +832,7 @@ cc.Class({
         me.countdown_over_task=null;
 
         var finished = function(){
-            var table_bg = cc.find("Canvas/table_bg");
+            var table_bg = cc.find("Canvas");
             var seat=table_bg.getChildByName("seat_"+sit);
             //seat.enabled=false;
             //隐藏图像
@@ -923,7 +924,7 @@ cc.Class({
         pot=Number(pot);
         inpot=Number(inpot);
         //var chips="game_chip_tip";
-        var table_bg=this.node.parent.getChildByName("table_bg");
+        var table_bg=this.node.parent.getChildByName("Canvas");
         var chipNode=table_bg.getChildByName("chip_"+sit);
 
         var chipSp=chipNode.getComponent(cc.Sprite);
@@ -943,7 +944,7 @@ cc.Class({
 
         var showLabel=function(node){
             var node_name = node.name;//找到这个节点
-            var node = cc.find("Canvas/table_bg/"+node_name);//用这个方法找到节点，重新赋值，否则无法找到该节点的子节点
+            var node = cc.find("Canvas/"+node_name);//用这个方法找到节点，重新赋值，否则无法找到该节点的子节点
             var table_chips_node = node.getChildByName("table_chip");
             if(table_chips_node == null){
                 var cn = new cc.Node();
@@ -1310,7 +1311,7 @@ cc.Class({
     //别人正在操作时，站起
     other_quit:function(sit){
         var finished = function(){
-            var table_bg = cc.find("Canvas/table_bg");
+            var table_bg = cc.find("Canvas");
             var seat=table_bg.getChildByName("seat_"+sit);
             //seat.enabled=false;
             //隐藏图像

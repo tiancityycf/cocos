@@ -24,6 +24,7 @@ cc.Class({
     },
     //web socket连接
     wsstart:function(){
+		return false;
         var me=this;
         var ws = new WebSocket("ws://127.0.0.1:3564");
         ws.binaryType = "arraybuffer" ;
@@ -119,7 +120,7 @@ cc.Class({
         var table_data = this.hand_data;
         table_data['table_name']=table_data['table_name']?table_data['table_name']:"";
         table_data['table_code']=table_data['table_code']?table_data['table_code']:"";
-        var node_table_bg = cc.find("Canvas/table_bg");
+        var node_table_bg = cc.find("Canvas");
 
         //异步加载头像，不能放在循环内
         var load_avatar = function(url,sprite_user){
@@ -206,7 +207,8 @@ cc.Class({
     //监听座位点击事件
     onSeat:function(){
         cc.log("onSeat init");
-        var node_table_bg = cc.find("Canvas/table_bg");
+        var node_table_bg = cc.find("Canvas");
+		cc.log(node_table_bg);
         for(var i=0;i<9;i++){
             //var v = table_data['players'][k];
             var seat_node = node_table_bg.getChildByName("seat_"+i);
@@ -252,7 +254,7 @@ cc.Class({
         var seatName = e.currentTarget._name;
 
 
-        var node_table_bg = cc.find("Canvas/table_bg");
+        var node_table_bg = cc.find("Canvas");
         var seat_node = node_table_bg.getChildByName(seatName);
         var node_size = seat_node.getContentSize();//获取node的尺寸
         //名字
@@ -389,12 +391,12 @@ cc.Class({
     //ReplaceSeat:function(){
     //    if(this.Lang == 'thai-th'){
     //        for(var i=0;i<9;i++){
-    //            cc.find("Canvas/table_bg/seat_"+i).getComponent(cc.Sprite).setVisible(false);
+    //            cc.find("Canvas/seat_"+i).getComponent(cc.Sprite).setVisible(false);
     //        }
     //        cc.loader.loadRes("GameMain_th_6p",cc.SpriteAtlas,function(err,atlas){
     //            var game_seat_empty = atlas.getSpriteFrame("game_seat_empty");
     //            for(var i=0;i<9;i++){
-    //                var sprite = cc.find("Canvas/table_bg/seat_"+i).getComponent(cc.Sprite)
+    //                var sprite = cc.find("Canvas/seat_"+i).getComponent(cc.Sprite)
     //                sprite.spriteFrame = game_seat_empty;
     //                sprite.setVisible(true);
     //            }
